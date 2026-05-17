@@ -133,13 +133,18 @@ def cmd_run(args: argparse.Namespace, settings: Settings) -> int:
         f"processed={result.processed_count}, "
         f"ranked={result.ranked_count}"
     )
-    if result.selected is not None:
+    if result.final_post is not None:
         print(
-            f"[arr] SELECTED: {result.selected.arxiv_id} "
-            f"({result.selected.title!r}) composite={result.selected.composite:.2f}"
+            f"[arr] POST DRAFTED: {result.selected.arxiv_id} — {result.final_post.paper_title!r}"
         )
-        print(f"[arr] Artifact: {day_dir / 'selected.json'}")
-        print("[arr] Drafter (Stage 6) lands in Phase 4 — no post written yet.")
+        print(
+            f"      composite={result.selected.composite:.2f}, "
+            f"chars={result.final_post.post_char_count}, "
+            f"hook={result.final_post.hook_char_count}, "
+            f"retries={result.final_post.critic_report.retries_used}"
+        )
+        print(f"[arr] Review folder: {day_dir}")
+        print(f"      post.md, final_post.json, grounding.md, paper.pdf")
     else:
         assert result.skip_record is not None
         print(f"[arr] SKIP: {result.skip_record.reason}")

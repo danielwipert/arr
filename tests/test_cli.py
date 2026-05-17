@@ -47,6 +47,10 @@ def test_run_without_api_key_fails_cleanly(
     capsys: pytest.CaptureFixture[str],
     monkeypatch: pytest.MonkeyPatch,
 ):
+    # In dev environments a real .env may set the key. Stub the dotenv loader
+    # so the test exercises the "no key anywhere" path deterministically.
+    from arr import config as config_mod
+    monkeypatch.setattr(config_mod, "_load_dotenv", lambda _: None)
     monkeypatch.delenv("OPENROUTER_API_KEY", raising=False)
     exit_code = main(["run", "--date", "2026-05-16"])
     captured = capsys.readouterr()

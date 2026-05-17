@@ -1,15 +1,15 @@
 """Pipeline orchestration.
 
-As of Phase 3 the chain runs:
+As of Phase 4 the chain runs end-to-end:
 
-    ingest -> filter -> dedup -> process -> rank -> select
+    ingest -> filter -> dedup -> process -> rank -> select -> finalize
 
-and writes either a selected.json (RankedPaper artifact for the day's
-chosen paper) or a skip.json (SkipRecord with a reason). Per-paper
-ProcessedPaper and RankedPaper JSONs land under per-day subfolders so
-ranker calibration is inspectable on both post and skip days.
-
-Drafter, critic, and finalizer (Stages 6–8) are wired up in Phase 4.
+On a post day the finalizer's FinalPost lands as final_post.json, the
+ready-to-paste post.md and the per-claim grounding.md sit alongside it,
+and the source PDF is copied next to them so a reviewer can verify any
+claim without leaving the folder. On a skip day a SkipRecord goes in as
+skip.json with a reason — either the selector's (no paper above threshold)
+or the finalizer's (voice critic failed after N attempts).
 """
 
 from __future__ import annotations
@@ -21,13 +21,14 @@ from datetime import datetime
 from pathlib import Path
 
 from arr.config import Settings
-from arr.models import RankedPaper, SkipRecord
+from arr.models import FinalPost, RankedPaper, SkipRecord
 from arr.providers.embeddings import EmbeddingProvider
 from arr.providers.llm import LLMProvider
 from arr.providers.papers import PaperSourceProvider
 from arr.providers.storage import StorageProvider
 from arr.stages import dedup as dedup_stage
 from arr.stages import filter as filter_stage
+from arr.stages import finalize as finalize_stage
 from arr.stages import ingest as ingest_stage
 from arr.stages import process as process_stage
 from arr.stages import rank as rank_stage
@@ -46,7 +47,27 @@ class PipelineResult:
     processed_count: int
     ranked_count: int
     selected: RankedPaper | None
+    final_post: FinalPost | None
     skip_record: SkipRecord | None
+    finalize_attempts_used: int = 0
+
+
+def _write_post_artifacts(
+    run_date: date_cls,
+    final_post: FinalPost,
+    selected: RankedPaper,
+    storage: StorageProvider,
+) -> None:
+    """Section 13.1 review layout: post.md, final_post.json, grounding.md, paper.pdf."""
+    storage.write_root_artifact(run_date, "final_post", final_post)
+    storage.write_post(run_date, finalize_stage.build_post_md(final_post))
+    storage.write_text(run_date, "grounding.md", finalize_stage.build_grounding_md(final_post))
+
+    pdf_path = Path(selected.pdf_local_path)
+    if pdf_path.exists():
+        storage.write_pdf(run_date, pdf_path.read_bytes())
+    else:
+        log.warning("Source PDF missing at %s; paper.pdf not copied", pdf_path)
 
 
 def run_pipeline(
@@ -79,25 +100,61 @@ def run_pipeline(
         storage.write_named_artifact(run_date, "ranked", paper.arxiv_id, paper)
 
     selected = select_stage.select_top(ranked, settings)
-
-    skip_record: SkipRecord | None = None
-    if selected is not None:
-        storage.write_root_artifact(run_date, "selected", selected)
-        log.info(
-            "Pipeline: selected %s (composite %.2f)",
-            selected.arxiv_id, selected.composite,
-        )
-    else:
-        skip_record = select_stage.build_skip_record(
+    if selected is None:
+        skip = select_stage.build_skip_record(
             run_date=run_date,
             papers_considered=len(raw_papers),
             papers_filtered=len(deduped),
             ranked=ranked,
             settings=settings,
         )
-        storage.write_root_artifact(run_date, "skip", skip_record)
-        log.info("Pipeline: skip day — %s", skip_record.reason)
+        storage.write_root_artifact(run_date, "skip", skip)
+        log.info("Pipeline: skip day — %s", skip.reason)
+        return PipelineResult(
+            raw_count=len(raw_papers),
+            filtered_count=len(filtered),
+            deduped_count=len(deduped),
+            processed_count=len(processed),
+            ranked_count=len(ranked),
+            selected=None,
+            final_post=None,
+            skip_record=skip,
+        )
 
+    # We have a selected paper; persist it before the drafter starts so the
+    # intermediate selection state survives a drafter crash.
+    storage.write_root_artifact(run_date, "selected", selected)
+
+    finalizer = finalize_stage.run(selected, llm, settings, now=now)
+
+    if finalizer.succeeded:
+        _write_post_artifacts(run_date, finalizer.final_post, selected, storage)
+        log.info(
+            "Pipeline: drafted post for %s (composite %.2f, attempts %d)",
+            selected.arxiv_id, selected.composite, finalizer.attempts_used,
+        )
+        return PipelineResult(
+            raw_count=len(raw_papers),
+            filtered_count=len(filtered),
+            deduped_count=len(deduped),
+            processed_count=len(processed),
+            ranked_count=len(ranked),
+            selected=selected,
+            final_post=finalizer.final_post,
+            skip_record=None,
+            finalize_attempts_used=finalizer.attempts_used,
+        )
+
+    skip = SkipRecord(
+        date=run_date.isoformat(),
+        papers_considered=len(raw_papers),
+        papers_filtered=len(deduped),
+        papers_ranked=len(ranked),
+        top_paper=None,
+        reason=finalize_stage.build_voice_skip_reason(finalizer.attempts_used),
+    )
+    storage.write_root_artifact(run_date, "skip", skip)
+    log.info("Pipeline: drafter retries exhausted — %s", skip.reason)
     return PipelineResult(
         raw_count=len(raw_papers),
         filtered_count=len(filtered),
@@ -105,5 +162,7 @@ def run_pipeline(
         processed_count=len(processed),
         ranked_count=len(ranked),
         selected=selected,
-        skip_record=skip_record,
+        final_post=None,
+        skip_record=skip,
+        finalize_attempts_used=finalizer.attempts_used,
     )
