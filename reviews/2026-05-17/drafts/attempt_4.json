@@ -1,5 +1,5 @@
 {
-  "attempt": 1,
+  "attempt": 4,
   "draft": {
     "paper": {
       "arxiv_id": "2605.15177v1",
@@ -57,78 +57,78 @@
       },
       "composite": 7.85
     },
-    "post_text": "Running the same model eight times in parallel, with candidates competing against each other, beats running it once for much longer.\n\nResearchers at UC San Diego built OpenDeepThink, a framework that maintains a population of candidate solutions and evolves them over several rounds. Each round, the model judges random pairs of candidates against each other, aggregates the votes using a statistical ranking method called Bradley-Terry (which adjusts for the strength of each candidate's opponents, not just raw win counts), and discards the weakest quarter. The survivors are then rewritten using the critiques produced during comparison. On competitive programming problems, this lifted Gemini 3.1 Pro's effective Codeforces Elo rating by 405 points in eight sequential model-call rounds, roughly 27 minutes of wall-clock time.\n\nThe mechanism is narrower than it sounds. The gains depend on pairwise comparison being reliable: on a 500-pair diagnostic, pairwise judgment reached 86% accuracy versus 59% for the standard approach of scoring each candidate in isolation. But on the multi-domain HLE benchmark, performance gains appeared only in objectively verifiable domains and reversed in subjective ones, which is a direct warning that the framework amplifies whatever the judge can already do well. The pipeline has also only been validated on Gemini-family models, and at roughly 285 API calls per problem, the cost is real.\n\nFor teams building or evaluating LLM systems on hard reasoning tasks, the practical implication is that breadth of sampling, combined with structured head-to-head selection, can outperform simply extending a single chain of thought. The selection step matters as much as the generation step, and the cheapest accuracy gains may sit in how candidates are ranked, not in a better base model.\n\nWorth reading if you are deciding how to spend inference compute on hard, verifiable tasks; worth treating cautiously if your domain involves subjective judgment or latency constraints.\n\nPaper: OpenDeepThink: Parallel Reasoning via Bradley-Terry Aggregation, Zhou et al.\nhttps://arxiv.org/abs/2605.15177\n\n#LLMs #TestTimeCompute #CompetitiveProgramming #ModelRisk #BradleyTerry",
+    "post_text": "Running more reasoning attempts in parallel is easy. Picking the best one, without knowing the answer, is the hard part.\n\nResearchers from UC San Diego introduce OpenDeepThink, a framework that runs a population of candidate solutions in parallel and selects among them using pairwise Bradley-Terry aggregation: each candidate is compared head-to-head against peers, and those win/loss votes are converted into a global ranking, the way a chess rating system infers player strength from match results. On competitive programming problems, the system raises Gemini 3.1 Pro's effective Codeforces Elo by 405 points across eight sequential rounds of LLM calls, roughly 27 minutes of wall-clock time.\n\nThe core finding is about judgment, not generation. A controlled diagnostic on 500 solution pairs shows pairwise comparison reaches 86% accuracy at identifying the correct answer, against 59% for pointwise scoring, where the model rates each candidate in isolation. The gap traces to a known bias: pointwise scoring is reliable on correct solutions but poor at rejecting wrong ones. The framework also transfers across Gemini 3 Flash and Gemini 2.5 Pro without retuning, though it has only been validated on Gemini-family models.\n\nFor teams building systems where correctness is verifiable, the practical implication is that the selection step deserves as much engineering attention as the generation step. The per-problem cost of roughly 285 API calls is real, and the authors note that on subjective domains, where pairwise judgment itself is unreliable, the framework can actively degrade accuracy rather than improve it.\n\nWorth reading if you are designing evaluation or selection logic for LLM pipelines; worth setting aside if your outputs are too open-ended for any pairwise comparison to be meaningful.\n\nPaper: OpenDeepThink: Parallel Reasoning via Bradley-Terry Aggregation, Zhou et al.\nhttps://arxiv.org/abs/2605.15177\n\n#LLMs #TestTimeCompute #AIEngineering #ModelRisk #BradleyTerry",
     "claims": [
       {
-        "claim": "This lifted Gemini 3.1 Pro's effective Codeforces Elo rating by 405 points in eight sequential model-call rounds, roughly 27 minutes of wall-clock time.",
-        "source_span": "raises Gemini 3.1 Pro's effective Codeforces Elo by +405 points in eight sequential LLM-call rounds (~27 minutes wall-clock)",
-        "page": 1
-      },
-      {
-        "claim": "On a 500-pair diagnostic, pairwise judgment reached 86% accuracy versus 59% for the standard approach of scoring each candidate in isolation.",
-        "source_span": "pairwise reaches 86% accuracy versus 59% for pointwise",
+        "claim": "OpenDeepThink raises Gemini 3.1 Pro's effective Codeforces Elo by 405 points",
+        "source_span": "raises Gemini 3.1 Pro's effective Codeforces Elo by +405 points",
         "page": 2
       },
       {
-        "claim": "On the multi-domain HLE benchmark, performance gains appeared only in objectively verifiable domains and reversed in subjective ones.",
-        "source_span": "gains appear concentrated in objectively verifiable domains and reverse in subjective ones",
+        "claim": "across eight sequential rounds of LLM calls, roughly 27 minutes of wall-clock time",
+        "source_span": "eight sequential LLM-call rounds (~27 minutes wall-clock)",
         "page": 1
       },
       {
-        "claim": "The pipeline has only been validated on Gemini-family models.",
+        "claim": "pairwise comparison reaches 86% accuracy at identifying the correct answer, against 59% for pointwise scoring",
+        "source_span": "pairwise reaches 86.2%. Pointwise attains 96.4% accuracy on AC but only 62.2% on WA, yielding a joint correctness of 59.2%",
+        "page": 16
+      },
+      {
+        "claim": "pointwise scoring is reliable on correct solutions but poor at rejecting wrong ones",
+        "source_span": "pointwise judgment achieves high recall on accepted solutions but poor recall on wrong ones, so it cannot reliably reject incorrect candidates",
+        "page": 9
+      },
+      {
+        "claim": "the framework transfers across Gemini 3 Flash and Gemini 2.5 Pro without retuning",
+        "source_span": "the same hyperparameters transfer to Gemini 3 Flash and Gemini 2.5 Pro without retuning",
+        "page": 11
+      },
+      {
+        "claim": "it has only been validated on Gemini-family models",
         "source_span": "The framework has been validated only on Gemini-family models; whether the gains transfer to architecturally different LLMs is unknown",
         "page": 12
       },
       {
-        "claim": "At roughly 285 API calls per problem, the cost is real.",
-        "source_span": "The per-problem cost of ∼285 API calls is substantial and may be prohibitive for latency-sensitive applications",
+        "claim": "per-problem cost of roughly 285 API calls",
+        "source_span": "The per-problem cost of ~285 API calls is substantial",
         "page": 12
       },
       {
-        "claim": "The entire pipeline runs at a sequential depth of eight LLM calls.",
-        "source_span": "a sequential depth of only eight LLM calls",
-        "page": 2
-      },
-      {
-        "claim": "The framework discards the weakest quarter of candidates each round.",
-        "source_span": "bottom-⌊n/4⌋ of Y(t−1) by s(t) ▷ discard",
-        "page": 5
-      },
-      {
-        "claim": "The same hyperparameters transfer to Gemini 3 Flash and Gemini 2.5 Pro without retuning.",
-        "source_span": "the same hyperparameters transfer to Gemini 3 Flash and Gemini 2.5 Pro without retuning",
-        "page": 11
+        "claim": "on subjective domains the framework can actively degrade accuracy",
+        "source_span": "on HLE domains where pairwise judgment is unreliable, evolution actively degrades accuracy",
+        "page": 12
       }
     ],
-    "char_count": 2200,
-    "hook_char_count": 132,
+    "char_count": 1990,
+    "hook_char_count": 120,
     "drafter_model": "anthropic/claude-sonnet-4.6",
-    "attempt": 1
+    "attempt": 4
   },
   "critic_report": {
     "voice_match": {
-      "result": "pass",
-      "note": "The post reads as reported analysis rather than content marketing: declarative sentences, specific numbers, dry qualifications, and a clear 'so what' for non-engineer leaders in the final paragraph."
+      "result": "fail",
+      "note": "The post is largely well-written in a restrained, declarative register, but 'the selection step deserves as much engineering attention as the generation step' tips into prescriptive LinkedIn-advice cadence, and 'Bradley-Terry aggregation' is used without a plain-English gloss before the chess-rating analogy appears, leaving a gap for non-engineer readers in the opening paragraph."
     },
     "banned_phrase_scan": {
       "result": "pass",
       "note": "no banned phrases found"
     },
     "length_compliance": {
-      "result": "fail",
-      "note": "too long (2200 chars, hard max 2000)"
+      "result": "pass",
+      "note": "total=1990, hook=120 (outside sweet spot 1400-1800, within hard bounds)"
     },
     "structure": {
       "result": "pass",
       "note": "7 blocks, 5 hashtags"
     },
     "grounding": {
-      "result": "pass",
-      "note": "Every factual claim in the post (405-point Elo gain, 8 rounds, ~27 minutes, 86% vs 59% pairwise accuracy, 500-pair diagnostic, HLE domain-specific reversal, Gemini-family-only validation, ~285 API calls) maps to a claims-list entry whose source_span appears verbatim in the supplied paper sections. [mech: 5 claim span(s) not found in paper: 'pairwise reaches 86% accuracy versus 59% for pointwise'; 'The framework has been validated only on Gemini-family model'; 'a sequential depth of only eight LLM calls']"
+      "result": "fail",
+      "note": "The post states 'Researchers from UC San Diego introduce OpenDeepThink' but no source_span in the claims list or the supplied paper sections confirms the UC San Diego affiliation; the paper sections do not mention any institution, making this an ungrounded attribution. [mech: 6 claim span(s) not found in paper: 'pairwise reaches 86.2%. Pointwise attains 96.4% accuracy on '; 'pointwise judgment achieves high recall on accepted solution'; 'the same hyperparameters transfer to Gemini 3 Flash and Gemi']"
     },
     "hype_check": {
       "result": "pass",
-      "note": "No superlatives or overclaims detected; the post accurately qualifies the Elo gain as specific to Gemini 3.1 Pro, notes the domain-dependence of HLE gains, and flags cost and generalization limits without compression or drift."
+      "note": "Claims are accurately scoped: the Elo gain is stated as a specific number on a specific model, the 86%/59% figures match the paper's 86.2%/59.2%, limitations around Gemini-only validation and subjective-domain degradation are explicitly noted, and no comparative drift or overclaim is present."
     },
     "overall_pass": false,
     "critic_model": "anthropic/claude-sonnet-4.6"
