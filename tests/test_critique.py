@@ -47,7 +47,7 @@ GOOD_POST = (
     "Paper: Query Decomposition for Robust RAG, Müller et al.\n"
     "https://arxiv.org/abs/2026.0001\n"
     "\n"
-    "#LLMs #RAG #AppliedAI #Retrieval"
+    "#LLMs #Retrieval #Enterprise #VendorRisk #QueryDecomposition"
 )
 
 
@@ -171,11 +171,23 @@ def test_check_structure_rejects_missing_block():
     assert not ok
 
 
-def test_check_structure_rejects_missing_required_hashtag():
-    bad = GOOD_POST.replace("#LLMs ", "")
+def test_check_structure_rejects_wrong_hashtag_count():
+    too_few = GOOD_POST.replace("#LLMs ", "")
+    ok, note = check_structure(too_few)
+    assert not ok
+    assert "5 hashtags" in note
+
+    too_many = GOOD_POST + " #ExtraTag"
+    ok, note = check_structure(too_many)
+    assert not ok
+    assert "5 hashtags" in note
+
+
+def test_check_structure_rejects_non_hash_token_in_tag_block():
+    bad = GOOD_POST.replace("#LLMs ", "LLMs ")
     ok, note = check_structure(bad)
     assert not ok
-    assert "hashtag" in note.lower()
+    assert "#" in note
 
 
 # --- check_grounding_spans ----------------------------------------------

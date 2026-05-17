@@ -40,7 +40,7 @@ GOOD_POST = (
     "Paper: Query Decomposition for Robust RAG, Müller et al.\n"
     "https://arxiv.org/abs/2026.0001\n"
     "\n"
-    "#LLMs #RAG #AppliedAI #Retrieval"
+    "#LLMs #Retrieval #Enterprise #VendorRisk #QueryDecomposition"
 )
 
 

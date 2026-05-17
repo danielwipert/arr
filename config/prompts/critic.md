@@ -27,6 +27,13 @@ Fail if the post performs (excitement, urgency, "here's what nobody is
 talking about"), uses corporate-LinkedIn cadences, or sounds like
 content marketing rather than reporting.
 
+Also fail on accessibility grounds: the audience is thoughtful business
+and engineering leaders, not ML researchers. Fail if the post uses
+specialist ML vocabulary (e.g. "permutation-equivariant", "parameter-
+efficient fine-tuning", "logit lens") without a short plain-English
+gloss in the same sentence, or if the implications paragraph never
+lands a "so what" a non-engineer leader could act on.
+
 ### 2. banned_phrase_scan
 
 Does the post contain any of these phrases or constructions?
@@ -69,11 +76,12 @@ CLOSE    One sentence
 META     "Paper: <title>, <first author> et al."
          "<arxiv link>"
 <blank>
-TAGS     "#LLMs #RAG #AppliedAI #<paper-specific>"
+TAGS     "#tag1 #tag2 #tag3 #tag4 #tag5"   (exactly five, each #CamelCase, all paper-specific)
 ```
 
-Fail if any block is missing, paragraphs are out of order, or the
-hashtags do not include all three of #LLMs, #RAG, #AppliedAI.
+Fail if any block is missing, paragraphs are out of order, the tag block
+does not contain exactly five tokens, or any token does not begin with
+`#`.
 
 ### 5. grounding
 

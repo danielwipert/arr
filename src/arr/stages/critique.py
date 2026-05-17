@@ -126,7 +126,9 @@ def check_structure(post_text: str) -> tuple[bool, str]:
     """Hook + 3 body paragraphs + close + meta + tags, separated by blank lines.
 
     The meta block can be one or two lines (paper line + arxiv link). The
-    tags block must include all three required hashtags.
+    tags block must contain exactly five tokens, each starting with `#`.
+    Tag selection (broad vs niche, on-topic, no generic filler) is left to
+    the LLM critic; we only enforce shape here.
     """
     blocks = [b.strip() for b in re.split(r"\n\s*\n", post_text.strip()) if b.strip()]
     if len(blocks) != 7:
@@ -139,13 +141,14 @@ def check_structure(post_text: str) -> tuple[bool, str]:
     if "\n" not in meta and not meta.lower().startswith("paper:"):
         return False, "meta block should start with 'Paper:' and include the arxiv link"
 
-    required = {"#LLMs", "#RAG", "#AppliedAI"}
-    tag_set = set(tags.split())
-    missing = required - tag_set
-    if missing:
-        return False, f"missing required hashtags: {sorted(missing)}"
+    tag_tokens = tags.split()
+    if len(tag_tokens) != 5:
+        return False, f"expected 5 hashtags, got {len(tag_tokens)}"
+    bad = [t for t in tag_tokens if not t.startswith("#") or len(t) < 2]
+    if bad:
+        return False, f"hashtags must start with '#': {bad}"
 
-    return True, f"7 blocks, hashtags present"
+    return True, "7 blocks, 5 hashtags"
 
 
 def _normalize_for_grounding(text: str) -> str:
