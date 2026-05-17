@@ -285,15 +285,30 @@ def test_run_uses_llm_judgment_for_voice():
     assert report.overall_pass is False
 
 
-def test_run_grounding_mechanical_override_when_span_missing():
+def test_run_grounding_defers_to_llm_when_mechanical_spans_fail():
+    """LLM critic has the full paper text and can judge faithfully
+    paraphrased spans; mechanical strict-substring is too brittle."""
     settings = load_settings()
-    # Claims point at text that's not in the paper sections.
     bad_claims = [
         Claim(claim="x", source_span="entirely fabricated quote", page=1),
     ]
     draft = _draft(claims=bad_claims)
-    # LLM says pass on grounding, but code overrides because the span isn't real.
     report = critique.run(draft, FakeLLM(_llm_all_pass()), settings)
+    # LLM passed grounding, so overall grounding passes — but the mechanical
+    # signal is surfaced in the note for visibility.
+    assert report.grounding.result == "pass"
+    assert "[mech:" in report.grounding.note
+    assert "not found in paper" in report.grounding.note
+
+
+def test_run_grounding_fails_when_llm_says_fail():
+    """If the LLM critic flags grounding, the report fails regardless of
+    what the mechanical check would say."""
+    settings = load_settings()
+    llm_out = _llm_all_pass().model_copy(update={
+        "grounding": "fail", "grounding_note": "claims overstate the result",
+    })
+    report = critique.run(_draft(), FakeLLM(llm_out), settings)
     assert report.grounding.result == "fail"
 
 

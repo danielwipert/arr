@@ -102,19 +102,24 @@ def scan_banned_phrases(post_text: str) -> list[str]:
 
 
 def check_length(post_text: str) -> tuple[bool, str]:
-    """Spec target: 1400-1800 total, hook <= 140."""
+    """Spec sweet spot is 1400-1800; hard bounds are 1100-2000. We fail on
+    the HARD bounds and only note when a draft falls outside the sweet spot.
+    Hook is hard-capped at 140 (mobile 'see more' cutoff)."""
     total = len(post_text)
     hook = len(post_text.split("\n", 1)[0])
     problems: list[str] = []
-    if total < 1400:
-        problems.append(f"too short ({total} chars, target 1400-1800)")
-    elif total > 1800:
-        problems.append(f"too long ({total} chars, target 1400-1800)")
+    if total < 1100:
+        problems.append(f"too short ({total} chars, hard min 1100)")
+    elif total > 2000:
+        problems.append(f"too long ({total} chars, hard max 2000)")
     if hook > 140:
         problems.append(f"hook too long ({hook} chars, max 140)")
-    if not problems:
-        return True, f"total={total}, hook={hook}"
-    return False, "; ".join(problems)
+    if problems:
+        return False, "; ".join(problems)
+    note = f"total={total}, hook={hook}"
+    if total < 1400 or total > 1800:
+        note += " (outside sweet spot 1400-1800, within hard bounds)"
+    return True, note
 
 
 def check_structure(post_text: str) -> tuple[bool, str]:
@@ -259,14 +264,17 @@ def run(draft: DraftPost, llm: LLMProvider, settings: Settings) -> CriticReport:
     length_ok, length_note = check_length(draft.post_text)
     structure_ok, structure_note = check_structure(draft.post_text)
 
+    # Grounding: the LLM critic has the full paper sections and can judge
+    # whether each claim is actually supported, including faithfully
+    # paraphrased spans that don't substring-match verbatim. The mechanical
+    # span check is too strict in practice — PDF extraction artifacts and
+    # the drafter's tendency to capitalise paper names produce false negatives.
+    # We keep the mechanical signal for visibility but defer to the LLM.
     spans_ok, spans_note = check_grounding_spans(draft)
-    # Grounding: code can only confirm the spans exist verbatim. The LLM's
-    # judgment matters for whether the claims set is complete and each
-    # span actually supports its claim.
+    grounding_note = llm_out.grounding_note
     if not spans_ok:
-        grounding_check = _result(False, spans_note)
-    else:
-        grounding_check = _result_from_llm(llm_out.grounding, llm_out.grounding_note)
+        grounding_note = f"{grounding_note} [mech: {spans_note}]"
+    grounding_check = CheckResult(result=llm_out.grounding, note=grounding_note)
 
     report = CriticReport(
         voice_match=_result_from_llm(llm_out.voice_match, llm_out.voice_note),

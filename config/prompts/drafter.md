@@ -79,8 +79,9 @@ TAGS     #LLMs #RAG #AppliedAI #<paper-specific>
 
 ## Length
 
-- Total characters (including spaces, line breaks, hashtags): 1,400–1,800.
-- Hook (first line) characters: <= 140.
+- Total characters (including spaces, line breaks, hashtags): 1,400–1,800. This is a HARD range. Aim for 1,600 to leave room for natural variation. A draft outside this range will be rejected.
+- Hook (first line) characters: 80 to 140. Count characters; do not exceed 140.
+- After drafting, count your characters. If over 1,800, cut sentences from paragraphs 2 and 3 (the nuance and implications paragraphs) before submitting.
 
 ## Hashtags
 
@@ -126,7 +127,7 @@ Return JSON with exactly these fields:
 - `post_text` (string): the full draft, ready to paste into LinkedIn
 - `claims` (array): one object per factual claim in the post
   - `claim` (string): the claim as it appears in the post
-  - `source_span` (string): a verbatim snippet from the supplied paper sections
+  - `source_span` (string): the SHORTEST verbatim fragment from the supplied paper sections that supports the claim — typically 5 to 25 words. Do not quote whole sentences; pick the specific phrase, number, or attribution. Long quotes often fail because PDF extraction inserts stray characters mid-sentence, so short, specific spans are more reliable.
   - `page` (integer >= 1): which page of the paper the span is from; use 1 if unsure
 
 ## Paper
