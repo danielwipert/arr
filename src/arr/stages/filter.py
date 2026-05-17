@@ -23,6 +23,7 @@ from pydantic import BaseModel, ConfigDict
 from arr.config import REPO_ROOT, Settings
 from arr.models import FilteredPaper, InScopeTopic, RawPaper
 from arr.providers.llm import LLMError, LLMProvider
+from arr.stages._prompts import render
 
 log = logging.getLogger(__name__)
 
@@ -62,7 +63,8 @@ def _regex_flags_noise(paper: RawPaper) -> bool:
 
 
 def _classify(llm: LLMProvider, paper: RawPaper, model: str) -> FilterDecision:
-    prompt_text = PROMPT_PATH.read_text(encoding="utf-8").format(
+    prompt_text = render(
+        PROMPT_PATH.read_text(encoding="utf-8"),
         title=paper.title,
         abstract=paper.abstract,
     )
