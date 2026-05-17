@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+
+# Virtualenvs
+.venv/
+venv/
+env/
+.env
+
+# Tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Claude Code local state
+.claude/
+
+# Project-local
+reviews/*
+!reviews/.gitkeep
+
+# Cached paper PDFs (regenerable)
+.cache/
+
+# Derived files from the spec docx (the .docx is the source of truth)
+planning/document.xml
+planning/spec.txt
+
+# Secrets
+*.env
+.env.*
+!.env.example

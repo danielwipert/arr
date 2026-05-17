@@ -1,0 +1,58 @@
+# ARR default configuration
+# Override by passing --config <path> to the CLI, or by setting ARR_<UPPER_KEY>
+# environment variables (Pydantic Settings convention).
+
+arxiv:
+  # Categories to pull daily. Filter stage handles the narrowing to in-scope topics.
+  categories:
+    - cs.CL  # Computation and Language (primary)
+    - cs.LG  # Machine Learning
+    - cs.AI  # Artificial Intelligence
+    - cs.IR  # Information Retrieval
+  lookback_hours: 24
+  max_results_per_category: 200
+
+filter:
+  # Cosine similarity above this against the last 30 days drops a paper as duplicate
+  dedup_similarity_threshold: 0.92
+  dedup_lookback_days: 30
+  embedding_model: "sentence-transformers/all-MiniLM-L6-v2"
+
+ranker:
+  weights:
+    significance: 0.30
+    novelty: 0.25
+    reproducibility: 0.20
+    clarity: 0.15
+    topical_fit: 0.10
+
+selector:
+  # Default 7.0. Calibrate against observed posting frequency over the first two months.
+  post_worthy_threshold: 7.0
+
+drafter:
+  # Premium model. Output quality drives the product.
+  model: "anthropic/claude-sonnet-4-7"
+  max_retries: 3
+  length:
+    target_min: 1400
+    target_max: 1800
+    hook_max: 140
+    hard_min: 1100
+    hard_max: 2000
+
+critic:
+  # Separate prompt; sees post text and claims, not the drafter's reasoning.
+  model: "anthropic/claude-sonnet-4-7"
+
+# Cheap model used by the filter and ranker stages.
+cheap_model: "anthropic/claude-haiku-4-5"
+
+storage:
+  reviews_dir: "reviews"
+  cache_dir: ".cache"
+
+llm:
+  provider: "openrouter"
+  base_url: "https://openrouter.ai/api/v1"
+  # API key comes from OPENROUTER_API_KEY env var, never config.
