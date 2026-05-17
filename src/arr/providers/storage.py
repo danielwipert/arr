@@ -33,6 +33,12 @@ class StorageProvider(Protocol):
         """Persist the source paper PDF alongside the post."""
         ...
 
+    def write_named_artifact(
+        self, run_date: date_cls, kind: str, name: str, artifact: BaseModel
+    ) -> Path:
+        """Write one of N artifacts of the same kind, e.g. processed/<arxiv_id>.json."""
+        ...
+
     def day_folder(self, run_date: date_cls) -> Path:
         """Return (and ensure) the per-day folder."""
         ...
@@ -76,4 +82,15 @@ class LocalFilesystemStorage:
     def write_pdf(self, run_date: date_cls, pdf_bytes: bytes) -> Path:
         path = self.day_folder(run_date) / "paper.pdf"
         path.write_bytes(pdf_bytes)
+        return path
+
+    def write_named_artifact(
+        self, run_date: date_cls, kind: str, name: str, artifact: BaseModel
+    ) -> Path:
+        folder = self.day_folder(run_date) / kind
+        folder.mkdir(parents=True, exist_ok=True)
+        # arxiv ids contain '/'; flatten for filesystem use.
+        safe_name = name.replace("/", "_")
+        path = folder / f"{safe_name}.json"
+        path.write_text(artifact.model_dump_json(indent=2), encoding="utf-8")
         return path

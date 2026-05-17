@@ -35,19 +35,23 @@ def test_parser_requires_subcommand():
         parser.parse_args([])
 
 
-def test_run_exits_clean_with_default_config(capsys: pytest.CaptureFixture[str]):
-    exit_code = main(["run", "--date", "today"])
+def test_dry_run_exits_clean(capsys: pytest.CaptureFixture[str]):
+    exit_code = main(["run", "--date", "today", "--dry-run"])
     captured = capsys.readouterr()
     assert exit_code == 0
-    assert "not implemented" in captured.out
-    assert "Config loaded OK" in captured.out
+    assert "Dry run" in captured.out
+    assert "no pipeline executed" in captured.out
 
 
-def test_run_with_explicit_iso_date(capsys: pytest.CaptureFixture[str]):
+def test_run_without_api_key_fails_cleanly(
+    capsys: pytest.CaptureFixture[str],
+    monkeypatch: pytest.MonkeyPatch,
+):
+    monkeypatch.delenv("OPENROUTER_API_KEY", raising=False)
     exit_code = main(["run", "--date", "2026-05-16"])
     captured = capsys.readouterr()
-    assert exit_code == 0
-    assert "2026-05-16" in captured.out
+    assert exit_code == 2
+    assert "OPENROUTER_API_KEY" in captured.err
 
 
 def test_config_check_command(capsys: pytest.CaptureFixture[str]):

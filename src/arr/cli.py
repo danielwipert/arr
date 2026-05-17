@@ -1,12 +1,10 @@
 """Command-line entrypoint for the ARR pipeline.
 
-In Phase 1 the CLI only loads config and reports back. Pipeline stages are
-wired up in subsequent phases. The Section 11 / Phase 1 acceptance criterion
-is:
+As of Phase 2 the CLI runs stages 1–3 end-to-end and writes ProcessedPaper
+JSON artifacts under `reviews/YYYY-MM-DD/processed/`. Ranking, drafting,
+critique, and finalisation arrive in later phases.
 
     python -m arr.cli run --date today
-
-exits cleanly with a 'not implemented' message and a validated config.
 """
 
 from __future__ import annotations
@@ -18,7 +16,11 @@ from datetime import date as date_cls
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from arr.config import DEFAULT_CONFIG_PATH, Settings, load_settings
+from arr.config import DEFAULT_CONFIG_PATH, REPO_ROOT, Settings, load_settings
+from arr.pipeline import PipelineResult, run_pipeline
+from arr.providers.llm import OpenRouterLLM
+from arr.providers.papers import ArxivPaperSource
+from arr.providers.storage import LocalFilesystemStorage
 
 log = logging.getLogger("arr.cli")
 
@@ -64,6 +66,11 @@ def build_parser() -> argparse.ArgumentParser:
         default="today",
         help="Date to run for: 'today', 'yesterday', or YYYY-MM-DD.",
     )
+    run.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Don't construct LLM/arXiv providers; just validate config and exit.",
+    )
 
     sub.add_parser("config-check", help="Load and print config, then exit.")
 
@@ -71,18 +78,59 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def cmd_run(args: argparse.Namespace, settings: Settings) -> int:
-    run_date: date_cls = args.date if isinstance(args.date, date_cls) else _parse_date(args.date)
-    log.info("Run requested for %s", run_date.isoformat())
+    run_date: date_cls = (
+        args.date if isinstance(args.date, date_cls) else _parse_date(args.date)
+    )
+
+    if args.dry_run:
+        print(
+            f"[arr] Dry run: config valid, no pipeline executed "
+            f"(target date: {run_date.isoformat()})."
+        )
+        return 0
+
+    if settings.openrouter_api_key is None:
+        print(
+            "[arr] OPENROUTER_API_KEY is not set; pipeline cannot run.\n"
+            "      Set it in your environment or in a .env file (see .env.example).",
+            file=sys.stderr,
+        )
+        return 2
+
+    cache_dir = REPO_ROOT / settings.storage.cache_dir
+    reviews_dir = REPO_ROOT / settings.storage.reviews_dir
+
+    log.info("Run starting for %s", run_date.isoformat())
     log.info(
         "Categories: %s | threshold: %.1f | drafter: %s",
         ", ".join(settings.arxiv.categories),
         settings.selector.post_worthy_threshold,
         settings.drafter.model,
     )
-    print(
-        f"[arr] Phase 1 build: pipeline stages not implemented yet "
-        f"(target date: {run_date.isoformat()}). Config loaded OK."
+
+    paper_source = ArxivPaperSource(
+        cache_dir,
+        max_results_per_category=settings.arxiv.max_results_per_category,
     )
+    storage = LocalFilesystemStorage(reviews_dir)
+
+    with OpenRouterLLM(
+        settings.openrouter_api_key.get_secret_value(),
+        base_url=settings.llm.base_url,
+    ) as llm:
+        result: PipelineResult = run_pipeline(
+            run_date, settings, llm, paper_source, storage
+        )
+
+    out_dir = reviews_dir / run_date.isoformat() / "processed"
+    print(
+        f"[arr] Run complete for {run_date.isoformat()}: "
+        f"ingested={result.raw_count}, "
+        f"filtered={result.filtered_count}, "
+        f"processed={result.processed_count}"
+    )
+    print(f"[arr] ProcessedPaper artifacts: {out_dir}")
+    print("[arr] Stages 4–8 (rank/select/draft/critique/finalize) land in Phase 3+.")
     return 0
 
 
