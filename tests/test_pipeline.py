@@ -234,6 +234,48 @@ def test_pipeline_writes_full_post_day_artifacts(
     assert final["critic_report"]["retries_used"] == 0
 
 
+def test_pipeline_persists_failed_attempts_on_voice_skip(
+    tmp_path: Path, stub_pdf_extractor
+):
+    """When the drafter loop exhausts retries, each attempt's draft + critic
+    report should land on disk so a reviewer can diagnose what went wrong."""
+    paper = _raw("2026.0DEBUG", "WINNERMARK Decomposition", "LLM rag method")
+    filter_decisions = {
+        "WINNERMARK": FilterDecision(in_scope=True, primary_topic="rag",
+                                     is_review_or_survey=False, note=""),
+    }
+    ranker_outputs = {"WINNERMARK": _ranker_output(9, 9, 8, 9, 10)}
+    drafter_outputs = [DrafterOutput(post_text=GOOD_POST, claims=_good_claims())] * 3
+    critic_outputs = [_critic_voice_fail()] * 3
+
+    cache_dir = tmp_path / "cache"
+    reviews = tmp_path / "reviews"
+    storage = LocalFilesystemStorage(reviews)
+    run_pipeline(
+        run_date=date_cls(2026, 5, 20),
+        settings=load_settings(),
+        llm=ScriptedLLM(
+            filter_decisions=filter_decisions,
+            ranker_outputs=ranker_outputs,
+            drafter_outputs=drafter_outputs,
+            critic_outputs=critic_outputs,
+        ),
+        paper_source=FakePaperSource([paper], cache_dir=cache_dir),
+        storage=storage,
+        embeddings=NullEmbeddings(),
+        reviews_dir=reviews,
+        cache_dir=cache_dir,
+    )
+
+    drafts_dir = reviews / "2026-05-20" / "drafts"
+    files = sorted(p.name for p in drafts_dir.iterdir())
+    assert files == ["attempt_1.json", "attempt_2.json", "attempt_3.json"]
+    payload = json.loads((drafts_dir / "attempt_1.json").read_text(encoding="utf-8"))
+    assert payload["attempt"] == 1
+    assert payload["draft"]["post_text"].startswith("A new RAG result")
+    assert payload["critic_report"]["voice_match"]["result"] == "fail"
+
+
 def test_pipeline_skips_when_voice_critic_fails_three_times(
     tmp_path: Path, stub_pdf_extractor
 ):

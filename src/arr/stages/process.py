@@ -115,16 +115,57 @@ def segment_sections(text: str) -> dict[str, str]:
     return {key: " ".join(lines) for key, lines in buckets.items() if lines}
 
 
+def _extract_text_simple(pdf) -> str:  # type: ignore[no-untyped-def]
+    """Single-column extraction (default pdfplumber behaviour)."""
+    pages: list[str] = []
+    for page in pdf.pages:
+        pages.append(page.extract_text() or "")
+    return "\n".join(pages)
+
+
+def _extract_text_two_column(pdf) -> str:  # type: ignore[no-untyped-def]
+    """Two-column extraction: crop each page into left and right halves and
+    extract them separately. This is what most arXiv CS papers need; default
+    extract_text() interleaves the two columns and shreds the section headers.
+    """
+    pages: list[str] = []
+    for page in pdf.pages:
+        midpoint = page.width / 2
+        left = page.crop((0, 0, midpoint, page.height))
+        right = page.crop((midpoint, 0, page.width, page.height))
+        left_text = left.extract_text() or ""
+        right_text = right.extract_text() or ""
+        pages.append(left_text + "\n" + right_text)
+    return "\n".join(pages)
+
+
 def extract_text_with_pdfplumber(pdf_path: Path) -> tuple[str, int]:
-    """Extract concatenated page text and page count. Lazy-imports pdfplumber."""
+    """Extract text from a PDF and pick the column layout that segments
+    cleanest. Returns (text, page_count). Lazy-imports pdfplumber.
+
+    Strategy: extract both single- and two-column views, run the section
+    segmenter against each, return whichever yields more canonical sections.
+    Two-column wins for most arXiv CS papers; single-column wins for NIPS-
+    style and some workshop layouts. Ties go to single-column (lighter, less
+    aggressive cropping).
+    """
     import pdfplumber  # type: ignore[import-untyped]
 
-    pages: list[str] = []
     with pdfplumber.open(str(pdf_path)) as pdf:
-        for page in pdf.pages:
-            text = page.extract_text() or ""
-            pages.append(text)
-    return "\n".join(pages), len(pages)
+        page_count = len(pdf.pages)
+        text_one = _extract_text_simple(pdf)
+        text_two = _extract_text_two_column(pdf)
+
+    sections_one = segment_sections(text_one)
+    sections_two = segment_sections(text_two)
+
+    if len(sections_two) > len(sections_one):
+        log.debug(
+            "Process: 2-col extraction wins (%d sections vs %d)",
+            len(sections_two), len(sections_one),
+        )
+        return text_two, page_count
+    return text_one, page_count
 
 
 def process_one(

@@ -20,8 +20,10 @@ from datetime import date as date_cls
 from datetime import datetime
 from pathlib import Path
 
+from pydantic import BaseModel
+
 from arr.config import Settings
-from arr.models import FinalPost, RankedPaper, SkipRecord
+from arr.models import CriticReport, DraftPost, FinalPost, RankedPaper, SkipRecord
 from arr.providers.embeddings import EmbeddingProvider
 from arr.providers.llm import LLMProvider
 from arr.providers.papers import PaperSourceProvider
@@ -68,6 +70,29 @@ def _write_post_artifacts(
         storage.write_pdf(run_date, pdf_path.read_bytes())
     else:
         log.warning("Source PDF missing at %s; paper.pdf not copied", pdf_path)
+
+
+class _AttemptArtifact(BaseModel):
+    """On-disk shape for a drafter/critic attempt, used on retry-exhaustion days."""
+
+    attempt: int
+    draft: DraftPost
+    critic_report: CriticReport
+
+
+def _persist_failed_attempts(
+    run_date: date_cls,
+    attempts: list[tuple[DraftPost, CriticReport]],
+    storage: StorageProvider,
+) -> None:
+    """Write each drafter/critic attempt as drafts/attempt_N.json on a
+    voice-critic-failure day. The reviewer can then see what the drafter
+    produced and exactly which checks the critic objected to — the only
+    way to diagnose a repeat failure.
+    """
+    for idx, (draft, report) in enumerate(attempts, start=1):
+        artifact = _AttemptArtifact(attempt=idx, draft=draft, critic_report=report)
+        storage.write_named_artifact(run_date, "drafts", f"attempt_{idx}", artifact)
 
 
 def _prune_cache_keep_selected(
@@ -193,6 +218,7 @@ def run_pipeline(
         reason=finalize_stage.build_voice_skip_reason(finalizer.attempts_used),
     )
     storage.write_root_artifact(run_date, "skip", skip)
+    _persist_failed_attempts(run_date, finalizer.attempts, storage)
     log.info("Pipeline: drafter retries exhausted — %s", skip.reason)
     # Keep the selected paper's PDF in cache: a later run can retry the
     # drafter on the same paper without re-downloading.
