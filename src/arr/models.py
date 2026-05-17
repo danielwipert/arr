@@ -128,7 +128,8 @@ class DraftPost(StageArtifact):
     char_count: int
     hook_char_count: int
     drafter_model: str
-    attempt: int = Field(ge=1, le=3)
+    # Bound matches the config's `drafter.max_retries` upper limit (10).
+    attempt: int = Field(ge=1, le=10)
 
 
 # ---------------------------------------------------------------------------
@@ -175,7 +176,7 @@ class FinalCriticReport(StageArtifact):
     structure: PassFail
     grounding: PassFail
     hype_check: PassFail
-    retries_used: int = Field(ge=0, le=3)
+    retries_used: int = Field(ge=0, le=10)
     notes: str
 
 
