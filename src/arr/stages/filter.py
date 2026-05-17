@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import logging
 import re
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 from pydantic import BaseModel, ConfigDict
@@ -28,6 +29,11 @@ from arr.stages._prompts import render
 log = logging.getLogger(__name__)
 
 PROMPT_PATH = REPO_ROOT / "config" / "prompts" / "filter.md"
+
+# Concurrent in-flight Haiku calls during the filter fan-out. Six is well
+# under OpenRouter's rate ceiling for the cheap tier and collapses the
+# minutes of serial idle wait that dominated wall time on daily runs.
+_FILTER_WORKERS = 6
 
 # Cheap pre-screen for obvious survey / workshop / opinion markers in the title
 # or the opening of the abstract. The LLM still gets a chance to overrule on
@@ -89,6 +95,20 @@ def _classify(llm: LLMProvider, paper: RawPaper, model: str) -> FilterDecision:
     )
 
 
+def _classify_safe(
+    llm: LLMProvider, paper: RawPaper, model: str
+) -> tuple[FilterDecision | None, LLMError | None]:
+    """Run `_classify` in a worker without letting LLMError escape the pool.
+
+    Returning the error lets the caller log it against the paper's arxiv_id
+    and keep going, matching the pre-parallel drop-on-failure behaviour.
+    """
+    try:
+        return _classify(llm, paper, model), None
+    except LLMError as e:
+        return None, e
+
+
 def run(
     papers: list[RawPaper],
     llm: LLMProvider,
@@ -109,19 +129,35 @@ def run(
     keywords = prefilter.keywords if prefilter.enabled else []
     prefilter_drops = 0
 
-    survivors: list[FilteredPaper] = []
+    # First pass: cheap, in-process. Survivors carry the regex noise flag
+    # forward so the second pass can apply it without re-running the regex.
+    candidates: list[tuple[RawPaper, bool]] = []
     for paper in papers:
         if keywords and not _matches_keyword_prefilter(paper, keywords):
             log.debug("Filter drop %s: no LLM keyword in title+abstract", paper.arxiv_id)
             prefilter_drops += 1
             continue
+        candidates.append((paper, _regex_flags_noise(paper)))
 
-        regex_flag = _regex_flags_noise(paper)
-        try:
-            decision = _classify(llm, paper, settings.cheap_model)
-        except LLMError as e:
-            log.warning("Filter LLM call failed for %s (%s); dropping", paper.arxiv_id, e)
+    # Second pass: the LLM classification. Each call is independent, so we
+    # fan out across a small worker pool. executor.map preserves input order,
+    # which keeps the survivor list deterministic.
+    if candidates:
+        cheap_model = settings.cheap_model
+        with ThreadPoolExecutor(max_workers=_FILTER_WORKERS) as executor:
+            classify_results = list(executor.map(
+                lambda c: _classify_safe(llm, c[0], cheap_model),
+                candidates,
+            ))
+    else:
+        classify_results = []
+
+    survivors: list[FilteredPaper] = []
+    for (paper, regex_flag), (decision, err) in zip(candidates, classify_results):
+        if err is not None:
+            log.warning("Filter LLM call failed for %s (%s); dropping", paper.arxiv_id, err)
             continue
+        assert decision is not None
 
         noise_flagged = regex_flag or decision.is_review_or_survey
 
