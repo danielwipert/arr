@@ -195,6 +195,40 @@ def test_grounding_spans_fail_when_span_missing_from_paper():
     assert "not found in paper" in note
 
 
+def test_grounding_spans_case_insensitive_match():
+    # Paper text uses 'MetaBackdoor'; drafter wrote 'METABACKDOOR'.
+    ranked = _ranked().model_copy(update={
+        "sections": {"abstract": "We introduce MetaBackdoor, a new method."}
+    })
+    claims = [Claim(claim="x", source_span="we introduce METABACKDOOR", page=1)]
+    draft = _draft().model_copy(update={"paper": ranked, "claims": claims})
+    ok, _ = check_grounding_spans(draft)
+    assert ok
+
+
+def test_grounding_spans_whitespace_collapsed_match():
+    # Paper has a line break mid-span; the drafter wrote it as a single line.
+    ranked = _ranked().model_copy(update={
+        "sections": {"abstract": "as few\nas 90\npoisoned samples"}
+    })
+    claims = [Claim(claim="x", source_span="as few as 90 poisoned samples", page=1)]
+    draft = _draft().model_copy(update={"paper": ranked, "claims": claims})
+    ok, _ = check_grounding_spans(draft)
+    assert ok
+
+
+def test_grounding_spans_use_title_and_authors_for_attribution():
+    # Attribution claim grounds against author metadata, not just sections.
+    ranked = _ranked().model_copy(update={
+        "authors": ["A. Müller", "B. Schmidt", "C. Lee"],
+        "sections": {"abstract": "We propose a method."}
+    })
+    claims = [Claim(claim="researchers led by Müller", source_span="A. Müller", page=1)]
+    draft = _draft().model_copy(update={"paper": ranked, "claims": claims})
+    ok, _ = check_grounding_spans(draft)
+    assert ok
+
+
 # --- run() orchestrator --------------------------------------------------
 
 

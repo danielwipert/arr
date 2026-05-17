@@ -66,7 +66,7 @@ PARA 3   2-3 sentences
 <blank>
 CLOSE    One sentence
 <blank>
-META     "Paper: <title> — <first author> et al."
+META     "Paper: <title>, <first author> et al."
          "<arxiv link>"
 <blank>
 TAGS     "#LLMs #RAG #AppliedAI #<paper-specific>"

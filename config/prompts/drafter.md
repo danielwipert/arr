@@ -71,7 +71,7 @@ PARA 3   2-3 sentences. What this might mean for someone who ships
 CLOSE    One sentence of judgment. Worth reading if…, worth ignoring
          if…, or a single concluding observation.
 <blank>
-META     Paper: <title> — <first author> et al.
+META     Paper: <title>, <first author> et al.
          <arxiv link>
 <blank>
 TAGS     #LLMs #RAG #AppliedAI #<paper-specific>
@@ -102,7 +102,7 @@ The finding is narrower than it sounds. Their decomposition step relies on a sep
 
 Worth reading if you ship RAG systems. Worth ignoring if you were hoping for a free lunch.
 
-Paper: Query Decomposition for Robust RAG — Müller et al.
+Paper: Query Decomposition for Robust RAG, Müller et al.
 https://arxiv.org/abs/2026.xxxxx
 
 #LLMs #RAG #AppliedAI #Retrieval

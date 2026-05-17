@@ -143,17 +143,37 @@ def check_structure(post_text: str) -> tuple[bool, str]:
     return True, f"7 blocks, hashtags present"
 
 
+def _normalize_for_grounding(text: str) -> str:
+    """Lowercase + collapse whitespace. PDF extraction inserts line breaks
+    and stray spaces that wouldn't otherwise let a verbatim span match;
+    likewise, the drafter sometimes capitalises ALL-CAPS paper names like
+    'METABACKDOOR' where the paper text has 'MetaBackdoor'."""
+    return re.sub(r"\s+", " ", text.lower()).strip()
+
+
 def check_grounding_spans(draft: DraftPost) -> tuple[bool, str]:
-    """Verify each claim's source_span appears verbatim in some paper section.
+    """Verify each claim's source_span appears in the paper after light
+    normalization (case-insensitive, whitespace-collapsed).
 
     The LLM still makes the final grounding judgment (it can catch claims
     that are *missing* from the claims list, which this check can't). But
-    a span that doesn't exist in the paper is an unambiguous fail.
+    a span that doesn't exist anywhere in the paper is an unambiguous fail.
+
+    Searchable haystack includes title + authors so attribution claims
+    ("a team at Microsoft", "Wen et al.") can ground against the metadata
+    even when the section extractor missed the title block.
     """
-    section_text = "\n".join(draft.paper.sections.values())
+    paper = draft.paper
+    haystack_parts: list[str] = [paper.title, ", ".join(paper.authors)]
+    haystack_parts.extend(paper.sections.values())
+    haystack = _normalize_for_grounding("\n".join(haystack_parts))
+
     missing: list[str] = []
     for claim in draft.claims:
-        if claim.source_span and claim.source_span not in section_text:
+        if not claim.source_span:
+            continue
+        needle = _normalize_for_grounding(claim.source_span)
+        if needle not in haystack:
             missing.append(claim.source_span[:60].replace("\n", " "))
     if missing:
         joined = "; ".join(repr(m) for m in missing[:3])
