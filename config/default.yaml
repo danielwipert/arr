@@ -18,6 +18,58 @@ filter:
   dedup_lookback_days: 30
   embedding_model: "sentence-transformers/all-MiniLM-L6-v2"
 
+  # Fast lexical pre-screen. Drops any paper whose title+abstract doesn't
+  # mention an explicit LLM marker before the LLM filter call. Matching is
+  # case-insensitive substring against title + abstract.
+  keyword_prefilter:
+    enabled: true
+    keywords:
+      # Explicit model talk
+      - "LLM"
+      - "large language model"
+      - "GPT"
+      - "ChatGPT"
+      - "Claude"
+      - "Gemini"
+      - "Llama"
+      - "Mistral"
+      # RAG and retrieval-for-LLMs
+      - "RAG"
+      - "retrieval-augmented"
+      - "retrieval augmented"
+      # Post-training and adaptation
+      - "fine-tun"
+      - "instruction tun"
+      - "instruction-tun"
+      - "RLHF"
+      - "RLAIF"
+      - "DPO"
+      - "LoRA"
+      - "PEFT"
+      # Inference-time techniques
+      - "in-context"
+      - "in context learning"
+      - "chain-of-thought"
+      - "chain of thought"
+      - "prompt engineering"
+      - "prompting"
+      - "long-context"
+      - "long context"
+      - "context window"
+      - "tool use"
+      - "tool-use"
+      - "function calling"
+      # Agents
+      - "LLM agent"
+      - "agentic"
+      - "multi-agent LLM"
+      # Evaluation specific to LLMs
+      - "MMLU"
+      - "HumanEval"
+      - "SWE-bench"
+      - "HotpotQA"
+      - "MT-Bench"
+
 ranker:
   weights:
     significance: 0.30

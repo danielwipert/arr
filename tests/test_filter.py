@@ -15,7 +15,11 @@ from arr.stages import filter as filter_stage
 from arr.stages.filter import FilterDecision
 
 
-def _paper(arxiv_id: str, title: str = "Method X", abstract: str = "We propose...") -> RawPaper:
+def _paper(
+    arxiv_id: str,
+    title: str = "Method X for LLMs",
+    abstract: str = "We propose an LLM method.",
+) -> RawPaper:
     return RawPaper(
         arxiv_id=arxiv_id,
         title=title,
@@ -107,3 +111,53 @@ def test_uses_cheap_model_from_settings():
     llm = FakeLLM()
     filter_stage.run(papers, llm, _settings())
     assert llm.calls[0]["model"] == _settings().cheap_model
+
+
+# --- keyword pre-filter --------------------------------------------------
+
+
+def test_prefilter_drops_paper_with_no_llm_keyword():
+    # No LLM marker anywhere. Pre-filter should drop before LLM is called.
+    papers = [_paper("1", title="Quantum Annealing for X", abstract="Pure quantum content.")]
+    llm = FakeLLM()
+    out = filter_stage.run(papers, llm, _settings())
+    assert out == []
+    assert llm.calls == []  # LLM never called
+
+
+def test_prefilter_passes_paper_with_llm_keyword():
+    # "LLM" appears verbatim → prefilter passes → LLM filter runs.
+    papers = [_paper("1", title="A New Method", abstract="We benchmark LLM agents.")]
+    llm = FakeLLM({"LLM agents": FilterDecision(
+        in_scope=True, primary_topic="llm_capabilities",
+        is_review_or_survey=False, note="")})
+    out = filter_stage.run(papers, llm, _settings())
+    assert len(out) == 1
+    assert len(llm.calls) == 1
+
+
+def test_prefilter_is_case_insensitive():
+    papers = [_paper("1", title="x", abstract="On the trade-offs of fine-tuning small models.")]
+    llm = FakeLLM({"fine-tuning": FilterDecision(
+        in_scope=True, primary_topic="post_training",
+        is_review_or_survey=False, note="")})
+    out = filter_stage.run(papers, llm, _settings())
+    assert len(out) == 1
+
+
+def test_prefilter_can_be_disabled():
+    settings = _settings()
+    # Disable the prefilter entirely.
+    settings = settings.model_copy(update={
+        "filter": settings.filter.model_copy(update={
+            "keyword_prefilter": settings.filter.keyword_prefilter.model_copy(
+                update={"enabled": False}
+            )
+        })
+    })
+    # Paper without any LLM keyword should reach the LLM call.
+    papers = [_paper("1", title="Unrelated", abstract="Nothing about LLMs.")]
+    llm = FakeLLM()  # default decision = in_scope=True topic=rag
+    out = filter_stage.run(papers, llm, settings)
+    assert len(out) == 1
+    assert len(llm.calls) == 1

@@ -62,6 +62,19 @@ def _regex_flags_noise(paper: RawPaper) -> bool:
     return bool(_NOISE_REGEX.search(head))
 
 
+def _matches_keyword_prefilter(paper: RawPaper, keywords: list[str]) -> bool:
+    """Return True if paper's title+abstract contains at least one keyword.
+
+    Matching is case-insensitive substring. Cheap and crude on purpose — the
+    point is to discard papers that don't look LLM-related at all before
+    burning a filter LLM call on them.
+    """
+    if not keywords:
+        return True
+    haystack = f"{paper.title}\n{paper.abstract}".lower()
+    return any(kw.lower() in haystack for kw in keywords)
+
+
 def _classify(llm: LLMProvider, paper: RawPaper, model: str) -> FilterDecision:
     prompt_text = render(
         PROMPT_PATH.read_text(encoding="utf-8"),
@@ -92,8 +105,17 @@ def run(
     if prompt_path is not None:
         PROMPT_PATH = prompt_path
 
+    prefilter = settings.filter.keyword_prefilter
+    keywords = prefilter.keywords if prefilter.enabled else []
+    prefilter_drops = 0
+
     survivors: list[FilteredPaper] = []
     for paper in papers:
+        if keywords and not _matches_keyword_prefilter(paper, keywords):
+            log.debug("Filter drop %s: no LLM keyword in title+abstract", paper.arxiv_id)
+            prefilter_drops += 1
+            continue
+
         regex_flag = _regex_flags_noise(paper)
         try:
             decision = _classify(llm, paper, settings.cheap_model)
@@ -131,5 +153,8 @@ def run(
             )
         )
 
-    log.info("Filter: %d/%d papers survived", len(survivors), len(papers))
+    log.info(
+        "Filter: %d/%d papers survived (prefilter dropped %d)",
+        len(survivors), len(papers), prefilter_drops,
+    )
     return survivors
