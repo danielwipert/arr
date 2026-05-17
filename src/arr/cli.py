@@ -72,6 +72,12 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Don't construct LLM/arXiv providers; just validate config and exit.",
     )
+    run.add_argument(
+        "--lookback-hours",
+        type=int,
+        default=None,
+        help="Override settings.arxiv.lookback_hours for this run (e.g. 96 over a weekend).",
+    )
 
     sub.add_parser("config-check", help="Load and print config, then exit.")
 
@@ -89,6 +95,11 @@ def cmd_run(args: argparse.Namespace, settings: Settings) -> int:
             f"(target date: {run_date.isoformat()})."
         )
         return 0
+
+    if args.lookback_hours is not None:
+        settings = settings.model_copy(
+            update={"arxiv": settings.arxiv.model_copy(update={"lookback_hours": args.lookback_hours})}
+        )
 
     if settings.openrouter_api_key is None:
         print(

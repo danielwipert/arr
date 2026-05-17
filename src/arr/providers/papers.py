@@ -73,13 +73,22 @@ class ArxivPaperSource:
                 sort_by=arxiv.SortCriterion.SubmittedDate,
                 sort_order=arxiv.SortOrder.Descending,
             )
-            for result in client.results(search):
-                if result.published < since:
-                    # Sorted descending, so once we're past the window we're done.
-                    break
-                paper = _result_to_raw_paper(result)
-                # First occurrence wins; an arxiv_id can show up in multiple cats.
-                by_id.setdefault(paper.arxiv_id, paper)
+            try:
+                for result in client.results(search):
+                    if result.published < since:
+                        # Sorted descending: once past the window we're done.
+                        break
+                    paper = _result_to_raw_paper(result)
+                    # First occurrence wins; an arxiv_id can sit in multiple cats.
+                    by_id.setdefault(paper.arxiv_id, paper)
+            except arxiv.HTTPError as e:
+                # One category being rate-limited or returning an error should
+                # not kill the run. Skip it and keep what we have.
+                log.warning(
+                    "arXiv: category %s failed (%s); continuing with other categories",
+                    cat, e,
+                )
+                continue
         papers = list(by_id.values())
         papers.sort(key=lambda p: p.submitted_at, reverse=True)
         log.info("arXiv: fetched %d unique papers across %d categories", len(papers), len(categories))
