@@ -15,7 +15,9 @@ arxiv:
 filter:
   # Cosine similarity above this against the last 30 days drops a paper as duplicate
   dedup_similarity_threshold: 0.92
-  dedup_lookback_days: 30
+  # Matches storage.retention_days: dedup history lives in reviews/<date>/processed/
+  # JSONs, which the retention prune deletes after 7 days.
+  dedup_lookback_days: 7
   embedding_model: "sentence-transformers/all-MiniLM-L6-v2"
 
   # Fast lexical pre-screen. Drops any paper whose title+abstract doesn't
@@ -109,6 +111,9 @@ cheap_model: "anthropic/claude-haiku-4.5"
 storage:
   reviews_dir: "reviews"
   cache_dir: ".cache"
+  # Daily output folders older than this are deleted at the start of each run.
+  # Keeps local disk and any future repo backups bounded without manual cleanup.
+  retention_days: 7
 
 llm:
   provider: "openrouter"

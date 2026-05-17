@@ -1,0 +1,73 @@
+name: Daily ARR Run
+
+# Runs the pipeline once a day at 13:00 UTC and commits the day's review
+# folder back to the repo. The pipeline itself prunes reviews/<date>/ folders
+# older than storage.retention_days at the start of each run; the commit
+# step picks up both the new outputs and the retention deletions so repo
+# size stays bounded.
+
+on:
+  schedule:
+    - cron: "0 13 * * *"
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Run date (YYYY-MM-DD, 'today', or 'yesterday')"
+        required: false
+        default: "today"
+      lookback_hours:
+        description: "Override arxiv.lookback_hours (e.g. 96 over a weekend)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-arr-run
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Cache HuggingFace models
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-${{ runner.os }}-all-MiniLM-L6-v2
+
+      - name: Install package
+        run: pip install -e .
+
+      - name: Run pipeline
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+          set -e
+          ARGS=("run" "--date" "${{ github.event.inputs.date || 'today' }}")
+          if [ -n "${{ github.event.inputs.lookback_hours }}" ]; then
+            ARGS+=("--lookback-hours" "${{ github.event.inputs.lookback_hours }}")
+          fi
+          python -m arr.cli "${ARGS[@]}"
+
+      - name: Commit review outputs
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A reviews/
+          if git diff --staged --quiet; then
+            echo "No review changes to commit."
+            exit 0
+          fi
+          git commit -m "daily run: $(date -u +%Y-%m-%d)"
+          git push

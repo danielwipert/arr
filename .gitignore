@@ -38,8 +38,10 @@ desktop.ini
 .claude/
 
 # Project-local
-reviews/*
-!reviews/.gitkeep
+# Daily review outputs (post.md, final_post.json, grounding.md, skip.json, etc.)
+# are committed by the daily GitHub Action so the human-review trail lives in
+# the repo. PDFs stay local — they're regenerable and dominate repo size.
+reviews/**/paper.pdf
 
 # Cached paper PDFs (regenerable)
 .cache/

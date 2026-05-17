@@ -96,6 +96,7 @@ class StorageConfig(BaseModel):
 
     reviews_dir: str
     cache_dir: str
+    retention_days: int = Field(default=7, gt=0)
 
 
 class LLMConfig(BaseModel):

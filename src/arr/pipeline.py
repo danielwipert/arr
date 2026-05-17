@@ -15,9 +15,10 @@ or the finalizer's (voice critic failed after N attempts).
 from __future__ import annotations
 
 import logging
+import shutil
 from dataclasses import dataclass
 from datetime import date as date_cls
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 from pydantic import BaseModel
@@ -95,6 +96,39 @@ def _persist_failed_attempts(
         storage.write_named_artifact(run_date, "drafts", f"attempt_{idx}", artifact)
 
 
+def _prune_old_review_folders(
+    reviews_dir: Path, today: date_cls, retention_days: int
+) -> None:
+    """Delete `reviews/<YYYY-MM-DD>/` folders older than `retention_days`.
+
+    Anything in `reviews_dir` whose name does not parse as an ISO date is left
+    alone (e.g. `.gitkeep`, ad-hoc subdirs). The cutoff is inclusive: a folder
+    dated exactly `today - retention_days` is kept.
+    """
+    if not reviews_dir.exists():
+        return
+    cutoff = today - timedelta(days=retention_days)
+    deleted = 0
+    for entry in reviews_dir.iterdir():
+        if not entry.is_dir():
+            continue
+        try:
+            entry_date = date_cls.fromisoformat(entry.name)
+        except ValueError:
+            continue
+        if entry_date < cutoff:
+            try:
+                shutil.rmtree(entry)
+                deleted += 1
+            except OSError as e:
+                log.warning("Retention: failed to remove %s (%s)", entry, e)
+    if deleted:
+        log.info(
+            "Retention: pruned %d review folder(s) older than %s",
+            deleted, cutoff.isoformat(),
+        )
+
+
 def _prune_cache_keep_selected(
     cache_dir: Path, selected: RankedPaper | None
 ) -> None:
@@ -135,6 +169,9 @@ def run_pipeline(
     *,
     now: datetime | None = None,
 ) -> PipelineResult:
+    _prune_old_review_folders(
+        reviews_dir, run_date, settings.storage.retention_days
+    )
     raw_papers = ingest_stage.run(settings, paper_source, now=now)
     filtered = filter_stage.run(raw_papers, llm, settings)
 
