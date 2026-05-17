@@ -91,6 +91,14 @@ def run_pipeline(
     )
     deduped = dedup_stage.apply(filtered, embeddings, history, settings)
 
+    cap = settings.max_candidates_per_run
+    if len(deduped) > cap:
+        log.info(
+            "Pipeline: capping candidates from %d to %d (most-recent first)",
+            len(deduped), cap,
+        )
+        deduped = deduped[:cap]
+
     processed = process_stage.run(deduped, paper_source, settings)
     for paper in processed:
         storage.write_named_artifact(run_date, "processed", paper.arxiv_id, paper)

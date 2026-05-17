@@ -82,6 +82,12 @@ selector:
   # Default 7.0. Calibrate against observed posting frequency over the first two months.
   post_worthy_threshold: 7.0
 
+# Hard cap on papers that reach PDF processing and ranking each run.
+# Survivors of the filter beyond this limit are dropped (most-recent first).
+# Bounds the worst-case cost and wall time when arxiv has a heavy day or a
+# weekend backlog gets pulled in. Override per-run with `--max-candidates N`.
+max_candidates_per_run: 10
+
 drafter:
   # Premium model. Output quality drives the product.
   model: "anthropic/claude-sonnet-4.6"

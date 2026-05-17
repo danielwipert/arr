@@ -311,6 +311,47 @@ def test_pipeline_skips_when_no_paper_above_threshold(
     assert not (day / "selected.json").exists()
 
 
+def test_pipeline_caps_candidates_at_max_candidates_per_run(
+    tmp_path: Path, stub_pdf_extractor
+):
+    # 15 papers all pass the filter. Cap is set to 3 for the test.
+    papers = [
+        _raw(f"2026.{i:04d}", f"WINNERMARK paper {i}", "LLM rag method") for i in range(15)
+    ]
+    filter_decisions = {
+        "WINNERMARK": FilterDecision(in_scope=True, primary_topic="rag",
+                                     is_review_or_survey=False, note=""),
+    }
+    ranker_outputs = {
+        "WINNERMARK": _ranker_output(5, 5, 5, 5, 5),  # below threshold → skip day
+    }
+
+    settings = load_settings()
+    settings = settings.model_copy(update={"max_candidates_per_run": 3})
+
+    reviews = tmp_path / "reviews"
+    storage = LocalFilesystemStorage(reviews)
+    result = run_pipeline(
+        run_date=date_cls(2026, 5, 20),
+        settings=settings,
+        llm=ScriptedLLM(
+            filter_decisions=filter_decisions,
+            ranker_outputs=ranker_outputs,
+        ),
+        paper_source=FakePaperSource(papers, cache_dir=tmp_path / "cache"),
+        storage=storage,
+        embeddings=NullEmbeddings(),
+        reviews_dir=reviews,
+    )
+
+    # All 15 papers ingested + filtered, but only 3 reach process/rank.
+    assert result.raw_count == 15
+    assert result.filtered_count == 15
+    assert result.deduped_count == 3
+    assert result.processed_count == 3
+    assert result.ranked_count == 3
+
+
 def test_pipeline_skips_when_filter_drops_everything(
     tmp_path: Path, stub_pdf_extractor
 ):

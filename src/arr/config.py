@@ -119,6 +119,7 @@ class Settings(BaseModel):
     cheap_model: str
     storage: StorageConfig
     llm: LLMConfig
+    max_candidates_per_run: int = Field(default=10, ge=1)
 
     openrouter_api_key: SecretStr | None = None
 

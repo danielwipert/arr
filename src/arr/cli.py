@@ -78,6 +78,12 @@ def build_parser() -> argparse.ArgumentParser:
         default=None,
         help="Override settings.arxiv.lookback_hours for this run (e.g. 96 over a weekend).",
     )
+    run.add_argument(
+        "--max-candidates",
+        type=int,
+        default=None,
+        help="Override max_candidates_per_run for this run.",
+    )
 
     sub.add_parser("config-check", help="Load and print config, then exit.")
 
@@ -100,6 +106,8 @@ def cmd_run(args: argparse.Namespace, settings: Settings) -> int:
         settings = settings.model_copy(
             update={"arxiv": settings.arxiv.model_copy(update={"lookback_hours": args.lookback_hours})}
         )
+    if args.max_candidates is not None:
+        settings = settings.model_copy(update={"max_candidates_per_run": args.max_candidates})
 
     if settings.openrouter_api_key is None:
         print(
