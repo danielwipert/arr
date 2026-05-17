@@ -18,6 +18,7 @@ from pathlib import Path
 
 from arr.config import DEFAULT_CONFIG_PATH, REPO_ROOT, Settings, load_settings
 from arr.pipeline import PipelineResult, run_pipeline
+from arr.providers.embeddings import LocalSentenceTransformerEmbeddings
 from arr.providers.llm import OpenRouterLLM
 from arr.providers.papers import ArxivPaperSource
 from arr.providers.storage import LocalFilesystemStorage
@@ -113,24 +114,36 @@ def cmd_run(args: argparse.Namespace, settings: Settings) -> int:
         max_results_per_category=settings.arxiv.max_results_per_category,
     )
     storage = LocalFilesystemStorage(reviews_dir)
+    embeddings = LocalSentenceTransformerEmbeddings(settings.filter.embedding_model)
 
     with OpenRouterLLM(
         settings.openrouter_api_key.get_secret_value(),
         base_url=settings.llm.base_url,
     ) as llm:
         result: PipelineResult = run_pipeline(
-            run_date, settings, llm, paper_source, storage
+            run_date, settings, llm, paper_source, storage, embeddings, reviews_dir
         )
 
-    out_dir = reviews_dir / run_date.isoformat() / "processed"
+    day_dir = reviews_dir / run_date.isoformat()
     print(
         f"[arr] Run complete for {run_date.isoformat()}: "
         f"ingested={result.raw_count}, "
         f"filtered={result.filtered_count}, "
-        f"processed={result.processed_count}"
+        f"deduped={result.deduped_count}, "
+        f"processed={result.processed_count}, "
+        f"ranked={result.ranked_count}"
     )
-    print(f"[arr] ProcessedPaper artifacts: {out_dir}")
-    print("[arr] Stages 4–8 (rank/select/draft/critique/finalize) land in Phase 3+.")
+    if result.selected is not None:
+        print(
+            f"[arr] SELECTED: {result.selected.arxiv_id} "
+            f"({result.selected.title!r}) composite={result.selected.composite:.2f}"
+        )
+        print(f"[arr] Artifact: {day_dir / 'selected.json'}")
+        print("[arr] Drafter (Stage 6) lands in Phase 4 — no post written yet.")
+    else:
+        assert result.skip_record is not None
+        print(f"[arr] SKIP: {result.skip_record.reason}")
+        print(f"[arr] Artifact: {day_dir / 'skip.json'}")
     return 0
 
 

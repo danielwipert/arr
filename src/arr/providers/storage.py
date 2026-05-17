@@ -39,6 +39,12 @@ class StorageProvider(Protocol):
         """Write one of N artifacts of the same kind, e.g. processed/<arxiv_id>.json."""
         ...
 
+    def write_root_artifact(
+        self, run_date: date_cls, name: str, artifact: BaseModel
+    ) -> Path:
+        """Write a single named JSON at the day-folder root, e.g. skip.json."""
+        ...
+
     def day_folder(self, run_date: date_cls) -> Path:
         """Return (and ensure) the per-day folder."""
         ...
@@ -92,5 +98,12 @@ class LocalFilesystemStorage:
         # arxiv ids contain '/'; flatten for filesystem use.
         safe_name = name.replace("/", "_")
         path = folder / f"{safe_name}.json"
+        path.write_text(artifact.model_dump_json(indent=2), encoding="utf-8")
+        return path
+
+    def write_root_artifact(
+        self, run_date: date_cls, name: str, artifact: BaseModel
+    ) -> Path:
+        path = self.day_folder(run_date) / f"{name}.json"
         path.write_text(artifact.model_dump_json(indent=2), encoding="utf-8")
         return path
