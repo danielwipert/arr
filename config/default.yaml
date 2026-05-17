@@ -93,7 +93,11 @@ max_candidates_per_run: 10
 drafter:
   # Premium model. Output quality drives the product.
   model: "anthropic/claude-sonnet-4.6"
-  max_retries: 3
+  # 5 attempts: technical papers under the broader-audience prompt have to
+  # juggle length, hook char-cap, grounding spans, voice, and accessibility
+  # at once. 3 retries was too tight in practice — the drafter fixed one
+  # constraint per attempt and ran out of bites.
+  max_retries: 5
   length:
     target_min: 1400
     target_max: 1800

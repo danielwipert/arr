@@ -248,12 +248,19 @@ def test_pipeline_persists_failed_attempts_on_voice_skip(
     drafter_outputs = [DrafterOutput(post_text=GOOD_POST, claims=_good_claims())] * 3
     critic_outputs = [_critic_voice_fail()] * 3
 
+    # Pin to 3 attempts so the test stays minimal regardless of the production
+    # max_retries setting; what we're verifying is the retry-exhaustion path.
+    base = load_settings()
+    settings = base.model_copy(
+        update={"drafter": base.drafter.model_copy(update={"max_retries": 3})}
+    )
+
     cache_dir = tmp_path / "cache"
     reviews = tmp_path / "reviews"
     storage = LocalFilesystemStorage(reviews)
     run_pipeline(
         run_date=date_cls(2026, 5, 20),
-        settings=load_settings(),
+        settings=settings,
         llm=ScriptedLLM(
             filter_decisions=filter_decisions,
             ranker_outputs=ranker_outputs,
@@ -290,11 +297,16 @@ def test_pipeline_skips_when_voice_critic_fails_three_times(
     drafter_outputs = [DrafterOutput(post_text=GOOD_POST, claims=_good_claims())] * 3
     critic_outputs = [_critic_voice_fail()] * 3
 
+    base = load_settings()
+    settings = base.model_copy(
+        update={"drafter": base.drafter.model_copy(update={"max_retries": 3})}
+    )
+
     reviews = tmp_path / "reviews"
     storage = LocalFilesystemStorage(reviews)
     result = run_pipeline(
         run_date=date_cls(2026, 5, 17),
-        settings=load_settings(),
+        settings=settings,
         llm=ScriptedLLM(
             filter_decisions=filter_decisions,
             ranker_outputs=ranker_outputs,

@@ -174,7 +174,13 @@ def test_retry_includes_failure_notes_in_drafter_prompt():
 
 
 def test_three_failed_attempts_returns_no_final_post():
-    settings = load_settings()
+    base = load_settings()
+    # Pin to 3 attempts so the test stays minimal regardless of the
+    # production max_retries setting; what we're verifying is the
+    # retry-exhaustion path.
+    settings = base.model_copy(
+        update={"drafter": base.drafter.model_copy(update={"max_retries": 3})}
+    )
     llm = ScriptedLLM(
         drafter_outputs=[_drafter_output()] * 3,
         critic_outputs=[_critic_voice_fail()] * 3,

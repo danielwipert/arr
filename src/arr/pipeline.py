@@ -129,6 +129,34 @@ def _prune_old_review_folders(
         )
 
 
+_SKIP_STALE = ("post.md", "final_post.json", "grounding.md", "paper.pdf")
+_POST_STALE = ("skip.json", "drafts")
+
+
+def _remove_stale_artifacts(day_folder: Path, names: tuple[str, ...]) -> None:
+    """Delete leftover files/dirs from a prior same-date run that contradict
+    today's terminal state.
+
+    Same-date reruns are routine (manual workflow_dispatch, weekend backfills),
+    and without this the folder ends up with both a stale `post.md` from a
+    prior post day and today's `skip.json` — exactly the misleading state a
+    reviewer cannot reason about. Missing paths are silently ignored.
+    """
+    for name in names:
+        path = day_folder / name
+        try:
+            if path.is_file():
+                path.unlink()
+            elif path.is_dir():
+                shutil.rmtree(path)
+            else:
+                continue
+        except OSError as e:
+            log.warning("Cleanup: failed to remove %s (%s)", path, e)
+            continue
+        log.debug("Cleanup: removed stale %s", path.name)
+
+
 def _prune_cache_keep_selected(
     cache_dir: Path, selected: RankedPaper | None
 ) -> None:
@@ -208,6 +236,7 @@ def run_pipeline(
             settings=settings,
         )
         storage.write_root_artifact(run_date, "skip", skip)
+        _remove_stale_artifacts(storage.day_folder(run_date), _SKIP_STALE)
         log.info("Pipeline: skip day — %s", skip.reason)
         _prune_cache_keep_selected(cache_dir, None)
         return PipelineResult(
@@ -229,6 +258,7 @@ def run_pipeline(
 
     if finalizer.succeeded:
         _write_post_artifacts(run_date, finalizer.final_post, selected, storage)
+        _remove_stale_artifacts(storage.day_folder(run_date), _POST_STALE)
         log.info(
             "Pipeline: drafted post for %s (composite %.2f, attempts %d)",
             selected.arxiv_id, selected.composite, finalizer.attempts_used,
@@ -256,6 +286,7 @@ def run_pipeline(
     )
     storage.write_root_artifact(run_date, "skip", skip)
     _persist_failed_attempts(run_date, finalizer.attempts, storage)
+    _remove_stale_artifacts(storage.day_folder(run_date), _SKIP_STALE)
     log.info("Pipeline: drafter retries exhausted — %s", skip.reason)
     # Keep the selected paper's PDF in cache: a later run can retry the
     # drafter on the same paper without re-downloading.
