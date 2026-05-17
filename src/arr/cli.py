@@ -140,7 +140,8 @@ def cmd_run(args: argparse.Namespace, settings: Settings) -> int:
         base_url=settings.llm.base_url,
     ) as llm:
         result: PipelineResult = run_pipeline(
-            run_date, settings, llm, paper_source, storage, embeddings, reviews_dir
+            run_date, settings, llm, paper_source, storage, embeddings,
+            reviews_dir, cache_dir,
         )
 
     day_dir = reviews_dir / run_date.isoformat()

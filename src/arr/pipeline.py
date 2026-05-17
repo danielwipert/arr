@@ -70,6 +70,34 @@ def _write_post_artifacts(
         log.warning("Source PDF missing at %s; paper.pdf not copied", pdf_path)
 
 
+def _prune_cache_keep_selected(
+    cache_dir: Path, selected: RankedPaper | None
+) -> None:
+    """Delete every PDF in `cache_dir` except the one belonging to `selected`.
+
+    On a skip day every cached PDF goes. The selected paper's PDF is the only
+    one worth keeping around: it's already been copied into reviews/ for the
+    reviewer, and keeping it in cache lets a same-day rerun skip the
+    re-download. Failed processing leaves orphan PDFs (the file exists but no
+    ProcessedPaper) — globbing the directory catches those too.
+    """
+    if not cache_dir.exists():
+        return
+    keep_path = Path(selected.pdf_local_path).resolve() if selected else None
+    deleted = 0
+    for path in cache_dir.glob("*.pdf"):
+        if keep_path is not None and path.resolve() == keep_path:
+            continue
+        try:
+            path.unlink()
+            deleted += 1
+        except OSError as e:
+            log.debug("Cache: failed to prune %s (%s)", path, e)
+    if deleted:
+        kept_id = selected.arxiv_id if selected else "none"
+        log.info("Cache: pruned %d PDFs (kept selected: %s)", deleted, kept_id)
+
+
 def run_pipeline(
     run_date: date_cls,
     settings: Settings,
@@ -78,6 +106,7 @@ def run_pipeline(
     storage: StorageProvider,
     embeddings: EmbeddingProvider,
     reviews_dir: Path,
+    cache_dir: Path,
     *,
     now: datetime | None = None,
 ) -> PipelineResult:
@@ -118,6 +147,7 @@ def run_pipeline(
         )
         storage.write_root_artifact(run_date, "skip", skip)
         log.info("Pipeline: skip day — %s", skip.reason)
+        _prune_cache_keep_selected(cache_dir, None)
         return PipelineResult(
             raw_count=len(raw_papers),
             filtered_count=len(filtered),
@@ -141,6 +171,7 @@ def run_pipeline(
             "Pipeline: drafted post for %s (composite %.2f, attempts %d)",
             selected.arxiv_id, selected.composite, finalizer.attempts_used,
         )
+        _prune_cache_keep_selected(cache_dir, selected)
         return PipelineResult(
             raw_count=len(raw_papers),
             filtered_count=len(filtered),
@@ -163,6 +194,9 @@ def run_pipeline(
     )
     storage.write_root_artifact(run_date, "skip", skip)
     log.info("Pipeline: drafter retries exhausted — %s", skip.reason)
+    # Keep the selected paper's PDF in cache: a later run can retry the
+    # drafter on the same paper without re-downloading.
+    _prune_cache_keep_selected(cache_dir, selected)
     return PipelineResult(
         raw_count=len(raw_papers),
         filtered_count=len(filtered),
