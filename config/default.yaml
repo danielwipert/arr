@@ -32,7 +32,7 @@ selector:
 
 drafter:
   # Premium model. Output quality drives the product.
-  model: "anthropic/claude-sonnet-4-7"
+  model: "anthropic/claude-sonnet-4.6"
   max_retries: 3
   length:
     target_min: 1400
@@ -43,10 +43,10 @@ drafter:
 
 critic:
   # Separate prompt; sees post text and claims, not the drafter's reasoning.
-  model: "anthropic/claude-sonnet-4-7"
+  model: "anthropic/claude-sonnet-4.6"
 
 # Cheap model used by the filter and ranker stages.
-cheap_model: "anthropic/claude-haiku-4-5"
+cheap_model: "anthropic/claude-haiku-4.5"
 
 storage:
   reviews_dir: "reviews"
