@@ -1,0 +1,43 @@
+{
+  "arxiv_id": "2605.16234v1",
+  "title": "Layer Equivalence Is Not a Property of Layers Alone: How You Test Redundancy Changes What You Find",
+  "authors": [
+    "Gabriel Garcia"
+  ],
+  "abstract": "When researchers ask whether two transformer layers are \"equivalent\" for compression, they often conflate distinct tests. Replacement asks whether one layer's map can substitute for another's in place; interchange asks whether two layers approximately commute when their positions are swapped. Both are output-grounded swap-KL probes, but they need not agree: on pretrained transformers the protocol gap can change which layers look safe to prune by several-fold under the same evaluator, especially when replacement distances are high.\n  We measure both protocols across checkpoints and architectures. On a Pythia training trajectory (410M and 1.4B), the replacement-interchange gap grows from initialization to convergence. Under one matched WikiText-2 contract at 8B scale, Qwen3-8B enters a divergent regime: interchange-guided removal is several-fold safer than replacement-guided at the same layer budgets, while Llama-3.1-8B ties the two protocols for pruning cost even though interchange KL is lower, showing metric gaps need not map one-to-one to removal. Before layer removal or merging, score both swap-KLs on the target checkpoint; the diagnostic requires only unlabeled forward passes.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG",
+    "cs.AI",
+    "cs.CL"
+  ],
+  "submitted_at": "2026-05-15T17:43:16Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.16234v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper demonstrates that the choice of redundancy test (replacement vs. interchange) can change which layers appear safe to prune by several-fold, directly impacting compression decisions for builders implementing model optimization."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The work introduces a clear distinction between two layer-equivalence tests that were previously conflated, showing their divergence across training trajectories and architectures."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly enough to reimplement using unlabeled forward passes, but no specific code, weights, or datasets are mentioned as publicly available."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with a clear problem statement, methodology, and results across multiple models and scales, though some architectural details are omitted."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper directly addresses practical model compression techniques for LLMs, a core concern for engineers building and deploying these systems."
+    }
+  },
+  "composite": 7.45
+}

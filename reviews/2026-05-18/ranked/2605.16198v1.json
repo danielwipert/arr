@@ -1,0 +1,46 @@
+{
+  "arxiv_id": "2605.16198v1",
+  "title": "Formal Methods Meet LLMs: Auditing, Monitoring, and Intervention for Compliance of Advanced AI Systems",
+  "authors": [
+    "Parand A. Alamdari",
+    "Toryn Q. Klassen",
+    "Sheila A. McIlraith"
+  ],
+  "abstract": "We examine one particular dimension of AI governance: how to monitor and audit AI-enabled products and services throughout the AI development lifecycle, from pre-deployment testing to post-deployment auditing. Combining principles from formal methods with SoTA machine learning, we propose techniques that enable AI-enabled product and service developers, as well as third party AI developers and evaluators, to perform offline auditing and online (runtime) monitoring of product-specific (temporally extended) behavioral constraints such as safety constraints, norms, rules and regulations with respect to black-box advanced AI systems, notably LLMs. We further provide practical techniques for predictive monitoring, such as sampling-based methods, and we introduce intervening monitors that act at runtime to preempt and potentially mitigate predicted violations. Experimental results show that by exploiting the formal syntax and semantics of Linear Temporal Logic (LTL), our proposed auditing and monitoring techniques are superior to LLM baseline methods in detecting violations of temporally extended behavioral constraints; with our approach, even small-model labelers match or exceed frontier LLM judges. Our predictive and intervening monitors significantly reduce the violation rates of LLM-based agents while largely preserving task performance. We further show through controlled experiments that LLMs' temporal reasoning shows a pronounced degradation in accuracy with increasing event distance, number of constraints, and number of propositions.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI",
+    "cs.CY",
+    "cs.LG",
+    "cs.LO"
+  ],
+  "submitted_at": "2026-05-15T17:13:27Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.16198v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper provides practical techniques for runtime monitoring and intervention that can directly impact how builders implement safety and compliance systems for LLM-based applications."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The combination of formal methods (LTL) with LLM monitoring represents a substantial new approach, though building on established formal methods literature."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly enough for reimplementation, but the paper does not mention code or dataset availability."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is well-structured with clear problem formulation and experimental results showing superiority over baseline methods."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "Directly addresses practical challenges in deploying LLM-based systems with safety and compliance monitoring, highly relevant to builders."
+    }
+  },
+  "composite": 7.2
+}

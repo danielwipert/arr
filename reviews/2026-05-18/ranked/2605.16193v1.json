@@ -1,0 +1,45 @@
+{
+  "arxiv_id": "2605.16193v1",
+  "title": "Improving Cross-Cultural Survey Simulation with Calibrated Value Personas",
+  "authors": [
+    "Axel Abels",
+    "Elias Fernandez Domingos",
+    "Apurva Shah",
+    "Tom Lenaerts"
+  ],
+  "abstract": "Large language models (LLMs) are increasingly used to simulate human opinions and survey responses, but their ability to reproduce population responses across cultures remains limited. Existing persona-based prompting methods typically rely on sociodemographic or personality traits, which are only indirect proxies for the values that shape human responses. We propose a value-based persona construction method that derives textual descriptors from survey responses capturing core cultural dimensions. By sampling value profiles from target populations and aggregating LLM responses across personas, we obtain population-level predictions grounded in observed value distributions. We further introduce a calibration procedure that improves response diversity while preserving estimated opinions. We show that our approach reduces prediction error across countries, with the largest improvements observed in underrepresented populations. This substantially narrows the performance gap between countries aligned with dominant LLM priors and those that are less represented in training data, while also yielding response distributions that closely match human diversity.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.CY"
+  ],
+  "submitted_at": "2026-05-15T17:10:50Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.16193v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper refines persona-based prompting for cross-cultural survey simulation with measurable gains, offering builders a more reliable method for generating diverse, population-representative LLM outputs."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "It introduces a substantial new variation by constructing personas directly from cultural value dimensions derived from survey data, moving beyond the well-trodden use of sociodemographic or personality trait proxies."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method of sampling value profiles and aggregating responses is described clearly enough to reimplement, but the paper does not mention public release of code, weights, or the specific calibration datasets."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is solidly written, with a clear problem statement, proposed method, and defensible evaluation showing reduced prediction error and improved diversity across countries."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper is directly in the applied-AI sweet spot, addressing a core technique—persona-based prompting for LLMs—to improve simulation of human responses, a task highly relevant to builders."
+    }
+  },
+  "composite": 6.95
+}
