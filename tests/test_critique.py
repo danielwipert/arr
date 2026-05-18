@@ -20,7 +20,7 @@ from arr.models import (
     CriticReport,
     DimensionScore,
     DraftPost,
-    RankedPaper,
+    SelectedPaper,
 )
 from arr.stages import critique
 from arr.stages.critique import (
@@ -51,12 +51,12 @@ GOOD_POST = (
 )
 
 
-def _ranked() -> RankedPaper:
+def _selected() -> SelectedPaper:
     scores = {
         k: DimensionScore(score=8, justification=".")
         for k in ("significance", "novelty", "reproducibility", "clarity", "topical_fit")
     }
-    return RankedPaper(
+    return SelectedPaper(
         arxiv_id="2026.0001",
         title="Query Decomposition for Robust RAG",
         authors=["A. Müller", "B. Schmidt"],
@@ -83,7 +83,7 @@ def _ranked() -> RankedPaper:
 
 def _draft(post_text: str = GOOD_POST, claims: list[Claim] | None = None) -> DraftPost:
     return DraftPost(
-        paper=_ranked(),
+        paper=_selected(),
         post_text=post_text,
         claims=claims or [
             Claim(claim="twelve points", source_span="We achieve 71.2 on HotpotQA against a 59.4 baseline.", page=1),
@@ -209,7 +209,7 @@ def test_grounding_spans_fail_when_span_missing_from_paper():
 
 def test_grounding_spans_case_insensitive_match():
     # Paper text uses 'MetaBackdoor'; drafter wrote 'METABACKDOOR'.
-    ranked = _ranked().model_copy(update={
+    ranked = _selected().model_copy(update={
         "sections": {"abstract": "We introduce MetaBackdoor, a new method."}
     })
     claims = [Claim(claim="x", source_span="we introduce METABACKDOOR", page=1)]
@@ -220,7 +220,7 @@ def test_grounding_spans_case_insensitive_match():
 
 def test_grounding_spans_whitespace_collapsed_match():
     # Paper has a line break mid-span; the drafter wrote it as a single line.
-    ranked = _ranked().model_copy(update={
+    ranked = _selected().model_copy(update={
         "sections": {"abstract": "as few\nas 90\npoisoned samples"}
     })
     claims = [Claim(claim="x", source_span="as few as 90 poisoned samples", page=1)]
@@ -231,7 +231,7 @@ def test_grounding_spans_whitespace_collapsed_match():
 
 def test_grounding_spans_use_title_and_authors_for_attribution():
     # Attribution claim grounds against author metadata, not just sections.
-    ranked = _ranked().model_copy(update={
+    ranked = _selected().model_copy(update={
         "authors": ["A. Müller", "B. Schmidt", "C. Lee"],
         "sections": {"abstract": "We propose a method."}
     })

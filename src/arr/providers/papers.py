@@ -8,10 +8,11 @@ wraps the `arxiv` PyPI package.
 from __future__ import annotations
 
 import logging
-import shutil
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Protocol
+
+import httpx
 
 from arr.models import RawPaper
 
@@ -95,23 +96,24 @@ class ArxivPaperSource:
         return papers
 
     def fetch_pdf(self, arxiv_id: str) -> Path:
-        import arxiv
+        """Download the PDF straight from arxiv.org via httpx.
 
+        Skips the arxiv library's metadata-lookup step (which goes through
+        export.arxiv.org's API and shares the rate-limit pool with the bulk
+        search). arxiv.org/pdf/<id> is a different host with its own limit
+        budget, and we already have the canonical id from the ingest search.
+        """
         target = self._cache_dir / f"{_safe_filename(arxiv_id)}.pdf"
         if target.exists():
             return target
 
-        search = arxiv.Search(id_list=[arxiv_id])
-        client = arxiv.Client(delay_seconds=self._delay)
-        result = next(iter(client.results(search)), None)
-        if result is None:
-            raise FileNotFoundError(f"arXiv has no paper with id {arxiv_id}")
-
-        downloaded = Path(
-            result.download_pdf(dirpath=str(self._cache_dir))
-        )
-        if downloaded != target:
-            shutil.move(str(downloaded), str(target))
+        url = f"https://arxiv.org/pdf/{arxiv_id}"
+        # User-Agent is recommended by arxiv's robots policy for bulk access.
+        headers = {"User-Agent": "arr/0.1 (research; contact via repo)"}
+        with httpx.Client(timeout=30.0, follow_redirects=True) as client:
+            response = client.get(url, headers=headers)
+            response.raise_for_status()
+        target.write_bytes(response.content)
         return target
 
 

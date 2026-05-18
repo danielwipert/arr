@@ -18,8 +18,6 @@ dependencies = [
     "arxiv>=2.1",
     "pypdf>=4.2",
     "pdfplumber>=0.11",
-    "sentence-transformers>=2.7",
-    "numpy>=1.26",
 ]
 
 [project.optional-dependencies]

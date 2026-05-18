@@ -18,7 +18,7 @@ import re
 from pathlib import Path
 
 from arr.config import Settings
-from arr.models import FilteredPaper, ProcessedPaper
+from arr.models import FilteredPaper, ProcessedPaper, RankedPaper, SelectedPaper
 from arr.providers.papers import PaperSourceProvider
 
 log = logging.getLogger(__name__)
@@ -168,40 +168,53 @@ def extract_text_with_pdfplumber(pdf_path: Path) -> tuple[str, int]:
     return text_one, page_count
 
 
-def process_one(
-    paper: FilteredPaper,
+def _fetch_and_extract(
+    arxiv_id: str,
+    fallback_abstract: str,
     paper_source: PaperSourceProvider,
-) -> ProcessedPaper | None:
-    """Fetch + parse a single paper. Returns None if extraction failed."""
+) -> tuple[str, dict[str, str], int] | None:
+    """Shared fetch + extract + segment work for `process_one` and
+    `process_selected`. Returns (pdf_path_str, sections, page_count) or None
+    if any step failed.
+    """
     try:
-        pdf_path = paper_source.fetch_pdf(paper.arxiv_id)
+        pdf_path = paper_source.fetch_pdf(arxiv_id)
     except Exception as e:  # network, 404, etc.
-        log.warning("Process %s: PDF fetch failed (%s)", paper.arxiv_id, e)
+        log.warning("Process %s: PDF fetch failed (%s)", arxiv_id, e)
         return None
 
     try:
         text, page_count = extract_text_with_pdfplumber(pdf_path)
     except Exception as e:
-        log.warning("Process %s: PDF text extraction failed (%s)", paper.arxiv_id, e)
+        log.warning("Process %s: PDF text extraction failed (%s)", arxiv_id, e)
         return None
 
     sections = segment_sections(text)
-    # Always include the abstract from arXiv metadata if the heuristic missed it.
-    sections.setdefault("abstract", paper.abstract)
+    sections.setdefault("abstract", fallback_abstract)
 
     if len(sections) < 2:
-        # Almost nothing extracted; downstream stages can't do useful work.
         log.warning(
             "Process %s: only %d sections extracted; skipping",
-            paper.arxiv_id,
-            len(sections),
+            arxiv_id, len(sections),
         )
         return None
 
+    return str(pdf_path), sections, page_count
+
+
+def process_one(
+    paper: FilteredPaper,
+    paper_source: PaperSourceProvider,
+) -> ProcessedPaper | None:
+    """Fetch + parse a single paper. Returns None if extraction failed."""
+    result = _fetch_and_extract(paper.arxiv_id, paper.abstract, paper_source)
+    if result is None:
+        return None
+    pdf_path, sections, page_count = result
     return ProcessedPaper(
         **paper.model_dump(),
         sections=sections,
-        pdf_local_path=str(pdf_path),
+        pdf_local_path=pdf_path,
         page_count=page_count,
     )
 
@@ -219,3 +232,26 @@ def run(
             out.append(processed)
     log.info("Process: %d/%d papers parsed", len(out), len(papers))
     return out
+
+
+def process_selected(
+    ranked: RankedPaper,
+    paper_source: PaperSourceProvider,
+) -> SelectedPaper | None:
+    """Fetch + parse the single winning paper's PDF and merge the result with
+    its ranker scores. Lazy-PDF entry point: this is the only PDF we ever
+    download and extract per run.
+
+    Returns None if the PDF fetch or extraction fails — pipeline treats that
+    as a skip day (one paper survived rank but we can't read it).
+    """
+    result = _fetch_and_extract(ranked.arxiv_id, ranked.abstract, paper_source)
+    if result is None:
+        return None
+    pdf_path, sections, page_count = result
+    return SelectedPaper(
+        **ranked.model_dump(),
+        sections=sections,
+        pdf_local_path=pdf_path,
+        page_count=page_count,
+    )

@@ -14,7 +14,7 @@ from typing import Any
 import pytest
 
 from arr.config import load_settings
-from arr.models import Claim, DimensionScore, RankedPaper
+from arr.models import Claim, DimensionScore, SelectedPaper
 from arr.stages import finalize as finalize_stage
 from arr.stages.critique import CriticLLMOutput
 from arr.stages.draft import DrafterOutput
@@ -38,12 +38,12 @@ GOOD_POST = (
 )
 
 
-def _ranked() -> RankedPaper:
+def _selected() -> SelectedPaper:
     scores = {
         k: DimensionScore(score=8, justification=".")
         for k in ("significance", "novelty", "reproducibility", "clarity", "topical_fit")
     }
-    return RankedPaper(
+    return SelectedPaper(
         arxiv_id="2026.0001",
         title="Query Decomposition for Robust RAG",
         authors=["A. Müller", "B. Schmidt"],
@@ -125,7 +125,7 @@ def test_first_attempt_passes_builds_final_post():
     llm = ScriptedLLM([_drafter_output()], [_critic_pass()])
     now = datetime(2026, 5, 16, 8, 14, 22, tzinfo=timezone.utc)
 
-    result = finalize_stage.run(_ranked(), llm, settings, now=now)
+    result = finalize_stage.run(_selected(), llm, settings, now=now)
 
     assert result.succeeded
     assert result.attempts_used == 1
@@ -148,7 +148,7 @@ def test_retries_drafter_when_voice_fails_then_passes():
         critic_outputs=[_critic_voice_fail(), _critic_pass()],
     )
 
-    result = finalize_stage.run(_ranked(), llm, settings)
+    result = finalize_stage.run(_selected(), llm, settings)
 
     assert result.succeeded
     assert result.attempts_used == 2
@@ -163,7 +163,7 @@ def test_retry_includes_failure_notes_in_drafter_prompt():
         critic_outputs=[_critic_voice_fail(), _critic_pass()],
     )
 
-    finalize_stage.run(_ranked(), llm, settings)
+    finalize_stage.run(_selected(), llm, settings)
 
     # Second drafter call must have seen the prior failure notes.
     drafter_calls = [c for c in llm.calls if c["schema"] == "DrafterOutput"]
@@ -173,11 +173,11 @@ def test_retry_includes_failure_notes_in_drafter_prompt():
     # invariant.
 
 
-def test_three_failed_attempts_returns_no_final_post():
+def test_exhausted_attempts_still_produce_final_post():
     base = load_settings()
     # Pin to 3 attempts so the test stays minimal regardless of the
-    # production max_retries setting; what we're verifying is the
-    # retry-exhaustion path.
+    # production max_retries setting; what we're verifying is that
+    # the finalizer accepts the last attempt rather than skipping.
     settings = base.model_copy(
         update={"drafter": base.drafter.model_copy(update={"max_retries": 3})}
     )
@@ -186,24 +186,28 @@ def test_three_failed_attempts_returns_no_final_post():
         critic_outputs=[_critic_voice_fail()] * 3,
     )
 
-    result = finalize_stage.run(_ranked(), llm, settings)
+    result = finalize_stage.run(_selected(), llm, settings)
 
-    assert not result.succeeded
-    assert result.final_post is None
+    assert result.succeeded
+    assert result.final_post is not None
     assert result.attempts_used == 3
+    # The critic's voice failure is preserved on the published post so the
+    # reviewer can see what was flagged.
+    assert result.final_post.critic_report.voice_match == "fail"
+    assert result.final_post.critic_report.retries_used == 2
 
 
 def test_build_post_md_returns_post_text():
     settings = load_settings()
     llm = ScriptedLLM([_drafter_output()], [_critic_pass()])
-    result = finalize_stage.run(_ranked(), llm, settings)
+    result = finalize_stage.run(_selected(), llm, settings)
     assert finalize_stage.build_post_md(result.final_post) == GOOD_POST
 
 
 def test_build_grounding_md_includes_each_claim():
     settings = load_settings()
     llm = ScriptedLLM([_drafter_output()], [_critic_pass()])
-    result = finalize_stage.run(_ranked(), llm, settings)
+    result = finalize_stage.run(_selected(), llm, settings)
     md = finalize_stage.build_grounding_md(result.final_post)
     assert "Grounding trace" in md
     assert "Claim 1" in md
@@ -212,5 +216,3 @@ def test_build_grounding_md_includes_each_claim():
     assert "71.2 on HotpotQA" in md
 
 
-def test_build_voice_skip_reason_uses_attempt_count():
-    assert "3 attempt" in finalize_stage.build_voice_skip_reason(3)

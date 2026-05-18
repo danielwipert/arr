@@ -75,9 +75,6 @@ def test_ranked_paper_composite_bounds():
     }
     ranked = RankedPaper(
         **raw,
-        sections={"abstract": "..."},
-        pdf_local_path="/tmp/x.pdf",
-        page_count=12,
         scores=scores,
         composite=7.65,
     )
@@ -86,9 +83,6 @@ def test_ranked_paper_composite_bounds():
     with pytest.raises(ValidationError):
         RankedPaper(
             **raw,
-            sections={"abstract": "..."},
-            pdf_local_path="/tmp/x.pdf",
-            page_count=12,
             scores=scores,
             composite=11.0,
         )

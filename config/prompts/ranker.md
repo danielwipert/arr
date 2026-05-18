@@ -69,15 +69,3 @@ Title: {title}
 
 Abstract:
 {abstract}
-
-Introduction:
-{intro}
-
-Method:
-{method}
-
-Results:
-{results}
-
-Conclusions:
-{conclusions}

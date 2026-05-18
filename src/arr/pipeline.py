@@ -4,12 +4,12 @@ As of Phase 4 the chain runs end-to-end:
 
     ingest -> filter -> dedup -> process -> rank -> select -> finalize
 
-On a post day the finalizer's FinalPost lands as final_post.json, the
-ready-to-paste post.md and the per-claim grounding.md sit alongside it,
-and the source PDF is copied next to them so a reviewer can verify any
-claim without leaving the folder. On a skip day a SkipRecord goes in as
-skip.json with a reason — either the selector's (no paper above threshold)
-or the finalizer's (voice critic failed after N attempts).
+The pipeline is configured to publish every day a paper survives the
+filter and rank stages. The finalizer accepts the last drafter attempt
+even if the critic objects, so the only skip cause now is the selector
+finding no candidate at all (empty filtered list, or all ranks dropped
+to LLM error). The critic report still rides on the FinalPost for the
+reviewer.
 """
 
 from __future__ import annotations
@@ -21,11 +21,8 @@ from datetime import date as date_cls
 from datetime import datetime, timedelta
 from pathlib import Path
 
-from pydantic import BaseModel
-
 from arr.config import Settings
-from arr.models import CriticReport, DraftPost, FinalPost, RankedPaper, SkipRecord
-from arr.providers.embeddings import EmbeddingProvider
+from arr.models import FinalPost, RankedPaper, SelectedPaper, SkipRecord
 from arr.providers.llm import LLMProvider
 from arr.providers.papers import PaperSourceProvider
 from arr.providers.storage import StorageProvider
@@ -46,10 +43,9 @@ class PipelineResult:
 
     raw_count: int
     filtered_count: int       # post topical/noise, pre-dedup
-    deduped_count: int        # post dedup, pre-process
-    processed_count: int
+    deduped_count: int        # post dedup, pre-rank
     ranked_count: int
-    selected: RankedPaper | None
+    selected: SelectedPaper | None
     final_post: FinalPost | None
     skip_record: SkipRecord | None
     finalize_attempts_used: int = 0
@@ -58,7 +54,7 @@ class PipelineResult:
 def _write_post_artifacts(
     run_date: date_cls,
     final_post: FinalPost,
-    selected: RankedPaper,
+    selected: SelectedPaper,
     storage: StorageProvider,
 ) -> None:
     """Section 13.1 review layout: post.md, final_post.json, grounding.md, paper.pdf."""
@@ -71,29 +67,6 @@ def _write_post_artifacts(
         storage.write_pdf(run_date, pdf_path.read_bytes())
     else:
         log.warning("Source PDF missing at %s; paper.pdf not copied", pdf_path)
-
-
-class _AttemptArtifact(BaseModel):
-    """On-disk shape for a drafter/critic attempt, used on retry-exhaustion days."""
-
-    attempt: int
-    draft: DraftPost
-    critic_report: CriticReport
-
-
-def _persist_failed_attempts(
-    run_date: date_cls,
-    attempts: list[tuple[DraftPost, CriticReport]],
-    storage: StorageProvider,
-) -> None:
-    """Write each drafter/critic attempt as drafts/attempt_N.json on a
-    voice-critic-failure day. The reviewer can then see what the drafter
-    produced and exactly which checks the critic objected to — the only
-    way to diagnose a repeat failure.
-    """
-    for idx, (draft, report) in enumerate(attempts, start=1):
-        artifact = _AttemptArtifact(attempt=idx, draft=draft, critic_report=report)
-        storage.write_named_artifact(run_date, "drafts", f"attempt_{idx}", artifact)
 
 
 def _prune_old_review_folders(
@@ -191,7 +164,6 @@ def run_pipeline(
     llm: LLMProvider,
     paper_source: PaperSourceProvider,
     storage: StorageProvider,
-    embeddings: EmbeddingProvider,
     reviews_dir: Path,
     cache_dir: Path,
     *,
@@ -208,7 +180,7 @@ def run_pipeline(
         lookback_days=settings.filter.dedup_lookback_days,
         today=run_date,
     )
-    deduped = dedup_stage.apply(filtered, embeddings, history, settings)
+    deduped = dedup_stage.apply(filtered, history, settings)
 
     cap = settings.max_candidates_per_run
     if len(deduped) > cap:
@@ -218,16 +190,12 @@ def run_pipeline(
         )
         deduped = deduped[:cap]
 
-    processed = process_stage.run(deduped, paper_source, settings)
-    for paper in processed:
-        storage.write_named_artifact(run_date, "processed", paper.arxiv_id, paper)
-
-    ranked = rank_stage.run(processed, llm, settings)
+    ranked = rank_stage.run(deduped, llm, settings)
     for paper in ranked:
         storage.write_named_artifact(run_date, "ranked", paper.arxiv_id, paper)
 
-    selected = select_stage.select_top(ranked, settings)
-    if selected is None:
+    top_ranked = select_stage.select_top(ranked, settings)
+    if top_ranked is None:
         skip = select_stage.build_skip_record(
             run_date=run_date,
             papers_considered=len(raw_papers),
@@ -243,15 +211,70 @@ def run_pipeline(
             raw_count=len(raw_papers),
             filtered_count=len(filtered),
             deduped_count=len(deduped),
-            processed_count=len(processed),
             ranked_count=len(ranked),
             selected=None,
             final_post=None,
             skip_record=skip,
+            finalize_attempts_used=0,
         )
 
-    # We have a selected paper; persist it before the drafter starts so the
-    # intermediate selection state survives a drafter crash.
+    # Lazy PDF processing with fallback: walk candidates above threshold in
+    # composite-descending order, taking the first whose PDF fetches + parses.
+    # arxiv occasionally rate-limits a single PDF; without this loop one 429
+    # would skip the day even though 9 other ranked papers are right there.
+    threshold = settings.selector.post_worthy_threshold
+    candidates = sorted(
+        (p for p in ranked if p.composite >= threshold),
+        key=lambda p: p.composite,
+        reverse=True,
+    )
+    selected: SelectedPaper | None = None
+    pdf_failures: list[str] = []
+    for candidate in candidates:
+        result = process_stage.process_selected(candidate, paper_source)
+        if result is not None:
+            selected = result
+            break
+        pdf_failures.append(candidate.arxiv_id)
+        log.warning(
+            "Pipeline: PDF failed for %s; falling back to next candidate",
+            candidate.arxiv_id,
+        )
+
+    if selected is None:
+        skip = SkipRecord(
+            date=run_date.isoformat(),
+            papers_considered=len(raw_papers),
+            papers_filtered=len(deduped),
+            papers_ranked=len(ranked),
+            top_paper=None,
+            reason=(
+                f"PDF fetch failed for all {len(pdf_failures)} ranked "
+                f"candidate(s): {', '.join(pdf_failures)}"
+            ),
+        )
+        storage.write_root_artifact(run_date, "skip", skip)
+        _remove_stale_artifacts(storage.day_folder(run_date), _SKIP_STALE)
+        log.warning("Pipeline: %s", skip.reason)
+        _prune_cache_keep_selected(cache_dir, None)
+        return PipelineResult(
+            raw_count=len(raw_papers),
+            filtered_count=len(filtered),
+            deduped_count=len(deduped),
+            ranked_count=len(ranked),
+            selected=None,
+            final_post=None,
+            skip_record=skip,
+            finalize_attempts_used=0,
+        )
+
+    if pdf_failures:
+        log.info(
+            "Pipeline: selected %s after %d PDF fallback(s) (%s)",
+            selected.arxiv_id, len(pdf_failures), ", ".join(pdf_failures),
+        )
+
+    storage.write_named_artifact(run_date, "processed", selected.arxiv_id, selected)
     storage.write_root_artifact(run_date, "selected", selected)
 
     finalizer = finalize_stage.run(selected, llm, settings, now=now)
@@ -268,7 +291,6 @@ def run_pipeline(
             raw_count=len(raw_papers),
             filtered_count=len(filtered),
             deduped_count=len(deduped),
-            processed_count=len(processed),
             ranked_count=len(ranked),
             selected=selected,
             final_post=finalizer.final_post,
@@ -276,26 +298,26 @@ def run_pipeline(
             finalize_attempts_used=finalizer.attempts_used,
         )
 
+    # Reached only when every drafter or critic call raised LLMError before
+    # producing a single (draft, report) pair — i.e. the LLM is unreachable.
+    # Subjective critic rejections no longer land here; finalize accepts the
+    # last attempt with the critic flags attached.
     skip = SkipRecord(
         date=run_date.isoformat(),
         papers_considered=len(raw_papers),
         papers_filtered=len(deduped),
         papers_ranked=len(ranked),
         top_paper=None,
-        reason=finalize_stage.build_voice_skip_reason(finalizer.attempts_used),
+        reason="LLM unreachable — no drafter attempts completed",
     )
     storage.write_root_artifact(run_date, "skip", skip)
-    _persist_failed_attempts(run_date, finalizer.attempts, storage)
     _remove_stale_artifacts(storage.day_folder(run_date), _SKIP_STALE)
-    log.info("Pipeline: drafter retries exhausted — %s", skip.reason)
-    # Keep the selected paper's PDF in cache: a later run can retry the
-    # drafter on the same paper without re-downloading.
+    log.warning("Pipeline: %s", skip.reason)
     _prune_cache_keep_selected(cache_dir, selected)
     return PipelineResult(
         raw_count=len(raw_papers),
         filtered_count=len(filtered),
         deduped_count=len(deduped),
-        processed_count=len(processed),
         ranked_count=len(ranked),
         selected=selected,
         final_post=None,

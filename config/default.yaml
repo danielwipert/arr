@@ -10,15 +10,18 @@ arxiv:
     - cs.AI  # Artificial Intelligence
     - cs.IR  # Information Retrieval
   lookback_hours: 24
-  max_results_per_category: 200
+  # 30 per category × 4 categories ≈ 120 raw papers/day. arXiv returns
+  # newest-first, so this is the most-recent slice, not a random sample.
+  # Enough to choose from after the keyword prefilter narrows the field;
+  # large enough to absorb a heavy posting day on cs.CL without missing
+  # the LLM-relevant work that lands under cs.LG/cs.AI/cs.IR.
+  max_results_per_category: 30
 
 filter:
-  # Cosine similarity above this against the last 30 days drops a paper as duplicate
-  dedup_similarity_threshold: 0.92
-  # Matches storage.retention_days: dedup history lives in reviews/<date>/processed/
-  # JSONs, which the retention prune deletes after 7 days.
+  # Dedup is an exact arxiv_id match against the last N days of processed/
+  # artifacts. Matches storage.retention_days: the retention prune deletes
+  # those folders after 7 days, so anything beyond that is invisible anyway.
   dedup_lookback_days: 7
-  embedding_model: "sentence-transformers/all-MiniLM-L6-v2"
 
   # Fast lexical pre-screen. Drops any paper whose title+abstract doesn't
   # mention an explicit LLM marker before the LLM filter call. Matching is
@@ -81,8 +84,10 @@ ranker:
     topical_fit: 0.10
 
 selector:
-  # Default 7.0. Calibrate against observed posting frequency over the first two months.
-  post_worthy_threshold: 7.0
+  # 0.0 means the top-ranked paper always wins. The pipeline is configured
+  # to post every day a paper survives filter+rank, not to gate on a
+  # composite floor.
+  post_worthy_threshold: 0.0
 
 # Hard cap on papers that reach PDF processing and ranking each run.
 # Survivors of the filter beyond this limit are dropped (most-recent first).
@@ -91,13 +96,11 @@ selector:
 max_candidates_per_run: 10
 
 drafter:
-  # Premium model. Output quality drives the product.
-  model: "anthropic/claude-sonnet-4.6"
-  # 5 attempts: technical papers under the broader-audience prompt have to
-  # juggle length, hook char-cap, grounding spans, voice, and accessibility
-  # at once. 3 retries was too tight in practice — the drafter fixed one
-  # constraint per attempt and ran out of bites.
-  max_retries: 5
+  model: "deepseek/deepseek-chat-v3.1"
+  # One retry, then ship. The finalizer accepts the last attempt even if
+  # the critic rejects it, so retries here only buy a chance to address
+  # critic feedback — they no longer gate publication.
+  max_retries: 2
   length:
     target_min: 1400
     target_max: 1800
@@ -107,10 +110,11 @@ drafter:
 
 critic:
   # Separate prompt; sees post text and claims, not the drafter's reasoning.
-  model: "anthropic/claude-sonnet-4.6"
+  # Its verdict is recorded on the final post but no longer skips the day.
+  model: "deepseek/deepseek-chat-v3.1"
 
 # Cheap model used by the filter and ranker stages.
-cheap_model: "anthropic/claude-haiku-4.5"
+cheap_model: "deepseek/deepseek-chat-v3.1"
 
 storage:
   reviews_dir: "reviews"

@@ -60,15 +60,24 @@ def _raw(arxiv_id: str, title: str, abstract: str) -> RawPaper:
 class FakePaperSource:
     """Returns canned recent papers and writes a fake PDF on disk for fetch_pdf."""
 
-    def __init__(self, papers: list[RawPaper], cache_dir: Path):
+    def __init__(
+        self,
+        papers: list[RawPaper],
+        cache_dir: Path,
+        *,
+        pdf_fail_ids: set[str] | None = None,
+    ):
         self._papers = papers
         self._cache_dir = cache_dir
         self._cache_dir.mkdir(parents=True, exist_ok=True)
+        self._pdf_fail_ids = pdf_fail_ids or set()
 
     def fetch_recent(self, _categories, _since):
         return list(self._papers)
 
     def fetch_pdf(self, arxiv_id: str) -> Path:
+        if arxiv_id in self._pdf_fail_ids:
+            raise RuntimeError(f"simulated PDF fetch failure for {arxiv_id}")
         path = self._cache_dir / f"{arxiv_id}.pdf"
         path.write_bytes(b"%PDF-1.4 fake content for " + arxiv_id.encode())
         return path
@@ -141,11 +150,6 @@ class ScriptedLLM:
         raise AssertionError(f"unexpected schema {name}")
 
 
-class NullEmbeddings:
-    def embed(self, texts):
-        return [[0.0] * 8 for _ in texts]
-
-
 @pytest.fixture
 def stub_pdf_extractor(monkeypatch):
     # Sections matching the claims in GOOD_POST so the grounding mechanical
@@ -205,7 +209,6 @@ def test_pipeline_writes_full_post_day_artifacts(
         ),
         paper_source=FakePaperSource([paper], cache_dir=tmp_path / "cache"),
         storage=storage,
-        embeddings=NullEmbeddings(),
         reviews_dir=reviews,
         cache_dir=tmp_path / "cache",
         now=datetime(2026, 5, 16, 8, 14, 22, tzinfo=timezone.utc),
@@ -234,58 +237,12 @@ def test_pipeline_writes_full_post_day_artifacts(
     assert final["critic_report"]["retries_used"] == 0
 
 
-def test_pipeline_persists_failed_attempts_on_voice_skip(
+def test_pipeline_publishes_when_critic_keeps_failing(
     tmp_path: Path, stub_pdf_extractor
 ):
-    """When the drafter loop exhausts retries, each attempt's draft + critic
-    report should land on disk so a reviewer can diagnose what went wrong."""
-    paper = _raw("2026.0DEBUG", "WINNERMARK Decomposition", "LLM rag method")
-    filter_decisions = {
-        "WINNERMARK": FilterDecision(in_scope=True, primary_topic="rag",
-                                     is_review_or_survey=False, note=""),
-    }
-    ranker_outputs = {"WINNERMARK": _ranker_output(9, 9, 8, 9, 10)}
-    drafter_outputs = [DrafterOutput(post_text=GOOD_POST, claims=_good_claims())] * 3
-    critic_outputs = [_critic_voice_fail()] * 3
-
-    # Pin to 3 attempts so the test stays minimal regardless of the production
-    # max_retries setting; what we're verifying is the retry-exhaustion path.
-    base = load_settings()
-    settings = base.model_copy(
-        update={"drafter": base.drafter.model_copy(update={"max_retries": 3})}
-    )
-
-    cache_dir = tmp_path / "cache"
-    reviews = tmp_path / "reviews"
-    storage = LocalFilesystemStorage(reviews)
-    run_pipeline(
-        run_date=date_cls(2026, 5, 20),
-        settings=settings,
-        llm=ScriptedLLM(
-            filter_decisions=filter_decisions,
-            ranker_outputs=ranker_outputs,
-            drafter_outputs=drafter_outputs,
-            critic_outputs=critic_outputs,
-        ),
-        paper_source=FakePaperSource([paper], cache_dir=cache_dir),
-        storage=storage,
-        embeddings=NullEmbeddings(),
-        reviews_dir=reviews,
-        cache_dir=cache_dir,
-    )
-
-    drafts_dir = reviews / "2026-05-20" / "drafts"
-    files = sorted(p.name for p in drafts_dir.iterdir())
-    assert files == ["attempt_1.json", "attempt_2.json", "attempt_3.json"]
-    payload = json.loads((drafts_dir / "attempt_1.json").read_text(encoding="utf-8"))
-    assert payload["attempt"] == 1
-    assert payload["draft"]["post_text"].startswith("A new RAG result")
-    assert payload["critic_report"]["voice_match"]["result"] == "fail"
-
-
-def test_pipeline_skips_when_voice_critic_fails_three_times(
-    tmp_path: Path, stub_pdf_extractor
-):
+    """All three critic attempts fail voice — the pipeline still ships a
+    post built from the last attempt, with the critic flags preserved on
+    final_post.json."""
     paper = _raw("2026.0002", "WINNERMARK Query Decomposition", "rag method")
     filter_decisions = {
         "WINNERMARK": FilterDecision(in_scope=True, primary_topic="rag",
@@ -315,47 +272,145 @@ def test_pipeline_skips_when_voice_critic_fails_three_times(
         ),
         paper_source=FakePaperSource([paper], cache_dir=tmp_path / "cache"),
         storage=storage,
-        embeddings=NullEmbeddings(),
+        reviews_dir=reviews,
+        cache_dir=tmp_path / "cache",
+    )
+
+    assert result.final_post is not None
+    assert result.skip_record is None
+    assert result.finalize_attempts_used == 3
+    assert result.final_post.critic_report.voice_match == "fail"
+
+    day = reviews / "2026-05-17"
+    assert (day / "post.md").exists()
+    assert (day / "final_post.json").exists()
+    assert not (day / "skip.json").exists()
+    final = json.loads((day / "final_post.json").read_text(encoding="utf-8"))
+    assert final["critic_report"]["voice_match"] == "fail"
+    assert final["critic_report"]["retries_used"] == 2
+
+
+def test_pipeline_falls_back_when_top_paper_pdf_fails(
+    tmp_path: Path, stub_pdf_extractor
+):
+    """Top-ranked paper's PDF download fails — pipeline should fall through
+    to the next-highest candidate instead of skipping the day."""
+    top = _raw("2026.0100", "TOPMARK High-impact result", "rag method")
+    runner_up = _raw("2026.0200", "SECONDMARK Decent result", "rag method")
+    filter_decisions = {
+        "TOPMARK": FilterDecision(in_scope=True, primary_topic="rag",
+                                  is_review_or_survey=False, note=""),
+        "SECONDMARK": FilterDecision(in_scope=True, primary_topic="rag",
+                                     is_review_or_survey=False, note=""),
+    }
+    ranker_outputs = {
+        "TOPMARK": _ranker_output(10, 10, 10, 10, 10),  # composite 10.0
+        "SECONDMARK": _ranker_output(8, 8, 7, 8, 9),    # lower but still good
+    }
+    drafter_outputs = [DrafterOutput(post_text=GOOD_POST, claims=_good_claims())]
+    critic_outputs = [_critic_pass()]
+
+    reviews = tmp_path / "reviews"
+    storage = LocalFilesystemStorage(reviews)
+    result = run_pipeline(
+        run_date=date_cls(2026, 5, 19),
+        settings=load_settings(),
+        llm=ScriptedLLM(
+            filter_decisions=filter_decisions,
+            ranker_outputs=ranker_outputs,
+            drafter_outputs=drafter_outputs,
+            critic_outputs=critic_outputs,
+        ),
+        paper_source=FakePaperSource(
+            [top, runner_up],
+            cache_dir=tmp_path / "cache",
+            pdf_fail_ids={"2026.0100"},
+        ),
+        storage=storage,
+        reviews_dir=reviews,
+        cache_dir=tmp_path / "cache",
+    )
+
+    # The runner-up was selected after the top paper's PDF failed.
+    assert result.final_post is not None
+    assert result.skip_record is None
+    assert result.selected is not None
+    assert result.selected.arxiv_id == "2026.0200"
+    # The top paper still appears in ranked artifacts — fallback is a
+    # post-rank decision, not a re-rank.
+    assert result.ranked_count == 2
+
+
+def test_pipeline_skips_only_when_all_candidate_pdfs_fail(
+    tmp_path: Path, stub_pdf_extractor
+):
+    """If every ranked paper's PDF fails, the pipeline finally skips —
+    with a reason that names every failed arxiv_id so the reviewer can
+    diagnose without log-spelunking."""
+    p1 = _raw("2026.0100", "FAILMARK paper one", "rag method")
+    p2 = _raw("2026.0200", "FAILMARK paper two", "rag method")
+    filter_decisions = {
+        "FAILMARK": FilterDecision(in_scope=True, primary_topic="rag",
+                                   is_review_or_survey=False, note=""),
+    }
+    ranker_outputs = {"FAILMARK": _ranker_output(8, 8, 7, 8, 9)}
+
+    reviews = tmp_path / "reviews"
+    storage = LocalFilesystemStorage(reviews)
+    result = run_pipeline(
+        run_date=date_cls(2026, 5, 19),
+        settings=load_settings(),
+        llm=ScriptedLLM(
+            filter_decisions=filter_decisions,
+            ranker_outputs=ranker_outputs,
+        ),
+        paper_source=FakePaperSource(
+            [p1, p2],
+            cache_dir=tmp_path / "cache",
+            pdf_fail_ids={"2026.0100", "2026.0200"},
+        ),
+        storage=storage,
         reviews_dir=reviews,
         cache_dir=tmp_path / "cache",
     )
 
     assert result.final_post is None
     assert result.skip_record is not None
-    assert "Voice critic failed" in result.skip_record.reason
-    assert result.finalize_attempts_used == 3
-
-    day = reviews / "2026-05-17"
-    skip = json.loads((day / "skip.json").read_text(encoding="utf-8"))
-    assert "Voice critic failed" in skip["reason"]
-    assert not (day / "post.md").exists()
-    assert not (day / "final_post.json").exists()
+    assert "2026.0100" in result.skip_record.reason
+    assert "2026.0200" in result.skip_record.reason
 
 
 def test_pipeline_skips_when_no_paper_above_threshold(
     tmp_path: Path, stub_pdf_extractor
 ):
+    """The selector threshold is configurable; with a positive value it still
+    gates the day. The default 0.0 means this skip path is dormant in
+    production, but we keep the mechanism so the gate can be re-enabled."""
     paper = _raw("2026.0003", "MODESTMARK Small Tweak", "rag method")
     filter_decisions = {
         "MODESTMARK": FilterDecision(in_scope=True, primary_topic="rag",
                                      is_review_or_survey=False, note=""),
     }
     ranker_outputs = {
-        "MODESTMARK": _ranker_output(5, 5, 5, 5, 5),  # composite 5.0 < 7.0
+        "MODESTMARK": _ranker_output(5, 5, 5, 5, 5),  # composite 5.0 < 7.0 override
     }
+
+    base = load_settings()
+    settings = base.model_copy(
+        update={"selector": base.selector.model_copy(update={"post_worthy_threshold": 7.0})}
+    )
 
     reviews = tmp_path / "reviews"
     storage = LocalFilesystemStorage(reviews)
     result = run_pipeline(
         run_date=date_cls(2026, 5, 18),
-        settings=load_settings(),
+        settings=settings,
         llm=ScriptedLLM(
             filter_decisions=filter_decisions,
             ranker_outputs=ranker_outputs,
         ),
         paper_source=FakePaperSource([paper], cache_dir=tmp_path / "cache"),
         storage=storage,
-        embeddings=NullEmbeddings(),
         reviews_dir=reviews,
         cache_dir=tmp_path / "cache",
     )
@@ -380,11 +435,16 @@ def test_pipeline_caps_candidates_at_max_candidates_per_run(
                                      is_review_or_survey=False, note=""),
     }
     ranker_outputs = {
-        "WINNERMARK": _ranker_output(5, 5, 5, 5, 5),  # below threshold → skip day
+        "WINNERMARK": _ranker_output(5, 5, 5, 5, 5),  # below override threshold → skip day
     }
 
-    settings = load_settings()
-    settings = settings.model_copy(update={"max_candidates_per_run": 3})
+    # Override the (now 0.0) production threshold so this test skips before
+    # the drafter is reached — the cap behaviour is independent of post day.
+    base = load_settings()
+    settings = base.model_copy(update={
+        "max_candidates_per_run": 3,
+        "selector": base.selector.model_copy(update={"post_worthy_threshold": 7.0}),
+    })
 
     reviews = tmp_path / "reviews"
     storage = LocalFilesystemStorage(reviews)
@@ -397,16 +457,14 @@ def test_pipeline_caps_candidates_at_max_candidates_per_run(
         ),
         paper_source=FakePaperSource(papers, cache_dir=tmp_path / "cache"),
         storage=storage,
-        embeddings=NullEmbeddings(),
         reviews_dir=reviews,
         cache_dir=tmp_path / "cache",
     )
 
-    # All 15 papers ingested + filtered, but only 3 reach process/rank.
+    # All 15 papers ingested + filtered, but only 3 reach rank (cap).
     assert result.raw_count == 15
     assert result.filtered_count == 15
     assert result.deduped_count == 3
-    assert result.processed_count == 3
     assert result.ranked_count == 3
 
 
@@ -444,7 +502,6 @@ def test_pipeline_prunes_unselected_pdfs_from_cache(
         ),
         paper_source=FakePaperSource([winner, loser], cache_dir=cache_dir),
         storage=storage,
-        embeddings=NullEmbeddings(),
         reviews_dir=reviews,
         cache_dir=cache_dir,
     )
@@ -462,22 +519,26 @@ def test_pipeline_prunes_all_pdfs_on_skip_day(
                                      is_review_or_survey=False, note=""),
     }
     ranker_outputs = {
-        "MODESTMARK": _ranker_output(5, 5, 5, 5, 5),  # below threshold
+        "MODESTMARK": _ranker_output(5, 5, 5, 5, 5),  # below override threshold
     }
+
+    base = load_settings()
+    settings = base.model_copy(
+        update={"selector": base.selector.model_copy(update={"post_worthy_threshold": 7.0})}
+    )
 
     cache_dir = tmp_path / "cache"
     reviews = tmp_path / "reviews"
     storage = LocalFilesystemStorage(reviews)
     run_pipeline(
         run_date=date_cls(2026, 5, 17),
-        settings=load_settings(),
+        settings=settings,
         llm=ScriptedLLM(
             filter_decisions=filter_decisions,
             ranker_outputs=ranker_outputs,
         ),
         paper_source=FakePaperSource([paper], cache_dir=cache_dir),
         storage=storage,
-        embeddings=NullEmbeddings(),
         reviews_dir=reviews,
         cache_dir=cache_dir,
     )
@@ -503,7 +564,6 @@ def test_pipeline_skips_when_filter_drops_everything(
         llm=ScriptedLLM(filter_decisions=filter_decisions),
         paper_source=FakePaperSource([paper], cache_dir=tmp_path / "cache"),
         storage=storage,
-        embeddings=NullEmbeddings(),
         reviews_dir=reviews,
         cache_dir=tmp_path / "cache",
     )

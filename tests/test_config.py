@@ -14,7 +14,7 @@ from arr.config import DEFAULT_CONFIG_PATH, load_settings
 def test_default_config_loads_cleanly():
     settings = load_settings(DEFAULT_CONFIG_PATH)
     assert settings.arxiv.categories
-    assert settings.selector.post_worthy_threshold == 7.0
+    assert settings.selector.post_worthy_threshold == 0.0
     assert sum(settings.ranker.weights.as_dict().values()) == pytest.approx(1.0)
 
 
@@ -33,9 +33,7 @@ def test_load_settings_validates_threshold(tmp_path: Path):
               lookback_hours: 24
               max_results_per_category: 200
             filter:
-              dedup_similarity_threshold: 0.92
               dedup_lookback_days: 30
-              embedding_model: foo
             ranker:
               weights:
                 significance: 0.3

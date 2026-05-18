@@ -8,13 +8,13 @@ from typing import Any
 import pytest
 
 from arr.config import load_settings
-from arr.models import Claim, DimensionScore, RankedPaper
+from arr.models import Claim, DimensionScore, SelectedPaper
 from arr.providers.llm import LLMError
 from arr.stages import draft as draft_stage
 from arr.stages.draft import DrafterOutput, render_prompt
 
 
-def _ranked(arxiv_id: str = "2026.0001") -> RankedPaper:
+def _selected(arxiv_id: str = "2026.0001") -> SelectedPaper:
     scores = {
         "significance": DimensionScore(score=8, justification="."),
         "novelty": DimensionScore(score=7, justification="."),
@@ -22,7 +22,7 @@ def _ranked(arxiv_id: str = "2026.0001") -> RankedPaper:
         "clarity": DimensionScore(score=8, justification="."),
         "topical_fit": DimensionScore(score=9, justification="."),
     }
-    return RankedPaper(
+    return SelectedPaper(
         arxiv_id=arxiv_id,
         title="Query Decomposition for Robust RAG",
         authors=["A. Müller", "B. Schmidt"],
@@ -98,7 +98,7 @@ def _good_output() -> DrafterOutput:
 
 def test_draft_builds_draftpost_with_counts():
     llm = ScriptedLLM(_good_output())
-    out = draft_stage.run(_ranked(), llm, load_settings())
+    out = draft_stage.run(_selected(), llm, load_settings())
 
     assert out.paper.arxiv_id == "2026.0001"
     assert out.drafter_model == load_settings().drafter.model
@@ -110,7 +110,7 @@ def test_draft_builds_draftpost_with_counts():
 
 def test_draft_passes_method_and_results_into_prompt():
     llm = ScriptedLLM(_good_output())
-    draft_stage.run(_ranked(), llm, load_settings())
+    draft_stage.run(_selected(), llm, load_settings())
     body = llm.calls[0]["messages"][-1]["content"]
     assert "Query decomposition step." in body
     assert "We achieve 71.2 on HotpotQA." in body
@@ -121,7 +121,7 @@ def test_draft_passes_method_and_results_into_prompt():
 def test_draft_includes_prior_notes_on_retry():
     llm = ScriptedLLM(_good_output())
     draft_stage.run(
-        _ranked(), llm, load_settings(),
+        _selected(), llm, load_settings(),
         attempt=2,
         prior_notes=["voice slipped into hype on the close",
                      "first line was 152 characters; trim under 140"],
@@ -134,7 +134,7 @@ def test_draft_includes_prior_notes_on_retry():
 
 def test_draft_omits_retry_section_on_first_attempt():
     llm = ScriptedLLM(_good_output())
-    draft_stage.run(_ranked(), llm, load_settings())
+    draft_stage.run(_selected(), llm, load_settings())
     body = llm.calls[0]["messages"][-1]["content"]
     assert "Prior attempt feedback" not in body
 
@@ -142,18 +142,18 @@ def test_draft_omits_retry_section_on_first_attempt():
 def test_draft_uses_premium_model_from_settings():
     settings = load_settings()
     llm = ScriptedLLM(_good_output())
-    draft_stage.run(_ranked(), llm, settings)
+    draft_stage.run(_selected(), llm, settings)
     assert llm.calls[0]["model"] == settings.drafter.model
 
 
 def test_draft_raises_llmerror_when_provider_fails():
     llm = ScriptedLLM(_good_output(), raise_error=True)
     with pytest.raises(LLMError):
-        draft_stage.run(_ranked(), llm, load_settings())
+        draft_stage.run(_selected(), llm, load_settings())
 
 
 def test_render_prompt_handles_missing_sections():
-    paper = _ranked()
+    paper = _selected()
     # Strip out the optional sections.
     paper_no_limits = paper.model_copy(update={
         "sections": {"abstract": "x", "intro": "y", "method": "z"}

@@ -4,8 +4,10 @@ Orchestrates the drafter/critic retry loop and produces the artifacts the
 human reviewer reads. Up to `settings.drafter.max_retries` total drafting
 attempts. On the first attempt that passes the critic, we build a
 FinalPost from the DraftPost + CriticReport + RankerScores. If every
-attempt fails, the day becomes a skip with reason
-"voice critic failed after N attempts".
+attempt fails the critic, we still publish the last attempt — the critic
+report is preserved on the FinalPost so the reviewer can see what was
+flagged. The pipeline is configured to favour shipping a post every day
+over withholding on subjective critic disagreements.
 
 Per Section 13: post.md (the ready-to-paste draft) and grounding.md
 (the human-readable claim trace) are derived from the FinalPost so the
@@ -25,8 +27,8 @@ from arr.models import (
     DraftPost,
     FinalCriticReport,
     FinalPost,
-    RankedPaper,
     RankerScores,
+    SelectedPaper,
 )
 from arr.providers.llm import LLMError, LLMProvider
 from arr.stages import critique as critique_stage
@@ -56,7 +58,7 @@ class FinalizerResult:
         return len(self.attempts)
 
 
-def _ranker_scores_from(paper: RankedPaper) -> RankerScores:
+def _ranker_scores_from(paper: SelectedPaper) -> RankerScores:
     return RankerScores(
         significance=paper.scores["significance"].score,
         novelty=paper.scores["novelty"].score,
@@ -125,7 +127,7 @@ def _build_final_post(
 
 
 def run(
-    paper: RankedPaper,
+    paper: SelectedPaper,
     llm: LLMProvider,
     settings: Settings,
     *,
@@ -147,13 +149,13 @@ def run(
             )
         except LLMError as e:
             log.warning("Finalize attempt %d: drafter LLM error (%s)", attempt_num, e)
-            return FinalizerResult(final_post=None, attempts=attempts)
+            break
 
         try:
             report = critique_stage.run(draft, llm, settings)
         except LLMError as e:
             log.warning("Finalize attempt %d: critic LLM error (%s)", attempt_num, e)
-            return FinalizerResult(final_post=None, attempts=attempts)
+            break
 
         attempts.append((draft, report))
 
@@ -173,8 +175,19 @@ def run(
             attempt_num, len(prior_notes),
         )
 
-    log.info("Finalize: %d attempts exhausted without a passing draft", max_attempts)
-    return FinalizerResult(final_post=None, attempts=attempts)
+    if not attempts:
+        log.warning("Finalize: no attempts completed (LLM unreachable)")
+        return FinalizerResult(final_post=None, attempts=attempts)
+
+    last_draft, last_report = attempts[-1]
+    log.info(
+        "Finalize: accepting last attempt (%d/%d) with critic flags",
+        len(attempts), max_attempts,
+    )
+    final = _build_final_post(
+        last_draft, last_report, settings, prior_attempts=len(attempts) - 1, now=now
+    )
+    return FinalizerResult(final_post=final, attempts=attempts)
 
 
 # ---------------------------------------------------------------------------
@@ -214,7 +227,3 @@ def build_grounding_md(final_post: FinalPost) -> str:
             f"**Page:** {claim.page}\n"
         )
     return header + "\n".join(body)
-
-
-def build_voice_skip_reason(attempts_used: int) -> str:
-    return f"Voice critic failed after {attempts_used} attempt(s)"

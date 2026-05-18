@@ -103,9 +103,32 @@ DimensionKey = Literal[
 ]
 
 
-class RankedPaper(ProcessedPaper):
+class RankedPaper(FilteredPaper):
+    """A paper scored on the five dimensions, before its PDF is fetched.
+
+    The ranker reads title + abstract only — full sections are reserved for
+    the one paper that wins selection, so PDF processing happens once per
+    run rather than for every survivor.
+    """
+
     scores: dict[str, DimensionScore]
     composite: float = Field(ge=0.0, le=10.0)
+
+
+# ---------------------------------------------------------------------------
+# Stage 5.5 — Selected (post-select PDF processing of the winner)
+# ---------------------------------------------------------------------------
+
+
+class SelectedPaper(RankedPaper):
+    """RankedPaper enriched with PDF-extracted sections. Only the winning
+    paper of the day goes through process; this is the shape the drafter
+    and critic consume.
+    """
+
+    sections: dict[str, str]
+    pdf_local_path: str
+    page_count: int
 
 
 # ---------------------------------------------------------------------------
@@ -122,7 +145,7 @@ class Claim(StageArtifact):
 
 
 class DraftPost(StageArtifact):
-    paper: RankedPaper
+    paper: SelectedPaper
     post_text: str
     claims: list[Claim]
     char_count: int

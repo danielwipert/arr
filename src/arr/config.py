@@ -36,9 +36,7 @@ class KeywordPrefilterConfig(BaseModel):
 class FilterConfig(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    dedup_similarity_threshold: float = Field(ge=0.0, le=1.0)
     dedup_lookback_days: int = Field(gt=0)
-    embedding_model: str
     keyword_prefilter: KeywordPrefilterConfig = Field(default_factory=KeywordPrefilterConfig)
 
 

@@ -17,7 +17,7 @@ import logging
 from pydantic import BaseModel, ConfigDict
 
 from arr.config import REPO_ROOT, Settings
-from arr.models import Claim, DraftPost, RankedPaper
+from arr.models import Claim, DraftPost, SelectedPaper
 from arr.providers.llm import LLMProvider
 from arr.stages._prompts import render
 
@@ -60,7 +60,7 @@ def _build_retry_section(prior_notes: list[str] | None) -> str:
     )
 
 
-def render_prompt(paper: RankedPaper, prior_notes: list[str] | None = None) -> str:
+def render_prompt(paper: SelectedPaper, prior_notes: list[str] | None = None) -> str:
     sections = paper.sections
     return render(
         PROMPT_PATH.read_text(encoding="utf-8"),
@@ -79,7 +79,7 @@ def render_prompt(paper: RankedPaper, prior_notes: list[str] | None = None) -> s
 
 
 def run(
-    paper: RankedPaper,
+    paper: SelectedPaper,
     llm: LLMProvider,
     settings: Settings,
     *,

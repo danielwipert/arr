@@ -19,7 +19,7 @@ from dataclasses import dataclass
 from pydantic import BaseModel, ConfigDict
 
 from arr.config import REPO_ROOT, Settings
-from arr.models import CheckResult, CriticReport, DraftPost, PassFail, RankedPaper
+from arr.models import CheckResult, CriticReport, DraftPost, PassFail
 from arr.providers.llm import LLMProvider
 from arr.stages._prompts import render
 

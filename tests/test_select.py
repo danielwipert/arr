@@ -33,9 +33,6 @@ def _ranked(arxiv_id: str, composite: float) -> RankedPaper:
         primary_topic="rag",
         dedup_similarity=None,
         noise_flagged=False,
-        sections={"abstract": "..."},
-        pdf_local_path=f"/tmp/{arxiv_id}.pdf",
-        page_count=10,
         scores=scores,
         composite=composite,
     )
@@ -57,8 +54,15 @@ def test_selects_at_exact_threshold():
     assert chosen.arxiv_id == "a"
 
 
+def _with_threshold(settings, threshold: float):
+    return settings.model_copy(
+        update={"selector": settings.selector.model_copy(update={"post_worthy_threshold": threshold})}
+    )
+
+
 def test_returns_none_when_top_below_threshold():
-    settings = load_settings()
+    # Default threshold is 0.0; override to exercise the gate.
+    settings = _with_threshold(load_settings(), 7.0)
     papers = [_ranked("a", 6.9), _ranked("b", 5.0)]
     assert select_top(papers, settings) is None
 
@@ -69,7 +73,7 @@ def test_returns_none_when_no_ranked_papers():
 
 
 def test_skip_record_with_top_below_threshold():
-    settings = load_settings()
+    settings = _with_threshold(load_settings(), 7.0)
     ranked = [_ranked("a", 6.4), _ranked("b", 5.2)]
     record = build_skip_record(
         run_date=date_cls(2026, 5, 17),

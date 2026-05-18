@@ -6,6 +6,11 @@ arithmetic it can get wrong. The composite formula (Section 4.5) is:
 
     composite = significance*0.30 + novelty*0.25 + reproducibility*0.20
               + clarity*0.15 + topical_fit*0.10
+
+The ranker reads title + abstract only. Full PDF sections are reserved for
+the winning paper's drafter/critic — ranking on the abstract keeps the
+per-paper cost ~10x lower and the daily wall time ~5x faster, because we
+no longer download/extract every survivor's PDF before scoring.
 """
 
 from __future__ import annotations
@@ -15,7 +20,7 @@ import logging
 from pydantic import BaseModel, ConfigDict
 
 from arr.config import REPO_ROOT, Settings
-from arr.models import DimensionScore, ProcessedPaper, RankedPaper
+from arr.models import DimensionScore, FilteredPaper, RankedPaper
 from arr.providers.llm import LLMError, LLMProvider
 from arr.stages._prompts import render
 
@@ -56,21 +61,16 @@ def compute_composite(
     return max(0.0, min(10.0, round(total, 4)))
 
 
-def _render_prompt(paper: ProcessedPaper) -> str:
-    sections = paper.sections
+def _render_prompt(paper: FilteredPaper) -> str:
     return render(
         PROMPT_PATH.read_text(encoding="utf-8"),
         title=paper.title,
-        abstract=sections.get("abstract", paper.abstract),
-        intro=sections.get("intro", "(not extracted)"),
-        method=sections.get("method", "(not extracted)"),
-        results=sections.get("results", "(not extracted)"),
-        conclusions=sections.get("conclusions", "(not extracted)"),
+        abstract=paper.abstract,
     )
 
 
 def _rank_one(
-    paper: ProcessedPaper, llm: LLMProvider, settings: Settings
+    paper: FilteredPaper, llm: LLMProvider, settings: Settings
 ) -> RankedPaper | None:
     try:
         output = llm.complete_json(
@@ -94,7 +94,7 @@ def _rank_one(
 
 
 def run(
-    papers: list[ProcessedPaper], llm: LLMProvider, settings: Settings
+    papers: list[FilteredPaper], llm: LLMProvider, settings: Settings
 ) -> list[RankedPaper]:
     out: list[RankedPaper] = []
     for paper in papers:
