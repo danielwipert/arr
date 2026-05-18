@@ -17,6 +17,9 @@ from arr.providers.papers import PaperSourceProvider
 log = logging.getLogger(__name__)
 
 
+EMPTY_RETRY_MULTIPLIER = 4
+
+
 def run(
     settings: Settings,
     paper_source: PaperSourceProvider,
@@ -28,12 +31,25 @@ def run(
     `now` exists for tests; defaults to the current UTC time.
     """
     now = now or datetime.now(timezone.utc)
-    since = now - timedelta(hours=settings.arxiv.lookback_hours)
+    lookback = settings.arxiv.lookback_hours
+    since = now - timedelta(hours=lookback)
     log.info(
         "Ingest: fetching papers from %s categories since %s",
         len(settings.arxiv.categories),
         since.isoformat(),
     )
     papers = paper_source.fetch_recent(settings.arxiv.categories, since)
+    # arXiv's announcement schedule + holidays can leave a 24-96h gap with no
+    # fresh papers in the API. Widen once before declaring skip so a quiet
+    # day doesn't become an empty run.
+    if not papers:
+        widened = lookback * EMPTY_RETRY_MULTIPLIER
+        widened_since = now - timedelta(hours=widened)
+        log.info(
+            "Ingest: empty first sweep; retrying with %sh lookback (since %s)",
+            widened,
+            widened_since.isoformat(),
+        )
+        papers = paper_source.fetch_recent(settings.arxiv.categories, widened_since)
     log.info("Ingest: %d papers returned", len(papers))
     return papers

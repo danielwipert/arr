@@ -9,7 +9,10 @@ arxiv:
     - cs.LG  # Machine Learning
     - cs.AI  # Artificial Intelligence
     - cs.IR  # Information Retrieval
-  lookback_hours: 24
+  # 96h, not 24h: arXiv announces Mon-Fri at 20:00 ET, so on Monday
+  # morning the freshest API content is from late Friday — a 24h window
+  # misses it entirely. Dedup gates re-posting, so a wider window is free.
+  lookback_hours: 96
   # 30 per category × 4 categories ≈ 120 raw papers/day. arXiv returns
   # newest-first, so this is the most-recent slice, not a random sample.
   # Enough to choose from after the keyword prefilter narrows the field;

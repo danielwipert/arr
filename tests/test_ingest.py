@@ -53,3 +53,33 @@ def test_ingest_returns_empty_when_source_is_empty():
     settings = load_settings()
     fake = FakePaperSource([])
     assert ingest.run(settings, fake) == []
+
+
+class WideningFakeSource:
+    """Returns papers only when `since` reaches the widened window."""
+
+    def __init__(self, papers: list[RawPaper]):
+        self._papers = papers
+        self.calls: list[tuple[list[str], datetime]] = []
+
+    def fetch_recent(self, categories, since):
+        self.calls.append((list(categories), since))
+        return list(self._papers) if len(self.calls) > 1 else []
+
+    def fetch_pdf(self, arxiv_id: str) -> Path:
+        raise NotImplementedError
+
+
+def test_ingest_retries_with_widened_lookback_when_first_sweep_empty():
+    settings = load_settings()
+    fake = WideningFakeSource([_paper("2026.0003")])
+    now = datetime(2026, 5, 18, 12, 0, tzinfo=timezone.utc)
+
+    out = ingest.run(settings, fake, now=now)
+
+    assert len(out) == 1
+    assert len(fake.calls) == 2
+    first_delta = now - fake.calls[0][1]
+    second_delta = now - fake.calls[1][1]
+    assert first_delta.total_seconds() == settings.arxiv.lookback_hours * 3600
+    assert second_delta.total_seconds() == settings.arxiv.lookback_hours * 3600 * ingest.EMPTY_RETRY_MULTIPLIER
