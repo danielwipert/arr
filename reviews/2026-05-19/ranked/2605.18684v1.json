@@ -1,0 +1,43 @@
+{
+  "arxiv_id": "2605.18684v1",
+  "title": "Reversa: A Reverse Documentation Engineering Framework for Converting Legacy Software into Operational Specifications for AI Agents",
+  "authors": [
+    "Sanderson Oliveira de Macedo",
+    "Ronaldo Martins da Costa"
+  ],
+  "abstract": "Legacy systems concentrate business rules, architectural decisions, and operational exceptions that often remain implicit in code, data, configuration, and\n  maintenance practices. At the same time, language-model-based coding agents depend on reliable context, correctness criteria, and behavioral contracts to\n  modify real systems with lower risk. This paper presents Reversa, a reverse documentation engineering framework for converting legacy software into\n  traceable operational specifications for AI agents. Reversa organizes this process as a multi-agent pipeline: specialized agents map the project surface,\n  analyze modules, extract implicit rules, synthesize architecture, write unit-level specifications, and review generated claims. The proposal emphasizes\n  three mechanisms: traceability between code and specification, explicit confidence marking, and preservation of gaps for human validation. The framework is\n  distributed as a Node.js CLI, installs skills across multiple agent engines, and uses a SHA-256 manifest to preserve modified files during update or\n  uninstall operations. In addition to the architectural description, we report an exploratory case study on migrating an ATM from COBOL to Go, in which the\n  pipeline produced 517 claims classified by an internal confidence index, 10 registered gaps, 53 Gherkin parity scenarios, and a reconstruction plan with 9\n  of 11 tasks completed at inventory time. Final parity validation and cutover were not completed in this study. We do not claim broad empirical superiority;\n  we position the contribution with respect to the literature on reverse engineering, LLM-based documentation, and software agents, and propose an evaluation\n  protocol with metrics for coverage, traceability, confidence, utility, and cost.",
+  "primary_cat": "cs.SE",
+  "all_cats": [
+    "cs.SE",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-05-18T17:23:13Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.18684v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The framework provides a systematic approach to converting legacy code into AI-readable specifications, directly impacting how builders approach legacy system modernization with LLM agents."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "While building on reverse engineering concepts, Reversa introduces a novel multi-agent pipeline specifically designed for AI agent consumption with traceability and confidence marking mechanisms."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The framework is distributed as a Node.js CLI with clear architectural description, but the case study results are exploratory without full validation of the ATM migration."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper clearly describes the framework architecture, mechanisms, and case study results with appropriate scoping of claims and limitations."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM-based coding agents and provides a framework for improving their reliability with legacy systems, squarely in the applied-AI sweet spot."
+    }
+  },
+  "composite": 7.45
+}

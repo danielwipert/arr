@@ -1,0 +1,46 @@
+{
+  "arxiv_id": "2605.18692v1",
+  "title": "Democratizing Large-Scale Re-Optimization with LLM-Guided Model Patches",
+  "authors": [
+    "Tinghan Ye",
+    "Arnaud Deza",
+    "Ved Mohan",
+    "El Mehdi Er Raqabi",
+    "Pascal Van Hentenryck"
+  ],
+  "abstract": "Optimization models developed by operations research (OR) experts are often deployed as decision-support systems in industrial settings. However, real-world environments are dynamic, with evolving business rules, previously overlooked constraints, and unforeseen perturbations. In such contexts, end users must rapidly re-optimize models to recover feasible and implementable solutions. This paper introduces an agentic re-optimization framework in which a large language model (LLM) acts as an OR expert, dynamically supporting end users through natural-language interaction. The LLM translates user prompts into structured updates of the underlying optimization model, selects suitable re-optimization techniques from an optimization toolbox, and solves the resulting instance to return implementable solutions. The toolbox leverages primal information, including historical solutions, valid inequalities, solver configurations, and metaheuristics, to accelerate re-optimization while preserving solution quality. The proposed framework enables interactive and continuous adaptation of deployed optimization models, reducing dependence on OR experts and improving the sustainability of decision-support systems. Extensive experiments on two complementary large-scale real-world case studies demonstrate the effectiveness and scalability of the proposed framework. The first considers online supply chain re-optimization, where solutions must be generated rapidly while remaining close to the deployed plan, whereas the second focuses on offline university exam scheduling, where solution quality is prioritized over runtime. Results show that the toolbox-driven architecture significantly improves computational efficiency through primal-based and solver-aware re-optimization techniques, while the structured patch-based updates improve interpretability and traceability of model modifications.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI",
+    "math.OC"
+  ],
+  "submitted_at": "2026-05-18T17:28:25Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.18692v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The framework enables rapid re-optimization of deployed models using LLMs, directly impacting how builders implement decision-support systems in dynamic environments."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "Introduces a novel LLM-guided agentic framework for optimization model patching, combining natural language interaction with structured model updates and re-optimization techniques."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "Method is clearly described with two real-world case studies, but no mention of code or datasets being publicly available for reproduction."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "Well-written abstract clearly outlines the problem, proposed solution, methodology, and experimental results across two complementary case studies."
+    },
+    "topical_fit": {
+      "score": 7,
+      "justification": "Directly applies LLMs to practical optimization problems, though slightly more focused on operations research than core LLM building blocks."
+    }
+  },
+  "composite": 7.25
+}

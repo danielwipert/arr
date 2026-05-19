@@ -1,0 +1,46 @@
+{
+  "arxiv_id": "2605.18702v1",
+  "title": "Distilling Tabular Foundation Models for Structured Health Data",
+  "authors": [
+    "Aditya Tanna",
+    "Nassim Bouarour",
+    "Mohamed Bouadi",
+    "Vinay Kumar Sankarapu",
+    "Pratinav Seth"
+  ],
+  "abstract": "Tabular foundation models (TFMs) achieve strong performance on health datasets, but their inference cost and infrastructure requirements limit practical use. We study whether their predictive behavior can be transferred to lightweight tabular models through knowledge distillation. Since in-context TFMs condition on the training set at inference time, naive distillation can introduce context leakage; we address this with stratified out-of-fold teacher labeling. Across $19$ healthcare datasets, $6$ TFM teachers, $4$ student families, and several multi-teacher ensembles, we find that distilled students retain at least $90\\%$ of teacher AUC, outperforming teachers in some cases, while running at least $26\\times$ faster on CPU and preserving calibration and fairness critical for health applications. Moreover, multi-teacher averaging does not consistently improve over the best single teacher. Leakage-aware distillation is thus a viable route for bringing TFM-quality predictions into inference-constrained health settings.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-05-18T17:37:28Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.18702v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper demonstrates how to achieve TFM-quality predictions with 26x faster inference on CPU, directly addressing practical deployment constraints for healthcare applications."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "Introduces stratified out-of-fold teacher labeling to address context leakage in distilling in-context TFMs, a novel approach to knowledge distillation for tabular foundation models."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "Method is clearly described with specific techniques (stratified out-of-fold labeling) but no mention of code or datasets being publicly available."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "Well-written abstract clearly states the problem, solution, and results across 19 healthcare datasets with specific performance metrics (90% AUC retention, 26x speedup)."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "Directly addresses model optimization and deployment efficiency for foundation models, highly relevant to engineers building practical LLM systems."
+    }
+  },
+  "composite": 7.35
+}

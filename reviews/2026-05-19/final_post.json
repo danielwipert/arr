@@ -1,0 +1,85 @@
+{
+  "date": "2026-05-19",
+  "paper_id": "arxiv:2605.18693v1",
+  "paper_title": "SkillGenBench: Benchmarking Skill Generation Pipelines for LLM Agents",
+  "paper_authors": [
+    "Yifan Zhou",
+    "Zhentao Zhang",
+    "Ziming Cheng",
+    "Shuo Zhang",
+    "Qizhen Lan",
+    "Zhangquan Chen",
+    "Zhi Yang",
+    " QianyuXu",
+    "Ronghao Chen",
+    "Huacan Wang",
+    "Sen Hu"
+  ],
+  "paper_url": "https://arxiv.org/abs/2605.18693",
+  "post_text": "A new benchmark shows that AI agents struggle to extract reusable procedures from complex sources like code repositories and technical documents.\n\nResearchers from multiple institutions introduced SkillGenBench, which evaluates how well language models can distill deployable skills from raw materials. The benchmark tests both task-conditioned generation (where the model knows the target task) and task-agnostic generation (where it must build a reusable library before tasks are revealed). Across 187 tasks spanning code repositories and documentation, performance varied substantially by method and backbone model.\n\nThe gap is most pronounced with code repositories, where procedures are implicit in directory structures and configuration files rather than explicitly stated. Even when models capture the right structural components, they often fail to translate them into executable procedures that pass strict verification. The benchmark reveals this as a pipeline-level problem rather than just a model capability issue.\n\nFor teams building agent systems, this suggests that procedural knowledge extraction deserves its own evaluation pipeline separate from end-to-end task performance. The hardest part isn't teaching agents to use skills, but generating reliable skills from messy real-world sources in the first place.\n\nWorth reading if you're evaluating agent capabilities beyond simple tool use.\n\nPaper: SkillGenBench: Benchmarking Skill Generation Pipelines for LLM Agents, Zhou et al.\nhttps://arxiv.org/abs/2605.18693\n\n#AI #Agents #Benchmarking #SkillGeneration #ProceduralKnowledge",
+  "post_char_count": 1596,
+  "hook_char_count": 145,
+  "claims": [
+    {
+      "claim": "Researchers from multiple institutions introduced SkillGenBench",
+      "source_span": "Authors: Yifan Zhou, Zhentao Zhang, Ziming Cheng, Shuo Zhang, Qizhen Lan, Zhangquan Chen, Zhi Yang, QianyuXu, Ronghao Chen, Huacan Wang, Sen Hu",
+      "page": 1
+    },
+    {
+      "claim": "evaluates how well language models can distill deployable skills from raw materials",
+      "source_span": "SkillGenBench evaluates how well LLMs can distill deployable, reusable skills from complex source materials",
+      "page": 3
+    },
+    {
+      "claim": "tests both task-conditioned generation (where the model knows the target task) and task-agnostic generation (where it must build a reusable library before tasks are revealed)",
+      "source_span": "task-conditioned generation, where a task-specific skill is synthesized after the task is revealed, and task-agnostic generation, where a reusable skill library must be distilled before downstream tasks are known",
+      "page": 1
+    },
+    {
+      "claim": "187 tasks spanning code repositories and documentation",
+      "source_span": "187-task benchmark composition across source types",
+      "page": 4
+    },
+    {
+      "claim": "performance varied substantially by method and backbone model",
+      "source_span": "Experiments across a range of skill-generation methods and backbones show substantial performance variation",
+      "page": 1
+    },
+    {
+      "claim": "gap is most pronounced with code repositories, where procedures are implicit in directory structures and configuration files rather than explicitly stated",
+      "source_span": "repository-grounded instances remain significantly more challenging than document-based ones, highlighting the difficulty of recovering implicit execution structure from distributed code artifacts",
+      "page": 6
+    },
+    {
+      "claim": "Even when models capture the right structural components, they often fail to translate them into executable procedures that pass strict verification",
+      "source_span": "Generated skills often capture the right structural components, yet fail to translate them into executable procedures that satisfy strict verification constraints",
+      "page": 6
+    },
+    {
+      "claim": "this as a pipeline-level problem rather than just a model capability issue",
+      "source_span": "skill generation is fundamentally a pipeline-level problem: performance depends not only on the generation method, but also on the backbone model",
+      "page": 6
+    }
+  ],
+  "ranker_scores": {
+    "significance": 7,
+    "novelty": 8,
+    "reproducibility": 8,
+    "clarity": 9,
+    "topical_fit": 9,
+    "composite": 7.95
+  },
+  "critic_report": {
+    "voice_match": "pass",
+    "banned_phrase_scan": "pass",
+    "length_compliance": "fail",
+    "structure": "pass",
+    "grounding": "pass",
+    "hype_check": "pass",
+    "retries_used": 1,
+    "notes": "Required 1 retry/retries before passing. | voice: The post maintains a declarative, report-like tone with specific numbers and clear implications for business leaders, avoiding hype and specialist jargon. | banned_phrases: no banned phrases found | length: hook too long (145 chars, max 140) | structure: 7 blocks, 5 hashtags | grounding: Every factual claim in the post body is supported by a verbatim source span from the paper sections provided in the claims list. [mech: 8 claim span(s) not found in paper: 'Authors: Yifan Zhou, Zhentao Zhang, Ziming Cheng, Shuo Zhang'; 'SkillGenBench evaluates how well LLMs can distill deployable'; 'task-conditioned generation, where a task-specific skill is '] | hype: The post makes no unwarranted superlatives, breathless framing, or overclaims relative to the paper's findings."
+  },
+  "generated_at": "2026-05-19T12:19:27.016815Z",
+  "drafter_model": "deepseek/deepseek-chat-v3.1",
+  "critic_model": "deepseek/deepseek-chat-v3.1"
+}
