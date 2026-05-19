@@ -39,11 +39,15 @@ def run(
         since.isoformat(),
     )
     papers = paper_source.fetch_recent(settings.arxiv.categories, since)
-    # arXiv's announcement schedule + holidays can leave a 24-96h gap with no
-    # fresh papers in the API. Widen once before declaring skip so a quiet
-    # day doesn't become an empty run.
-    if not papers:
-        widened = lookback * EMPTY_RETRY_MULTIPLIER
+    # arXiv's announcement schedule + holidays can leave the API empty of
+    # v1 papers from the last several days. Widen once before declaring
+    # skip so a quiet day doesn't become an empty run. Capped at the dedup
+    # history window because anything older has had its review folder
+    # pruned by storage retention — dedup can no longer see it, so a
+    # re-post would slip through.
+    max_retry_hours = settings.filter.dedup_lookback_days * 24
+    if not papers and max_retry_hours > lookback:
+        widened = min(lookback * EMPTY_RETRY_MULTIPLIER, max_retry_hours)
         widened_since = now - timedelta(hours=widened)
         log.info(
             "Ingest: empty first sweep; retrying with %sh lookback (since %s)",

@@ -82,4 +82,26 @@ def test_ingest_retries_with_widened_lookback_when_first_sweep_empty():
     first_delta = now - fake.calls[0][1]
     second_delta = now - fake.calls[1][1]
     assert first_delta.total_seconds() == settings.arxiv.lookback_hours * 3600
-    assert second_delta.total_seconds() == settings.arxiv.lookback_hours * 3600 * ingest.EMPTY_RETRY_MULTIPLIER
+    expected_retry_hours = min(
+        settings.arxiv.lookback_hours * ingest.EMPTY_RETRY_MULTIPLIER,
+        settings.filter.dedup_lookback_days * 24,
+    )
+    assert second_delta.total_seconds() == expected_retry_hours * 3600
+
+
+def test_ingest_skips_retry_when_lookback_already_exceeds_dedup_window(monkeypatch):
+    settings = load_settings()
+    # Lookback >= dedup window means a retry could only narrow, never widen,
+    # so we skip it rather than emit a misleading log line.
+    monkeypatch.setattr(
+        settings.arxiv,
+        "lookback_hours",
+        settings.filter.dedup_lookback_days * 24,
+    )
+    fake = WideningFakeSource([_paper("2026.0004")])
+    now = datetime(2026, 5, 18, 12, 0, tzinfo=timezone.utc)
+
+    out = ingest.run(settings, fake, now=now)
+
+    assert out == []
+    assert len(fake.calls) == 1

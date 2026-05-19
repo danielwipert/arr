@@ -13,12 +13,12 @@ arxiv:
   # morning the freshest API content is from late Friday — a 24h window
   # misses it entirely. Dedup gates re-posting, so a wider window is free.
   lookback_hours: 96
-  # 30 per category × 4 categories ≈ 120 raw papers/day. arXiv returns
-  # newest-first, so this is the most-recent slice, not a random sample.
-  # Enough to choose from after the keyword prefilter narrows the field;
-  # large enough to absorb a heavy posting day on cs.CL without missing
-  # the LLM-relevant work that lands under cs.LG/cs.AI/cs.IR.
-  max_results_per_category: 30
+  # Sized to actually fill the 96h lookback window: cs.CL alone averages
+  # ~70 papers/day, so 96h × 4 cats ≈ 280 cs.CL papers in play. 120 per
+  # category lets the iteration hit the `since` boundary on most days
+  # instead of getting silently truncated; the keyword prefilter and
+  # max_candidates_per_run still cap downstream work.
+  max_results_per_category: 120
 
 filter:
   # Dedup is an exact arxiv_id match against the last N days of processed/
