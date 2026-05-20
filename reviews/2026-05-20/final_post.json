@@ -1,0 +1,70 @@
+{
+  "date": "2026-05-20",
+  "paper_id": "arxiv:2605.20173v1",
+  "paper_title": "A Methodology for Selecting and Composing Runtime Architecture Patterns for Production LLM Agents",
+  "paper_authors": [
+    "Vasundra Srinivasan"
+  ],
+  "paper_url": "https://arxiv.org/abs/2605.20173",
+  "post_text": "A new methodology claims that production LLM agent reliability depends more on architectural patterns than on model selection as models improve.\n\nThe paper introduces the stochastic-deterministic boundary, a four-part contract governing how LLM proposals become system actions. An audit of five open-source frameworks found explicit verifier-and-commit logic at 19 of 21 LLM-to-action call sites. A classification of 21 failure post-mortems found 71% localized to weaknesses at this boundary.\n\nThe finding is broader than it sounds. The paper decomposes reliability into per-call model variance and architectural momentum. As base models compress variance, the momentum set by pattern choice becomes the dominant lever. The methodology helps teams select from six patterns organized around coordination, state, and control concerns.\n\nFor engineering leaders, the implication is architectural debt. Teams that defer decisions about state persistence or verification gates will face reliability plateaus independent of model upgrades. The paper provides a five-step selection procedure and a diagnostic for mapping production failures to specific patterns.\n\nWorth reading if you manage the lifecycle of production agent systems. Worth ignoring if your agents are purely conversational with no external side-effects.\n\nPaper: A Methodology for Selecting and Composing Runtime Architecture Patterns for Production LLM Agents, Vasundra Srinivasan\nhttps://arxiv.org/abs/2605.20173\n\n#LLMs #SoftwareArchitecture #ProductionSystems #AgentReliability #StochasticDeterministicBoundary",
+  "post_char_count": 1572,
+  "hook_char_count": 144,
+  "claims": [
+    {
+      "claim": "The paper introduces the stochastic-deterministic boundary, a four-part contract governing how LLM proposals become system actions.",
+      "source_span": "the stochastic-deterministic boundary (SDB) as the load-bearing primitive of production agent runtimes. The SDB is the seam where an LLM proposal becomes a system action. It is a four-part contract: a proposer (the LLM), a verifier (a deterministic check on the proposal), a commit step (the durable write that follows acceptance), and a reject signal (the typed response back to the proposer when verification fails).",
+      "page": 2
+    },
+    {
+      "claim": "An audit of five open-source frameworks found explicit verifier-and-commit logic at 19 of 21 LLM-to-action call sites.",
+      "source_span": "A survey of LLM-to-action call sites across five widely-used open-source agent frameworks (openai/swarm, AutoGPT, LangChain Agents, CrewAI, and Microsoft AutoGen) finds explicit verifier-and-commit logic at 19 of 21 sites audited.",
+      "page": 5
+    },
+    {
+      "claim": "A classification of 21 failure post-mortems found 71% localized to weaknesses at this boundary.",
+      "source_span": "across 21 published agent failure post-mortems and bug reports we classified, 15 (71.4%) localize to weaknesses at the boundary itself",
+      "page": 5
+    },
+    {
+      "claim": "The paper decomposes reliability into per-call model variance and architectural momentum.",
+      "source_span": "Model the long-run reliability of a production agent system as y(t) = µt+σξ(t), (1) where y(t) is observed reliability, σ is per-call variance amplitude from the stochastic proposer, ξ(t) is mean-zero noise, and µ is the architectural momentum of the surrounding system.",
+      "page": 2
+    },
+    {
+      "claim": "As base models compress variance, the momentum set by pattern choice becomes the dominant lever.",
+      "source_span": "As σ shrinks, µ becomes the dominant lever on aggregate reliability.",
+      "page": 2
+    },
+    {
+      "claim": "The methodology helps teams select from six patterns organized around coordination, state, and control concerns.",
+      "source_span": "Around the SDB we organize three orthogonal concerns for production agent runtimes (Coordination, State, Control) and a catalog of six patterns that assemble the boundary differently across runtime classes.",
+      "page": 1
+    },
+    {
+      "claim": "The paper provides a five-step selection procedure and a diagnostic for mapping production failures to specific patterns.",
+      "source_span": "We specify a five-step selection methodology with decision predicates and a written validation artifact, and a diagnostic procedure that maps observed production failures to specific patterns through a failure-signature catalog.",
+      "page": 1
+    }
+  ],
+  "ranker_scores": {
+    "significance": 9,
+    "novelty": 8,
+    "reproducibility": 7,
+    "clarity": 8,
+    "topical_fit": 10,
+    "composite": 8.3
+  },
+  "critic_report": {
+    "voice_match": "pass",
+    "banned_phrase_scan": "pass",
+    "length_compliance": "fail",
+    "structure": "pass",
+    "grounding": "pass",
+    "hype_check": "pass",
+    "retries_used": 1,
+    "notes": "Required 1 retry/retries before passing. | voice: The post adopts a declarative, report-like tone with specific numbers and a clear point of view, avoiding LinkedIn-speak and maintaining accessibility for business and engineering leaders. | banned_phrases: no banned phrases found | length: hook too long (144 chars, max 140) | structure: 7 blocks, 5 hashtags | grounding: Every factual claim in the post body is supported by a verbatim source span from the paper sections as listed in the claims list. | hype: The post's claims are precise and match the paper's scope, avoiding unwarranted superlatives, attribution drift, or overclaim."
+  },
+  "generated_at": "2026-05-20T11:57:42.375367Z",
+  "drafter_model": "deepseek/deepseek-chat-v3.1",
+  "critic_model": "deepseek/deepseek-chat-v3.1"
+}

@@ -1,0 +1,47 @@
+{
+  "arxiv_id": "2605.20098v1",
+  "title": "Neurosymbolic Learning for Inference-Time Argumentation",
+  "authors": [
+    "Gabriel Freedman",
+    "Adam Dejl",
+    "Adam Gould",
+    " Mansi",
+    "Lihu Chen",
+    "Jianqi Jiang",
+    "Francesca Toni"
+  ],
+  "abstract": "Claim verification is an important problem in high-stakes settings, including health and finance. When information underpinning claims is incomplete or conflicting, uncertain answers may be more appropriate than binary true or false classifications. In all cases, faithful explanations of the considerations determining the final verdict are crucial. We introduce inference-time argumentation (ITA), a trainable neurosymbolic framework for ternary claim verification in which a formal argumentation semantics giving the strength of claims is used both (i) to guide LLM training as models learn to generate arguments and assign them base scores (representing intrinsic strengths) and (ii) to compute ternary (true/false/uncertain) predictions from generated, scored arguments. As a result, at training time, argument generation and scoring can be optimised according to the quality of the induced argumentative predictions. Moreover, at inference time, the final prediction is faithful, by construction, to the arguments and scores determining the verdict, rather than being justified by a potentially unfaithful post-hoc reasoning trace as in conventional reasoning models. We finally show that, on two datasets for ternary claim verification, ITA improves upon argumentative baselines and can perform competitively against non-argumentative direct-prediction baselines, while providing verdicts that are computed deterministically from explicit, inspectable argumentative structures.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI"
+  ],
+  "submitted_at": "2026-05-19T16:49:29Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.20098v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper refines claim verification with a neurosymbolic framework that provides faithful, inspectable argumentation structures, offering a reproducible technique for high-stakes applications where explainability is crucial."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "It introduces a substantial new variation by combining formal argumentation semantics with LLM training for both argument generation and scoring, distinct from prior post-hoc reasoning approaches."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement, including the neurosymbolic framework and training process, but the paper does not mention public release of code, weights, or datasets."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is solidly written, with a clear problem statement, well-defined framework (ITA), and defensible evaluation on two datasets comparing against argumentative and non-argumentative baselines."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "The paper is clearly in scope as it presents a trainable framework combining LLMs with symbolic reasoning for a core applied-AI task (claim verification), directly relevant to builders needing faithful, explainable systems."
+    }
+  },
+  "composite": 6.85
+}
