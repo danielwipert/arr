@@ -1,0 +1,44 @@
+{
+  "arxiv_id": "2605.21405v1",
+  "title": "Stdlib or Third-Party? Empirical Performance and Correctness of LLM-Assisted Zero-Dependency Python Libraries",
+  "authors": [
+    "Peng Ding",
+    "Rick Stevens"
+  ],
+  "abstract": "Third-party Python libraries introduce dependency management overhead, supply chain risk, and deployment friction in constrained environments. A natural question is how much of this ecosystem can be replicated using only Python's standard library -- and at what correctness and performance cost. We address this empirically through zerodep, a growing collection of single-file Python modules, each a stdlib-only reimplementation of a popular third-party library, developed with LLM assistance under strict constraints: no external imports, single file, drop-in API compatibility, and mandatory correctness validation against the reference library. Spanning over 40 modules across 12 categories -- including serialization, networking, cryptography, agent protocols, and text processing -- zerodep provides a controlled testbed for two interrelated questions: (1) Where does the stdlib suffice? and (2) Can LLMs effectively generate correct, performant code under tight symbolic constraints? Systematic benchmarking shows that stdlib-only implementations achieve performance parity (within 2x of the reference) in the majority of cases. The primary performance cliff is C-extension-backed computation (image processing, binary serialization, low-level crypto), not the inherent overhead of pure-Python third-party libraries. Conversely, many widely-used libraries carry architectural overhead that LLM-generated stdlib reimplementations avoid, yielding 5--115x speedups in several categories. We characterize the stdlib capability boundary across complexity tiers and library categories, discuss where LLM-assisted development succeeds and where it requires iterative human correction, and examine implications for dependency-free software engineering at scale. zerodep is open-source at https://github.com/Oaklight/zerodep.",
+  "primary_cat": "cs.SE",
+  "all_cats": [
+    "cs.SE",
+    "cs.AI",
+    "cs.PL"
+  ],
+  "submitted_at": "2026-05-20T17:02:54Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.21405v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper provides concrete guidance on when builders can avoid third-party dependencies by using stdlib-only implementations, directly impacting dependency management decisions with measurable performance data."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "While LLM-assisted coding is established, the systematic empirical evaluation of stdlib vs third-party performance across 40+ modules with strict constraints represents a substantial new contribution to dependency-free software engineering."
+    },
+    "reproducibility": {
+      "score": 9,
+      "justification": "The zerodep codebase is fully open-source with clear methodology, benchmarking procedures, and validation against reference implementations, enabling straightforward reproduction."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper clearly articulates its methodology, constraints, and findings with specific performance metrics and well-scoped claims about stdlib capability boundaries."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM-assisted software engineering with practical implications for builders working on dependency management and constrained deployment environments."
+    }
+  },
+  "composite": 8.05
+}

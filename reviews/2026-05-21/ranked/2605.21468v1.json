@@ -1,0 +1,47 @@
+{
+  "arxiv_id": "2605.21468v1",
+  "title": "You Only Need Minimal RLVR Training: Extrapolating LLMs via Rank-1 Trajectories",
+  "authors": [
+    "Zhepei Wei",
+    "Xinyu Zhu",
+    "Wei-Lin Chen",
+    "Chengsong Huang",
+    "Jiaxin Huang",
+    "Yu Meng"
+  ],
+  "abstract": "Reinforcement learning with verifiable rewards (RLVR) has become a dominant paradigm for improving reasoning in large language models (LLMs), yet the underlying geometry of the resulting parameter trajectories remains underexplored. In this work, we demonstrate that RLVR weight trajectories are extremely low-rank and highly predictable. Specifically, we find that the majority of downstream performance gains are captured by a rank-1 approximation of the parameter deltas, where the magnitude of this projection evolves near-linearly with training steps. Motivated by this, we propose a simple and compute-efficient method RELEX (REinforcement Learning EXtrapolation), which estimates the rank-1 subspace from a short observation window and extrapolates future checkpoints via linear regression, with no learned model required. Across three models (i.e., Qwen2.5-Math-1.5B, Qwen3-4B-Base, and Qwen3-8B-Base), RELEX produces checkpoints that match or exceed RLVR performance on both in-domain and out-of-domain benchmarks, requiring as few as 15% steps of full RLVR training. Remarkably, RELEX is able to extrapolate far beyond the observation window at no training cost, predicting checkpoints up to 10-20$\\times$ beyond the observed prefix with continued improvement (e.g., observe only the first 50 steps and extrapolate to 1000 steps). Our ablation analysis confirms the minimalist sufficiency of RELEX: neither increasing the subspace rank nor employing non-linear modeling yields further gains in extrapolation. Finally, we show that RELEX's success stems from a \"denoising\" effect: by projecting updates onto the rank-1 subspace, the model discards stochastic optimization noise that would otherwise degrade performance during extrapolation. Our code is available at https://github.com/weizhepei/RELEX.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG",
+    "cs.CL"
+  ],
+  "submitted_at": "2026-05-20T17:53:20Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.21468v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces RELEX, which can reduce RLVR training compute by 85% while matching or exceeding performance, directly impacting how builders should approach model fine-tuning efficiency."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "While building on RLVR, the discovery of rank-1 trajectory predictability and the minimalist extrapolation approach represent a substantial new variation in optimization methodology."
+    },
+    "reproducibility": {
+      "score": 9,
+      "justification": "The paper states that code is available at a GitHub repository, providing all necessary artifacts for reproduction across multiple model sizes."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper clearly explains the rank-1 trajectory discovery, RELEX methodology, and provides comprehensive ablation studies across three different model scales."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM fine-tuning efficiency, a core concern for builders working with models like Qwen2.5-Math-1.5B, Qwen3-4B-Base, and Qwen3-8B-Base."
+    }
+  },
+  "composite": 8.05
+}

@@ -1,0 +1,45 @@
+{
+  "arxiv_id": "2605.21427v1",
+  "title": "PALS: Power-Aware LLM Serving for Mixture-of-Experts Models",
+  "authors": [
+    "Can Hankendi",
+    "Rana Shahout",
+    "Minlan Yu",
+    "Ayse K. Coskun"
+  ],
+  "abstract": "Large language model (LLM) inference has become a dominant workload in modern data centers, driving significant GPU utilization and energy consumption. While prior systems optimize throughput and latency by batching, scheduling, and parallelism, they largely treat GPU power as a static constraint rather than a controllable resource. In this paper, we present a power-aware runtime for LLM serving, PALS, that treats GPU power caps as a first-class control knob and jointly optimizes them with software parameters such as batch size. The system combines lightweight offline power-performance models with a feedback-driven controller to select configurations that satisfy throughput targets while maximizing energy efficiency. We implement PALS within an existing LLM serving framework, vLLM, demonstrating that it requires no model retraining or API changes. Across multi-GPU systems and both dense and mixture-of-experts (MoE) models, PALS improves energy efficiency by up to 26.3%, reduces QoS violations by 4x to 7x under power constraints, and tracks dynamic power budgets. These results highlight the potential of integrating power control directly into LLM inference runtimes, enabling energy-proportional and grid-interactive AI systems.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI",
+    "cs.DC"
+  ],
+  "submitted_at": "2026-05-20T17:19:20Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.21427v1",
+  "in_scope": true,
+  "primary_topic": "adjacent_infrastructure",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper refines LLM serving with a power-aware runtime that achieves up to 26.3% better energy efficiency and significantly reduces QoS violations, directly impacting deployment decisions for builders operating at scale."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "It introduces a substantial new variation by treating GPU power caps as a first-class control knob and jointly optimizing them with software parameters, a distinct approach from prior work focused solely on throughput and latency."
+    },
+    "reproducibility": {
+      "score": 8,
+      "justification": "The system is implemented within the open-source vLLM framework, and the paper describes the lightweight offline models and feedback-driven controller clearly enough for reimplementation, though specific code links are not provided in the abstract."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The abstract is solidly written, clearly stating the problem, solution, implementation, and quantifiable results (26.3% efficiency gain, 4x-7x QoS improvement) without apparent overclaim."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper is directly in the applied-AI sweet spot, addressing a core systems challenge (LLM serving efficiency) for builders deploying dense and mixture-of-experts models in production."
+    }
+  },
+  "composite": 7.85
+}
