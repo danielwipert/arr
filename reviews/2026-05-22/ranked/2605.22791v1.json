@@ -1,0 +1,43 @@
+{
+  "arxiv_id": "2605.22791v1",
+  "title": "Gated DeltaNet-2: Decoupling Erase and Write in Linear Attention",
+  "authors": [
+    "Ali Hatamizadeh",
+    "Yejin Choi",
+    "Jan Kautz"
+  ],
+  "abstract": "Linear attention replaces the unbounded cache of softmax attention with a fixed-size recurrent state, reducing sequence mixing to linear time and decoding to constant memory. The hard part is not just what to forget, but how to edit this compressed memory without scrambling existing associations. Delta-rule models subtract the current read before writing a new value, and Kimi Delta Attention (KDA) sharpens forgetting with channel-wise decay. But the active edit still uses a single scalar gate to control two different things: how much old content to erase on the key side and how much new content to commit on the value side. We introduce Gated DeltaNet-2, which generalizes both Gated DeltaNet and KDA by inheriting adaptive forgetting and channel-wise decay while addressing their shared limitation, the scalar tie between erasing and writing. Gated Delta Rule-2 separates these roles with a channel-wise erase gate b_t and a channel-wise write gate w_t, reducing to KDA when both gates collapse to the same scalar and to Gated DeltaNet when the decay also collapses. We derive a fast-weight update view, a chunkwise WY algorithm with channel-wise decay absorbed into asymmetric erase factors, and a gate-aware backward pass that preserves efficient parallel training. At 1.3B parameters trained on 100B FineWeb-Edu tokens, Gated DeltaNet-2 achieves the strongest overall results among Mamba-2, Gated DeltaNet, KDA, and Mamba-3 variants across language modeling, commonsense reasoning, and retrieval. Its advantage is most pronounced on long-context RULER needle-in-a-haystack benchmarks, where it improves the evaluated multi-key retrieval setting and remains strong in both recurrent and hybrid settings. Code is available at https://github.com/NVlabs/GatedDeltaNet-2.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI"
+  ],
+  "submitted_at": "2026-05-21T17:44:57Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.22791v1",
+  "in_scope": true,
+  "primary_topic": "adjacent_infrastructure",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces a method that decouples erase and write operations in linear attention, providing measurable improvements in long-context retrieval tasks that could influence RAG architecture decisions."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The work introduces channel-wise erase and write gates as a substantial variation that generalizes prior delta-rule models while addressing their shared limitation of scalar gating."
+    },
+    "reproducibility": {
+      "score": 9,
+      "justification": "Code is publicly available at the provided GitHub repository, enabling competent teams to reproduce the results with minimal friction."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The abstract clearly explains the problem, proposed solution, and results across multiple benchmarks with appropriate scoping of claims."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses core LLM architecture improvements for efficient attention mechanisms, squarely in the applied-AI sweet spot for builders."
+    }
+  },
+  "composite": 8.05
+}

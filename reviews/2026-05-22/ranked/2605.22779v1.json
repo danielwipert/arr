@@ -1,0 +1,47 @@
+{
+  "arxiv_id": "2605.22779v1",
+  "title": "FAME: Failure-Aware Mixture-of-Experts for Message-Level Log Anomaly Detection",
+  "authors": [
+    "Huanchi Wang",
+    "Zihang Huang",
+    "Yifang Tian",
+    "Kristina Dzeparoska",
+    "Hans-Arno Jacobsen",
+    "Alberto Leon-Garcia"
+  ],
+  "abstract": "Production systems generate millions of log lines daily, yet most anomaly detectors operate at the session or window-level, flagging groups of lines rather than identifying the specific message responsible. This coarse granularity forces operators to inspect many routine lines per alert. Message-level detection offers finer granularity, but remains challenging. A single event template may correspond to both normal and anomalous messages, failures arise from heterogeneous subsystems, and line-level labeling at scale is impractical. Although large language models (LLMs) can reason over log semantics, applying them to every line is too costly for continuous monitoring. We present FAME (Failure-Aware Mixture-of-Experts), a label-efficient message-level mixture-of-experts framework that uses an LLM only once offline. We annotate at most K labeled lines per template to derive binary normal/anomaly indicators and representative examples. The LLM proposes a partition of templates into failure domains, and a certification step validates the proposal before training. FAME trains a lightweight router and domain experts that run on-premise and output anomaly predictions and failure-domain labels. On BGL, FAME achieves F1 = 98.16 at K = 100 reducing annotation effort by 76x and detects 86.3% of anomalies from unseen EventIDs. On Thunderbird, FAME reaches F1 = 99.95 with perfect recall.",
+  "primary_cat": "cs.SE",
+  "all_cats": [
+    "cs.SE",
+    "cs.LG"
+  ],
+  "submitted_at": "2026-05-21T17:34:53Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.22779v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper addresses a practical production pain point by enabling message-level log anomaly detection with 76x reduction in annotation effort, directly impacting how engineers monitor system reliability."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "FAME introduces a novel failure-aware mixture-of-experts framework that uses LLMs offline for template partitioning while maintaining lightweight on-premise inference, distinct from prior session-level approaches."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is clearly described with specific K values and performance metrics on standard datasets (BGL, Thunderbird), though no explicit mention of code or dataset availability is made."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper clearly articulates the problem space, methodology, and results with specific F1 scores (98.16, 99.95) and practical metrics like annotation reduction and recall on unseen events."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "Directly applies LLMs to solve a core engineering problem (log analysis) with practical deployment considerations, fitting well within the applied-AI focus for builders."
+    }
+  },
+  "composite": 7.35
+}
