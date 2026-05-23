@@ -1,0 +1,49 @@
+{
+  "arxiv_id": "2605.22781v1",
+  "title": "DeltaBox: Scaling Stateful AI Agents with Millisecond-Level Sandbox Checkpoint/Rollback",
+  "authors": [
+    "Yunpeng Dong",
+    "Jingkai He",
+    "Yuze Hou",
+    "Dong Du",
+    "Zhonghu Xu",
+    "Si Yu",
+    "Yubin Xia",
+    "Haibo Chen"
+  ],
+  "abstract": "LLM-powered AI agents require high-frequency state exploration (e.g., test-time tree search and reinforcement learning), relying on rapid checkpoint and rollback (C/R) of the complete sandbox state, including files and process state (e.g., memory, contexts, etc.). Existing mechanisms duplicate the entire state, causing hundreds of milliseconds to seconds of latency per C/R, which severely bottlenecks deep search and large-scale fan-outs.\n  This paper observes that subsequent checkpoints in AI agents are highly similar. Therefore, instead of full duplication, a sandbox should only duplicate the changes between consecutive checkpoints (Key Insight). However, it is non-trivial to realize the idea, mainly due to the missing OS supports. This paper proposes a new OS-level abstraction, DeltaState, to enable the change-based transactional C/R for AI agents with two co-designed OS mechanisms. First, DeltaFS enables change-based filesystem C/R by organizing the file states into layers and dynamically freezing the writable layer and inserting a new one during checkpoint, reducing file updates to copy-on-write, and making rollback a simple layer switch. Second, DeltaCR enables change-based process state C/R using incremental dumps, and accelerates rollback by bypassing traditional pipelines to directly fork() from a frozen template process. We then present DeltaBox, a novel agent sandbox achieving millisecond level C/R through the two new mechanisms. Evaluations on SWE-bench and RL micro-benchmarks show DeltaBox completes checkpoint and rollback in millisecond-level latency (14ms and 5ms, respectively), empowering agents to explore substantially more nodes under fixed time budgets.",
+  "primary_cat": "cs.OS",
+  "all_cats": [
+    "cs.OS",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-05-21T17:36:17Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.22781v1",
+  "in_scope": true,
+  "primary_topic": "adjacent_infrastructure",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 9,
+      "justification": "The paper directly addresses a core performance bottleneck in stateful AI agent architectures by proposing a system that reduces checkpoint/rollback latency from seconds to milliseconds, which changes how builders should design systems requiring high-frequency state exploration."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The paper introduces a new OS-level abstraction, DeltaState, and co-designed mechanisms (DeltaFS and DeltaCR) for change-based transactional checkpoint/rollback, representing a substantial new variation distinct from prior full-state duplication approaches."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly with architectural diagrams and mechanisms explained, enabling reimplementation, but the paper does not mention public release of code, weights, or datasets."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is solidly written with a clear problem statement, key insight, proposed solution architecture, and quantitative evaluation showing millisecond-level latencies and improved node exploration."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper is directly in the LLM and applied-AI sweet spot, focusing on scaling stateful AI agents, a core infrastructure concern for builders implementing LLM-powered agents."
+    }
+  },
+  "composite": 7.8
+}

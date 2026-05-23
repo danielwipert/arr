@@ -1,0 +1,42 @@
+{
+  "arxiv_id": "2605.22766v1",
+  "title": "Diversed Model Discovery via Structured Table Discovery",
+  "authors": [
+    "Zhengyuan Dong",
+    "Renée J. Miller"
+  ],
+  "abstract": "Model cards describe model behavior through a mixture of textual descriptions and structured artifacts, including performance, configuration, and dataset tables. Existing model search systems rely predominantly on semantic similarity over text, which can produce homogeneous result sets and limit exploration of alternatives. We argue that model search is inherently comparative: users want models that are task-aligned yet differentiated in measurable ways. We hypothesize that this balance requires retrieval over condensed, high-quality evidence rather than verbose descriptions, and much of that evidence is concentrated in structured tables. We present StructuredSemanticSearch, a table-driven model search framework built on the ModelTables benchmark. Given a query, StructuredSemanticSearch combines a semantic baseline for task alignment with a structure-aware pipeline that discovers query-related model-card tables using table discovery operators such as unionability, joinability, and keyword search. Retrieved tables are mapped back to model cards under a controlled top-k budget, enabling fair comparison between text-based and table-based retrieval. Beyond retrieval, StructuredSemanticSearch adapts table integration to the model-table domain through orientation-aware integration, producing compact integrated views of tables from partially overlapping and sometimes transposed evidence tables. For evaluation, we introduce a nugget-based, auditable protocol that extracts compact evidence items from model cards, matches queries to condition- or intent-specific nuggets, and measures evidence coverage and diversity over retrieved model-card candidate sets. This protocol also provides a scalable path toward approximate, evidence-based labeling in dynamic model lakes. Experiments on 597 model-recommendation queries show improved nugget coverage for the structure-aware pipeline than semantic baseline",
+  "primary_cat": "cs.IR",
+  "all_cats": [
+    "cs.IR"
+  ],
+  "submitted_at": "2026-05-21T17:28:01Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.22766v1",
+  "in_scope": true,
+  "primary_topic": "rag",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper refines model search with a structured table-driven approach that provides measurable gains in evidence coverage and diversity, directly impacting how builders might design model discovery systems."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "It introduces a substantial new variation by applying structured table discovery operators like unionability and joinability to model-card search, a distinct approach from prior semantic-only methods."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly enough to reimplement, including the StructuredSemanticSearch framework and evaluation protocol, but no explicit mention of public code or artifacts is provided."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is solidly written with a defensible evaluation methodology, introducing a clear framework, benchmark, and a nugget-based audit protocol."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "The work is clearly in scope, addressing a core infrastructure challenge—model discovery and evaluation—for engineers building with LLMs and other AI models."
+    }
+  },
+  "composite": 7.15
+}
