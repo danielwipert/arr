@@ -1,0 +1,60 @@
+{
+  "arxiv_id": "2605.22763v1",
+  "title": "Advancing Mathematics Research with AI-Driven Formal Proof Search",
+  "authors": [
+    "George Tsoukalas",
+    "Anton Kovsharov",
+    "Sergey Shirobokov",
+    "Anja Surina",
+    "Moritz Firsching",
+    "Gergely Bérczi",
+    "Francisco J. R. Ruiz",
+    "Arun Suggala",
+    "Adam Zsolt Wagner",
+    "Eric Wieser",
+    "Lei Yu",
+    "Aja Huang",
+    "Miklós Z. Horváth",
+    "Andrew Ferrauiolo",
+    "Henryk Michalewski",
+    "Codrut Grosu",
+    "Thomas Hubert",
+    "Matej Balog",
+    "Pushmeet Kohli",
+    "Swarat Chaudhuri"
+  ],
+  "abstract": "Large language models (LLMs) increasingly excel at mathematical reasoning, but their unreliability limits their utility in mathematics research. A mitigation is using LLMs to generate formal proofs in languages like Lean. We perform the first large-scale evaluation of this method's ability to solve open problems. Our most capable agent autonomously resolved 9 of 353 open Erdős problems at the per-problem cost of a few hundred dollars, proved 44/492 OEIS conjectures, and is being deployed in combinatorics, optimization, graph theory, algebraic geometry, and quantum optics research. A basic agent alternating LLM-based generation with Lean-based verification replicated the Erdős successes but proved costlier on the hardest problems. These findings demonstrate the power of AI-aided formal proof search and shed light on the agent designs that enable it.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI"
+  ],
+  "submitted_at": "2026-05-21T17:24:57Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.22763v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 9,
+      "justification": "This paper demonstrates AI agents can autonomously solve open mathematical problems at low cost, directly changing how builders approach mathematical reasoning and formal verification systems."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The first large-scale evaluation of LLM-driven formal proof search for solving open problems represents a substantial new application of existing techniques to mathematics research."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly enough to reimplement but no mention of code, weights, or datasets being publicly available."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "Well-written abstract with concrete results (9/353 Erdős problems solved, 44/492 OEIS conjectures) and appropriate scope for the claims made."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly demonstrates advanced LLM applications for mathematical reasoning and formal verification, squarely in the LLM builder sweet spot."
+    }
+  },
+  "composite": 8.0
+}

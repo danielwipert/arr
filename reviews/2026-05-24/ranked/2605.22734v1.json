@@ -1,0 +1,45 @@
+{
+  "arxiv_id": "2605.22734v1",
+  "title": "ChronoMedKG: A Temporally-Grounded Biomedical Knowledge Graph and Benchmark for Clinical Reasoning",
+  "authors": [
+    "Md Shamim Ahmed",
+    "Farzaneh Firoozbakht",
+    "Lukas Galke Poech",
+    "Jan Baumbach",
+    "Richard Röttger"
+  ],
+  "abstract": "Biomedical knowledge graphs (KGs) treat disease associations as static facts, but temporal information is crucial for clinical reasoning, e.g., a symptom diagnostic of one disease at age 3 may imply a different disease at age 13. Existing KGs such as PrimeKG, Hetionet, and iKraph do not encode when a finding becomes clinically relevant over the course of a disease. This limits their usefulness for longitudinal clinical reasoning and retrieval augmentation.\n  We introduce ChronoMedKG, a temporal biomedical knowledge graph that contains 460,497 evidence-linked triples (filtered from 13M raw extractions) covering 13,431 diseases. Each association is tied to temporal components like onset window or progression stage, which are backed by PMID-traceable evidence and a multi-signal credibility score. The graph is constructed through a disease-autonomous multi-agent pipeline in which multiple frontier LLMs independently extract knowledge from PubMed and PMC literature. Only those relations are kept that are supported by multi-model consensus, survive credibility filtering, as well as ontology alignment.\n  ChronoMedKG scored 92.7% agreement against Orphadata and adds temporal grounding for 6,250 diseases absent from HPOA, Orphadata, and Phenopackets, including 1,657 Orphanet-coded rare diseases. We further introduce ChronoTQA, a benchmark of 3,341 questions across eight task types (six temporal plus two static controls), with a 12-question supplementary probe. Frontier LLMs lose roughly 30 points moving from static to temporal questions; ChronoMedKG retrieval rescues 47-65% of their long-tail failures, against 17-29% for HPOA-RAG. As such, ChronoMedKG provides a crucial temporal axis for retrieval-augmented clinical systems that was previously absent.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL"
+  ],
+  "submitted_at": "2026-05-21T17:04:28Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.22734v1",
+  "in_scope": true,
+  "primary_topic": "rag",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces temporal grounding to biomedical KGs, which significantly enhances clinical reasoning capabilities and provides measurable RAG improvements of 47-65% over static baselines."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "While building on existing KG work, it introduces novel temporal components and a multi-agent LLM pipeline for evidence extraction with multi-model consensus filtering."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly with specific extraction and filtering processes, but no mention of code or dataset release limits direct reproducibility."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "Well-written with clear problem statement, methodology description, and comprehensive evaluation including benchmark results and comparative analysis."
+    },
+    "topical_fit": {
+      "score": 7,
+      "justification": "Directly relevant to LLM builders through its multi-agent LLM pipeline and RAG applications, though focused specifically on biomedical domain."
+    }
+  },
+  "composite": 7.25
+}

@@ -1,0 +1,45 @@
+{
+  "arxiv_id": "2605.22743v1",
+  "title": "SeqLoRA: Bilevel Orthogonal Adaptation for Continual Multi-Concept Generation",
+  "authors": [
+    "Javad Parsa",
+    "Enis Simsar",
+    "Amir Joudaki",
+    "Thomas Hofmann",
+    "André M. H. Teixeira"
+  ],
+  "abstract": "Parameter-efficient fine-tuning enables fast personalization of text-to-image diffusion models, but composing multiple custom concepts remains challenging due to representation interference. Existing modular methods either rely on expensive post-hoc fusion or freeze adaptation subspaces, which limit expressiveness and concept fidelity. To address this trade-off, we propose Sequential regularized LoRA (SeqLoRA), a constrained continual learning framework that jointly optimizes both LoRA factors via bilevel optimization. Theoretically, we establish strong convergence guarantees for our algorithm and model the residual layer activations as a matrix sub-Gaussian process to derive high-probability bounds on catastrophic forgetting. We further prove that learning the LoRA basis from data minimizes residual interference energy more effectively than frozen-basis methods. Experiments on multi-concept image generation demonstrate that SeqLoRA improves identity preservation and scalability across up to 101 concepts, while avoiding costly fusion and reducing attribute interference in composed generations.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG"
+  ],
+  "submitted_at": "2026-05-21T17:13:49Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.22743v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper addresses a practical problem in multi-concept generation with measurable improvements in identity preservation and scalability up to 101 concepts, directly impacting how builders approach personalized text-to-image generation."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "Introduces a bilevel optimization approach for joint LoRA factor optimization with theoretical convergence guarantees, representing a substantial variation from existing frozen-basis methods."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough for reimplementation but no mention of code, weights, or datasets being publicly available."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "Well-written with clear problem statement and evaluation methodology, though theoretical sections may require specialized knowledge to fully appreciate."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses parameter-efficient fine-tuning of diffusion models for multi-concept generation, squarely in the LLM and applied-AI sweet spot for builders."
+    }
+  },
+  "composite": 7.1
+}
