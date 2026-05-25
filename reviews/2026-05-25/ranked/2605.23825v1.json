@@ -1,0 +1,43 @@
+{
+  "arxiv_id": "2605.23825v1",
+  "title": "It's the humans, not the data: Geopolitical bias in LLMs originates in post-training, amplified by the language of the prompt",
+  "authors": [
+    "Stuart Bladon",
+    "Brinnae Bent"
+  ],
+  "abstract": "It has generally been assumed that geopolitical bias in language models originates from the training data used during the pre-training phase. We tested seven open-weight LLM pairs consisting of the base model (pre-training only) and the chat model (pre-training and post-training) from seven labs on a paired-scenario forced-choice probe over 28 country pairs in English, French, and Chinese, and found that geopolitical bias originates in post-training rather than in pre-training. Across seven AI labs, six showed shifts in the direction associated with the country or region of the model developer after post-training. This shift is strongest in Alibaba's Qwen 2.5: while the base is neutral on China-favourability (-0.15 log-odds, p=0.15), the post-trained chat variant is at +2.91 (p<10^-4), an 18x shift in odds. We also observe shifts in biases toward other countries across all models. Additionally, the magnitude of this shift depends on the language used to prompt the model: the French-made Mistral becomes pro-France only under French prompting (FR-EN shift +1.91, p<10^-4). These findings suggest that geopolitical preferences in language models are not simply inherited from large-scale internet data but are actively shaped during post-training, highlighting the need for greater transparency, auditing, and oversight of alignment processes that influence how models represent nations, cultures, and political perspectives.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-05-22T16:29:02Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.23825v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The finding that geopolitical bias originates in post-training rather than pre-training changes how builders should approach model selection and auditing, as it shifts focus from training data curation to alignment process transparency."
+    },
+    "novelty": {
+      "score": 9,
+      "justification": "The paper introduces the novel finding that geopolitical bias systematically emerges during post-training across multiple model families, a clear departure from the prevailing assumption that bias originates in pre-training data."
+    },
+    "reproducibility": {
+      "score": 7,
+      "justification": "The paper provides detailed methodology including specific country pairs, languages tested, and statistical measures, though code and exact prompts are not explicitly linked as public artifacts."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with clear claims supported by specific numerical evidence like the 18x odds shift in Qwen 2.5 and the language-dependent bias in Mistral models."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "This paper directly addresses LLM behavior, bias, and alignment processes—core concerns for builders implementing and deploying language models in real-world applications."
+    }
+  },
+  "composite": 8.15
+}

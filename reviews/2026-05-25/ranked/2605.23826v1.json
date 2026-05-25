@@ -1,0 +1,45 @@
+{
+  "arxiv_id": "2605.23826v1",
+  "title": "Decomposing Queries into Tool Calls for Long-Video Keyframe Retrieval",
+  "authors": [
+    "Michal Shlapentokh-Rothman",
+    "Prachi Garg",
+    "Yu-Xiong Wang",
+    "Derek Hoiem"
+  ],
+  "abstract": "Keyframe selection is a direct way to provide verifiable visual evidence for long-video question answering (QA). Queries differ in what they require, and finding the right frames depends on knowing what to look for. Existing keyframe selectors either score every frame against a single query, or decompose the query into a fixed schema evaluated by a single visual tool. We propose ToolMerge, a keyframe retrieval method based on decomposition and merging: an Large Language Model (LLM) based planner decomposes the query into tool calls and specifies how their per-tool rankings are merged using boolean operators. To evaluate retrieval directly, we construct Molmo-2 Moments (M2M), a benchmark in which every question is anchored to a specific time interval by construction. Across QA, question retrieval, and caption retrieval, ToolMerge is competitive with prior keyframe selectors, most notably on caption retrieval, outperforming other methods by 5%. Code and data can be found at https://github.com/michalsr/ToolMerge .",
+  "primary_cat": "cs.CV",
+  "all_cats": [
+    "cs.CV",
+    "cs.CL"
+  ],
+  "submitted_at": "2026-05-22T16:29:51Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.23826v1",
+  "in_scope": true,
+  "primary_topic": "rag",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper introduces a practical method for video keyframe retrieval that outperforms existing approaches by 5% on caption retrieval, providing builders with a verifiable approach for long-video QA systems."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "ToolMerge introduces a novel decomposition-and-merging approach using LLM-based planning with boolean operators, distinct from prior single-query or fixed-schema methods."
+    },
+    "reproducibility": {
+      "score": 9,
+      "justification": "The paper states 'Code and data can be found at https://github.com/michalsr/ToolMerge', providing direct access to all implementation details."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper clearly presents the problem, method, and evaluation on the M2M benchmark with specific performance metrics across multiple retrieval tasks."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "The work directly applies LLMs for query decomposition in multimodal systems, fitting well with builders working on video understanding and retrieval applications."
+    }
+  },
+  "composite": 7.65
+}

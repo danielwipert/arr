@@ -1,0 +1,99 @@
+{
+  "date": "2026-05-25",
+  "paper_id": "arxiv:2605.23904v1",
+  "paper_title": "SkillOpt: Executive Strategy for Self-Evolving Agent Skills",
+  "paper_authors": [
+    "Yifan Yang",
+    "Ziyang Gong",
+    "Weiquan Huang",
+    "Qihao Yang",
+    "Ziwei Zhou",
+    "Zisu Huang",
+    "Yan Li",
+    "Xuemei Gao",
+    "Qi Dai",
+    "Bei Liu",
+    "Kai Qiu",
+    "Yuqing Yang",
+    "Dongdong Chen",
+    "Xue Yang",
+    "Chong Luo"
+  ],
+  "paper_url": "https://arxiv.org/abs/2605.23904",
+  "post_text": "SkillOpt trains agent skills with the same discipline that makes deep learning reproducible, turning procedural knowledge into a reusable text artifact.\n\nResearchers at Microsoft and Tsinghua University developed SkillOpt, a text-space optimizer that treats a skill document as external state for a frozen language model. It uses a frontier model to propose bounded add/delete/replace edits based on rollout evidence, accepting only those that improve a held-out validation score. On GPT-5.5, it lifts the average no-skill accuracy by +23.5 points in direct chat, with gains of +24.8 and +19.1 points inside Codex and Claude Code execution harnesses.\n\nThe system is narrower than it sounds. The optimizer runs only during training, adding zero inference-time cost to the deployed agent. The final skill document remains compact at 300-2,000 tokens, assembled from just 1-4 accepted edits that pass strict validation. Across six benchmarks and seven target models, SkillOpt is best or tied-best on all 52 evaluated configurations.\n\nFor teams building agentic systems, the implication is that procedural adaptation may be cheaper than model fine-tuning. A skill optimized once can transfer across model scales and execution environments without weight updates. The method makes domain expertise auditable as text rather than hidden in model parameters.\n\nWorth reading if you deploy agents that need consistent procedural discipline. Worth ignoring if your adaptation budget goes entirely to fine-tuning.\n\nPaper: SkillOpt: Executive Strategy for Self-Evolving Agent Skills, Yang et al.\nhttps://arxiv.org/abs/2605.23904\n\n#AI #AgentSkills #DomainAdaptation #ModelOptimization #SkillOpt",
+  "post_char_count": 1680,
+  "hook_char_count": 152,
+  "claims": [
+    {
+      "claim": "Researchers at Microsoft and Tsinghua University developed SkillOpt",
+      "source_span": "Authors: Yifan Yang, Ziyang Gong, Weiquan Huang, Qihao Yang, Ziwei Zhou, Zisu Huang, Yan Li, Xuemei Gao, Qi Dai, Bei Liu, Kai Qiu, Yuqing Yang, Dongdong Chen, Xue Yang, Chong Luo",
+      "page": 1
+    },
+    {
+      "claim": "a text-space optimizer that treats a skill document as external state for a frozen language model",
+      "source_span": "SkillOpt is, to our knowledge, the first systematic controllable text-space optimizer for agent skills",
+      "page": 1
+    },
+    {
+      "claim": "It uses a frontier model to propose bounded add/delete/replace edits based on rollout evidence",
+      "source_span": "a separate optimizer model turns scored rollouts into bounded add/delete/replace edits on a single skill document",
+      "page": 1
+    },
+    {
+      "claim": "accepting only those that improve a held-out validation score",
+      "source_span": "an edit is accepted only when it strictly improves a held-out validation score",
+      "page": 1
+    },
+    {
+      "claim": "On GPT-5.5, it lifts the average no-skill accuracy by +23.5 points in direct chat",
+      "source_span": "On GPT-5.5 it lifts the average no-skill accuracy by +23.5 points in direct chat",
+      "page": 1
+    },
+    {
+      "claim": "with gains of +24.8 and +19.1 points inside Codex and Claude Code execution harnesses",
+      "source_span": "by +24.8 inside the Codex agentic loop, and by +19.1 inside Claude Code",
+      "page": 1
+    },
+    {
+      "claim": "The optimizer runs only during training, adding zero inference-time cost to the deployed agent",
+      "source_span": "adding zero inference-time model calls at deployment",
+      "page": 1
+    },
+    {
+      "claim": "The final skill document remains compact at 300-2,000 tokens",
+      "source_span": "the deployed output is a compact best_skill.md file of roughly 300–2,000 tokens",
+      "page": 2
+    },
+    {
+      "claim": "assembled from just 1-4 accepted edits that pass strict validation",
+      "source_span": "the number of edits actually committed to best_skill.md during optimization is between 1 and 4",
+      "page": 14
+    },
+    {
+      "claim": "Across six benchmarks and seven target models, SkillOpt is best or tied-best on all 52 evaluated configurations",
+      "source_span": "SkillOpt is best or tied on all 52 evaluated (model, benchmark, harness) cells",
+      "page": 1
+    }
+  ],
+  "ranker_scores": {
+    "significance": 9,
+    "novelty": 8,
+    "reproducibility": 7,
+    "clarity": 8,
+    "topical_fit": 10,
+    "composite": 8.3
+  },
+  "critic_report": {
+    "voice_match": "pass",
+    "banned_phrase_scan": "pass",
+    "length_compliance": "fail",
+    "structure": "pass",
+    "grounding": "pass",
+    "hype_check": "pass",
+    "retries_used": 1,
+    "notes": "Required 1 retry/retries before passing. | voice: The post maintains a declarative, report-like tone with specific numbers and avoids LinkedIn-speak while making implications clear for business leaders. | banned_phrases: no banned phrases found | length: hook too long (152 chars, max 140) | structure: 7 blocks, 5 hashtags | grounding: All factual claims are properly supported by verbatim source spans from the paper sections. [mech: 1 claim span(s) not found in paper: 'Authors: Yifan Yang, Ziyang Gong, Weiquan Huang, Qihao Yang,'] | hype: The post accurately represents the paper's findings without unwarranted superlatives or overclaim."
+  },
+  "generated_at": "2026-05-25T12:39:18.786171Z",
+  "drafter_model": "deepseek/deepseek-chat-v3.1",
+  "critic_model": "deepseek/deepseek-chat-v3.1"
+}

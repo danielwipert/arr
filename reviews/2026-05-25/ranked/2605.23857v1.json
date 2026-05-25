@@ -1,0 +1,43 @@
+{
+  "arxiv_id": "2605.23857v1",
+  "title": "Strong Teacher Not Needed? On Distillation in LLM Pretraining",
+  "authors": [
+    "Taiming Lu",
+    "Zhuang Liu"
+  ],
+  "abstract": "Knowledge distillation generally assumes a strong-to-weak relationship where stronger teachers yield better students. In this work, we examine this assumption about distillation in large language model pretraining. By varying architecture sizes and training token budgets, we create strong-to-weak, same-level, and weak-to-strong teacher-student relationships, and study distillation's effectiveness under each. We find that the teacher need not be strong: with proper mixing of the language modeling and knowledge distillation losses, even small and undertrained teachers improve larger students. At the same time, a stronger teacher is not always better: pushing the teacher further, through more parameters or more training tokens, can saturate or even reverse the distillation gains. We further observe that distillation improves generalization (out-of-distribution and downstream performance) more readily than in-domain fitting. Together, these results challenge the common belief that distillation pretraining always requires a strong teacher.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG",
+    "cs.CL"
+  ],
+  "submitted_at": "2026-05-22T17:16:35Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.23857v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper challenges a core assumption in LLM distillation that could change how builders approach model training by showing that expensive strong teachers may not be necessary."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The work introduces the novel concept of weak-to-strong and same-level distillation in pretraining, which substantially differs from the conventional strong-to-weak paradigm."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is clearly described with specific architecture sizes and training token budgets, though no code or datasets are mentioned as being publicly available."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with clear claims about challenging conventional wisdom and provides evidence from systematic experiments across different teacher-student relationships."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM training methodology and distillation techniques that are highly relevant to builders optimizing model performance and training efficiency."
+    }
+  },
+  "composite": 7.45
+}

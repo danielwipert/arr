@@ -1,0 +1,45 @@
+{
+  "arxiv_id": "2605.23809v1",
+  "title": "Advanced AI Service Provisioning in O-RAN through LLM Engine Integration",
+  "authors": [
+    "Seyed Bagher Hashemi Natanzi",
+    "Pranshav Gajja",
+    "Bo Tang",
+    "Vijay K. Shah"
+  ],
+  "abstract": "The Open Radio Access Network (O-RAN) architecture allows AI to be embedded directly into the RAN through modular xApps and rApps, yet creating these applications collecting data, training models, writing code, and deploying them safely remains slow and largely manual. Large Language Models (LLMs) offer strong reasoning and code-generation capabilities but are unsuited for the fast, deterministic inference required in real-time RAN control. We present a proof-of-concept Dual-Brain architecture that combines both strengths: an LLM-based orchestrator translates operator intents into data-collection policies and deployment code, while an automated ML engine, NeuralSmith, trains lightweight classifiers on demand via an API. We describe the architecture and provisioning workflow, share practical insights from a containerized O-RAN 5G~SA testbed, and discuss open research directions.",
+  "primary_cat": "eess.SY",
+  "all_cats": [
+    "eess.SY",
+    "cs.LG"
+  ],
+  "submitted_at": "2026-05-22T16:12:39Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.23809v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper presents a practical framework that could significantly accelerate AI application development in telecom networks by automating data collection, model training, and deployment workflows."
+    },
+    "novelty": {
+      "score": 6,
+      "justification": "While combining LLMs with automated ML engines is an emerging trend, the specific application to O-RAN architecture and the Dual-Brain approach represents a clear but incremental advancement in this space."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough for reimplementation, but the paper mentions only a proof-of-concept without providing code, weights, or datasets for full reproduction."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is well-structured with clear problem statement, architecture description, and practical insights from testbed implementation, though some technical details remain high-level."
+    },
+    "topical_fit": {
+      "score": 6,
+      "justification": "While focused on LLM integration and automation, the telecom/RAN-specific context makes this adjacent to core LLM builder concerns, requiring explanation of relevance to general LLM practitioners."
+    }
+  },
+  "composite": 6.25
+}
