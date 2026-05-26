@@ -1,0 +1,47 @@
+{
+  "arxiv_id": "2605.26079v1",
+  "title": "Automated Benchmark Auditing for AI Agents and Large Language Models",
+  "authors": [
+    "Junlin Wang",
+    "Federico Bianchi",
+    "Shang Zhu",
+    "Fan Nie",
+    "Yongchan Kwon",
+    "Bhuwan Dhingra",
+    "James Zou"
+  ],
+  "abstract": "Modern AI benchmarks operate at a complexity that outpaces traditional verification methods. Tasks authored by domain experts often contain implicit assumptions, incomplete environment specifications, and brittle evaluation logic that human annotation cannot reliably catch. We introduce Auto Benchmark Audit (ABA), an agentic framework that systematically audits individual benchmark tasks, uncovering issues such as hidden environment dependencies, specification gaps, and limited grading logic. We run ABA on a collection of frontier LLM benchmarks and previous NeurIPS publications, totaling 168 benchmarks across nine domains. Across this corpus, ABA identifies critical issues including ambiguous task design, execution environment conflicts, and incorrect ground truths in over 25.7% of the evaluated tasks. The precision of these automated audits is validated by expert review and independent third-party reports such as upstream PRs. Crucially, we demonstrate that these problematic tasks severely distorts capability assessments for agents and LLMs: filtering out these tasks with issues shifts model rankings and increases average performance on SWE-bench Verified and Terminal-Bench 2 by 9.9% and 9.6%, respectively. We release the agentic tool and all task annotations to support the future development of frontier benchmarks.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL"
+  ],
+  "submitted_at": "2026-05-25T17:44:21Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.26079v1",
+  "in_scope": true,
+  "primary_topic": "evaluation",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 9,
+      "justification": "The paper demonstrates that benchmark issues significantly distort model rankings and performance metrics (9.9% and 9.6% improvements after filtering), directly impacting how builders should evaluate and select LLMs for deployment."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "It introduces Auto Benchmark Audit (ABA), an agentic framework for systematic benchmark verification, a substantial new approach distinct from traditional human annotation or simple automated checks."
+    },
+    "reproducibility": {
+      "score": 9,
+      "justification": "The paper states 'We release the agentic tool and all task annotations,' providing code, datasets, and clear instructions for reproduction."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with a clear problem statement, method description, and quantified results (e.g., 25.7% of tasks had issues) that are appropriately scoped."
+    },
+    "topical_fit": {
+      "score": 10,
+      "justification": "The paper directly addresses the reliability of LLM and AI agent evaluation, a core concern for builders who depend on benchmarks to make technical decisions."
+    }
+  },
+  "composite": 8.7
+}

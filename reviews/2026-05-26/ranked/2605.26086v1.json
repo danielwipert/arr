@@ -1,0 +1,51 @@
+{
+  "arxiv_id": "2605.26086v1",
+  "title": "Claw-Anything: Benchmarking Always-On Personal Assistants with Broader Access to User's Digital World",
+  "authors": [
+    "Yusong Lin",
+    "Xinyuan Liang",
+    "Haiyang Wang",
+    "Qipeng Gu",
+    "Siqi Cheng",
+    "Jiangui Chen",
+    "Shuzhe Wu",
+    "Feiyang Pan",
+    "Lue Fan",
+    "Sanyuan Zhao",
+    "Dandan Tu"
+  ],
+  "abstract": "Large language model agents are increasingly envisioned as always-on personal assistants with access to anything relevant in the user's digital world. Yet current systems operate over only narrow slices of that world, limiting context-sensitive reasoning and effective assistance. Existing benchmarks similarly provide only partial user state and therefore fail to capture performance in such a broad, always-on setting. To address this gap, we introduce Claw-Anything, a benchmark that expands agent context along three dimensions: long-horizon activity histories, interdependent backend services, and integrated GUI and CLI interaction across multiple devices. To instantiate this setting, we simulate months of user activity through multi-round event injection, producing complex world states and realistic noise, including irrelevant events and conflicting signals. Agents must reason over rich contextual environments while remaining robust to such noise. This expanded scope also enables the evaluation of proactive assistance, requiring agents to anticipate user needs and deliver timely recommendations. Experiments show that GPT-5.5 achieves only 34.5% pass@1, substantially below prior benchmarks, underscoring a gap between current agent capabilities and the demands of always-on personal assistance. Alongside the benchmark, we release an automated data-generation pipeline that yields 2,000 training environments and improves the base model by 23.7%, demonstrating its utility of scalable data infrastructure.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI"
+  ],
+  "submitted_at": "2026-05-25T17:50:04Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.26086v1",
+  "in_scope": true,
+  "primary_topic": "evaluation",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 9,
+      "justification": "The paper introduces a benchmark that directly challenges current RAG architectures by expanding agent context to include long-horizon histories, backend services, and multi-device interactions, which changes core decisions about how builders should structure personal assistant systems."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The benchmark substantially expands agent context along three novel dimensions (activity histories, backend services, GUI/CLI interaction) and introduces a multi-round event injection method to simulate months of user activity with realistic noise, a distinct approach from prior narrow benchmarks."
+    },
+    "reproducibility": {
+      "score": 8,
+      "justification": "The paper releases an automated data-generation pipeline and yields 2,000 training environments, providing substantial public artefacts, though reproduction would still require implementing the specific multi-device and backend service simulations."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is solidly written with a clear problem statement, well-defined benchmark dimensions, and defensible evaluation showing GPT-5.5 achieves only 34.5% pass@1, though it could provide more detail on the exact composition of the 2,000 training environments."
+    },
+    "topical_fit": {
+      "score": 10,
+      "justification": "The paper is directly in the LLM and applied-AI sweet spot, focusing on benchmarking and improving large language model agents as always-on personal assistants, which is a core concern for engineers building systems with LLMs."
+    }
+  },
+  "composite": 8.35
+}

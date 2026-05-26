@@ -1,0 +1,44 @@
+{
+  "arxiv_id": "2605.26081v1",
+  "title": "VeriTrace: Evolving Mental Models for Deep Research Agents",
+  "authors": [
+    "Haolang Zhao",
+    "Yunbo Long",
+    "Lukas Beckenbauer",
+    "Alexandra Brintrup"
+  ],
+  "abstract": "Deep research agents face vast, interdependent, and pervasively uncertain information. Existing systems explore what evolving intermediate representations should look like, but leave their evolution to the LLM's implicit reasoning. Without explicit regulation, the intermediate layer is easily contaminated by mixed-quality information and propagates errors along its dependencies, so model scale often ends up substituting for absent regulation. We argue that an agent's mental model should instead evolve through explicit feedback that continuously aligns task understanding with reality, and identify three regulatory loops: interpretive update, deviation feedback, and schema revision. We realise this in VeriTrace, a cognitive-graph framework that explicitly implements the three loops. Using matched Qwen3.5-27B backbones, VeriTrace improves over the strongest matched baseline by 4.22 pp on DeepResearch Bench (DRB) Insight (1.49 pp Overall) and by 5.9 pp Overall win rate on DeepConsult. With Config-DeepSeek, it achieves the strongest reproducible open-source result on DRB.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI"
+  ],
+  "submitted_at": "2026-05-25T17:46:57Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.26081v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces a framework that improves deep research agents by 4.22-5.9 percentage points on established benchmarks, directly impacting how builders should architect agent reasoning systems."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The paper introduces three explicit regulatory loops (interpretive update, deviation feedback, schema revision) as a novel approach to managing mental model evolution in research agents."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly enough to reimplement with Qwen3.5-27B and Config-DeepSeek backbones, but no mention of code or dataset availability is provided."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper clearly articulates the problem of implicit reasoning contamination and presents a well-structured framework with measurable benchmark improvements."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM agent architecture and reasoning systems, which is core to builders working with advanced LLM applications."
+    }
+  },
+  "composite": 7.3
+}

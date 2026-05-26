@@ -1,0 +1,44 @@
+{
+  "arxiv_id": "2605.26092v1",
+  "title": "OrpQuant: Geometric Orthogonal Residual Projection for Multiplier-Free Power-of-Two Transformer Quantization",
+  "authors": [
+    "Maoyang Xiang",
+    "Bo Wang",
+    "Tao Luo"
+  ],
+  "abstract": "The deployment of Large Language Models (LLMs) and Vision Transformers (ViTs) on edge devices is significantly constrained by memory limitations and the critical timing bottlenecks introduced by dense Multiply-Accumulate (MAC) arrays. In the ultra-low bit regime, logarithmic Power-of-Two (PoT) quantization provides a hardware-efficient alternative by replacing MAC operations with bit-shifts. However, the non-uniform exponential lattice is inherently limited by a \\textbf{Low Angular Resolution Regime}, a structural flaw that becomes particularly pronounced at sub-4-bit thresholds, leading to a notable degradation of high-dimensional feature manifolds.\n  To address this geometric limitation, we propose Orthogonal Residual Projection (ORP), an algorithm-hardware co-design framework. By formulating quantization as a dual-basis geometric projection, ORP adaptively synthesizes a higher-resolution residual lattice using strictly shift-and-add operations. Furthermore, ORP's analytical solver offers a practical alternative to computationally intensive gradient-based optimization, reducing the full-model calibration time for LLaMA-2-7B to approximately \\textbf{15 minutes}.\n  Extensive evaluations demonstrate ORP's applicability across modalities and its hardware efficiency. Under the 3-bit (W3/A16) constraint, ORP achieves a perplexity of 6.10 on LLaMA-2-7B, comparing favorably to conventional MAC-intensive baselines like AWQ without relying on asymmetric scaling, while maintaining competitive accuracy in 4-bit scenarios. At the silicon level, standard-cell RTL synthesis at a 28nm node indicates that ORP effectively mitigates the timing bottlenecks associated with dense multiplier trees.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-05-25T17:52:46Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.26092v1",
+  "in_scope": true,
+  "primary_topic": "adjacent_infrastructure",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 9,
+      "justification": "The paper introduces a multiplier-free quantization method that directly addresses timing bottlenecks in deploying LLMs/ViTs on edge devices, changing core decisions about model deployment architecture."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "It proposes a novel geometric orthogonal residual projection framework that formulates quantization as a dual-basis projection, a substantial new variation from prior logarithmic quantization approaches."
+    },
+    "reproducibility": {
+      "score": 7,
+      "justification": "The paper describes the analytical solver and geometric projection method clearly enough for reimplementation, though it doesn't explicitly mention public code or weights."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with clear problem formulation (Low Angular Resolution Regime), method description, and evaluation across modalities with specific results like 6.10 perplexity on LLaMA-2-7B."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper directly addresses practical deployment challenges for LLMs and Vision Transformers, sitting squarely in the applied-AI sweet spot for builders working with model optimization."
+    }
+  },
+  "composite": 8.2
+}
