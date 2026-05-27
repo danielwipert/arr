@@ -1,0 +1,44 @@
+{
+  "arxiv_id": "2605.27345v1",
+  "title": "MATCHA: Matching Text via Contrastive Semantic Alignment",
+  "authors": [
+    "Siran Li",
+    "Ece Sena Etoglu",
+    "Carsten Eickhoff",
+    "Seyed Ali Bahrainian"
+  ],
+  "abstract": "Reliable evaluation is essential for understanding large language model (LLM) performance, yet today's go-to metrics, namely token-overlap scores (e.g., ROUGE) and embedding-based measures (e.g., BERTScore), often misjudge semantic similarity of documents. Our study shows that both token-overlap metrics and embedding-based metrics routinely assign nearly identical scores to texts that directly contradict each other, thereby potentially masking fundamental errors. We introduce MATCHA, an automatic metric that jointly rewards semantic agreement with a reference and penalizes contradictions. MATCHA employs a dual-view perspective that measures (i) proximity to the gold text and (ii) distance from an adversarially generated counterfactual contradiction. In eight public benchmarks, MATCHA outperforms popular metrics, compared with human annotations on question-answering, image caption generation, natural language inference, summarization, and semantic textual similarity tasks. On the TruthfulQA dataset (i.e., a dataset without a training set, where no embedding-based metrics could locally train on), this improvement in terms of matching texts with a reference reaches 18.38% over ROUGE-L and 20.82% over BERTScore. Both quantitative comparison and qualitative human assessments confirm the efficacy and validity of MATCHA and uncover fundamental weaknesses in pre-existing metrics. Compared with 23 embedding models, including top state-of-the-art ones, used as a metric similar to BERTScore, MATCHA remains the most accurate in distinguishing correct from incorrect statements solely based on a reference. Our code and metric are publicly available (https://github.com/Siran-Li/MATCHA).",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL"
+  ],
+  "submitted_at": "2026-05-26T17:47:14Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.27345v1",
+  "in_scope": true,
+  "primary_topic": "evaluation",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 9,
+      "justification": "The paper introduces a new evaluation metric that directly addresses a core problem in LLM evaluation (current metrics failing to detect contradictions), which changes how builders should assess model outputs this quarter."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "MATCHA's dual-view perspective of measuring proximity to gold text and distance from an adversarial counterfactual contradiction represents a substantial new variation distinct from prior embedding-based or token-overlap metrics."
+    },
+    "reproducibility": {
+      "score": 9,
+      "justification": "The paper states 'Our code and metric are publicly available' with a provided GitHub URL, indicating code, weights, datasets, and clear instructions are all public."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The abstract is solidly written, clearly states the problem with existing metrics, describes the proposed method, and provides specific quantitative results across multiple benchmarks."
+    },
+    "topical_fit": {
+      "score": 10,
+      "justification": "The paper directly addresses LLM evaluation methodology, which is a central concern for engineers building with LLMs who need reliable metrics to assess model performance."
+    }
+  },
+  "composite": 8.7
+}

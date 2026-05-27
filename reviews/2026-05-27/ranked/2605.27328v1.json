@@ -1,0 +1,43 @@
+{
+  "arxiv_id": "2605.27328v1",
+  "title": "Governed Evolution of Agent Runtimes through Executable Operational Cognition",
+  "authors": [
+    "Mariano Garralda-Barrio"
+  ],
+  "abstract": "Recent advances in agentic systems increasingly treat code as an executable operational substrate rather than as a disposable output artifact. Prior work such as \\emph{Code as Agent Harness} frames validated agent-generated artifacts as runtime entities that can be created, executed, revised, persisted, and reused within long-running cognitive loops. However, the governance, lifecycle management, and operational evolution of such artifacts remain under-specified.\n  This paper proposes a framework for governed runtime evolution in multi-agent systems through executable operational cognition. We formalize agent-generated artifacts as persistent runtime capabilities that progressively become part of the operational substrate rather than transient intermediate outputs. Building on this perspective, we introduce \\emph{HarnessMutation} as a governed mechanism for lifecycle-aware runtime adaptation operating under explicit validation, traceability, evaluation, and rollback constraints.\n  Rather than treating runtime adaptation as unrestricted self-modification, the proposed framework models evolution as a bounded and observable process over persistent operational memory. It further shows how these ideas can be operationalized over modern agent runtimes and governance-oriented orchestration systems, providing a conceptual foundation for adaptive infrastructures whose evolution remains explicit, auditable, and constrained.",
+  "primary_cat": "cs.SE",
+  "all_cats": [
+    "cs.SE",
+    "cs.AI",
+    "cs.MA"
+  ],
+  "submitted_at": "2026-05-26T17:36:48Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.27328v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper refines the concept of agent-generated code as persistent runtime capabilities with governed lifecycle management, providing a concrete framework for builders implementing adaptive, auditable agent systems."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "It introduces the novel 'HarnessMutation' mechanism for bounded, observable runtime adaptation, a substantial variation that formalizes governed evolution distinct from prior work on agent-generated artifacts."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement the framework and HarnessMutation concept, but no code, datasets, or specific implementation artifacts are provided in the abstract."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The abstract is solidly written, clearly scoping the problem of under-specified governance and lifecycle management while proposing a formalized framework with explicit validation and traceability constraints."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper is directly in the applied-AI sweet spot, addressing the governance and operational evolution of agent runtimes, a core concern for engineers building production LLM-based systems."
+    }
+  },
+  "composite": 7.25
+}
