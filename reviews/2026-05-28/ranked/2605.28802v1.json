@@ -1,0 +1,46 @@
+{
+  "arxiv_id": "2605.28802v1",
+  "title": "Human Label Variation as Stable Signal: Learning Annotator-Specific Explanation Behavior via Cross-Annotator Preference Optimization",
+  "authors": [
+    "Beiduo Chen",
+    "Pingjun Hong",
+    "Ziyun Zhang",
+    "Benjamin Roth",
+    "Anna Korhonen",
+    "Barbara Plank"
+  ],
+  "abstract": "Free-text explanations extend human label variation (HLV) beyond label disagreement by revealing the reasoning and preferences behind annotators' decisions. We study whether large language models (LLMs) can learn and reproduce such annotator-specific label-explanation behavior. Using two sentence-pair tasks with four annotators each -- natural language inference and paraphrase judgment -- we first analyze whether annotators exhibit stable individual patterns. We find that such patterns are weak at the single-annotation level due to strong input-content effects, but become detectable after input-content reduction and annotator-level aggregation. We then compare prompting and supervised fine-tuning (SFT) baselines and propose cross-annotator preference optimization (CAPO), which contrasts a target annotator's response with other valid but less target-specific annotations for the same input. Experiments show that prompting is limited and unstable, SFT better captures annotator-specific behavior, and CAPO further improves aggregation-aware imitation and judge-based attribution while preserving target-specific reasoning patterns under human validation. Overall, our results show that HLV can be learned as annotator-specific label-explanation behavior, suggesting a path toward scalable explanation-based annotation grounded in annotator histories rather than labels alone.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL"
+  ],
+  "submitted_at": "2026-05-27T17:55:00Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.28802v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 6,
+      "justification": "The paper introduces CAPO for learning annotator-specific explanation behavior, which could help builders create more personalized AI systems, though the application is currently limited to specific annotation tasks."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "CAPO represents a substantial new variation in preference optimization by contrasting target annotator responses against other valid annotations, distinct from standard preference optimization approaches."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement CAPO, but the paper does not mention code or dataset availability, requiring implementation from scratch."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-structured with clear methodology, experiments on two sentence-pair tasks, and human validation, though some technical details of CAPO could be more explicit."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "Directly relevant to LLM builders working on fine-tuning, preference optimization, and personalized AI systems, though focused on a specific annotation use case."
+    }
+  },
+  "composite": 6.55
+}

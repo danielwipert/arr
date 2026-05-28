@@ -1,0 +1,45 @@
+{
+  "arxiv_id": "2605.28782v1",
+  "title": "Can Large Language Models Handle Discourse Particles? A Case Study of Colloquial Malay",
+  "authors": [
+    "Mariah Al Giptiah Binte Yusoff",
+    "Jakin Tan",
+    "Bocheng Chen",
+    "Guangliang Liu",
+    "Xi Chen"
+  ],
+  "abstract": "Discourse particles, such as \\textit{well} and \\textit{kind of}, are crucial components that enable LLMs to ``speak'' more like humans. They are used to convey emotions, intentions, and interpersonal meanings. However, existing studies have not yet built a comprehensive understanding of LLMs' capabilities in handling discourse particles. Moreover, the limited number of studies focuses primarily on high-resource languages such as English, with little attention paid to Southeast Asian languages. In this paper, we (1) propose \\textsc{MalayPrag}, a benchmark designed to systematically evaluate and analyze LLMs' capabilities in handling discourse particles in colloquial Malay; and (2) introduce five attributes that provide a linguistically grounded, unified framework for interpreting the pragmatic functions of discourse particles. Applying these two contributions, we prompt ten off-the-shelf LLMs to perform three prediction tasks. The experimental results reveal substantial challenges for current LLMs in accurately connecting discourse particles with their pragmatic functions in Malay. The provision of the five attributes designed in this study is found to significantly improve these connections, highlighting the need for structured scaffolding for models' pragmatic competence.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL"
+  ],
+  "submitted_at": "2026-05-27T17:42:52Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.28782v1",
+  "in_scope": true,
+  "primary_topic": "evaluation",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 5,
+      "justification": "The paper identifies a specific weakness in LLMs for a low-resource language and proposes a structured framework to improve performance, but its near-term impact on builders is limited to those working with Malay or similar languages."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The paper introduces a new benchmark (MalayPrag) and a linguistically grounded framework of five attributes for analyzing discourse particles, applying this to a significantly understudied language."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method and evaluation tasks are described clearly enough to reimplement, but the paper does not mention the release of the MalayPrag benchmark dataset or code."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is well-structured, clearly states its contributions (benchmark and framework), and presents experimental results that directly support its claims about model challenges and improvements."
+    },
+    "topical_fit": {
+      "score": 6,
+      "justification": "The paper evaluates LLM capabilities on a specific linguistic task, which is adjacent to the core scope of building with LLMs, as its direct relevance to most builders requires explanation."
+    }
+  },
+  "composite": 5.9
+}
