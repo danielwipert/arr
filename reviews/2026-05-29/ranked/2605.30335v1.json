@@ -1,0 +1,42 @@
+{
+  "arxiv_id": "2605.30335v1",
+  "title": "Locally Coherent, Globally Incoherent: Bounding Compositional Incoherence in Multi-Component LLM Agents",
+  "authors": [
+    "Anany Kotawala"
+  ],
+  "abstract": "Multi-component LLM agents assemble probabilistic claims from components that each see only part of a joint problem; the composition can violate basic probability axioms even when every component is locally coherent. We formalise this locally coherent, globally incoherent failure via the compositional residual eps*, the L2 distance from the composed quote to the joint coherent polytope, computable at runtime from system output and the declared cross-component coupling constraints. A product-structure dichotomy characterises when local coherence suffices, and a Rayleigh-quotient prediction matches the observed residual within 7% on three of four relation classes. A hierarchical Boyle-Dykstra projection repairs the composition deterministically; an anytime-valid e-process gives sequential coherence monitoring. Across 1,876 ensemble cliques on a four-LLM mid-tier panel (frontier-panel rerun in Section 5.5), eps* > 0 on 33-94% of cliques, translating to +0.115 nats per bet of regret on 1,770 resolved bets under the proportional allocation rule (the gain collapses to +0.006 under bettors that themselves coherentise). Three intuitive LLM-side mitigations(retrieval, partition-aware prompting, aggregator-LLM) each fail or regress.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI",
+    "cs.CL"
+  ],
+  "submitted_at": "2026-05-28T17:58:55Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.30335v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces a formal measure (compositional residual eps*) and a repair method for a critical failure mode in multi-component LLM agents, directly impacting architectural decisions for builders implementing such systems."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "It provides a substantial new formalization and quantification of compositional incoherence in LLM agents, distinct from prior work on individual model calibration or ensemble methods."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement, including formulas for eps* and the projection repair, but the paper does not mention public code or artifacts."
+    },
+    "clarity": {
+      "score": 6,
+      "justification": "The paper is readable but uses dense formal notation and makes strong claims about the failure of intuitive mitigations that require careful examination of the results section."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper is directly in the applied-AI sweet spot, diagnosing and proposing solutions for a core reliability problem in building multi-component LLM agent systems."
+    }
+  },
+  "composite": 6.95
+}

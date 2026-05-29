@@ -1,0 +1,44 @@
+{
+  "arxiv_id": "2605.30329v1",
+  "title": "SoundnessBench: Can Your AI Scientist Really Tell Good Research Ideas from Bad Ones?",
+  "authors": [
+    "Sy-Tuyen Ho",
+    "Minghui Liu",
+    "Huy Nghiem",
+    "Furong Huang"
+  ],
+  "abstract": "Autonomous AI research agents aim to accelerate scientific discovery by automating the research pipeline, from hypothesis generation to peer review. However, existing benchmarks rarely test a fundamental bottleneck: whether Large Language Models can judge the methodological viability of a research idea before expending time and computational resources. We introduce SoundnessBench, a curated benchmark of 1,099 machine-learning research proposals reconstructed from ICLR submissions, labeled with reviewer soundness sub-scores, and audited against source papers. SoundnessBench should be interpreted as a benchmark for recoverable proposal-stage soundness rather than exact prediction of full-paper review outcomes. Across 12 frontier LLMs, we find a pervasive optimism bias: under standard prompting, models frequently rate low-soundness proposals as sound, while aggressive prompting largely shifts errors from false positives to false negatives. Additional controls for public-corpus contamination, paper-identifying phrases, surface features, and human audit quality suggest that this behavior is not explained by a single confounder. Our results indicate that current LLMs are not yet reliable as standalone first-gate evaluators for scientific rigor.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG"
+  ],
+  "submitted_at": "2026-05-28T17:57:37Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.30329v1",
+  "in_scope": true,
+  "primary_topic": "evaluation",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper identifies a critical bottleneck in autonomous AI research pipelines—LLMs' inability to reliably judge methodological soundness—and provides a benchmark that could change how builders approach automated research evaluation."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "It introduces SoundnessBench, a novel benchmark constructed from real ICLR submissions with reviewer soundness labels, focusing on proposal-stage evaluation rather than final paper outcomes."
+    },
+    "reproducibility": {
+      "score": 7,
+      "justification": "The paper describes the benchmark construction methodology clearly and mentions controls for contamination, though it does not explicitly state that the full benchmark dataset and code are publicly released."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with a clear problem statement, methodology description, and appropriately scoped claims about LLMs' limitations as standalone evaluators."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "It directly addresses the capabilities and limitations of frontier LLMs in a critical applied task—evaluating research ideas—which is highly relevant to engineers building AI research agents."
+    }
+  },
+  "composite": 7.65
+}
