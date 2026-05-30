@@ -1,0 +1,42 @@
+{
+  "arxiv_id": "2605.30315v1",
+  "title": "Resolution Diagnostics for Paired LLM Evaluation",
+  "authors": [
+    "Anany Kotawala"
+  ],
+  "abstract": "Across two public LLM leaderboards, many displayed pairwise rankings do not meet a conventional paired-test resolution target under the actual paired evaluation design: 11 of 40 Open LLM Leaderboard v1 pairwise comparisons and 4 of 9 MMLU-Pro top-10 adjacent-rank pairs are unresolved at (alpha, 1-beta) = (0.05, 0.8). The MMLU-Pro count rises to 6/9 under real subject-level clustering and stays at 5-6 out of 9 in 99.9% of category-bootstrap resamples. We frame paired LLM evaluation as a hypothesis-testing problem, invert level-alpha, power-(1-beta) tests, and report a per-pair resolution ratio q = N/N* as the primary diagnostic. A sharp small-effect expansion with an explicit second-order constant shows that the widely-used unpaired Cohen-h-plus-(1-rho) shortcut deviates from the correct N* by approximately a factor of two in the close-comparison regime, a deficit that three of five off-the-shelf calculators(Cohen 1988, G*Power, R pwr) silently inherit when the user post-multiplies their per-arm output by (1-rho). The unresolved-pair pattern remains under multiplicity correction and anytime-valid sequential testing.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.LG"
+  ],
+  "submitted_at": "2026-05-28T17:54:09Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.30315v1",
+  "in_scope": true,
+  "primary_topic": "evaluation",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper reveals that major LLM leaderboards display statistically unresolved rankings, directly impacting how builders should interpret and trust benchmark results when making model selection decisions."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The paper introduces a resolution ratio diagnostic and provides a mathematical expansion showing deficiencies in widely-used statistical shortcuts, offering a substantial new methodological contribution to LLM evaluation."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The statistical methodology is clearly described and could be reimplemented, though no code or datasets are provided to facilitate direct reproduction."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is well-written with clear statistical framing and appropriate scoping of claims, though some technical sections may be challenging for non-statistical readers."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM evaluation methodology, a core concern for builders who rely on benchmark results to make informed decisions about model deployment."
+    }
+  },
+  "composite": 7.3
+}

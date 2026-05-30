@@ -1,0 +1,44 @@
+{
+  "arxiv_id": "2605.30323v1",
+  "title": "In-Context Reward Adaptation for Robust Preference Modeling",
+  "authors": [
+    "Zhenyu Sun",
+    "Zheng Xu",
+    "Ermin Wei"
+  ],
+  "abstract": "Reinforcement Learning from Human Feedback (RLHF) typically relies on static reward models to align Large Language Models with human preferences. However, human values are inherently diverse and heterogeneous, and a single reward model often lacks the robustness required to generalize to unseen preference domains. While existing multi-reward frameworks attempt to address this, they are often restricted to a fixed set of known domains and fail to adapt to unseen human distributions without costly retraining. In this work, we propose In-Context Reward Adaptation, a transformer-based framework designed to model diverse and unseen human preferences on the fly. By leveraging the in-context learning capabilities of transformers, our approach adaptively infers the underlying reward structure from a small set of preference demonstrations. We demonstrate that while a standard transformer architecture is insufficient for this task by characterizing an asymptotic bias to the ground-truth, incorporating human response time as an auxiliary input signal enables the model to successfully adapt to preferences from previously unseen domains. Our findings show that this approach provides a more robust foundation for preference modeling, allowing for the representation of heterogeneous rewards and preference distribution shift, and offering a scalable path toward more flexible human-AI alignment.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-05-28T17:56:54Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.30323v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper addresses a core limitation in RLHF by enabling adaptive reward modeling that can handle diverse human preferences without retraining, directly impacting how builders approach preference alignment."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The approach of using in-context learning with transformers for reward adaptation and incorporating human response time as an auxiliary signal represents a substantial new variation in preference modeling."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement, but the abstract mentions no specific code, weights, or datasets being publicly available."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The abstract is well-written, clearly articulates the problem and solution, and appropriately scopes claims about addressing robustness and scalability in preference modeling."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "This paper directly addresses RLHF and human-AI alignment, which are central concerns for builders working with LLMs in production systems."
+    }
+  },
+  "composite": 7.25
+}

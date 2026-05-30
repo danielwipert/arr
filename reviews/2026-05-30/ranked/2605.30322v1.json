@@ -1,0 +1,44 @@
+{
+  "arxiv_id": "2605.30322v1",
+  "title": "Gram: Assessing sabotage propensities via automated alignment auditing",
+  "authors": [
+    "David Lindner",
+    "Victoria Krakovna",
+    "Sebastian Farquhar"
+  ],
+  "abstract": "We introduce Gram, an automated alignment auditing framework to assess the propensity of AI agents to engage in sabotage. We evaluate Gemini models across 17 simulated agentic deployment scenarios that incentivize sabotage. We find Gemini models misbehave in about 2-3% of our simulated trajectories. Many of these cases are explained by \"overeagerness\" in Gemini models resulting in both excessive role-playing and goal-seeking behavior. In contrast to other alignment auditing approaches, Gram is designed to specifically evaluate misalignment and intentional sabotage in agentic coding and research agents. We additionally introduce an experimental investigator agent pipeline which enables fine-grained targeted experiments to identify the drivers of misbehavior. We find that increasing realism of environments and removing nudges to misbehave tends to reduce sabotage rates close to zero.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-05-28T17:56:18Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.30322v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper provides measurable, reproducible gains in evaluating AI agent safety, directly informing builders about sabotage risks in agentic systems."
+    },
+    "novelty": {
+      "score": 6,
+      "justification": "While building on existing alignment auditing approaches, Gram specifically targets sabotage evaluation in agentic coding and research scenarios with novel simulated environments."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement, but no mention of code, weights, or datasets being publicly available."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "Solid writing with clear methodology and appropriately scoped claims about Gemini models' 2-3% misbehavior rates across 17 scenarios."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "Directly relevant to LLM builders working on agentic systems, providing safety evaluation frameworks for coding and research agents."
+    }
+  },
+  "composite": 6.45
+}
