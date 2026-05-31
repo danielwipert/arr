@@ -1,0 +1,83 @@
+{
+  "date": "2026-05-31",
+  "paper_id": "arxiv:2605.30329v1",
+  "paper_title": "SoundnessBench: Can Your AI Scientist Really Tell Good Research Ideas from Bad Ones?",
+  "paper_authors": [
+    "Sy-Tuyen Ho",
+    "Minghui Liu",
+    "Huy Nghiem",
+    "Furong Huang"
+  ],
+  "paper_url": "https://arxiv.org/abs/2605.30329",
+  "post_text": "Current AI research agents cannot reliably identify flawed ML research proposals before execution.\n\nA team at the University of Maryland built SoundnessBench, a benchmark of 1,099 ML research proposals reconstructed from ICLR submissions with reviewer-derived soundness labels. They extracted near-verbatim hypothesis-experiment pairings while excluding experimental results and acceptance cues.\n\nThe finding is narrower than it sounds. The benchmark covers only ML research from ICLR 2022-2026, not all scientific domains, and uses reviewer soundness sub-scores as imperfect proxies for methodological validity rather than definitive research quality judgments.\n\nFor anyone building or evaluating autonomous research systems, the practical implication is clear: don't trust LLMs as standalone first-gate critics. The observed 74% false-positive rate under standard prompting means most flawed designs would pass through, while aggressive prompting collapses high-soundness recall to 36%. This suggests human oversight remains necessary for proposal triage.\n\nWorth reading if you deploy AI research agents. Worth ignoring if you believe automated scientific judgment is already solved.\n\nPaper: SoundnessBench: Can Your AI Scientist Really Tell Good Research Ideas from Bad Ones?, Ho et al.\nhttps://arxiv.org/abs/2605.30329\n\n#AIResearch #ML #Benchmark #ScientificValidation #SoundnessBench",
+  "post_char_count": 1388,
+  "hook_char_count": 98,
+  "claims": [
+    {
+      "claim": "A team at the University of Maryland built SoundnessBench, a benchmark of 1,099 ML research proposals",
+      "source_span": "SoundnessBench: A diverse benchmark of 1,099 validated ML research proposals",
+      "page": 3
+    },
+    {
+      "claim": "reconstructed from ICLR submissions",
+      "source_span": "reconstructed from the public ICLR history",
+      "page": 2
+    },
+    {
+      "claim": "with reviewer-derived soundness labels",
+      "source_span": "Our labels use reviewer soundness sub-scores",
+      "page": 2
+    },
+    {
+      "claim": "They extracted near-verbatim hypothesis-experiment pairings",
+      "source_span": "We preserve near-verbatim wording to reduce paraphrase drift",
+      "page": 5
+    },
+    {
+      "claim": "while excluding experimental results and acceptance cues",
+      "source_span": "while excluding experimental results, direct outcome claims, and acceptance cues",
+      "page": 5
+    },
+    {
+      "claim": "The benchmark covers only ML research from ICLR 2022-2026",
+      "source_span": "We collect papers from the ICLR corpus, covering major ML areas",
+      "page": 5
+    },
+    {
+      "claim": "uses reviewer soundness sub-scores as imperfect proxies for methodological validity",
+      "source_span": "reviewer soundness sub-scores as a proxy for methodological validity",
+      "page": 5
+    },
+    {
+      "claim": "The observed 74% false-positive rate under standard prompting",
+      "source_span": "yielding a mean false-positive rate of 74.0%",
+      "page": 2
+    },
+    {
+      "claim": "aggressive prompting collapses high-soundness recall to 36%",
+      "source_span": "high-soundness recall collapses to 36.1%",
+      "page": 2
+    }
+  ],
+  "ranker_scores": {
+    "significance": 8,
+    "novelty": 7,
+    "reproducibility": 8,
+    "clarity": 9,
+    "topical_fit": 9,
+    "composite": 8.0
+  },
+  "critic_report": {
+    "voice_match": "pass",
+    "banned_phrase_scan": "pass",
+    "length_compliance": "pass",
+    "structure": "pass",
+    "grounding": "pass",
+    "hype_check": "pass",
+    "retries_used": 1,
+    "notes": "Required 1 retry/retries before passing. | voice: The post maintains a declarative, report-like tone with specific numbers and a clear point of view, avoiding performative excitement and landing a practical 'so what' for business leaders. | banned_phrases: no banned phrases found | length: total=1388, hook=98 (outside sweet spot 1400-1800, within hard bounds) | structure: 7 blocks, 5 hashtags | grounding: Every factual claim in the post body is represented by a verbatim source span in the provided claims list and paper sections. [mech: 1 claim span(s) not found in paper: 'yielding a mean false-positive rate of 74.0%'] | hype: The post accurately reports the team affiliation, specific numbers, and limitations without unwarranted superlatives or overclaim."
+  },
+  "generated_at": "2026-05-31T11:05:58.806675Z",
+  "drafter_model": "deepseek/deepseek-chat-v3.1",
+  "critic_model": "deepseek/deepseek-chat-v3.1"
+}

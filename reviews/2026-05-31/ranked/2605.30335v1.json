@@ -1,0 +1,42 @@
+{
+  "arxiv_id": "2605.30335v1",
+  "title": "Locally Coherent, Globally Incoherent: Bounding Compositional Incoherence in Multi-Component LLM Agents",
+  "authors": [
+    "Anany Kotawala"
+  ],
+  "abstract": "Multi-component LLM agents assemble probabilistic claims from components that each see only part of a joint problem; the composition can violate basic probability axioms even when every component is locally coherent. We formalise this locally coherent, globally incoherent failure via the compositional residual eps*, the L2 distance from the composed quote to the joint coherent polytope, computable at runtime from system output and the declared cross-component coupling constraints. A product-structure dichotomy characterises when local coherence suffices, and a Rayleigh-quotient prediction matches the observed residual within 7% on three of four relation classes. A hierarchical Boyle-Dykstra projection repairs the composition deterministically; an anytime-valid e-process gives sequential coherence monitoring. Across 1,876 ensemble cliques on a four-LLM mid-tier panel (frontier-panel rerun in Section 5.5), eps* > 0 on 33-94% of cliques, translating to +0.115 nats per bet of regret on 1,770 resolved bets under the proportional allocation rule (the gain collapses to +0.006 under bettors that themselves coherentise). Three intuitive LLM-side mitigations(retrieval, partition-aware prompting, aggregator-LLM) each fail or regress.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI",
+    "cs.CL"
+  ],
+  "submitted_at": "2026-05-28T17:58:55Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.30335v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper identifies and quantifies a systematic failure mode in multi-component LLM agents (compositional incoherence) and provides a runtime diagnostic and repair method, directly impacting architectural decisions for builders assembling probabilistic systems."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "It introduces a formal framework (compositional residual eps*) and a hierarchical Boyle-Dykstra projection for deterministic repair, which are substantial new variations not present in prior agent composition literature."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly enough to reimplement, including the Rayleigh-quotient prediction and projection algorithm, but the paper does not mention public release of code, weights, or datasets."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is solidly written with a clear formalization, experimental results across 1,876 ensemble cliques, and a defensible evaluation showing the failure of three intuitive mitigations."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper is directly in the applied-AI sweet spot, analyzing a core failure mode and providing tools for engineers building multi-component LLM agent systems."
+    }
+  },
+  "composite": 7.55
+}
