@@ -27,23 +27,23 @@
   "scores": {
     "significance": {
       "score": 8,
-      "justification": "The paper introduces a unified audio tokenizer that improves both understanding and generation tasks, directly impacting how builders approach audio-LLM interfaces and RAG architectures for multimodal systems."
+      "justification": "The paper introduces a unified audio tokenizer that improves both understanding and generation tasks, directly impacting how builders implement audio interfaces for LLMs."
     },
     "novelty": {
       "score": 7,
-      "justification": "The Semantic-Acoustic Primitives and Semantic-Acoustic Equilibrium mechanisms represent substantial new variations in audio tokenization, distinct from prior single-codebook approaches."
+      "justification": "The Semantic-Acoustic Primitives and Equilibrium mechanisms represent substantial innovations in audio tokenization, though building on existing semantic tokenizer concepts."
     },
     "reproducibility": {
       "score": 9,
-      "justification": "The paper states all code, training scripts, inference scripts, and model checkpoints are publicly released at the provided GitHub repository."
+      "justification": "The paper states that all code, training scripts, inference scripts, and model checkpoints are publicly released on GitHub."
     },
     "clarity": {
       "score": 8,
-      "justification": "The paper is well-written with clear problem formulation, method description, and comprehensive evaluations across both understanding and generation tasks."
+      "justification": "The abstract clearly explains the problem, proposed solution, key innovations, and results with appropriate scope and measurable outcomes."
     },
     "topical_fit": {
       "score": 9,
-      "justification": "This directly addresses LLM interface design and multimodal systems, sitting squarely in the applied-AI sweet spot for builders working with audio-LLMs."
+      "justification": "This directly addresses audio interfaces for LLMs, a core concern for builders working with multimodal AI systems."
     }
   },
   "composite": 8.05

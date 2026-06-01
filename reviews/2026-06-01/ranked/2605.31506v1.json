@@ -18,25 +18,25 @@
   "noise_flagged": false,
   "scores": {
     "significance": {
-      "score": 9,
-      "justification": "Introduces Factual Density (FD*) optimization that directly changes RAG architecture decisions by prioritizing evidence-rich content over lexically similar text, achieving 100% systematic review saturation in medical contexts."
+      "score": 8,
+      "justification": "Introduces factual density reranking that directly improves RAG precision in medical contexts, changing how builders should prioritize content retrieval for fact-critical applications."
     },
     "novelty": {
-      "score": 8,
-      "justification": "Introduces the novel Expert Blindness Effect concept and FD* signal that measures verified atomic claims per token, addressing a structural gap in traditional retrieval methods."
+      "score": 7,
+      "justification": "Substantial new variation on retrieval optimization by measuring verified facts per token rather than lexical similarity, though builds on existing RAG and factuality analysis concepts."
     },
     "reproducibility": {
       "score": 5,
-      "justification": "Method described clearly with statistical validation (Pearson R, p-values) but lacks public code, weights, or datasets for direct reproduction."
+      "justification": "Method described clearly enough to reimplement FD* scoring and normalization, but no mention of code or dataset availability for the NexusAgentics pipeline."
     },
     "clarity": {
-      "score": 7,
-      "justification": "Well-written with clear methodology and appropriate scope limitations, though statistical validation across n=50 queries remains future work."
+      "score": 6,
+      "justification": "Readable with clear methodology description, but overclaims '100% systematic review saturation' while acknowledging limited statistical validation across only n=50 queries."
     },
     "topical_fit": {
       "score": 9,
-      "justification": "Directly addresses RAG architecture improvements for LLM systems, specifically focusing on factual precision in retrieval-augmented generation applications."
+      "justification": "Directly in the LLM applied-AI sweet spot, addressing RAG architecture improvements for factual accuracy in critical domains like healthcare."
     }
   },
-  "composite": 7.65
+  "composite": 6.95
 }

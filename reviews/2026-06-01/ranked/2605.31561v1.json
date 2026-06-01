@@ -20,11 +20,11 @@
   "scores": {
     "significance": {
       "score": 7,
-      "justification": "The paper refines the technique of using question-asking as an inference-time intervention to probe hidden states, providing measurable insights into self-diagnosis and correction gaps that could inform how builders implement self-refinement mechanisms."
+      "justification": "The paper refines reasoning techniques by proposing a gating policy for question-asking interventions, offering a measurable method to potentially improve LLM self-consistency and self-refinement, which are relevant to builders implementing reasoning systems."
     },
     "novelty": {
-      "score": 7,
-      "justification": "It introduces a substantial new variation by framing question-asking as a sequential decision problem with a gating policy, distinct from prior work on chain-of-thought or simple prompting."
+      "score": 8,
+      "justification": "It introduces a substantial new variation by framing question-asking as a sequential decision problem using a probe on hidden states as a quality score, a distinct approach from prior work on test-time reasoning."
     },
     "reproducibility": {
       "score": 5,
@@ -32,12 +32,12 @@
     },
     "clarity": {
       "score": 8,
-      "justification": "The paper is solidly written, with a defensible evaluation methodology that appropriately scopes its claims around the gap between detection and recovery of correct trajectories."
+      "justification": "The paper is solidly written, with a defensible evaluation methodology that appropriately scopes its claims, clearly presenting the gap between detection and recovery in self-refinement interventions."
     },
     "topical_fit": {
       "score": 9,
-      "justification": "The paper is directly in the applied-AI sweet spot, investigating inference-time reasoning mechanisms and self-refinement in LLMs, which are core concerns for builders."
+      "justification": "The paper is directly in the applied-AI sweet spot, investigating inference-time interventions and self-consistency in LLMs, which are core concerns for engineers building systems with LLMs."
     }
   },
-  "composite": 6.95
+  "composite": 7.2
 }

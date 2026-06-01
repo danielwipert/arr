@@ -27,24 +27,24 @@
   "scores": {
     "significance": {
       "score": 8,
-      "justification": "The paper introduces a new paradigm (Personalized Evaluation as Learning) and framework (PARL) that directly addresses the critical bottleneck of evaluating personalized LLM alignment, which changes how builders should approach user-centric agent evaluation."
+      "justification": "The paper addresses a critical bottleneck in personalized LLM evaluation by introducing a framework that learns user-specific rubrics from interaction histories, directly impacting how builders should evaluate personalized alignment."
     },
     "novelty": {
-      "score": 8,
-      "justification": "The work formulates personalized evaluation as a learning problem with a novel framework that integrates rubric induction with discriminative reinforcement learning, representing a substantial new variation distinct from prior LLM-as-a-judge approaches."
+      "score": 7,
+      "justification": "PARL introduces a novel learning paradigm for personalized evaluation that integrates rubric induction with discriminative reinforcement learning, representing a substantial variation from static LLM-as-judge approaches."
     },
     "reproducibility": {
       "score": 9,
-      "justification": "The paper explicitly states 'our code is available at https://github.com/SnowCharmQ/PARL,' providing public code and clear instructions for reproduction."
+      "justification": "The paper states 'our code is available at https://github.com/SnowCharmQ/PARL' and describes experiments on real-world personalized text generation tasks with clear methodology."
     },
     "clarity": {
       "score": 8,
-      "justification": "The abstract clearly presents the problem, three essential principles, the proposed paradigm, framework, and experimental validation with appropriately scoped claims."
+      "justification": "The abstract clearly articulates the problem, proposed solution, three essential principles, and experimental results with appropriate scope and defensible methodology."
     },
     "topical_fit": {
       "score": 9,
-      "justification": "The paper directly addresses personalized evaluation of LLMs for user-centric agents, sitting squarely in the applied-AI sweet spot for builders working with LLM alignment."
+      "justification": "The paper directly addresses personalized evaluation of LLMs, a core concern for builders working on user-centric AI agents and alignment with individual preferences."
     }
   },
-  "composite": 8.3
+  "composite": 8.05
 }

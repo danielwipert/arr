@@ -21,24 +21,24 @@
   "scores": {
     "significance": {
       "score": 7,
-      "justification": "The paper refines table-QA methodology by introducing a semantic representation that reduces token overhead and improves performance for smaller models, offering a practical alternative to HTML/Markdown serializations for builders working with constrained inference budgets."
+      "justification": "The paper refines table-QA representation with a measurable reduction in input tokens and improved performance for smaller models, offering a practical alternative to HTML/Markdown serialization for builders working with tabular data."
     },
     "novelty": {
       "score": 7,
-      "justification": "The Semantic Triplet Restoration protocol and TripletQL router represent a substantial new variation in table representation, distinct from prior layout-oriented serializations by explicitly encoding hierarchical semantic relations as atomic facts."
+      "justification": "It introduces the Semantic Triplet Restoration protocol and TripletQL router, a substantial new variation that explicitly encodes hierarchical table semantics as <item path, feature path, value> triplets, distinct from prior layout-oriented serializations."
     },
     "reproducibility": {
       "score": 9,
-      "justification": "The paper states 'Code and data are available' at a provided GitHub repository, indicating all necessary artifacts for reproduction are publicly accessible."
+      "justification": "The paper states 'Code and data are available' at a provided GitHub repository, indicating all necessary artifacts for reproduction are public."
     },
     "clarity": {
       "score": 8,
-      "justification": "The paper is solidly written with a clear problem statement, proposed method (STR and TripletQL), and evaluation across four benchmarks showing token reduction and performance benefits."
+      "justification": "The abstract is solidly written, clearly presenting the problem, proposed method (STR and TripletQL), and results across four benchmarks with appropriately scoped claims about token efficiency and model-size benefits."
     },
     "topical_fit": {
-      "score": 8,
-      "justification": "The paper directly addresses improving LLM performance on table understanding tasks through novel input representation and routing, which is clearly in scope for builders working with LLMs on structured data."
+      "score": 9,
+      "justification": "The paper is directly in the applied-AI sweet spot, presenting a novel protocol for improving how LLMs understand and process tabular data, a core task for builders."
     }
   },
-  "composite": 7.65
+  "composite": 7.75
 }

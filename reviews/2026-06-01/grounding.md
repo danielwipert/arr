@@ -1,8 +1,8 @@
-# Grounding trace for arxiv:2605.31545v1
+# Grounding trace for arxiv:2605.31584v1
 
-Paper: Preference-Aware Rubric Learning for Personalized Evaluation
-URL: https://arxiv.org/abs/2605.31545
-Composite: 8.30
+Paper: LongTraceRL: Learning Long-Context Reasoning from Search Agent Trajectories with Rubric Rewards
+URL: https://arxiv.org/abs/2605.31584
+Composite: 8.05
 Drafter: deepseek/deepseek-chat-v3.1
 Critic: deepseek/deepseek-chat-v3.1
 Retries used: 1
@@ -11,64 +11,48 @@ Retries used: 1
 
 ### Claim 1
 
-**Claim:** A team from Tsinghua and NUS proposes learning personalized evaluation rubrics directly from user histories
+**Claim:** A team at Tsinghua University
 
-**Source span:** 'We propose PARL (Preference-Aware Rubric Learning), a framework that learns to induce preference-aware evaluation rubrics directly from raw user histories'
+**Source span:** 'Authors: Nianyi Lin, Jiajie Zhang, Lei Hou, Juanzi Li'
 
 **Page:** 1
 
 ### Claim 2
 
-**Claim:** shifting LLM assessment from static judgment to adaptive learning
+**Claim:** builds LongTraceRL, a framework that generates multi-hop questions from Wikipedia knowledge graphs
 
-**Source span:** 'we introduce Personalized Evaluation as Learning, a paradigm that formulates personalized evaluation as a learning problem rather than a static judgment'
+**Source span:** 'generate multi-hop questions from the KILT Wikipedia snapshot'
 
-**Page:** 1
+**Page:** 3
 
 ### Claim 3
 
-**Claim:** Personalized LLMs adapt to individual user preferences
+**Claim:** constructs distractors from real search agent behavior
 
-**Source span:** 'LLM Personalization aims to adapt model behavior to individual users across personalized tasks'
+**Source span:** 'constructs distractors based on real search trajectories from a search agent'
 
-**Page:** 1
+**Page:** 2
 
 ### Claim 4
 
-**Claim:** evaluating their alignment has relied on generic metrics that miss subjective nuances
+**Claim:** 5.7 point average accuracy gain across five benchmarks
 
-**Source span:** 'Existing evaluation methods fail to capture subjective, user-specific preferences embedded in long-term interaction histories'
+**Source span:** 'achieving an average gain of 5.7 points over the base model'
 
-**Page:** 1
+**Page:** 2
 
 ### Claim 5
 
-**Claim:** The PARL framework induces multi-dimensional rubrics—explicit criteria like writing style or tone preferences—from raw user interaction data
+**Claim:** on models from 4B to 30B parameters
 
-**Source span:** "PARL distills semantically rich, user-specific preferences from users' historical contexts into explicit rubric dimensions"
+**Source span:** 'Experiments on three reasoning LLMs (4B–30B)'
 
-**Page:** 1
+**Page:** 2
 
 ### Claim 6
 
-**Claim:** It then validates these rubrics for consistency across the user's history
+**Claim:** The training data comes entirely from Wikipedia knowledge graphs
 
-**Source span:** 'The induced rubrics are then validated across diverse historical contexts to enforce user-consistency'
+**Source span:** 'the data construction pipeline relies entirely on the KILT Wikipedia snapshot'
 
-**Page:** 1
-
-### Claim 7
-
-**Claim:** optimizes them via reinforcement learning to distinguish user-authored responses from model outputs
-
-**Source span:** 'PARL incorporates a reinforcement learning stage that contrasts user-authored ground-truth responses with competitive personalized model outputs'
-
-**Page:** 1
-
-### Claim 8
-
-**Claim:** the paper demonstrates strong results on personalized text generation tasks
-
-**Source span:** 'Experiments on real-world personalized text generation tasks show that PARL consistently induces high-fidelity rubrics'
-
-**Page:** 1
+**Page:** 7

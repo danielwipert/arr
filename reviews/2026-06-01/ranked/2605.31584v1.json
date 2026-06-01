@@ -23,7 +23,7 @@
   "scores": {
     "significance": {
       "score": 8,
-      "justification": "The paper introduces tiered distractors and rubric rewards that could meaningfully improve how builders train LLMs for long-context reasoning tasks like RAG systems."
+      "justification": "The paper introduces tiered distractors and rubric rewards that could meaningfully improve how builders approach long-context reasoning tasks in RAG systems."
     },
     "novelty": {
       "score": 7,
@@ -31,11 +31,11 @@
     },
     "reproducibility": {
       "score": 9,
-      "justification": "The paper states that codes, datasets and models are publicly available at the provided GitHub repository, enabling straightforward reproduction."
+      "justification": "The paper states that codes, datasets and models are available at a GitHub repository, providing all necessary artifacts for reproduction."
     },
     "clarity": {
       "score": 8,
-      "justification": "The abstract clearly explains the methodology, problem motivation, and experimental results across multiple benchmarks and model sizes."
+      "justification": "The abstract clearly explains the methodology, problem statement, and experimental results across multiple benchmarks and model sizes."
     },
     "topical_fit": {
       "score": 9,
