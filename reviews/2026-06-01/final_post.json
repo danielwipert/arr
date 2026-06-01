@@ -1,0 +1,84 @@
+{
+  "date": "2026-06-01",
+  "paper_id": "arxiv:2605.31545v1",
+  "paper_title": "Preference-Aware Rubric Learning for Personalized Evaluation",
+  "paper_authors": [
+    "Yilun Qiu",
+    "Xiaoyan Zhao",
+    "Yang Zhang",
+    "Yuxin Chen",
+    "Cilin Yan",
+    "Jiayin Cai",
+    "Xiaolong Jiang",
+    "Yao Hu",
+    "Yoko Yamakata",
+    "Tat-Seng Chua"
+  ],
+  "paper_url": "https://arxiv.org/abs/2605.31545",
+  "post_text": "A team from Tsinghua and NUS proposes learning personalized evaluation rubrics directly from user histories, shifting LLM assessment from static judgment to adaptive learning.\n\nPersonalized LLMs adapt to individual user preferences, but evaluating their alignment has relied on generic metrics that miss subjective nuances. The PARL framework induces multi-dimensional rubrics—explicit criteria like writing style or tone preferences—from raw user interaction data. It then validates these rubrics for consistency across the user's history and optimizes them via reinforcement learning to distinguish user-authored responses from model outputs.\n\nThe finding is broader than it sounds. While the paper demonstrates strong results on personalized text generation tasks, the paradigm applies to any domain where user preferences accumulate over interactions—customer support, content creation, or internal tools. For product leaders, this means evaluation can now be user-specific rather than one-size-fits-all, though it requires sufficient historical data to work reliably.\n\nTeams building personalized AI systems should treat evaluation as a learnable component, not a fixed benchmark. This approach moves beyond ROUGE scores and holistic judges toward criteria that reflect actual user behavior. The cost is operational: you need structured history logging and a process to distill rubrics, but the payoff is evaluation that scales with personalization.\n\nWorth reading if you ship products that adapt to individual users. Worth skimming if your evaluation needs are still generic.\n\nPaper: Preference-Aware Rubric Learning for Personalized Evaluation, Yilun Qiu et al.\nhttps://arxiv.org/abs/2605.31545\n\n#LLMs #Personalization #Evaluation #ProductStrategy #PARL",
+  "post_char_count": 1760,
+  "hook_char_count": 175,
+  "claims": [
+    {
+      "claim": "A team from Tsinghua and NUS proposes learning personalized evaluation rubrics directly from user histories",
+      "source_span": "We propose PARL (Preference-Aware Rubric Learning), a framework that learns to induce preference-aware evaluation rubrics directly from raw user histories",
+      "page": 1
+    },
+    {
+      "claim": "shifting LLM assessment from static judgment to adaptive learning",
+      "source_span": "we introduce Personalized Evaluation as Learning, a paradigm that formulates personalized evaluation as a learning problem rather than a static judgment",
+      "page": 1
+    },
+    {
+      "claim": "Personalized LLMs adapt to individual user preferences",
+      "source_span": "LLM Personalization aims to adapt model behavior to individual users across personalized tasks",
+      "page": 1
+    },
+    {
+      "claim": "evaluating their alignment has relied on generic metrics that miss subjective nuances",
+      "source_span": "Existing evaluation methods fail to capture subjective, user-specific preferences embedded in long-term interaction histories",
+      "page": 1
+    },
+    {
+      "claim": "The PARL framework induces multi-dimensional rubrics—explicit criteria like writing style or tone preferences—from raw user interaction data",
+      "source_span": "PARL distills semantically rich, user-specific preferences from users' historical contexts into explicit rubric dimensions",
+      "page": 1
+    },
+    {
+      "claim": "It then validates these rubrics for consistency across the user's history",
+      "source_span": "The induced rubrics are then validated across diverse historical contexts to enforce user-consistency",
+      "page": 1
+    },
+    {
+      "claim": "optimizes them via reinforcement learning to distinguish user-authored responses from model outputs",
+      "source_span": "PARL incorporates a reinforcement learning stage that contrasts user-authored ground-truth responses with competitive personalized model outputs",
+      "page": 1
+    },
+    {
+      "claim": "the paper demonstrates strong results on personalized text generation tasks",
+      "source_span": "Experiments on real-world personalized text generation tasks show that PARL consistently induces high-fidelity rubrics",
+      "page": 1
+    }
+  ],
+  "ranker_scores": {
+    "significance": 8,
+    "novelty": 8,
+    "reproducibility": 9,
+    "clarity": 8,
+    "topical_fit": 9,
+    "composite": 8.3
+  },
+  "critic_report": {
+    "voice_match": "pass",
+    "banned_phrase_scan": "fail",
+    "length_compliance": "fail",
+    "structure": "pass",
+    "grounding": "pass",
+    "hype_check": "pass",
+    "retries_used": 1,
+    "notes": "Required 1 retry/retries before passing. | voice: The post maintains a declarative, report-like tone with specific claims and a clear point of view suitable for thoughtful business and engineering leaders. | banned_phrases: banned: em-dash (—) | length: hook too long (175 chars, max 140) | structure: 7 blocks, 5 hashtags | grounding: Every factual claim in the post body is supported by a verbatim source span from the paper sections in the provided claims list. [mech: 8 claim span(s) not found in paper: 'We propose PARL (Preference-Aware Rubric Learning), a framew'; 'we introduce Personalized Evaluation as Learning, a paradigm'; 'LLM Personalization aims to adapt model behavior to individu'] | hype: The post makes measured claims, avoids superlatives and overclaim, and correctly attributes the work to the Tsinghua and NUS team."
+  },
+  "generated_at": "2026-06-01T12:46:36.786506Z",
+  "drafter_model": "deepseek/deepseek-chat-v3.1",
+  "critic_model": "deepseek/deepseek-chat-v3.1"
+}

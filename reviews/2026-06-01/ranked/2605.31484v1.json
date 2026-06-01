@@ -1,0 +1,44 @@
+{
+  "arxiv_id": "2605.31484v1",
+  "title": "Balanced LoRA: Removing Parameter Invariance to Accelerate Convergence",
+  "authors": [
+    "Valérie Castin",
+    "Kimia Nadjahi",
+    "Pierre Ablin",
+    "Gabriel Peyré"
+  ],
+  "abstract": "Low-Rank Adaptation (LoRA) is the most widely adopted method for fine-tuning large language models. Notably, LoRA is inherently overparameterized: multiple pairs of low-rank factors can yield the same adapted weight matrix. We show--both theoretically and empirically--that these pairs exhibit significantly different condition numbers. As a result, converging to different loss minimizers directly impacts the convergence rate of LoRA. Building on this observation, we introduce Balanced Low-Rank Adaptation (BaLoRA), a variant of LoRA that projects iterates onto a balanced manifold. This manifold improves the conditioning of the loss landscape while preserving the adapted matrix. The projection step is computationally lightweight and integrates seamlessly into existing fine-tuning pipelines. Empirically, BaLoRA converges faster than standard LoRA and achieves superior performance across a range of fine-tuning tasks.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG"
+  ],
+  "submitted_at": "2026-05-29T16:08:28Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.31484v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper provides measurable improvements to LoRA convergence speed, which directly impacts fine-tuning efficiency for builders working with LLMs."
+    },
+    "novelty": {
+      "score": 6,
+      "justification": "While building on established LoRA research, the paper introduces a novel balanced manifold projection approach to address parameter invariance issues."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is clearly described for reimplementation but no mention of code or artifacts being publicly available is provided in the abstract."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The abstract clearly states the problem, theoretical and empirical evidence, solution approach, and empirical results with appropriate scope."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LoRA fine-tuning optimization, which is a core technique used by builders working with LLMs."
+    }
+  },
+  "composite": 6.7
+}

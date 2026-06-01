@@ -1,0 +1,50 @@
+{
+  "arxiv_id": "2605.31521v1",
+  "title": "UniAudio-Token: Empowering Semantic Speech Tokenizers with General Audio Perception",
+  "authors": [
+    "Yuhan Song",
+    "Linhao Zhang",
+    "Aiwei Liu",
+    "Chuhan Wu",
+    "Sijun Zhang",
+    "Wei Jia",
+    "Yuan Liu",
+    "Houfeng Wang",
+    "Xiao Zhou"
+  ],
+  "abstract": "Semantic speech tokenizers have become a widely used interface for Audio-LLMs, owing to their compact single-codebook design and strong linguistic alignment. However, their focus on linguistic abstraction induces acoustic blindness, limiting their applicability beyond speech-centric tasks. We propose UniAudio-Token, a framework that empowers semantic tokenizers with general audio perception without compromising speech ability. Instead of altering the semantic paradigm, UniAudio-Token mitigates its information loss through two key innovations: (1) Semantic-Acoustic Primitives (SAP) provide structured supervision by decomposing audio into linguistic content, vocal attributes, and auditory-scene primitives; and (2) Semantic-Acoustic Equilibrium (SAE) introduces a content-aware gating mechanism that adaptively restores fine-grained acoustic details from shallow layers. Extensive evaluations show that UniAudio-Token learns comprehensive universal representations while preserving high-fidelity speech generation. When integrated with downstream LLMs, it outperforms all single-codebook baseline tokenizers on both understanding and generation tasks, effectively serving as a unified audio interface. We publicly release all our code, including training and inference scripts, together with the model checkpoints at https://github.com/Tencent/Universal_Audio_Tokenizer.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.SD"
+  ],
+  "submitted_at": "2026-05-29T16:36:21Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.31521v1",
+  "in_scope": true,
+  "primary_topic": "adjacent_infrastructure",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces a unified audio tokenizer that improves both understanding and generation tasks, directly impacting how builders approach audio-LLM interfaces and RAG architectures for multimodal systems."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The Semantic-Acoustic Primitives and Semantic-Acoustic Equilibrium mechanisms represent substantial new variations in audio tokenization, distinct from prior single-codebook approaches."
+    },
+    "reproducibility": {
+      "score": 9,
+      "justification": "The paper states all code, training scripts, inference scripts, and model checkpoints are publicly released at the provided GitHub repository."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with clear problem formulation, method description, and comprehensive evaluations across both understanding and generation tasks."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "This directly addresses LLM interface design and multimodal systems, sitting squarely in the applied-AI sweet spot for builders working with audio-LLMs."
+    }
+  },
+  "composite": 8.05
+}

@@ -1,0 +1,47 @@
+{
+  "arxiv_id": "2605.31509v1",
+  "title": "Skill Reuse as Compression in Agentic RL",
+  "authors": [
+    "Zhikun Xu",
+    "Yu Feng",
+    "Jacob Dineen",
+    "Taiwei Shi",
+    "Jieyu Zhao",
+    "Ben Zhou"
+  ],
+  "abstract": "Large language model agents trained with reinforcement learning (RL) often learn brittle, task-specific shortcuts. We hypothesize that agents generalize better when their successful trajectories are structurally compressible, decomposed into a small set of reusable abstract patterns. To formalize this, we introduce ReuseRL, which grounds agentic RL in the Minimum Description Length (MDL) principle. ReuseRL extracts a shared skill dictionary from successful trajectories and augments the RL objective with a segmentation cost, explicitly penalizing idiosyncratic behaviors that encode poorly. We prove a PAC-Bayes generalization bound for this compression penalty. Across ALFWorld, TextWorld-Cooking, and Countdown-Stepwise, ReuseRL improves in- and out-of-distribution success over vanilla GRPO and strong round-length baselines.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-05-29T16:28:34Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.31509v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper introduces ReuseRL which refines RL training with compression principles, offering measurable gains in generalization across multiple environments that could influence how builders approach agent training."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The approach of grounding agentic RL in Minimum Description Length principle and extracting reusable skill dictionaries represents a substantial new variation distinct from prior RL methods."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement with details on MDL principle and segmentation cost, but no mention of code or artifacts being publicly available."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The abstract is well-written with clear problem statement, methodology, and results across multiple environments, though full evaluation details would require the full paper."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM agent training with reinforcement learning, squarely in the applied-AI sweet spot for builders working with LLM systems."
+    }
+  },
+  "composite": 7.05
+}

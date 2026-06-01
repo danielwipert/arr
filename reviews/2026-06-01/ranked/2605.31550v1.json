@@ -1,0 +1,44 @@
+{
+  "arxiv_id": "2605.31550v1",
+  "title": "Semantic Triplet Restoration: A Novel Protocol for Hierarchical Table Understanding in Large Language Models",
+  "authors": [
+    "Yibin Zhao",
+    "Fangxin Shang",
+    "Dingrui Yang",
+    "Yuqi Wang"
+  ],
+  "abstract": "Table question answering requires models to recover semantic relations encoded implicitly by two-dimensional layout, merged cells, and hierarchical headers. Current pipelines typically use HTML or Markdown as intermediate table representations, but these layout-oriented serializations introduce markup overhead and require large language models to infer header-cell alignments from row and column spans. We propose Semantic Triplet Restoration (STR), a protocol that rewrites each cell as an atomic fact <item path, feature path, value>, where the item path specifies the row-wise entity, the feature path specifies the hierarchical attribute, and the value contains the cell content. We also present TripletQL, a lightweight query-aware router that uses STR to select an appropriate rendering or filtered subset of triplets for each question. Across four Chinese and English table-QA benchmarks, STR matches or improves upon HTML-based baselines while reducing input tokens. The relative benefit grows for smaller language models and longer table contexts, suggesting that explicit semantic representations are especially useful under constrained inference budgets. Code and data are available at https://github.com/Phoenix-ni/STR.git .",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL"
+  ],
+  "submitted_at": "2026-05-29T17:10:25Z",
+  "pdf_url": "https://arxiv.org/pdf/2605.31550v1",
+  "in_scope": true,
+  "primary_topic": "rag",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper refines table-QA methodology by introducing a semantic representation that reduces token overhead and improves performance for smaller models, offering a practical alternative to HTML/Markdown serializations for builders working with constrained inference budgets."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The Semantic Triplet Restoration protocol and TripletQL router represent a substantial new variation in table representation, distinct from prior layout-oriented serializations by explicitly encoding hierarchical semantic relations as atomic facts."
+    },
+    "reproducibility": {
+      "score": 9,
+      "justification": "The paper states 'Code and data are available' at a provided GitHub repository, indicating all necessary artifacts for reproduction are publicly accessible."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is solidly written with a clear problem statement, proposed method (STR and TripletQL), and evaluation across four benchmarks showing token reduction and performance benefits."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "The paper directly addresses improving LLM performance on table understanding tasks through novel input representation and routing, which is clearly in scope for builders working with LLMs on structured data."
+    }
+  },
+  "composite": 7.65
+}
