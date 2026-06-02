@@ -1,0 +1,45 @@
+{
+  "arxiv_id": "2606.02576v1",
+  "title": "ProtoAda: Prototype-Guided Adaptive Adapter Expansion and Geometric Consolidation for Multimodal Continual Instruction Tuning",
+  "authors": [
+    "Yu-Cheng Shi",
+    "Zhen-Hao Xie",
+    "Jun-Tao Tang",
+    "Da-Wei Zhou"
+  ],
+  "abstract": "Multimodal Large Language Models (MLLMs) achieve strong performance through instruction tuning, but real-world deployment requires them to continually acquire new vision-language capabilities, making Multimodal Continual Instruction Tuning (MCIT) essential. To reduce inter-task interference and promote collaboration, recent methods often employ sparse architectures like Mixture of LoRA Experts with image-text similarity routing. However, tasks with distinct response structures could share highly similar visual-linguistic semantics and thus be wrongly routed to the same expert; image-text similarity alone is insufficient for reliable task assignment. For example, an expert in a grounding task requiring coordinate prediction may be biased toward producing short textual answers after learning semantically similar VQA tasks. This format-blind task assignment integrates heterogeneous response types into shared parameters, inducing gradient interference and ineffective expert collaboration. To address this problem, we propose ProtoAda, a prototype-guided adaptive tuning framework. ProtoAda introduces format-aware task prototypes to align task assignment and routing with both task semantics and output structure, and further consolidates format-compatible updates in a geometry-aware manner to effectively reuse and progressively refine existing parameters. Extensive experiments on multiple benchmarks demonstrate that ProtoAda achieves superior performance, especially on tasks whose answer structures are easily corrupted by sequential tuning.",
+  "primary_cat": "cs.CV",
+  "all_cats": [
+    "cs.CV",
+    "cs.LG"
+  ],
+  "submitted_at": "2026-06-01T17:59:13Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.02576v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper addresses a critical practical problem in MLLM deployment - catastrophic forgetting during continual learning - with a method that improves task routing by considering both semantics and output structure, directly impacting how builders approach sequential fine-tuning."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "ProtoAda introduces format-aware task prototypes and geometry-aware consolidation, a substantial advancement over existing similarity-based routing methods that only consider visual-linguistic semantics."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly enough for reimplementation, but the paper mentions 'extensive experiments' without explicitly stating code or dataset availability."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper clearly articulates the problem of format-blind task assignment and presents a well-structured solution with concrete examples of routing failures in multimodal continual learning."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses practical challenges in deploying and updating multimodal LLMs, which is central to builders working on real-world AI systems that require continuous learning."
+    }
+  },
+  "composite": 7.45
+}
