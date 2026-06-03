@@ -1,0 +1,44 @@
+{
+  "arxiv_id": "2606.03979v1",
+  "title": "Language Models Need Sleep: Learning to Self-Modify and Consolidate Memories",
+  "authors": [
+    "Ali Behrouz",
+    "Farnoosh Hashemi",
+    "Vahab Mirrokni"
+  ],
+  "abstract": "The past few decades have witnessed significant advances in the design of machine learning algorithms, from early studies on task-specific shallow models to more general deep Large Language Models (LLMs). Despite showing promising results in tasks that require instant prediction or in-context learning, existing models lack the ability to continually learn and effectively transfer their temporal in-context knowledge to their long-term parameters. Inspired by human learning process, we introduce a ''Sleep'' paradigm that allows the models to continually learn, distill their short-term fragile memories into stable long-term knowledge with replay, and recursively improve themselves with ''Dreaming'' process. In more detail, sleep consists of two stages: (1) Memory Consolidation: an upward distillation process, called Knowledge Seeding, where the memories of a smaller-self are distilled into a larger network to provide more capacity while preserving the knowledge. As a proof of concept, we present a new Generalized Distillation process for {Knowledge Seeding} (i.e., the combination of on-policy distillation with Reinforcement Learning (RL)-based imitation learning); (2) Dreaming: a self-improvement phase, where the model uses RL to generate a curriculum of synthetic data to rehearse new knowledge and refine existing capabilities without human supervision. Our experiments on long-horizon, continual learning, knowledge incorporation, and few-shot generalization tasks support the importance of the sleep stage.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-06-02T17:56:55Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.03979v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces a novel 'Sleep' paradigm that addresses the critical limitation of continual learning in LLMs, enabling knowledge transfer from short-term to long-term parameters with measurable gains in long-horizon tasks."
+    },
+    "novelty": {
+      "score": 9,
+      "justification": "The work introduces a biologically-inspired 'Sleep' and 'Dreaming' framework with no clear precedent, combining upward distillation and RL-based synthetic data generation for self-improvement."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement with Knowledge Seeding and Dreaming phases, but no mention of code, weights, or datasets being publicly available."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is well-structured with clear explanations of the Sleep paradigm's two stages and presents experiments across multiple relevant tasks, though some implementation details may need elaboration."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses core LLM capabilities for continual learning and self-improvement, which are central concerns for builders working with production LLM systems."
+    }
+  },
+  "composite": 7.6
+}

@@ -1,0 +1,52 @@
+{
+  "arxiv_id": "2606.03968v1",
+  "title": "QUBRIC: Co-Designing Queries and Rubrics for RL Beyond Verifiable Rewards",
+  "authors": [
+    "Rongzhi Zhang",
+    "Rui Feng",
+    "Zhihan Zhang",
+    "Jingfeng Yang",
+    "Qingyu Yin",
+    "Xin Liu",
+    "Zixuan Zhang",
+    "Priyanka Nigam",
+    "Bing Yin",
+    "Tuo Zhao",
+    "Chao Zhang"
+  ],
+  "abstract": "Rubric-based RL is a promising route for extending reinforcement learning beyond verifiable rewards, yet existing methods optimize rubrics while treating the query distribution as fixed. We identify a structural bottleneck: rubric quality is constrained by query structure. Open-ended queries yield vague rubrics; naively narrowing them introduces fabricated references that no model can verify, so all responses fail and training receives no reward signal. We present QUBRIC, a framework that co-designs queries and rubrics. Teacher-derived key points ground the rewriting of open-ended queries into scenario-based, evaluable questions. Contrastive rubric generation then turns teacher-policy gaps into query-level criteria, and learnability filtering retains only informative query-rubric pairs for GRPO training. QUBRIC achieves a +5.5 point gain on ArenaHard over the SFT baseline. Trained only on instruction-following data, it further transfers to three held-out benchmarks spanning legal, moral, and narrative reasoning (+6.3 points on average), with improvements concentrated in reasoning-related dimensions. These results provide evidence that co-designing queries and rubrics can make rubric-based RL a practical complement to RLVR beyond strictly verifiable tasks.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-06-02T17:53:04Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.03968v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper refines rubric-based RL with a co-design framework that achieves measurable gains (+5.5 points on ArenaHard) and transfers to held-out benchmarks, offering a practical improvement for builders working on RL for open-ended tasks."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The work introduces a substantial new variation by co-designing queries and rubrics to address a structural bottleneck, moving beyond prior methods that treated the query distribution as fixed."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method of teacher-derived key points, query rewriting, contrastive rubric generation, and learnability filtering is described clearly enough to reimplement, but no mention is made of public code or artifacts."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is solidly written, clearly identifying a structural bottleneck and presenting a defensible evaluation methodology with results on ArenaHard and three held-out benchmarks."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper is directly in the applied-AI sweet spot, presenting a framework (QUBRIC) for improving reinforcement learning with LLMs on open-ended tasks like legal, moral, and narrative reasoning."
+    }
+  },
+  "composite": 7.05
+}
