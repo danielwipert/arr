@@ -1,0 +1,44 @@
+{
+  "arxiv_id": "2606.05106v1",
+  "title": "Arithmetic Pedagogy for Language Models",
+  "authors": [
+    "Andhika Bernard Lumbantobing",
+    "Hokky Situngkir"
+  ],
+  "abstract": "We investigate whether methods of human mathematics pedagogy can guide the training of language models toward arithmetic reasoning. Building on the GASING method -- an Indonesian pedagogy that solves basic arithmetic through a left-to-right procedure aligned with the causal order of token generation -- we operationalize each operation as a computational procedure whose execution trace is serialized into natural-language Chain-of-Thought (CoT) supervision. A small GPT-2 decoder (86M parameters) with a syllabic-agglutinative TOBA tokenizer for Indonesian is trained from scratch on this data using only a next-token prediction objective, without reinforcement learning or reward-based optimization. Monitoring training reveals three distinct learning phases, and mechanistic analyses -- attention-masking interventions on the CoT information graph, residual-stream probing, and logit-lens inspection -- show that the model first internalizes a procedural pathway and subsequently develops an associative, ``mental-arithmetic'' capacity that retrieves intermediate results without explicit step-by-step computation. The trained model reaches over 80% accuracy on held-out problems and attains competitive performance against substantially larger language models, indicating that targeted, pedagogically grounded training can yield strong and economical arithmetic capability at small scale.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.AI",
+    "cs.CY"
+  ],
+  "submitted_at": "2026-06-03T17:09:25Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.05106v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 6,
+      "justification": "The paper demonstrates that targeted, pedagogically grounded training can yield strong arithmetic capability at small scale, which is an interesting result for model efficiency but has narrow application and limited near-term build impact for most LLM engineers."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The work introduces a substantial new variation by adapting a specific human mathematics pedagogy (GASING) to guide language model training, which is a distinct approach from prior work in arithmetic reasoning."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement, including details about the GASING procedure, model architecture (GPT-2 86M), tokenizer (TOBA), and training objective, but no mention is made of public code, weights, or datasets."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is solidly written, with a clear abstract outlining the approach, methodology, and key findings, and the evaluation methodology appears defensible with described accuracy metrics and mechanistic analyses."
+    },
+    "topical_fit": {
+      "score": 7,
+      "justification": "The paper is clearly in scope for builders using LLMs, as it investigates training methodologies for improving arithmetic reasoning, a relevant capability, though it is not the central focus of most applied LLM work."
+    }
+  },
+  "composite": 6.45
+}

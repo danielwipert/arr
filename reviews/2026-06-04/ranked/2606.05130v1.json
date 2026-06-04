@@ -1,0 +1,51 @@
+{
+  "arxiv_id": "2606.05130v1",
+  "title": "Towards Efficient and Evidence-grounded Mobility Prediction with LLM-Driven Agent",
+  "authors": [
+    "Linyao Chen",
+    "Qinlao Zhao",
+    "Zechen Li",
+    "Mingming Li",
+    "Likun Ni",
+    "Jinyu Chen",
+    "Yuhao Yao",
+    "Xuan Song",
+    "Noboru Koshizuka",
+    "Hiroki Kobayashi"
+  ],
+  "abstract": "Individual-level mobility prediction is central to urban simulation, transportation planning, and policy analysis. Supervised sequence models achieve strong accuracy but require task-specific training and offer limited decision-level transparency. Recent LLM-based methods improve interpretability, yet mostly rely on static prompts and single-pass inference, limiting their ability to seek additional evidence when mobility signals are weak or conflicting. We propose \\method{}, a training-free LLM-driven agent framework that formulates next-location prediction as adaptive evidence-controlled decision making. \\method{} resolves routine cases through a fast path based on historical regularity, while ambiguous cases trigger iterative tool use over recent trajectories, historical behavior, stay-move likelihood, and geographical evidence. Across three mobility datasets, AgentMob achieves the strongest overall performance among training-free LLM-based methods, with GPT-5.4 reaching 71.42\\% Acc@1 on BW, 33.14\\% on YJMob100K, and 33.50\\% on Shanghai ISP. On BW non-fast-path cases, the LLM controller improves Acc@1 from 30.65\\% to 48.62\\% over a same-tool statistical baseline, showing that its main benefit lies in resolving ambiguous predictions through adaptive evidence gathering. Our code is available at https://github.com/Unknown-zoo/AgentMob.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-06-03T17:34:01Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.05130v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 6,
+      "justification": "The paper introduces a novel LLM-driven agent framework for mobility prediction that improves interpretability and handles ambiguous cases, but its application is specific to mobility prediction rather than a core LLM building decision like RAG architecture."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The paper proposes a substantial new variation by formulating mobility prediction as adaptive evidence-controlled decision making with a fast path for routine cases and iterative tool use for ambiguous ones, distinct from prior static-prompt LLM methods."
+    },
+    "reproducibility": {
+      "score": 9,
+      "justification": "The paper states 'Our code is available at https://github.com/Unknown-zoo/AgentMob,' providing public code and clear methodology for reproduction."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is solidly written with defensible evaluation methodology, clearly presenting the framework, datasets, and performance gains over baselines."
+    },
+    "topical_fit": {
+      "score": 7,
+      "justification": "The paper is clearly in scope as it applies LLMs to a practical prediction task (mobility) with an agent framework, though it's not the central focus of core LLM building techniques like prompting or fine-tuning."
+    }
+  },
+  "composite": 7.25
+}
