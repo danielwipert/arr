@@ -1,0 +1,42 @@
+{
+  "arxiv_id": "2606.06460v1",
+  "title": "Will the Agent Recuse Itself? Measuring LLM-Agent Compliance with In-Band Access-Deny Signals",
+  "authors": [
+    "Thamilvendhan Munirathinam"
+  ],
+  "abstract": "As autonomous LLM agents increasingly hold real credentials and operate infrastructure without a human in the loop, operators have no standard way to tell an agent that a resource is off-limits. Access controls either let the agent in (it has valid credentials) or hard-fail it (indistinguishable from any other client). We propose a third mode: a lightweight, published in-band deny signal -- the Recuse Signal -- that a server emits over a protocol's existing channels (an SSH banner, a PostgreSQL NOTICE) asking a connecting automated agent to voluntarily withdraw. This is a cooperative governance control, the robots.txt analogue for live access; it is explicitly not a security boundary. Its value is entirely empirical and, to our knowledge, unmeasured: do compliant LLM agents actually honor such a signal? We define the signal as an open mini-standard, implement two zero- or low-footprint adapters (an SSH banner/PAM hook and a PostgreSQL wire-protocol proxy), deploy them on a live production host, and run a controlled experiment in which fresh agents are given a benign operations task and observed for recusal. In a pilot (SSH; OpenAI GPT-4o and GPT-4o-mini; and Claude Code as a deployed agent), the signal cleanly induces recusal -- 100% recusal when present versus 100% task completion in a no-signal control -- and, revealingly, behaves as a cooperative rather than absolute signal: an explicit operator-authorization framing flips the most capable model to proceed, while other agents continue to defer to the on-host policy. We release the standard, adapters, and experiment harness for reproduction.",
+  "primary_cat": "cs.CR",
+  "all_cats": [
+    "cs.CR",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-06-04T17:50:54Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.06460v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 9,
+      "justification": "This paper introduces a practical governance mechanism for LLM agents that could change how builders implement access control and cooperative security in autonomous systems."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The concept of in-band deny signals for LLM agents is a substantial new variation on access control, distinct from traditional binary authentication approaches."
+    },
+    "reproducibility": {
+      "score": 9,
+      "justification": "The paper releases the standard, adapters, and experiment harness for reproduction, providing all necessary artifacts for competent teams to replicate the results."
+    },
+    "clarity": {
+      "score": 9,
+      "justification": "The paper is well-written with clear problem definition, methodology description, and appropriately scoped claims about the cooperative nature of the signal."
+    },
+    "topical_fit": {
+      "score": 10,
+      "justification": "This directly addresses practical deployment concerns for LLM agents operating infrastructure, making it highly relevant to builders working with autonomous systems."
+    }
+  },
+  "composite": 8.85
+}

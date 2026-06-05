@@ -1,0 +1,55 @@
+{
+  "arxiv_id": "2606.06473v1",
+  "title": "MLEvolve: A Self-Evolving Framework for Automated Machine Learning Algorithm Discovery",
+  "authors": [
+    "Shangheng Du",
+    "Xiangchao Yan",
+    "Jinxin Shi",
+    "Zongsheng Cao",
+    "Shiyang Feng",
+    "Zichen Liang",
+    "Boyuan Sun",
+    "Tianshuo Peng",
+    "Yifan Zhou",
+    "Xin Li",
+    "Jie Zhou",
+    "Liang He",
+    "Bo Zhang",
+    "Lei Bai"
+  ],
+  "abstract": "Large language model (LLM) agents are increasingly applied to long-horizon tasks such as scientific discovery and machine learning engineering (MLE), where sustained self-evolution becomes a key capability. However, existing MLE agents suffer from inter-branch information isolation, memoryless search, and lack of hierarchical control, which together hinder long-horizon optimization. We present MLEvolve, an LLM-based self-evolving multi-agent framework for end-to-end machine learning algorithm discovery. By extending tree search to Progressive MCGS, MLEvolve enables cross-branch information flow through graph-based reference edges and gradually shifts the search from broad exploration to focused exploitation with an entropy-inspired progressive schedule. To allow the agent to evolve with accumulated experience, we introduce Retrospective Memory, which combines a cold-start domain knowledge base with a dynamic global memory for task-specific experience retrieval and reuse. For stable long-horizon iteration, we further decouple strategic planning from code generation with adaptive coding modes. Evaluation on MLE-Bench shows that MLEvolve achieves state-of-the-art performance across multiple dimensions including average medal rate and valid submission rate under a 12-hour budget (half the standard runtime). Moreover, MLEvolve also outperforms specialized algorithm discovery methods including AlphaEvolve on mathematical algorithm optimization tasks, demonstrating strong cross-domain generalization. Our code is available at https://github.com/InternScience/MLEvolve.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI",
+    "cs.CL"
+  ],
+  "submitted_at": "2026-06-04T17:55:59Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.06473v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper refines automated machine learning (AutoML) with a novel multi-agent framework that achieves state-of-the-art performance on MLE-Bench, directly impacting how builders might approach algorithm discovery and optimization."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "It introduces substantial new variations like Progressive MCGS, graph-based reference edges, and Retrospective Memory, which are distinct from prior agent-based AutoML approaches."
+    },
+    "reproducibility": {
+      "score": 9,
+      "justification": "The paper states 'Our code is available at https://github.com/InternScience/MLEvolve,' providing public access to code and clear evaluation on the MLE-Bench dataset."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is solidly written, clearly defining the problem of inter-branch isolation and memoryless search, and presents a defensible evaluation methodology with comparative results on standard benchmarks."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "The paper focuses on an LLM-based multi-agent framework for machine learning engineering, which is clearly in scope for builders working with LLMs on applied AI and automation tasks."
+    }
+  },
+  "composite": 7.95
+}
