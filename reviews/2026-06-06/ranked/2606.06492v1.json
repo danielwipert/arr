@@ -1,0 +1,46 @@
+{
+  "arxiv_id": "2606.06492v1",
+  "title": "Code2LoRA: Hypernetwork-Generated Adapters for Code Language Models under Software Evolution",
+  "authors": [
+    "Liliana Hotsko",
+    "Yinxi Li",
+    "Yuntian Deng",
+    "Pengyu Nie"
+  ],
+  "abstract": "Code language models need repository-level context to resolve imports, APIs, and project conventions. Existing methods inject this knowledge as long inputs (retrieved through RAG or dependency analysis) or through per-repository fine-tuning and LoRA -- costly at repository scale and brittle to evolving codebases. We introduce Code2LoRA, a hypernetwork framework that generates repository-specific LoRA adapters, effectively injecting repository knowledge with zero inference-time token overhead. Code2LoRA supports two usage scenarios: Code2LoRA-Static converts a single repository snapshot into an adapter, suitable for comprehension of stable codebases; while Code2LoRA-Evo maintains an adapter backed by a GRU hidden state updated per code diff, suitable for active development of evolving codebases. To evaluate Code2LoRA against parameter-efficient fine-tuning baselines, we build RepoPeftBench, a benchmark of 604 Python repositories with two tracks: a static track with 40K training and 12K test assertion-completion tasks, and an evolution track with 215K commit-derived training and 87K commit-derived test tasks. On the static track, Code2LoRA-Static achieves 63.8% cross-repo and 66.2% in-repo exact match, matching the per-repository LoRA upper bound; on the evolution track, Code2LoRA-Evo achieves 60.3% cross-repo exact match (+5.2 pp over a single shared LoRA). Code2LoRA's code can be found at https://anonymous.4open.science/r/code2lora-6857; the model checkpoints and RepoPeftBench datasets can be found at https://huggingface.co/code2lora.",
+  "primary_cat": "cs.SE",
+  "all_cats": [
+    "cs.SE",
+    "cs.AI",
+    "cs.CL"
+  ],
+  "submitted_at": "2026-06-04T17:59:46Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.06492v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces a hypernetwork framework for generating repository-specific LoRA adapters, which refines the technique of injecting repository context into code models with measurable gains in cross-repository performance and support for evolving codebases."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The work presents a substantial new variation by combining a hypernetwork with a GRU to generate and update LoRA adapters for code evolution, a distinct approach from prior per-repository fine-tuning or RAG methods."
+    },
+    "reproducibility": {
+      "score": 9,
+      "justification": "The paper provides a public code repository, model checkpoints on Hugging Face, and the RepoPeftBench datasets, offering all major artifacts needed for reproduction."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is solidly written, with a clear problem statement, well-defined static and evolution tracks for evaluation, and results that appropriately scope the claims against established baselines."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper is directly in the applied-AI sweet spot, addressing a core challenge in building with LLMs for code by improving repository-level context injection with a novel parameter-efficient method."
+    }
+  },
+  "composite": 8.05
+}
