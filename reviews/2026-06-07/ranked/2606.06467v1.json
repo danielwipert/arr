@@ -1,0 +1,47 @@
+{
+  "arxiv_id": "2606.06467v1",
+  "title": "You Only Index Once: Cross-Layer Sparse Attention with Shared Routing",
+  "authors": [
+    "Yutao Sun",
+    "Yanqi Zhang",
+    "Li Dong",
+    "Jianyong Wang",
+    "Furu Wei"
+  ],
+  "abstract": "Long-context inference in modern LLMs is increasingly constrained by decoding efficiency, especially in reasoning-heavy settings where models generate long intermediate chains of thought. Existing sparse attention methods often face a practical efficiency-quality trade-off. Structured block sparse methods typically provide stronger acceleration but incur noticeable quality loss, while token sparse methods are usually more accurate yet deliver limited end-to-end speedup because top-k routing over the full cache remains expensive. In this work, we propose cross-layer sparse attention (CLSA), which is built on top of KV-sharing architectures such as YOCO. The core idea is to share not only the KV cache across cross-decoder layers, but also the routing index. A single indexer computes token-level top-k selection once and reuses the resulting index across layers, thereby preserving the fine-grained selectivity of token sparse attention while amortizing the routing overhead. The resulting architecture improves all major inference bottlenecks jointly, including pre-filling, KV-cache storage, and long-context decoding. Experiments across short-context and long-context benchmarks show that CLSA is both accurate and efficient, achieving up to 7.6x decoding speedup and 17.1x overall throughput improvement at 128K context. These results suggest a more complete architectural solution for long-context LLMs that jointly advances model quality and inference efficiency.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.AI",
+    "cs.LG"
+  ],
+  "submitted_at": "2026-06-04T17:54:04Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.06467v1",
+  "in_scope": true,
+  "primary_topic": "adjacent_infrastructure",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 9,
+      "justification": "The paper addresses core efficiency bottlenecks in LLM inference that directly impact builders' decisions about long-context model deployment, offering up to 7.6x decoding speedup."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The cross-layer sparse attention with shared routing introduces a novel architectural approach that combines KV-sharing with amortized routing overhead, distinct from prior sparse attention methods."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly with architectural details and experimental results, but the paper does not mention code or model release for direct reproduction."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper clearly explains the efficiency-quality trade-off problem and presents a well-structured solution with comprehensive experimental validation across multiple benchmarks."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The work directly addresses practical LLM inference efficiency challenges that builders face when deploying long-context models, making it highly relevant for applied AI practitioners."
+    }
+  },
+  "composite": 8.0
+}

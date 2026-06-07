@@ -1,0 +1,45 @@
+{
+  "arxiv_id": "2606.06494v1",
+  "title": "TailLoR: Protecting Principal Components in Parameter-Efficient Continual Learning",
+  "authors": [
+    "Marius Dragoi",
+    "Ioana Pintilie",
+    "Alexandra Dragomir",
+    "Antonio Barbalau",
+    "Florin Brad"
+  ],
+  "abstract": "Parameter-efficient finetuning methods based on spectral decomposition have enabled progress in Continual Learning. In this paper we introduce TailLoR, which utilizes the singular bases U and V of the pre-trained weights as a fixed reference frame to learn a low-rank update applied to the singular value matrix. A soft spectral penalty discourages updates aligned with dominant singular directions, reducing interference while routing fine-grained adaptation into the highly flexible, long-tail spectral coordinates.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG"
+  ],
+  "submitted_at": "2026-06-04T17:59:55Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.06494v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper refines a known technique (spectral decomposition for parameter-efficient finetuning) by introducing a soft spectral penalty to reduce interference in continual learning, offering measurable gains for builders implementing continual learning systems."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The method presents a substantial new variation by using singular bases as a fixed reference frame and applying a soft penalty to protect principal components, a distinct approach from prior low-rank adaptation techniques."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement, as the paper details the use of singular bases and a spectral penalty, but no mention is made of public code, weights, or datasets."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The abstract is solidly written, clearly presenting the problem (interference in continual learning), the proposed solution (TailLoR), and its core mechanism (soft spectral penalty on dominant singular directions)."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "The paper is clearly in scope, addressing parameter-efficient finetuning and continual learning for pre-trained models, which are central concerns for engineers building and adapting LLM systems."
+    }
+  },
+  "composite": 6.85
+}
