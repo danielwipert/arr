@@ -1,0 +1,57 @@
+{
+  "arxiv_id": "2606.07464v1",
+  "title": "Planning-aligned Token Compression for Long-Context Autonomous Driving",
+  "authors": [
+    "Zhixuan Liang",
+    "Yuxiao Chen",
+    "Yurong You",
+    "Peter Karkus",
+    "Wenhao Ding",
+    "Boyi Li",
+    "Alexander Popov",
+    "Yan Wang",
+    "Maximilian Igl",
+    "Yiming Li",
+    "Danfei Xu",
+    "Nikolai Smolyanskiy",
+    "Boris Ivanovic",
+    "Ping Luo",
+    "Marco Pavone"
+  ],
+  "abstract": "Monolithic vision-action models represent an emerging paradigm in autonomous driving. However, this architecture produces token sequences that quickly exceed real-time computational budgets when encoding extended temporal context for complex interactions. While approaches like linear transformers and external memory try to make the context lightweight, token compression is most compatible with the architecture as it requires no backbone modifications. Yet existing compression adopts rule-based heuristics like temporal decay, decoupled from planning, risking loss of decision-critical information. We propose COMPACT-VA, a planning-aligned working memory framework built on conditional VQ-VAE, compressing extended context into bounded representations. Compression is conditioned on both historical trajectory and a learned planning intent that the posterior encoder distills from future trajectories during training, while the prior encoder learns to predict it from compressed observations. The compressed memory, concatenated with the predicted latent, feeds the policy for end-to-end optimization, planning with retained decision-critical information. We evaluate on high-signal dynamic scenarios where historical context is most critical for behavior correctness (e.g., stop, yield, or proceed), and accordingly design behavioral metrics. Under comparable token budgets, we achieve $>$6% improvement (68.3%) on success rates with consistent gains across metrics. Ablations validate planning-aligned coupling effectiveness. Closed-loop evaluation confirms that COMPACT-VA maintained general driving performance with 3.3* speedup and 2.7* memory reduction over uncompressed processing.",
+  "primary_cat": "cs.RO",
+  "all_cats": [
+    "cs.RO",
+    "cs.AI",
+    "cs.CV"
+  ],
+  "submitted_at": "2026-06-05T17:16:21Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.07464v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper demonstrates >6% improvement in success rates with 3.3x speedup and 2.7x memory reduction, directly addressing computational bottlenecks in real-time autonomous driving systems."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "Introduces planning-aligned compression using conditional VQ-VAE with learned intent prediction, a substantial variation from rule-based temporal decay approaches."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "Method is described clearly with ablation studies, but no mention of code or dataset availability for direct reproduction."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "Well-written with clear problem statement, methodology description, and appropriately scoped claims supported by behavioral metrics and ablation studies."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses architectural optimization for LLM-based autonomous driving systems, squarely in the applied-AI sweet spot for builders."
+    }
+  },
+  "composite": 7.25
+}

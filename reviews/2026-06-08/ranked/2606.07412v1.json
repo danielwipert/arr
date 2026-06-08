@@ -1,0 +1,49 @@
+{
+  "arxiv_id": "2606.07412v1",
+  "title": "Socratic-SWE: Self-Evolving Coding Agents via Trace-Derived Agent Skills",
+  "authors": [
+    "Chuan Xiao",
+    "Zhengbo Jiao",
+    "Shaobo Wang",
+    "Wei Wang",
+    "Bing Zhao",
+    "Hu Wei",
+    "Linfeng Zhang",
+    "Lin Qu"
+  ],
+  "abstract": "LLM-driven software engineering agents have become a central testbed for real-world language-model capability, yet their training remains limited by the availability of high-quality SWE tasks. Existing synthetic data methods typically create tasks through fixed mutation or bug-injection procedures, making the resulting distributions largely independent of the agent's own weaknesses and training progress. We introduce Socratic-SWE, a closed-loop self-evolution framework that reuses the agent's historical solving traces as a source of training signal. Rather than treating traces only as evidence for reward computation, Socratic-SWE distills them into structured agent skills that summarize recurring failures and effective repair patterns. These skills then guide the generation of targeted repair tasks in real repositories. Candidate tasks are checked through execution-based validation and scored with a solver-gradient alignment reward, so that the retained tasks are both verifiable and useful for improving the Solver. The updated Solver produces new traces, enabling the task curriculum to adapt over successive rounds. Across SWE-bench Verified, SWE-bench Lite, SWE-bench Pro, and Terminal-Bench 2.0, Socratic-SWE consistently improves over self-evolving baselines under the same compute budget, reaching 50.40% on SWE-bench Verified after three iterations. These results suggest that solving traces can serve as a scalable substrate for self-evolving SWE agents.",
+  "primary_cat": "cs.SE",
+  "all_cats": [
+    "cs.SE",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-06-05T16:00:17Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.07412v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The framework introduces a novel self-evolution approach that could change how SWE agents are trained by leveraging their own solving traces as training data."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "While building on existing SWE agent research, the method of distilling traces into structured skills and using solver-gradient alignment reward represents a substantial new variation."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement, but the paper does not mention public release of code, weights, or datasets."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is well-written with clear methodology and evaluation across multiple benchmarks, though some implementation details could be more explicit."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM-driven software engineering agents, which is central to builders working with LLMs for code generation and software development."
+    }
+  },
+  "composite": 7.1
+}

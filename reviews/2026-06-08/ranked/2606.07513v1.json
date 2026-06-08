@@ -1,0 +1,53 @@
+{
+  "arxiv_id": "2606.07513v1",
+  "title": "Agentopia: Long-Term Life Simulation and Learning in Agent Societies",
+  "authors": [
+    "Xintao Wang",
+    "Sirui Zheng",
+    "Hongqiu Wu",
+    "Weiyuan Li",
+    "Jen-tse Huang",
+    "Minghao Zhu",
+    "Can Zu",
+    "Qi Deng",
+    "Jiawei Wang",
+    "Qianyu He",
+    "Heng Wang",
+    "Xiaojian Wu",
+    "Yunzhe Tao"
+  ],
+  "abstract": "Humans learn from social life. Simulating this process with LLM-powered agents represents a promising research direction, raising a natural question: whether LLMs can learn from such simulated social experience to better understand and replicate human behavior. However, prior agent society simulations typically operate at the scale of days, limiting the depth of social interactions and long-term growth. In this paper, we study long-term life simulation and LLM learning in agent societies, with two goals: (1) investigating social behaviors that emerge from life-long simulation, and (2) developing anthropomorphic capabilities in LLMs, particularly intelligence in social life, through years of simulated social experience. Specifically, we present Agentopia, a comprehensive framework for long-term life simulation in multi-agent societies, where 100 agents autonomously pursue personal growth, develop social relationships, and fulfill their needs and goals over 10 simulated years. We define life reward to mirror human well-being, and leverage this reward to train LLMs via rejection sampling. Extensive experiments show that agents exhibit rich emergent social behaviors. Furthermore, life reward training effectively enhances the underlying LLM, which leads to improved agent well-being in simulation, and generalizes to downstream role-playing benchmarks with +15.6% improvement.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL"
+  ],
+  "submitted_at": "2026-06-05T17:59:31Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.07513v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 6,
+      "justification": "The paper presents an interesting result on training LLMs via simulated social experience, but its application is narrow and its near-term impact on builders' decisions (like RAG or eval methodology) is limited."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The work introduces a substantial new variation by scaling agent society simulations to 10 years and 100 agents to study long-term social learning, a distinct approach from prior short-term simulations."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method of long-term simulation and life reward training via rejection sampling is described clearly enough to reimplement, but the paper does not mention public release of code, weights, or datasets."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is solidly written with a clear two-part goal, a defined 'life reward' metric, and defensible evaluation showing improved agent well-being and benchmark performance."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "The paper is clearly in scope for builders using LLMs, focusing on training and enhancing LLM capabilities through a novel simulation framework, though the agent-society focus is not the central concern for all builders."
+    }
+  },
+  "composite": 6.4
+}

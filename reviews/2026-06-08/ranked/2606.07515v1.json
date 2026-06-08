@@ -1,0 +1,46 @@
+{
+  "arxiv_id": "2606.07515v1",
+  "title": "How reliable are LLMs when it comes to playing dice?",
+  "authors": [
+    "Luca Avena",
+    "Gianmarco Bet",
+    "Bernardo Busoni"
+  ],
+  "abstract": "We investigate the probabilistic reasoning capabilities of large language models through a controlled benchmarking study on discrete probability problems. We constructed two datasets, respectively a set of standard exercises and a set of counterintuitive exercises, designed to trigger heuristic reasoning, and evaluated 8 state-of-the-art models, each tested with and without Chain-of-Thought prompting. Models achieve an average accuracy of 0.96 on standard problems but only 0.59 on counterintuitive ones. We further provide empirical evidence of token bias: performance drops by over 20% when canonical formulations are replaced by disguised variants. Embedding misleading suggestions in the prompt reduces performance by up to 34%, with no model proving immune. Taken together, the reported findings suggest that current LLMs are not yet genuine probabilistic reasoners, despite their success in advanced mathematical problems.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.AI",
+    "cs.HC",
+    "math.PR"
+  ],
+  "submitted_at": "2026-06-05T17:59:42Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.07515v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 6,
+      "justification": "The paper reveals specific vulnerabilities in LLM probabilistic reasoning that could impact how builders approach problem formulation and prompting strategies."
+    },
+    "novelty": {
+      "score": 5,
+      "justification": "While investigating probabilistic reasoning in LLMs is an established area, the focus on counterintuitive problems and token bias provides a clear but incremental contribution."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is clearly described with datasets and prompting strategies specified, though no code or datasets are mentioned as publicly available."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The abstract is well-written with specific performance metrics and clearly scoped claims about LLM limitations."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM capabilities and limitations, which is core to understanding model behavior for builders implementing probabilistic reasoning systems."
+    }
+  },
+  "composite": 6.35
+}
