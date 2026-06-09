@@ -1,0 +1,49 @@
+{
+  "arxiv_id": "2606.09709v1",
+  "title": "IS-CoT: Breaking the Long-form Generation Collapse via Interleaved Structural Thinking",
+  "authors": [
+    "Zechen Sun",
+    "Yuyang Sun",
+    "Zecheng Tang",
+    "Juntao Li",
+    "Wenpeng Hu",
+    "Wenliang Chen",
+    "Zhunchen Luo",
+    "Guotong Geng",
+    "Min Zhang"
+  ],
+  "abstract": "Generating coherent and controllable long-form content remains a persistent challenge for Large Language Models (LLMs). While reasoning-enhanced models have demonstrated success in logic-intensive domains, our evaluation reveals that they suffer from a severe length collapse in open-ended writing, where performance degrades sharply as target lengths exceed 2,000 words. We attribute this failure to the limitation of static hierarchical planning, which struggles to provide dynamic guidance over extended contexts. To bridge this gap, we introduce the Interleaved Structural Chain-of-Thought (IS-CoT) framework. Unlike external agentic workflows, IS-CoT embeds a dynamic Plan-Write-Reflect cycle into the generation process, enabling continuous strategy adaptation and global alignment without additional assistance. Based on this framework, we construct a high-quality dataset of interleaved reasoning traces via a multi-teacher pipeline and train IS-Writer-8B. Experiments demonstrate that IS-Writer-8B achieves state-of-the-art performance on challenging long-form benchmarks (e.g., +3.08 vs. DeepSeek-V3.2 on LongBench-Write), exhibiting robust length compliance and coherence competitive with significantly larger proprietary models.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL"
+  ],
+  "submitted_at": "2026-06-08T16:31:00Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.09709v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper addresses a critical practical problem in long-form generation where performance degrades beyond 2,000 words, offering a framework that achieves state-of-the-art results and could influence how builders approach extended content generation."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "IS-CoT introduces a dynamic Plan-Write-Reflect cycle that differs from static hierarchical planning, representing a substantial variation in reasoning-enhanced generation approaches."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly enough for reimplementation, but the paper mentions constructing a dataset via a multi-teacher pipeline without confirming code or dataset availability."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with clear problem definition, methodology explanation, and specific performance metrics (+3.08 vs. DeepSeek-V3.2) that support its claims."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM capabilities for long-form generation, a core challenge for builders working with language models in production applications."
+    }
+  },
+  "composite": 7.45
+}

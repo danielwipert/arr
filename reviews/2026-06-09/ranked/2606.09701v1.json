@@ -1,0 +1,46 @@
+{
+  "arxiv_id": "2606.09701v1",
+  "title": "Learning to Attack and Defend: Adaptive Red Teaming of Language Models via GRPO",
+  "authors": [
+    "Blake Bullwinkel",
+    "Eugenia Kim",
+    "Amanda Minnich",
+    "Mark Russinovich"
+  ],
+  "abstract": "AI red teaming must continually adapt to evolving attackers and defenders. Reinforcement learning offers a promising approach to discovering novel attacks, and co-training methods can produce more robust defenders in tandem. Recent works have demonstrated the efficacy of attacker-defender co-training by applying PPO and DPO, but report that GRPO is unstable in this setting. We introduce AdvGRPO, a co-training framework that makes GRPO viable for joint attacker-defender optimization using dense multi-channel rewards and decoupled advantage normalization. Training progresses through a curriculum from single-turn to closed-loop multi-turn attacks before bootstrapping co-training, where attacker and defender models are updated in alternation. We show that our method can produce highly effective and transferable attacks and that co-trained defenders outperform baselines on safety benchmarks.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.AI",
+    "cs.LG"
+  ],
+  "submitted_at": "2026-06-08T16:21:36Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.09701v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper introduces a practical framework for red teaming LLMs that could influence how builders approach security testing and defense development."
+    },
+    "novelty": {
+      "score": 6,
+      "justification": "While building on existing co-training methods like PPO and DPO, the paper introduces specific adaptations (dense multi-channel rewards, decoupled advantage normalization) to make GRPO work in this setting."
+    },
+    "reproducibility": {
+      "score": 4,
+      "justification": "The method is described at a high level but lacks details about code availability, specific datasets, or implementation specifics needed for straightforward reproduction."
+    },
+    "clarity": {
+      "score": 6,
+      "justification": "The abstract clearly outlines the problem and solution approach, though it lacks specific quantitative results to substantiate the claims about effectiveness."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "Red teaming and safety benchmarking are directly relevant to builders deploying LLMs in production environments where security and robustness are critical concerns."
+    }
+  },
+  "composite": 6.1
+}

@@ -1,0 +1,41 @@
+{
+  "arxiv_id": "2606.09735v1",
+  "title": "The Neutral Mask: How RLHF Provides Shallow Alignment while Leaving Partisan Structure Intact in a Large Language Model",
+  "authors": [
+    "Wendy K. Tam"
+  ],
+  "abstract": "The ambition behind alignment training is to make large language models safe and useful. The primary mechanism, reinforcement learning from human feedback (RLHF), shapes the behavior of deployed language models by aligning them with ``human values.'' Yet the process is opaque. What values are being encoded; whose values are they; and how does RLHF encode them? A growing body of evidence suggests that RLHF produces only functional compliance rather than deep alignment. We offer a mechanistic case study of this phenomenon for partisan political orientation with a comparison of the internal representations of Llama 3.1 8B before and after RLHF. We show that RLHF does not remove the structured partisan direction in the base model. Instead, it compresses the variance of the partisan signal to generate consistently balanced and non-partisan output. Sparse autoencoder decomposition reveals that policy-encoding features, which activate sporadically in the base model, are completely inactive in the Instruct model. Feature-level steering experiments confirm the causal disconnect. RLHF thus encodes a norm of political neutrality, not by erasing the model's knowledge of partisanship, but by severing the causal pathway from partisan geometry to output generation. Importantly, this neutrality is functional, not structural so that the underlying geometry that enables partisan steering remains intact. The mechanisms that bypass RLHF's guardrails, such as inferring and amplifying a user's partisan identity, reactivate partisan generation. If RLHF operates by disconnecting rather than removing value-laden structure, then the same pattern may hold for other value domains, and the aligned model's behavior may be more fragile than its outputs suggest.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL"
+  ],
+  "submitted_at": "2026-06-08T17:00:31Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.09735v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 9,
+      "justification": "The paper's finding that RLHF creates a 'neutral mask' by severing causal pathways rather than removing underlying partisan structure directly changes how builders should think about model safety and the robustness of alignment techniques."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The paper introduces a novel mechanistic case study using sparse autoencoder decomposition and feature-level steering to demonstrate how RLHF compresses variance and disconnects policy-encoding features, a substantial new variation in understanding alignment."
+    },
+    "reproducibility": {
+      "score": 7,
+      "justification": "The method is described clearly with specific techniques (sparse autoencoder decomposition, steering experiments) and focuses on a publicly available model (Llama 3.1 8B), though the exact code and artifacts are not confirmed as public."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written, with a clear abstract, a strong central thesis about functional vs. structural alignment, and defensible evaluation methodology using internal representation analysis."
+    },
+    "topical_fit": {
+      "score": 10,
+      "justification": "The paper's investigation into the mechanistic effects of RLHF on a large language model is directly in the sweet spot for engineers building with and aligning LLMs."
+    }
+  },
+  "composite": 8.3
+}
