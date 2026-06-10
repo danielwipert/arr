@@ -1,0 +1,44 @@
+{
+  "arxiv_id": "2606.11182v1",
+  "title": "EEVEE: Towards Test-time Prompt Learning in the Real World for Self-Improving Agents",
+  "authors": [
+    "Weixian Xu",
+    "Shilong Liu",
+    "Mengdi Wang"
+  ],
+  "abstract": "In this paper, we propose EEVEE, the first multi-dataset test-time prompt learning framework for LLM agents, enabling test-time prompt learning under real-world task streams. Existing methods are largely designed for single-dataset settings, while real-world applications require models to handle heterogeneous input streams drawn from multiple datasets, domains, and task distributions, limiting their practical applicability. To mitigate cross-dataset interference, EEVEE introduces a router that partitions incoming inputs into task clusters and assigns them to suitable prompt configurations. This design is optimized via a router-prompt co-evolution strategy, which employs interleaved router and prompt learning phases to address their mutual dependency. Experiments across multiple datasets demonstrate that the framework improves robustness under heterogeneous data streams while maintaining single-benchmark learning capability and efficiency. Specifically, EEVEE improves average multi-benchmark scores by 10.38 and 24.32 points over Qwen3-4B-Instruct and DeepSeek-V3.2, surpassing SOTA methods GEPA and ACE by up to 37.2% and 48.2%.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-06-09T17:57:16Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.11182v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper addresses a critical practical problem of handling heterogeneous real-world task streams, providing measurable 10-24 point improvements over baseline models and up to 48% gains over SOTA methods."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "EEVEE introduces the first multi-dataset test-time prompt learning framework with router-prompt co-evolution, a substantial variation from single-dataset approaches like GEPA and ACE."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly with router clustering and co-evolution strategy, but the paper does not mention code or artifacts being publicly available."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is well-structured with clear problem formulation and comprehensive experiments across multiple datasets, though specific implementation details could be more explicit."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM agent optimization and prompt engineering, core concerns for builders working with practical LLM deployment in real-world scenarios."
+    }
+  },
+  "composite": 7.1
+}

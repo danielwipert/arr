@@ -1,0 +1,45 @@
+{
+  "arxiv_id": "2606.11167v1",
+  "title": "Multi-Faceted Interactivity Alignment in Full-Duplex Speech Models",
+  "authors": [
+    "Atsumoto Ohashi",
+    "Neil Zeghidour",
+    "Alexandre Défossez",
+    "Eugene Kharitonov"
+  ],
+  "abstract": "Full-duplex spoken dialogue models can listen and speak simultaneously, making them a promising architecture for natural conversation. However, current models are trained solely with supervised learning through token-level likelihood maximization, which does not directly optimize interaction-level behaviors, causing interactivity issues such as excessive silence and ill-timed turn-taking. Recent work has applied reinforcement learning (RL) to improve interactivity, but existing methods address only a limited set of interactive behaviors in their rewards. In this work, we propose a post-training alignment method that comprehensively improves the interactivity of full-duplex spoken dialogue models through RL. We address the four canonical axes of interactivity: pause handling, turn-taking, backchanneling, and user interruption. For each axis, we extract short audio segments from human conversation corpora and optimize the model with axis-specific reward functions. An extra LLM-based reward for response quality prevents semantic degradation. We apply our method to two open-source models, Moshi and PersonaPlex, demonstrating consistent improvements in interactivity on both offline evaluation with pre-recorded audio and real-time multi-turn dialogue evaluation.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "eess.AS"
+  ],
+  "submitted_at": "2026-06-09T17:46:55Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.11167v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper refines full-duplex spoken dialogue models by directly optimizing four key interactive behaviors (pause handling, turn-taking, backchanneling, and interruption handling) with measurable gains, which directly informs builders working on conversational AI architecture."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "It introduces a substantial new variation by applying RL-based post-training alignment to comprehensively address four canonical axes of interactivity, a more holistic approach than prior work focusing on limited behaviors."
+    },
+    "reproducibility": {
+      "score": 7,
+      "justification": "The method is applied to two open-source models (Moshi and PersonaPlex) and the axis-specific reward design is described, though the specific human conversation corpora and full reward function details may present minor friction."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is solidly written, clearly defines the problem of token-level training versus interaction-level behaviors, and presents a defensible evaluation methodology using both offline and real-time multi-turn dialogue assessments."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper is directly in the applied-AI sweet spot, focusing on alignment methods for spoken dialogue models, which is highly relevant for builders working on LLM-based conversational systems."
+    }
+  },
+  "composite": 7.65
+}
