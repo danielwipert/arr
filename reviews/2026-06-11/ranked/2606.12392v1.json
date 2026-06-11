@@ -1,0 +1,42 @@
+{
+  "arxiv_id": "2606.12392v1",
+  "title": "System Report for CCL25-Eval Task 5: New Dataset and LoRA-Fine-Tuned Qwen2.5",
+  "authors": [
+    "Haotao Xie"
+  ],
+  "abstract": "Recently, large language models (LLMs) have achieved promising progress in the fields of classical Chinese translation and the generation of classical poetry. However, domain-specific research on precise translation and affective-semantic understanding of classical poetry remains limited. The main challenge is that most studies treat the poetic appreciation task as a general-domain problem, neglecting the distinctive features of poetic appreciation, while high-quality and domain-specific datasets are extremely limited. To address this limitation, we decompose the task into three subtasks: term interpretation, semantic interpretation, and emotional inference. Based on multiple open-source datasets, we perform data cleansing and alignment to construct the Classical Chinese Poetry Instruction Pair Dataset (CCPoetry-49K), which comprises 49,404 high-quality instruction-response pairs explicitly optimized for this domain. We then propose a domain-specialized LLM, called PoetryQwen, by applying Low-Rank Adaptation (LoRA) to fine-tune the Qwen2.5-14B model. Experimental results on the CCL25-Eval Task 5 benchmark demonstrate that PoetryQwen achieves a score of 0.757, representing a 9.7% improvement over the Qwen2.5-14B-Instruct baseline (0.690). These findings clearly indicate that PoetryQwen significantly enhances performance in precise translation and emotional understanding of classical poetry. We present new dataset and methodological considerations intended to support the domain-specific optimization of LLMs.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-06-10T17:54:32Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.12392v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 4,
+      "justification": "The paper presents a narrow domain-specific dataset and fine-tuning approach for classical Chinese poetry, which has limited near-term impact on the core decisions LLM builders are making this quarter."
+    },
+    "novelty": {
+      "score": 4,
+      "justification": "The work combines known techniques (LoRA fine-tuning, dataset construction from existing sources) for a specific application domain without introducing a substantially new method or framing."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly enough to reimplement (dataset construction process, LoRA fine-tuning), but no explicit mention is made of public code, weights, or the final dataset."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is solidly written with a clear problem statement, methodology, and quantifiable results showing a 9.7% improvement over the baseline."
+    },
+    "topical_fit": {
+      "score": 5,
+      "justification": "The paper is adjacent to the core LLM builder scope, as its focus on domain-specific fine-tuning and dataset creation requires explanation of its relevance to general LLM engineering practices."
+    }
+  },
+  "composite": 4.95
+}
