@@ -1,0 +1,43 @@
+{
+  "arxiv_id": "2606.13668v1",
+  "title": "Influcoder: Distilling Decoders' Gradient Influence Rankings into an Encoder for Data Attribution",
+  "authors": [
+    "Dimitri Kachler",
+    "Damien Sileo",
+    "Pascal Denis"
+  ],
+  "abstract": "With the growth of LLMs' (Large Language Models) capabilities, there has been an increasing push to curate high quality datasets by filtering samples in the training data. In general, Data Attribution (DA) methods aim to estimate how individual samples in a training dataset can precondition a model to generate certain outputs. As an example, one might be interested in which samples in the data could be the source of toxic behavior after training the LLM. Many methods quantify this conditioning through the paradigm of influence functions. While methods of this family are effective in its function, they lack the necessary processing speed and storage compactness to be practically implemented on large datasets. We propose a method, Influcoder, as a quick and cost-effective approach to influence-based Data Attribution at scale.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL"
+  ],
+  "submitted_at": "2026-06-11T17:58:33Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.13668v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces a practical method for scaling data attribution in LLMs, which directly impacts how builders can identify and curate training data to mitigate issues like toxic behavior."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "Influcoder distills decoder gradient influence into an encoder, offering a novel approach to accelerate influence-based data attribution compared to traditional methods."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly for reimplementation, but the abstract does not mention code or artifacts being publicly available."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The abstract is well-written, clearly states the problem and proposed solution, and appropriately scopes the claims around speed and cost-effectiveness."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper focuses on data attribution for LLMs, which is directly relevant to builders curating datasets and improving model behavior."
+    }
+  },
+  "composite": 7.1
+}
