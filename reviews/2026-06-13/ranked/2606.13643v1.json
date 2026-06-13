@@ -1,0 +1,44 @@
+{
+  "arxiv_id": "2606.13643v1",
+  "title": "Recursive Agent Harnesses",
+  "authors": [
+    "Elias Lumer",
+    "Sahil Sen",
+    "Kevin Paul",
+    "Vamse Kumar Subbiah"
+  ],
+  "abstract": "Recursive language models (RLMs) showed that recursion over model calls is an effective strategy for long-context reasoning, and production coding agents have begun to write code that spawns subagents at scale, most recently in Anthropic's dynamic workflows. We name and study the pattern between these two lines of work, where the recursive unit is a full agent harness with filesystem tools, code execution, and planning rather than a model call with no tools. We call this the Recursive Agent Harness (RAH) and frame it as harness recursion, the code-first extension to the model recursion of RLMs. A parent agent generates and runs an executable script that spawns subagent harnesses in parallel for fine-grained workloads and uses structured function calls for small subtasks. We provide a controlled evaluation on long-context reasoning. With the backbone held fixed at GPT-5 to match the published Codex and RLM baselines, RAH improves the Codex coding-agent baseline from 71.75% to 81.36% on Oolong-Synthetic (199 samples, 13 context-length buckets up to 4M tokens), a gain attributable to the harness rather than the model. With a stronger backbone, Claude Sonnet 4.5, the same design reaches 89.77%.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL"
+  ],
+  "submitted_at": "2026-06-11T17:47:30Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.13643v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper demonstrates measurable 9.6% improvement over baseline coding agents on long-context reasoning tasks, providing concrete evidence for builders to consider recursive agent architectures."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "While building on existing recursive LM and agent work, the paper introduces the novel concept of 'harness recursion' as a code-first extension to model recursion."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement but no mention of code, weights, or datasets being publicly available."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "Well-written with clear framing of the RAH concept and controlled evaluation methodology, though specific implementation details could be more comprehensive."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM agent architectures and coding agents, squarely in the sweet spot for builders working with LLM systems."
+    }
+  },
+  "composite": 7.1
+}

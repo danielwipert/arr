@@ -1,0 +1,62 @@
+{
+  "date": "2026-06-13",
+  "paper_id": "arxiv:2606.13649v1",
+  "paper_title": "Operadic consistency: a label-free signal for compositional reasoning failures in LLMs",
+  "paper_authors": [
+    "Nathaniel Bottman",
+    "Yinhong Liu",
+    "Kyle Richardson"
+  ],
+  "paper_url": "https://arxiv.org/abs/2606.13649",
+  "post_text": "A new label-free signal detects LLM reasoning failures by checking whether decomposed answers recompose correctly.\n\nResearchers at AI2 and Liquid AI introduced operadic consistency (OC), a per-question diagnostic that compares a model's direct answer with the answer it produces by composing stated sub-question answers. Across twelve instruction-tuned LLMs (4B to 671B parameters) on four multi-hop QA datasets, OC showed strong correlation with accuracy (Pearson r ∈ [0.86,0.94]), outperforming canonical chain-of-thought self-consistency which dropped to r ≈ 0.45 on two datasets.\n\nThe signal works because it probes compositional reasoning rather than sample variance. While temperature sampling measures how variable a model's answers are when re-sampled, OC checks whether sub-conclusions actually compose into the same final answer the model gives directly—a structural coherence test.\n\nFor teams building or evaluating reasoning systems, OC offers a complementary confidence signal at three inference calls per question. It suggests that the cheapest accuracy wins may come from consistency checks rather than more sampling. Worth asking your team about compositional verification methods alongside traditional confidence measures.\n\nWorth reading if you work on reasoning reliability. Worth ignoring if your use cases lack compositional structure.\n\nPaper: Operadic consistency: a label-free signal for compositional reasoning failures in LLMs, Bottman et al.\nhttps://arxiv.org/abs/2606.13649\n\n#LLMs #Reasoning #ModelRisk #Compositionality #OperadicConsistency",
+  "post_char_count": 1567,
+  "hook_char_count": 114,
+  "claims": [
+    {
+      "claim": "Researchers at AI2 and Liquid AI introduced operadic consistency (OC)",
+      "source_span": "Authors: Nathaniel Bottman, Yinhong Liu, Kyle Richardson",
+      "page": 1
+    },
+    {
+      "claim": "Across twelve instruction-tuned LLMs (4B to 671B parameters) on four multi-hop QA datasets",
+      "source_span": "across twelve instruction-tuned LLMs (4B–671B parameters",
+      "page": 2
+    },
+    {
+      "claim": "OC showed strong correlation with accuracy (Pearson r ∈ [0.86,0.94])",
+      "source_span": "OC is strongly correlated with accuracy on every dataset (Pearson r ∈[0.86,0.94]",
+      "page": 2
+    },
+    {
+      "claim": "outperforming canonical chain-of-thought self-consistency which dropped to r ≈ 0.45 on two datasets",
+      "source_span": "Chain-of-thought self-consistency (CoT-SC; Wang et al., 2023) matches OC on HotpotQA and DROP (r = 0.93, 0.87) but drops to r ≈ 0.45 on MuSiQue and StrategyQA",
+      "page": 2
+    },
+    {
+      "claim": "at three inference calls per question",
+      "source_span": "Cost: 3 model calls",
+      "page": 4
+    }
+  ],
+  "ranker_scores": {
+    "significance": 8,
+    "novelty": 9,
+    "reproducibility": 7,
+    "clarity": 8,
+    "topical_fit": 9,
+    "composite": 8.15
+  },
+  "critic_report": {
+    "voice_match": "pass",
+    "banned_phrase_scan": "fail",
+    "length_compliance": "pass",
+    "structure": "pass",
+    "grounding": "pass",
+    "hype_check": "pass",
+    "retries_used": 1,
+    "notes": "Required 1 retry/retries before passing. | voice: The post maintains a declarative, reportorial tone with specific numbers and avoids LinkedIn-speak or hype, while remaining accessible to business and engineering leaders. | banned_phrases: banned: em-dash (—) | length: total=1567, hook=114 | structure: 7 blocks, 5 hashtags | grounding: All factual claims in the post are supported by verbatim source spans from the provided paper sections. [mech: 5 claim span(s) not found in paper: 'Authors: Nathaniel Bottman, Yinhong Liu, Kyle Richardson'; 'across twelve instruction-tuned LLMs (4B–671B parameters'; 'OC is strongly correlated with accuracy on every dataset (Pe'] | hype: The post accurately represents the paper's findings without unwarranted superlatives or overclaim."
+  },
+  "generated_at": "2026-06-13T11:25:42.150153Z",
+  "drafter_model": "deepseek/deepseek-chat-v3.1",
+  "critic_model": "deepseek/deepseek-chat-v3.1"
+}

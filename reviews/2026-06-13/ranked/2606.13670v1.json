@@ -1,0 +1,50 @@
+{
+  "arxiv_id": "2606.13670v1",
+  "title": "Automated reproducibility assessments in the social and behavioral sciences using large language models",
+  "authors": [
+    "Tobias Holtdirk",
+    "Pietro Marcolongo",
+    "Anna Steinberg Schulten",
+    "Felix Henninger",
+    "Stefan Rose",
+    "Sarah Ball",
+    "Bolei Ma",
+    "Frauke Kreuter",
+    "Markus Weinmann",
+    "Stefan Feuerriegel"
+  ],
+  "abstract": "Reproducibility in the social and behavioral sciences is typically evaluated by independent researchers who reanalyze the original data to assess whether the published findings can be recovered. However, such approaches are resource-intensive and difficult to scale. Here, we show that large language models (LLMs) can automate reproducibility assessments. Using N=76 published studies with predefined claims from the behavioral and social sciences, we compare LLM-generated analysis with the original findings and human reanalysis. For 7 studies, the LLM could not produce a viable effect size estimate. For the remaining studies, our LLM pipeline recovered the original effect sizes in 41% of studies using a +/-0.05 tolerance in Cohen's d. Further, our LLM pipeline reached the same qualitative conclusion as the original study in 96% of cases, where conclusions indicate whether the reanalysis supports the original claim. For comparison, human reanalysts recovered the original effect sizes in 34% of studies and reached the same qualitative conclusion in 74% of cases. Together, these results show that LLMs can serve as a scalable tool for automated reproducibility assessment and provide a foundation for systematic auditing of empirical results in the social and behavioral sciences.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI"
+  ],
+  "submitted_at": "2026-06-11T17:58:36Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.13670v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper demonstrates LLMs can automate reproducibility assessments with comparable or better performance than human reanalysts, offering a scalable tool that could change how builders approach systematic auditing of research findings."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "This represents a substantial new application of LLMs to the specific problem of automated reproducibility assessment in social sciences, distinct from prior work on general code generation or analysis."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly enough to reimplement, but the paper does not mention public code, weights, or datasets for the LLM pipeline used in the study."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with clear methodology, specific performance metrics (41% effect size recovery, 96% conclusion agreement), and appropriate comparison to human benchmarks."
+    },
+    "topical_fit": {
+      "score": 7,
+      "justification": "The paper applies LLMs to a practical research automation problem, clearly in scope for builders interested in LLM applications, though focused on social science research rather than direct engineering systems."
+    }
+  },
+  "composite": 7.2
+}
