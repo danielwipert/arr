@@ -1,0 +1,50 @@
+{
+  "arxiv_id": "2606.13663v1",
+  "title": "HyperTool: Beyond Step-Wise Tool Calls for Tool-Augmented Agents",
+  "authors": [
+    "Yaxin Du",
+    "Yifan Zhou",
+    "Yujie Ge",
+    "Jiajun Wang",
+    "Xianghe Pang",
+    "Shuo Tang",
+    "Tuney Zheng",
+    "Bryan Dai",
+    "Jian Yang",
+    "Siheng Chen"
+  ],
+  "abstract": "Tool-augmented LLM agents commonly rely on step-wise atomic tool calls, where each invocation, observation, and value transfer is exposed in the main reasoning trace. This creates an \\emph{execution-granularity mismatch}: locally deterministic tool workflows are unfolded into repeated model-visible decisions, consuming context and forcing the model to manage low-level dataflow in the trace. We introduce \\textbf{HyperTool}, a unified executable MCP-style tool interface that changes the model-visible unit of tool execution. A model invokes HyperTool with a code block that can call existing tools through their original schemas, manipulate returned values, and pass intermediate results locally, folding deterministic tool subroutines into a single outer call. To train models to use this interface, we synthesize HyperTool-format trajectories from cross-tool compositional tasks and verify them in real MCP environments. On MCP-Universe, HyperTool improves average accuracy from 15.69\\% to 35.29\\% on Qwen3-32B and from 9.93\\% to 33.33\\% on Qwen3-8B, and surpass GPT-OSS and Kimi-k2.5 on average accuracy, showing that our HyperTool can substantially improve multi-step tool use.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL"
+  ],
+  "submitted_at": "2026-06-11T17:56:36Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.13663v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces HyperTool which refines tool-augmented LLM agents by folding deterministic tool workflows into single calls, offering measurable gains in accuracy (15.69% to 35.29% on Qwen3-32B) that could change how builders architect multi-step tool use systems."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "HyperTool presents a substantial new variation by unifying tool execution into code blocks that manipulate values locally, distinct from prior step-wise atomic tool call approaches, though building on existing MCP-style interfaces."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement with synthesized HyperTool-format trajectories and MCP environments, but no mention of public code, weights, or datasets is provided."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is well-written with a clear problem statement (execution-granularity mismatch) and defensible evaluation showing accuracy improvements across models, though some details on synthesis methodology are brief."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly in the LLM and applied-AI sweet spot, focusing on tool-augmented agents which is a core concern for builders working with LLM systems and multi-step tool use."
+    }
+  },
+  "composite": 7.1
+}
