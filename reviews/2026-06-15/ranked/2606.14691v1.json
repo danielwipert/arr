@@ -1,0 +1,49 @@
+{
+  "arxiv_id": "2606.14691v1",
+  "title": "CORA: Analyzing and bridging thinking-answer gap in Multimodal RLVR via Consistency-Oriented Reasoning Alignment",
+  "authors": [
+    "Jiayue Cao",
+    "Zhicong Lu",
+    "Xuehan Sun",
+    "Wei Jia",
+    "Hongling Zheng",
+    "Changyuan Tian",
+    "Zichuan Lin",
+    "Wenqian Lv",
+    "Nayu Liu"
+  ],
+  "abstract": "Reinforcement learning with verifiable rewards (RLVR) has successfully elicited the reasoning capabilities of large language models, motivating its extension to multimodal scenarios. Existing methods primarily focus on improving the visual coverage of reasoning traces and mitigating visual hallucinations, but underestimate the semantic inconsistency between the reasoning process and the final answer. In this paper, we delve into thinking-answer inconsistency in RLVR for large vision-language models (LVLMs), showing thorough analyses of rollouts collected throughout Group Relative Policy Optimization (GRPO) training process and post-RLVR evaluation outputs that this issue persists during training and remains present during inference. Motivated by the analysis, we propose Consistency-Oriented Reasoning Alignment (CORA), which introduces thinking-answer semantic consistency into RLVR through a lightweight plug-and-play consistency reward model, and further incorporates Hybrid Reward Advantage Splitting (HRAS) to stably coordinate task and consistency optimization. Extensive experiments across representative multimodal reasoning benchmarks and mainstream LVLMs show that CORA improves task performance while effectively mitigating thinking-answer inconsistency, leading to more faithful reasoning traces.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL"
+  ],
+  "submitted_at": "2026-06-12T17:54:59Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.14691v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper addresses thinking-answer inconsistency in multimodal RLVR, which directly impacts the reliability of reasoning traces that builders depend on for verifiable AI systems."
+    },
+    "novelty": {
+      "score": 6,
+      "justification": "While building on existing RLVR work, CORA introduces a novel consistency reward model and hybrid reward advantage splitting specifically for multimodal reasoning alignment."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement, but the paper does not mention code or artifact availability for reproduction."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is well-structured with clear problem formulation, methodology description, and experimental results across multiple benchmarks and models."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "Directly addresses reasoning alignment in multimodal LLMs, which is highly relevant for builders working on verifiable AI systems and reliable reasoning pipelines."
+    }
+  },
+  "composite": 6.45
+}

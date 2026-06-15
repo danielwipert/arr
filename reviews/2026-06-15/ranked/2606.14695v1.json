@@ -1,0 +1,45 @@
+{
+  "arxiv_id": "2606.14695v1",
+  "title": "Persona-Pruner: Sculpting Lightweight Models for Role-Playing",
+  "authors": [
+    "Jinsu Kim",
+    "Jihoon Tack",
+    "Noah Lee",
+    "Jongheon Jeong"
+  ],
+  "abstract": "Language Models (LMs) have shown remarkable potential as role-playing chatbots, delivering consistent, stylized interactions when given a specification of a character or user persona. However, applying these capabilities to real-world applications (e.g., ecosystems with numerous NPCs interacting simultaneously) exposes a critical inefficiency due to the excessive computational cost. In this paper, we question the necessity of dedicating a full, generalist model to a single persona, hypothesizing that a specific character identity relies on only a fraction of the model's total capacity. We observe that naively pruning LMs often severely degrades the role-playing performance for a specific persona; it does not distinguish between redundant knowledge and essential character traits. We propose Persona-Pruner, a framework that sculpts a lightweight role-playing model by isolating persona-specific sub-networks from a single description. Our experiments consistently show that Persona-Pruner preserves role-playing performance substantially more effectively than existing state-of-the-art LLM pruning techniques, reducing the performance drop from the dense model by up to 93.8% over the strongest baseline on RoleBench in LLM-as-a-judge score, while still maintaining general LLM capabilities. Code is available at https://github.com/jsu-kim/Persona-Pruner.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG",
+    "cs.CL"
+  ],
+  "submitted_at": "2026-06-12T17:58:08Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.14695v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper refines model pruning for role-playing applications, offering measurable gains (93.8% reduction in performance drop) that could directly impact deployment decisions for builders managing multi-agent systems."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "It introduces a substantial new variation by targeting persona-specific sub-networks for pruning, a distinct approach from generalist LLM pruning techniques."
+    },
+    "reproducibility": {
+      "score": 9,
+      "justification": "The paper states 'Code is available' at a public GitHub repository, providing a clear path for a competent team to reproduce the results."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The abstract is solidly written, clearly stating the problem, hypothesis, method, and quantitative results with a defensible evaluation methodology (RoleBench, LLM-as-a-judge)."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper is directly in the applied-AI sweet spot, addressing a practical efficiency problem for deploying LLMs in role-playing applications, which is highly relevant for builders."
+    }
+  },
+  "composite": 8.05
+}

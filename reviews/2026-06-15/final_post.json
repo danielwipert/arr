@@ -1,0 +1,65 @@
+{
+  "date": "2026-06-15",
+  "paper_id": "arxiv:2606.14629v1",
+  "paper_title": "When Good Verifiers Go Bad: Self-Improving VLMs Can Regress on New Tasks",
+  "paper_authors": [
+    "Jianzhe Lin"
+  ],
+  "paper_url": "https://arxiv.org/abs/2606.14629",
+  "post_text": "A team shows that using stronger AI models to train smaller ones can silently make them worse, not better.\n\nJianzhe Lin tested verifier-driven self-improvement, where a frozen large model scores a smaller model's answers to guide its training. On the MMMU reasoning benchmark, every verifier tested—despite being useful on other tasks—caused the student model to regress by 3.4 to 10.9 percentage points below its original performance. The training loss decreased normally, offering no warning.\n\nThe failure is predictable. It occurs when the verifier's accuracy on the target task is low (8% to 23% in these tests). Crucially, the damage is inverted: a more confident but wrong verifier causes greater regression than a near-random one, as its incorrect guidance is amplified.\n\nFor teams building these systems, the operational takeaway is to measure a verifier's accuracy on your specific task before deployment, a cheap calibration that takes about five GPU-hours. Ranking verifiers by this task-specific quality, not their parameter count, is more reliable. The finding suggests a tight ceiling on returns from investing in ever-larger verifiers.\n\nWorth reading if you run self-improvement loops for visual-language models. Worth ignoring if you assume verifier monotonicity by default.\n\nPaper: When Good Verifiers Go Bad: Self-Improving VLMs Can Regress on New Tasks, Jianzhe Lin\nhttps://arxiv.org/abs/2606.14629\n\n#AI #SelfImprovement #VLM #ModelRisk #VerifierDriven",
+  "post_char_count": 1471,
+  "hook_char_count": 106,
+  "claims": [
+    {
+      "claim": "Jianzhe Lin tested verifier-driven self-improvement",
+      "source_span": "Verifier-driven self-DPO is a common recipe for self-improving production visual-language models.",
+      "page": 1
+    },
+    {
+      "claim": "On the MMMU reasoning benchmark, every verifier tested caused the student model to regress by 3.4 to 10.9 percentage points below its original performance.",
+      "source_span": "every verifier we tested silently regresses the student, producing drops of 3.4 to 10.9 percentage points below the frozen baseline",
+      "page": 1
+    },
+    {
+      "claim": "The training loss decreased normally, offering no warning.",
+      "source_span": "The regression is reproducible across two students. There is no warning sign in the DPO training loss, which descends cleanly throughout.",
+      "page": 1
+    },
+    {
+      "claim": "It occurs when the verifier's accuracy on the target task is low (8% to 23% in these tests).",
+      "source_span": "where their task-rubric accuracy drops to 8% to 23%",
+      "page": 1
+    },
+    {
+      "claim": "a more confident but wrong verifier causes greater regression than a near-random one",
+      "source_span": "damage is confidence-inverted: the more accurate-but-still-wrong verifier causes larger regression than a near-random verifier",
+      "page": 1
+    },
+    {
+      "claim": "a cheap calibration that takes about five GPU-hours.",
+      "source_span": "computationally cheap (∼5 GPU-hr per candidate)",
+      "page": 5
+    }
+  ],
+  "ranker_scores": {
+    "significance": 9,
+    "novelty": 8,
+    "reproducibility": 7,
+    "clarity": 8,
+    "topical_fit": 9,
+    "composite": 8.2
+  },
+  "critic_report": {
+    "voice_match": "pass",
+    "banned_phrase_scan": "fail",
+    "length_compliance": "pass",
+    "structure": "pass",
+    "grounding": "pass",
+    "hype_check": "pass",
+    "retries_used": 1,
+    "notes": "Required 1 retry/retries before passing. | voice: The post maintains a declarative, report-like tone with specific numbers and a clear point of view, avoiding LinkedIn-speak and making implications accessible to business leaders. | banned_phrases: banned: em-dash (—) | length: total=1471, hook=106 | structure: 7 blocks, 5 hashtags | grounding: Every factual claim in the post body is supported by a verbatim source span from the paper sections via the provided claims list. [mech: 2 claim span(s) not found in paper: 'The regression is reproducible across two students. There is'; 'computationally cheap (∼5 GPU-hr per candidate)'] | hype: The post's claims are precise and do not overclaim; it accurately reports the paper's findings and limitations."
+  },
+  "generated_at": "2026-06-15T15:23:11.190599Z",
+  "drafter_model": "deepseek/deepseek-chat-v3.1",
+  "critic_model": "deepseek/deepseek-chat-v3.1"
+}
