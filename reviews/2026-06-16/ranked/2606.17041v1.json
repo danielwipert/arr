@@ -1,0 +1,46 @@
+{
+  "arxiv_id": "2606.17041v1",
+  "title": "Benchmarking LLM Agents on Meta-Analysis Articles from Nature Portfolio",
+  "authors": [
+    "Anzhe Xie",
+    "Weihang Su",
+    "Yujia Zhou",
+    "Yiqun Liu",
+    "Qingyao Ai"
+  ],
+  "abstract": "Meta-analysis is a demanding form of evidence synthesis that combines literature retrieval, PI/ECO-guided study selection, and statistical aggregation. Its structured, verifiable workflow makes it an ideal substrate for evaluating systematic scientific reasoning, yet existing benchmarks lack ground truth across the full retrieval-screening-synthesis pipeline. We introduce MetaSyn, a dataset of 442 expert-curated meta-analyses from Nature Portfolio journals. Each entry pairs a research question with PI/ECO criteria, a retrieval corpus of 140k PubMed articles, verified positive studies, hard negatives that are topically similar but PI/ECO-ineligible, and complete search strategies and date bounds.\n  Benchmarking twelve pipeline configurations (nine RAG variants and a protocol-driven agent) reveals a critical screening bottleneck: despite a retrieval ceiling of 90.9% recall at K=200, no system recovers more than 52.7% of ground-truth included literature. Current LLMs fail to reliably separate eligible studies from PI/ECO-failing distractors in pools of comparable topical relevance. Stage-attributed metrics capture where systems succeed and fail; a single end-to-end score does not.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.IR"
+  ],
+  "submitted_at": "2026-06-15T17:56:41Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.17041v1",
+  "in_scope": true,
+  "primary_topic": "evaluation",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper identifies a critical screening bottleneck in RAG pipelines for systematic literature review, directly informing builders about a key limitation in current automated evidence synthesis systems."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "It introduces MetaSyn, a novel benchmark dataset of 442 expert-curated meta-analyses with full retrieval-screening-synthesis ground truth, a substantial new variation in evaluation methodology."
+    },
+    "reproducibility": {
+      "score": 7,
+      "justification": "The paper describes the dataset construction and benchmarking methodology clearly, though it does not explicitly state that code and artifacts are public, implying reimplementation is feasible."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The abstract is well-written, clearly states the problem, introduces the dataset, presents key findings (the screening bottleneck), and appropriately scopes claims with stage-attributed metrics."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper directly benchmarks LLM agents and RAG variants on a complex reasoning task, squarely in the sweet spot for builders evaluating LLM capabilities for systematic workflows."
+    }
+  },
+  "composite": 7.9
+}

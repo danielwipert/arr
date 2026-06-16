@@ -1,0 +1,43 @@
+{
+  "arxiv_id": "2606.17056v1",
+  "title": "The Value Axis: Language Models Encode Whether They're on the Right Track",
+  "authors": [
+    "Nick Jiang",
+    "Isaac Kauvar",
+    "Jack Lindsey"
+  ],
+  "abstract": "We investigate whether language models internally track the value of their current trajectory, defined as the likelihood that their ongoing strategy will achieve their goals. Using synthetic, in-context reinforcement learning data, we construct a \"value\" axis for Qwen3-8B. We find that activations along this axis distinguish between high vs. low verbalized confidence, rollouts without and with backtracking, and correct vs. corrupted code. Steering towards high value causally suppresses self-correction and reduces explanatory verbosity, while steering towards low value induces backtracking and exploration. We demonstrate that direct preference optimization (DPO) can increase the internal value of rewarded behaviors (e.g. use a certain word), causing the model to act more confidently after exhibiting them. Finally, we apply the value axis to study in-the-wild settings. For example, we find that Qwen assigns low value to politically sensitive chat queries after post-training and that supervised fine-tuning increases internal confidence within the training domain. Our results suggest that language models linearly encode an estimate of expected goal success that modulates their confidence in pursuing a direction.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL"
+  ],
+  "submitted_at": "2026-06-15T17:59:58Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.17056v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper refines the understanding of internal model confidence and demonstrates causal steering, which can inform decisions about model interpretability and fine-tuning strategies for builders."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "It introduces a novel method for constructing a 'value axis' from synthetic RL data and applies it to analyze phenomena like backtracking and confidence modulation, a substantial variation from prior interpretability work."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement, but the paper does not mention public release of code, weights, or the specific synthetic datasets used for axis construction."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is solidly written with a clear abstract and defensible methodology, though some claims about 'in-the-wild' applications are broad relative to the specific experiments shown."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper is directly in the applied-AI sweet spot, investigating the internal mechanisms of LLMs and how fine-tuning (DPO, SFT) affects them, which is highly relevant for builders."
+    }
+  },
+  "composite": 7.05
+}

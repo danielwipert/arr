@@ -1,0 +1,48 @@
+{
+  "arxiv_id": "2606.17053v1",
+  "title": "Context-Aware RL for Agentic and Multimodal LLMs",
+  "authors": [
+    "Peiyang Xu",
+    "Bangzheng Li",
+    "Sijia Liu",
+    "Karthik R. Narasimhan",
+    "Pramod Viswanath",
+    "Prateek Mittal",
+    "Xingyu Fu"
+  ],
+  "abstract": "Large language models (LLMs) often fail when answering requires identifying a small but decisive piece of evidence within a long or complex context, such as a single line in a tool trace or a subtle detail in an image. We propose ContextRL, a context-aware reinforcement learning (RL) method that improves long-horizon reasoning and multimodal performance through an \\emph{indirect} auxiliary objective. Instead of supervising only the final answer, ContextRL presents the model with a query, an answer, and two highly similar contexts, and rewards it for selecting the context that supports the query--answer pair, thereby encouraging fine-grained grounding. We construct contrastive context data in two domains: for coding agents, trajectories serve as contexts, yielding 1k pairs built via condition filtering; for multimodal reasoning, images serve as contexts, yielding 7K pairs built via generative editing and similarity search. ContextRL achieves average gains of +2.2% over standard GRPO on 5 long-horizon benchmarks, and +1.8% across 12 diverse visual question answering benchmarks. To disentangle the effect of the proposed objective from that of additional data, we compare against data-augmentation baselines that repurpose the same contrastive contexts as standard query--context--answer examples. These baselines provide little to no improvement, showing that the gains arise from the proposed context-selection objective rather than from the contrastive data alone.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.CV"
+  ],
+  "submitted_at": "2026-06-15T17:59:28Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.17053v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper refines agentic and multimodal LLM training with a measurable +2.2% gain on long-horizon benchmarks, offering a concrete technique for improving fine-grained grounding in complex contexts."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "It introduces a substantial new variation in RL training via an indirect auxiliary objective for context selection, distinct from standard supervised or RLHF approaches."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement, but the paper does not mention public release of code, weights, or the constructed 1k/7K contrastive datasets."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is solidly written, with a defensible evaluation that disentangles the effect of the objective from data augmentation through controlled baselines."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper is directly in the applied-AI sweet spot, addressing core challenges in improving agentic and multimodal LLM performance for builders."
+    }
+  },
+  "composite": 6.95
+}

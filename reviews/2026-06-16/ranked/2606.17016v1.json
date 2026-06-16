@@ -1,0 +1,58 @@
+{
+  "arxiv_id": "2606.17016v1",
+  "title": "TokenPilot: Cache-Efficient Context Management for LLM Agents",
+  "authors": [
+    "Buqiang Xu",
+    "Zirui Xue",
+    "Dianmou Chen",
+    "Chenyang Fu",
+    "Chiyu Wu",
+    "Caiying Huang",
+    "Chen Jiang",
+    "Jizhan Fang",
+    "Xinle Deng",
+    "Yijun Chen",
+    "Yunzhi Yao",
+    "Xuehai Wang",
+    "Jin Shang",
+    "Gong Yu",
+    "Ningyu Zhang"
+  ],
+  "abstract": "As LLM agents are deployed in long-horizon sessions, context accumulation drives up inference costs. Existing approaches utilize text pruning or dynamic memory eviction to minimize token footprints; however, their unconstrained sequence mutations alter layouts, introducing prefix mismatches and cache invalidation. This reveals a critical trade-off between text sparsity and prompt cache continuity. To address this, we present TokenPilot, a dual-granularity context management framework. Globally, Ingestion-Aware Compaction acts as a framework harness to stabilize prompt prefixes and eliminate open-world environmental noise at the ingestion gate. Locally, Lifecycle-Aware Eviction monitors the ongoing residual utility of context segments, enforcing a conservative batch-turn schedule to offload content segments only when task relevance expires. Experiments on PinchBench and Claw-Eval under both isolated and continuous modes demonstrate that TokenPilot reduces costs by 61% and 56% in isolated mode, and 61% and 87% in continuous mode, while maintaining competitive performance compared to prior systems. TokenPilot has been integrated into LightMem2 at https://github.com/zjunlp/LightMem2.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.AI",
+    "cs.LG",
+    "cs.MA"
+  ],
+  "submitted_at": "2026-06-15T17:46:50Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.17016v1",
+  "in_scope": true,
+  "primary_topic": "adjacent_infrastructure",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper presents a framework that reduces LLM agent inference costs by 61-87% by addressing cache invalidation, directly impacting a builder's decision on optimizing long-horizon agent deployments."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "It introduces a dual-granularity framework (Ingestion-Aware Compaction and Lifecycle-Aware Eviction) that substantially refines context management by explicitly addressing the cache continuity trade-off neglected by prior pruning/eviction methods."
+    },
+    "reproducibility": {
+      "score": 9,
+      "justification": "The paper states TokenPilot is integrated into a public GitHub repository (LightMem2), providing code and a clear integration point for reproduction."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The abstract clearly defines the problem of cache invalidation, presents the two-component solution, and reports specific, measurable cost reductions on named benchmarks."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper is directly in the applied-AI sweet spot, offering a systems-oriented framework to reduce the inference costs of LLM agents, a core concern for builders."
+    }
+  },
+  "composite": 7.9
+}
