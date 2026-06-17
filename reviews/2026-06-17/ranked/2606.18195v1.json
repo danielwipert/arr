@@ -1,0 +1,47 @@
+{
+  "arxiv_id": "2606.18195v1",
+  "title": "Learning from the Self-future: On-policy Self-distillation for dLLMs",
+  "authors": [
+    "Yifu Luo",
+    "Zeyu Chen",
+    "Haoyu Wang",
+    "Xinhao Hu",
+    "Yuxuan Zhang",
+    "Zhizhou Sha",
+    "Shiwei Liu"
+  ],
+  "abstract": "On-policy self-distillation (OPSD) has proven effective for post-training large language models (LLMs), yet its application to diffusion LLMs (dLLMs) remains unexplored. Existing OPSD methods are inherently autoregressive-centric. They inject privileged information via left-to-right prefix conditioning with token-level divergence supervision, a design that fundamentally conflicts with the arbitraryorder generation of dLLMs. We introduce d-OPSD, the first OPSD framework tailored for dLLMs. Our approach makes two core contributions. First, we reframe self-teacher construction by using self-generated answers as suffix conditioning, enabling the student model to learn from \"self future-experience\" rather than privileged prefixes. Second, we shift supervision from token-level to step-level, aligning training with the iterative denoising process of dLLMs. Experiments across four reasoning benchmarks show that d-OPSD consistently outperforms RLVR and SFT baselines with superior sample efficiency, requiring only around 10% of the optimization steps by RLVR and opening a promising pathway for dLLM posttraining. The code is available at https://github.com/xingzhejun/d-OPSD.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL"
+  ],
+  "submitted_at": "2026-06-16T17:24:57Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.18195v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper introduces a method that improves sample efficiency by 90% compared to RLVR, which could significantly impact how builders approach dLLM post-training optimization."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The work introduces the first OPSD framework specifically designed for diffusion LLMs, fundamentally rethinking teacher construction and supervision from autoregressive approaches."
+    },
+    "reproducibility": {
+      "score": 9,
+      "justification": "The code is publicly available at the provided GitHub URL, enabling straightforward reproduction of the method and results."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper clearly explains the limitations of existing methods and presents a well-structured solution, though more details on experimental setup would strengthen evaluation."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "The paper directly addresses post-training optimization for diffusion LLMs, a core concern for builders working with modern generative AI systems."
+    }
+  },
+  "composite": 7.75
+}

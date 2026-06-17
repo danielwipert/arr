@@ -1,0 +1,72 @@
+{
+  "date": "2026-06-17",
+  "paper_id": "arxiv:2606.18237v1",
+  "paper_title": "ReproRepo: Scaling Reproducibility Audits with GitHub Repository Issues",
+  "paper_authors": [
+    "Shanda Li",
+    "Qiuhong Anna Wei",
+    "Jingwu Tang",
+    "Valerie Chen",
+    "Nihar B Shah",
+    "Tim Dettmers",
+    "Yiming Yang",
+    "Ameet Talwalkar"
+  ],
+  "paper_url": "https://arxiv.org/abs/2606.18237",
+  "post_text": "LLM agents can identify real code reproducibility problems in AI research papers without running a single line of code.\n\nResearchers from CMU and UC Berkeley built ReproRepo, a framework that uses GitHub issues as evidence of real reproduction failures. They tested four frontier model-agent configurations on 1,149 machine learning papers from major conferences. The best agent, Codex with GPT-5.5, identified at least one semantically related human-reported blocker for 90% of papers.\n\nThe finding is narrower than it sounds. Agents excel at spotting visible setup failures like missing dependencies or documentation gaps but struggle with exact error localization. Semantic match rates run 58% while exact matches are only 25%, meaning agents identify the right problem area but miss precise triggers.\n\nFor engineering leaders, this suggests static auditing could triage vendor code quality before procurement. The low 3.5% false positive rate makes it practical for due diligence. But it won't catch execution-dependent failures like hardware-specific crashes or metric discrepancies that require actual runs.\n\nWorth exploring if you vet third-party AI components. Worth skipping if your team already runs full reproduction tests.\n\nPaper: ReproRepo: Scaling Reproducibility Audits with GitHub Repository Issues, Li et al.\nhttps://arxiv.org/abs/2606.18237\n\n#MachineLearning #Reproducibility #VendorRisk #CodeQuality #GitHubIssues",
+  "post_char_count": 1432,
+  "hook_char_count": 119,
+  "claims": [
+    {
+      "claim": "tested four frontier model-agent configurations on 1,149 machine learning papers from major conferences",
+      "source_span": "evaluate four frontier model-agent configurations on 1,149 recent machine learning papers from major conferences",
+      "page": 1
+    },
+    {
+      "claim": "Codex with GPT-5.5, identified at least one semantically related human-reported blocker for 90% of papers",
+      "source_span": "Codex with GPT-5.5 identifies at least one semantically related hidden issue for 93.3% of NeurIPS 2024 main-conference papers and 89.7% of ICLR 2026 papers",
+      "page": 2
+    },
+    {
+      "claim": "Semantic match rates run 58% while exact matches are only 25%",
+      "source_span": "issue-level SM@10 ranges from 43.4% to 58.1%, while issue-level EM@10 ranges only from 13.4% to 25.4%",
+      "page": 8
+    },
+    {
+      "claim": "low 3.5% false positive rate",
+      "source_span": "the false positive rate is at most 3.50% across models",
+      "page": 8
+    },
+    {
+      "claim": "Agents excel at spotting visible setup failures like missing dependencies or documentation gaps",
+      "source_span": "static auditing works better for visible repository failures",
+      "page": 10
+    },
+    {
+      "claim": "struggle with exact error localization",
+      "source_span": "exact localization remains challenging",
+      "page": 8
+    }
+  ],
+  "ranker_scores": {
+    "significance": 8,
+    "novelty": 7,
+    "reproducibility": 9,
+    "clarity": 8,
+    "topical_fit": 9,
+    "composite": 8.05
+  },
+  "critic_report": {
+    "voice_match": "pass",
+    "banned_phrase_scan": "pass",
+    "length_compliance": "pass",
+    "structure": "pass",
+    "grounding": "fail",
+    "hype_check": "pass",
+    "retries_used": 1,
+    "notes": "Required 1 retry/retries before passing. | voice: The post maintains a declarative, report-like tone with specific numbers and cautious framing, landing a clear 'so what' for business leaders without specialist jargon. | banned_phrases: no banned phrases found | length: total=1432, hook=119 | structure: 7 blocks, 5 hashtags | grounding: The claim 'Codex with GPT-5.5' is not supported by the provided source spans, which only reference 'GPT-5.5'. [mech: 3 claim span(s) not found in paper: 'evaluate four frontier model-agent configurations on 1,149 r'; 'Codex with GPT-5.5 identifies at least one semantically rela'; 'exact localization remains challenging'] | hype: The framing is appropriately narrow and cautious, with no unwarranted superlatives or overclaim relative to the paper's findings."
+  },
+  "generated_at": "2026-06-17T13:02:47.766039Z",
+  "drafter_model": "deepseek/deepseek-chat-v3.1",
+  "critic_model": "deepseek/deepseek-chat-v3.1"
+}

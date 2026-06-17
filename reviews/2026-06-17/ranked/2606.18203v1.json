@@ -1,0 +1,60 @@
+{
+  "arxiv_id": "2606.18203v1",
+  "title": "RubricsTree: Scalable and Evolving Open-Ended Evaluation of Personal Health Agents across Health Memory and Medical Skills",
+  "authors": [
+    "Weizhi Zhang",
+    "Zechen Li",
+    "Hamid Palangi",
+    "Ben Graef",
+    "A. Ali Heydari",
+    "Simon A. Lee",
+    "Salman Rahman",
+    "Ray Luo",
+    "Zeinab Esmaeilpour",
+    "Erik Schenck",
+    "Chloe Zhang",
+    "Yamin Li",
+    "Menglian Zhou",
+    "Philip S. Yu",
+    "Daniel McDuff",
+    "Lindsey Sunden",
+    "Mark Malhotra",
+    "Shwetak Patel",
+    "Ahmed A. Metwally"
+  ],
+  "abstract": "The LLM-empowered personal health agents with user health (sensor) metrics have offered a promising pathway to alleviate global disparities in healthcare access. However, large-scale clinical deployment remains constrained by an open-ended evaluation bottleneck: physician annotation is reliable but costly and unscalable, while LLM-as-a-judge evaluators are scalable but subjective, inconsistent, and sometimes clinically misaligned. We introduce RubricsTree, a scalable evaluation framework with an expert-aligned hierarchical taxonomy of over 100 atomic, clinically-verifiable Boolean rubrics, evolving from the insights of 4,000 real user queries through an iterative human-in-the-loop curation protocol with an expertise panel led by an experienced physician. A context-aware adaptive router activates only the relevant auto-weighted rubric subset per query, providing the throughput needed for scalable evaluation with expert-aligned quality. Through a systematic meta-evaluation, we show that RubricsTree (i) substantially exceeds a strong large-scale evaluation baseline in expert alignment on challenging open-ended queries; (ii) reliably penalizes contextually degraded responses; and (iii) when used as structured instructions, text feedback, or training rewards for performance optimization, yields up to ~66% relative gains on HealthBench for Gemini, GPT, and Qwen model families. RubricsTree thus provides a scalable, auditable, and evolving evaluation infrastructure required for the continuous optimization of product-level personal healthcare AI.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-06-16T17:34:53Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.18203v1",
+  "in_scope": true,
+  "primary_topic": "evaluation",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The framework provides measurable gains (~66% relative improvement) in health agent evaluation and optimization, directly impacting how builders should evaluate and improve healthcare AI systems."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "Introduces a hierarchical taxonomy of 100+ clinically-verifiable rubrics with adaptive routing, a substantial variation on LLM-as-judge evaluation methods."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "Method is described clearly enough to reimplement but no mention of code, weights, or datasets being publicly available."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "Well-written abstract with clear problem statement, methodology, and results that are appropriately scoped and quantified."
+    },
+    "topical_fit": {
+      "score": 7,
+      "justification": "Directly addresses LLM evaluation methodology and optimization, though focused specifically on healthcare applications rather than general LLM building."
+    }
+  },
+  "composite": 7.05
+}

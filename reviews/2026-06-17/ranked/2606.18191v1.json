@@ -1,0 +1,46 @@
+{
+  "arxiv_id": "2606.18191v1",
+  "title": "DRFLOW: A Deep Research Benchmark for Personalized Workflow Prediction",
+  "authors": [
+    "Md Tawkat Islam Khondaker",
+    "Raymond Li",
+    "Muhammad Abdul-Mageed",
+    "Laks V. S. Lakshmanan",
+    "Issam H. Laradji"
+  ],
+  "abstract": "Deep research (DR) systems are increasingly used for complex information-seeking tasks, but existing works mainly focus on generating reports and summaries. In contrast, many enterprise tasks instead require an agent to identify concrete workflows which is a sequence of action-steps. For example, rather than summarizing budgeting policies, an agent should be able to determine the steps needed to answer a question such as: \"How do I request new headcount given a fixed budget?\". Therefore, we introduce DRFLOW, a benchmark for evaluating personalized workflows predicted by agents from heterogeneous sources. Each task requires the agent to identify relevant evidence from scattered sources, then use that evidence to predict the correct action-step sequence for the user's task. DRFLOW contains 100 tasks across five domains, with 1,246 reference workflow steps grounded in more than 3,900 sources. We define seven diagnostic metrics covering factual grounding, step recovery, structural ordering, condition resolution, and personalization. We further present DRFLOW-Agent (DRFA), a workflow-oriented reference agent to predict personalized workflow. We show that although DRFA improves over strong baseline agents (upto 10.02% average F1 score), there is substantial room for improvement remains across these workflow metrics, indicating that predicting complete and correct personalized workflows remains a challenging frontier for deep research.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI",
+    "cs.MA"
+  ],
+  "submitted_at": "2026-06-16T17:22:07Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.18191v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The benchmark addresses a practical gap in enterprise AI systems by focusing on workflow prediction rather than just summarization, which could influence how builders approach task-oriented agent design."
+    },
+    "novelty": {
+      "score": 6,
+      "justification": "While workflow prediction is an established concept, the specific focus on personalized workflows from heterogeneous sources and the comprehensive diagnostic metrics represent a clear but incremental advancement in the research area."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The paper describes the benchmark construction and metrics clearly enough for reimplementation, but does not mention public release of code, datasets, or the DRFLOW-Agent implementation."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with clear problem framing, methodology description, and appropriately scoped claims about the benchmark's utility and remaining challenges."
+    },
+    "topical_fit": {
+      "score": 7,
+      "justification": "The work focuses on evaluating AI agents for workflow prediction, which is relevant to builders working on task-oriented LLM systems, though it's more specialized than general LLM application building."
+    }
+  },
+  "composite": 6.5
+}
