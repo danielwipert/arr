@@ -1,0 +1,48 @@
+{
+  "arxiv_id": "2606.19336v1",
+  "title": "Learning User Simulators with Turing Rewards",
+  "authors": [
+    "Yingshan Susan Wang",
+    "Cedegao E. Zhang",
+    "Linlu Qiu",
+    "Zexue He",
+    "Pengyuan Li",
+    "Alex Pentland",
+    "Roger P. Levy",
+    "Yoon Kim"
+  ],
+  "abstract": "Learning to simulate human users in interactive settings could advance the training of agent assistants, evaluation of personalization systems, research in the social sciences, and more. Existing approaches generally do so by training a large language model (LLM) to match a single ground truth response, either by maximizing the log probability or by using a similarity reward. We instead propose {Turing-RL}: a Turing-Test-based reinforcement learning approach for training user simulator models. {Turing-RL} uses a discriminative Turing reward with an LLM judge to score how indistinguishable a generated response is from the real user's given the user's history, and the user simulator LLM learns to produce responses indistinguishable from what the user could have said with such rewards. Across two different domains--conversational chat and Reddit forum discussion--we find that {Turing-RL} consistently outperforms baseline methods on both LLM and human evaluation metrics. Our study suggests that optimizing for indistinguishability, rather than response matching, is effective for learning user simulators.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL"
+  ],
+  "submitted_at": "2026-06-17T17:58:48Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.19336v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper refines user simulation training with a Turing-Test-based RL approach, offering a measurable, reproducible improvement over baseline methods for building and evaluating interactive AI systems."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "It introduces a substantial new variation by framing user simulator training as a Turing Test and using a discriminative LLM judge for reinforcement learning, distinct from prior log-probability or similarity reward approaches."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The Turing-RL method is described clearly enough to reimplement, including the use of an LLM judge and RL training, but the paper does not mention public release of code, weights, or datasets."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is solidly written, with a clear problem statement, method description, and evaluation across two domains using both LLM and human metrics, though specific architectural or training details are limited."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper is directly in the applied-AI sweet spot, focusing on a novel method for training LLM-based user simulators, a core technique for builders developing interactive agent assistants and evaluation systems."
+    }
+  },
+  "composite": 7.45
+}

@@ -1,0 +1,48 @@
+{
+  "arxiv_id": "2606.19257v1",
+  "title": "DreamReasoner-8B: Block-Size Curriculum Learning for Diffusion Reasoning Models",
+  "authors": [
+    "Zirui Wu",
+    "Lin Zheng",
+    "Jiacheng Ye",
+    "Shansan Gong",
+    "Xueliang Zhao",
+    "Yansong Feng",
+    "Wei Bi",
+    "Lingpeng Kong"
+  ],
+  "abstract": "Block diffusion language models accelerate decoding through parallel block-wise denoising, yet whether they can be reliably scaled for long chain-of-thought (CoT) reasoning remains unresolved. To this end, we develop DreamReasoner-8B, an open-source block diffusion reasoning model, and conduct a systematic study of how training and inference block sizes affect long-CoT reasoning. Our analysis reveals a stark performance disparity: training with large block sizes yields remarkably poor reasoning, whereas small block sizes preserve effective reasoning. To bridge this granularity gap, we propose block-size curriculum learning, which gradually transitions training from fine-grained to coarse-grained block sizes, thereby overcoming this limitation and enabling strong reasoning performance that generalizes across diverse inference block sizes. On mathematical and code reasoning benchmarks, DreamReasoner-8B achieves results competitive with leading open autoregressive models such as Qwen3-8B. This work establishes a practical foundation for efficient, reasoning-capable diffusion language models. We release our model at https://github.com/DreamLM/DreamReasoner.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL"
+  ],
+  "submitted_at": "2026-06-17T16:34:02Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.19257v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper refines block diffusion training with a curriculum learning method that yields measurable, reproducible gains in reasoning performance, directly informing architectural decisions for efficient LLM deployment."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "It introduces the novel block-size curriculum learning technique, a substantial variation that systematically transitions training from fine to coarse block sizes to solve a specific scaling problem in diffusion models."
+    },
+    "reproducibility": {
+      "score": 9,
+      "justification": "The authors release the full model (DreamReasoner-8B) publicly on GitHub, providing code, weights, and clear instructions for reproduction."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is solidly written, with a clear problem statement, systematic study, and defensible evaluation methodology comparing results to leading autoregressive models."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The work is directly in the applied-AI sweet spot, presenting a new open-source, reasoning-capable model architecture for efficient LLM inference that builders can immediately evaluate and use."
+    }
+  },
+  "composite": 8.05
+}

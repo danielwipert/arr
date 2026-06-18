@@ -1,0 +1,49 @@
+{
+  "arxiv_id": "2606.19256v1",
+  "title": "X+Slides: Benchmarking Audience-Conditioned Slide Generation",
+  "authors": [
+    "Haodong Chen",
+    "Xuanhe Zhou",
+    "Wei Zhou",
+    "Xinyue Shao",
+    "Yanbing Zhu",
+    "Bo Wang",
+    "Jiawei Hong",
+    "Anya Jia",
+    "Fan Wu"
+  ],
+  "abstract": "Automatically generating slide decks from source documents is an important application of large language models (LLMs). Existing benchmarks primarily assess slide completeness and technical depth, while overlooking the target audience as a critical real-world factor. For instance, specialists demand rigorous proofs, whereas decision-makers prioritize actionable conclusions. To bridge this gap, we introduce X+Slides, a benchmark specifically designed for audience-conditioned slide generation. Built on a diverse corpus spanning 113 topics and seven presentation scenes, X+Slides employs a dynamic evaluation framework constructed from 8,133 deduplicated, source-grounded probes. By assigning audience-specific utility weights to the same source-grounded probes, X+Slides reports four complementary metrics: Audience Coverage measures how much audience-essential information is conveyed, Domain-wise Coverage shows which information types are covered, Efficiency measures delivered utility per unit of attention cost, and Correctness verifies whether slide claims are supported by the source. Experiments on DeepPresenter, SlideTailor, and NotebookLM show that current systems can recover a substantial but still incomplete part of audience-essential information: at $τ_A=0.7$, DeepPresenter reaches a best Audience Coverage of 0.714, SlideTailor reaches 0.594, and the NotebookLM ablation reaches 0.853 while showing clear grounding differences. These results indicate that visual quality and broad topic coverage should not be treated as evidence support without source-grounded evaluation.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI"
+  ],
+  "submitted_at": "2026-06-17T16:30:26Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.19256v1",
+  "in_scope": true,
+  "primary_topic": "evaluation",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper introduces a practical benchmark that addresses a real-world need for audience-adaptive slide generation, providing measurable metrics that could influence how builders approach presentation automation systems."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The audience-conditioned evaluation framework with utility-weighted probes represents a substantial innovation beyond existing slide generation benchmarks that focus only on completeness and technical depth."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly with specific metrics and evaluation framework details, but the paper does not mention public release of the benchmark dataset or code."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-structured with clear problem formulation, methodology description, and comprehensive evaluation across multiple systems with specific numerical results."
+    },
+    "topical_fit": {
+      "score": 7,
+      "justification": "Directly relevant to LLM applications in document processing and presentation generation, though slightly more specialized than core model-building topics."
+    }
+  },
+  "composite": 7.2
+}

@@ -1,0 +1,44 @@
+{
+  "arxiv_id": "2606.19264v1",
+  "title": "Structured Inference with Large Language Gibbs",
+  "authors": [
+    "Sanghyeok Choi",
+    "Henry Gouk",
+    "Esmeralda S. Whitammer"
+  ],
+  "abstract": "The knowledge encoded in large language models (LLMs) can serve as a substrate for structured reasoning over variables describing a complex world, but accessing this knowledge in a probabilistically coherent manner poses a difficult inference problem. We propose Large Language Gibbs, a scheme for structured probabilistic inference that uses conditional distributions of an LLM as transition operators. Rather than sampling structured objects through single-pass autoregressive generation, we iteratively resample individual variables conditioned on others using an LLM's next-token conditionals. This approach avoids order-dependent biases and produces a stationary distribution that reflects a compromise between all local conditionals. We apply this approach to sampling from synthetic distributions, consistent reasoning tasks, and Bayesian structure learning. The results suggest that the use of LLM conditionals in MCMC is a practical alternative to one-pass generation for structured probabilistic inference under a world prior accessible through noisy LLM conditionals.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG",
+    "cs.CL"
+  ],
+  "submitted_at": "2026-06-17T16:40:32Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.19264v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces LLM Gibbs sampling as a practical alternative to autoregressive generation for structured probabilistic inference, which could change how builders approach sampling from LLM knowledge."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The approach adapts Gibbs sampling to LLMs in a novel way, using LLM conditionals as transition operators rather than relying on single-pass generation."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement, but no mention of code or artifacts being publicly available."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is well-written with clear explanations of the method and its advantages over traditional approaches."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses practical inference methods for LLMs, squarely in the sweet spot for builders working with LLM knowledge extraction and reasoning."
+    }
+  },
+  "composite": 7.1
+}
