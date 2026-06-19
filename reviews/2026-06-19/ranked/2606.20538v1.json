@@ -1,0 +1,43 @@
+{
+  "arxiv_id": "2606.20538v1",
+  "title": "Multi-Task Bayesian In-Context Learning",
+  "authors": [
+    "Qingyang Zhu",
+    "Eric Karl Oermann",
+    "Kyunghyun Cho"
+  ],
+  "abstract": "Bayesian predictive inference provides a principled framework for uncertainty quantification, data efficiency, and robust generalization. However, exact inference is often intractable, and scalable approximations may remain computationally expensive or require restrictive modeling assumptions that degrade predictive performance. Prior-Data Fitted and in-context models have recently emerged as an amortized alternative by learning to map datasets directly to predictive distributions, but existing approaches are tightly coupled to the support of the training prior and lack explicit mechanisms for adapting to new priors at test time, resulting in limited robustness under distribution shift. We introduce a multi-task in-context learning framework for amortized hierarchical Bayesian predictive inference that explicitly represents prior information as a prefix of in-context datasets. A transformer trained on sequences of prior and target tasks learns to adapt its predictions across families of priors. On a suite of evaluations with increasing difficulty, including out-of-meta-distribution priors and priors with high-dimensional latent structures, our method matches oracle Bayesian predictors while being orders of magnitude faster. We further demonstrate its practical relevance on a real-world spatiotemporal temperature prediction benchmark. Code is available at https://github.com/martianmartina/multi-task-bayesian-icl/.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG"
+  ],
+  "submitted_at": "2026-06-18T17:50:10Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.20538v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper introduces a practical method for Bayesian inference that is orders of magnitude faster than traditional approaches, making it relevant for builders who need efficient uncertainty quantification in real-world applications."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The approach explicitly represents prior information as a prefix of in-context datasets, a substantial variation from prior in-context learning methods that were tightly coupled to training priors."
+    },
+    "reproducibility": {
+      "score": 9,
+      "justification": "Code is publicly available at the provided GitHub repository, enabling competent teams to reproduce the results with minimal friction."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with clear problem framing, methodology description, and comprehensive evaluation across multiple difficulty levels including real-world benchmarks."
+    },
+    "topical_fit": {
+      "score": 7,
+      "justification": "While focused on Bayesian inference, the transformer-based in-context learning approach and efficiency gains are clearly relevant to builders working with LLMs and predictive systems."
+    }
+  },
+  "composite": 7.8
+}

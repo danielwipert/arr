@@ -1,0 +1,43 @@
+{
+  "arxiv_id": "2606.20508v1",
+  "title": "What Do Safety-Aligned LLMs Learn From Mixed Compliance Demonstrations?",
+  "authors": [
+    "Sihui Dai",
+    "Mann Patel"
+  ],
+  "abstract": "Prior work has shown that in-context demonstrations can jailbreak language models, but it remains unclear how models interpret different types of compliance demonstrations. We study this by mixing benign compliance demonstrations (non-harmful request, helpful response) with harmful compliance demonstrations (harmful request, helpful response) and testing three hypotheses about how demonstration composition drives harmful compliance. Across four models, we find that benign and harmful demonstrations are not interchangeable: benign demonstrations can either reduce or increase harmful compliance depending on the model. We further show that preference optimization is the critical training stage that prevents benign demonstrations from increasing harmful compliance, that demonstration ordering exhibits strong recency bias, and that models differ in how refusal interacts with in-context learning: some adopt demonstrated formatting even when refusing, while others override all in-context signals upon refusal. Taken together, this work moves beyond showing that demonstration-based jailbreaking works to characterizing how it works: what models extract from compliance demonstrations depends on demonstration content, ordering, and training methodology.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI",
+    "cs.LG"
+  ],
+  "submitted_at": "2026-06-18T17:25:38Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.20508v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper provides actionable insights into how demonstration composition affects LLM safety, directly informing how builders should structure in-context learning prompts for safety-critical applications."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "While demonstration-based jailbreaking is known, this work provides the first systematic characterization of how different compliance demonstration types interact across models and training methodologies."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is clearly described with specific hypotheses and experimental setups, but no code or datasets are provided for direct reproduction."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-structured with clear hypotheses, comprehensive experiments across four models, and appropriately scoped claims about demonstration effects."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM safety and in-context learning mechanisms, which are core concerns for builders implementing safety-aligned systems."
+    }
+  },
+  "composite": 7.45
+}

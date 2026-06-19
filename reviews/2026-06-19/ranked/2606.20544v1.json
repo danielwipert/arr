@@ -1,0 +1,46 @@
+{
+  "arxiv_id": "2606.20544v1",
+  "title": "Toward Calibrated Mixture-of-Experts Under Distribution Shift",
+  "authors": [
+    "Gina Wong",
+    "Drew Prinster",
+    "Suchi Saria",
+    "Rama Chellappa",
+    "Anqi Liu"
+  ],
+  "abstract": "Calibration aligns a model's predictive uncertainty with the frequencies of its empirical outcomes and is important for understanding and trusting reported probabilities. Recent work shows that enforcing calibration at the level of individual predictors can improve ensemble accuracy and calibration, with mixture-of-experts (MoE) models showing strong empirical improvements in particular; however, the conditions under which calibration helps MoE are not well understood. In this work, we study how MoE models behave under distribution shift, focusing on how routing mechanisms interact with expert-level calibration. We show that expert calibration is sufficient to ensure calibration of the overall model under a broad class of distribution shifts in hard-routed models, but is insufficient for calibrating soft-routed models. To address this, we propose an adversarial reweighting that penalizes calibration errors of the routed aggregate under distribution shift, and we demonstrate that it improves the accuracy-calibration tradeoff both on average and on difficult subsets of the data, across model classes, prediction tasks, and distribution shifts.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI",
+    "cs.LG"
+  ],
+  "submitted_at": "2026-06-18T17:55:00Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.20544v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper refines mixture-of-expert techniques by providing a method to improve calibration under distribution shift, offering builders a reproducible approach to enhance model reliability in deployment."
+    },
+    "novelty": {
+      "score": 6,
+      "justification": "The work provides a clear delta by analyzing the insufficiency of expert calibration for soft-routed MoE under shift and proposing an adversarial reweighting solution, but operates within the well-trodden area of model calibration."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement, with experiments across model classes and tasks, but the paper does not mention public release of code or artifacts."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is solidly written, with a clear problem statement, theoretical analysis of hard vs. soft routing, and a defensible evaluation methodology across multiple shifts and tasks."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "The paper is clearly in scope, focusing on the practical reliability of mixture-of-expert models, a relevant architecture for builders, under the important condition of distribution shift."
+    }
+  },
+  "composite": 6.6
+}

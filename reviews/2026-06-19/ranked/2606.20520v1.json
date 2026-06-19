@@ -1,0 +1,45 @@
+{
+  "arxiv_id": "2606.20520v1",
+  "title": "Sovereign Execution Brokers: Enforcing Certificate-Bound Authority in Agentic Control Planes",
+  "authors": [
+    "Jun He",
+    "Deying Yu"
+  ],
+  "abstract": "Autonomous agents are increasingly connected to cloud, deployment, and data-control workflows, but production mutation authority should not reside inside non-deterministic reasoning processes. Existing access-control mechanisms authorize identities, while assurance layers certify proposed actions; neither alone provides a mandatory enforcement point for certified authority at the moment of mutation. This paper introduces the Sovereign Execution Broker (SEB), a runtime enforcement boundary for certificate-bound agentic infrastructure. SEB consumes certificates issued by the Sovereign Assurance Boundary (SAB), verifies that the requested mutation matches the certified execution contract, checks validity windows, policy epochs, revocation epochs, and live-state drift, mints scoped execution identity, invokes infrastructure APIs, and records signed decision and outcome records. By separating proposal, admission, and execution, SEB turns certified authority into a short-lived, revocable, auditable runtime capability, provided that production mutation APIs reject non-broker identities. We present the SEB execution model, certificate and replay-verification predicates, scoped identity semantics, bypass-prevention deployment patterns, failure behavior, and a concrete prototype implementation. We evaluate the prototype on AWS and Kubernetes clusters, measuring latency overheads, revocation propagation, drift detection, and security under fault injection.",
+  "primary_cat": "cs.CR",
+  "all_cats": [
+    "cs.CR",
+    "cs.AI",
+    "cs.DC",
+    "cs.LG"
+  ],
+  "submitted_at": "2026-06-18T17:36:46Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.20520v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 9,
+      "justification": "The paper introduces a novel control-plane architecture (Sovereign Execution Broker) that directly changes how builders should secure and authorize mutations in agentic workflows, addressing a core security decision."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "It presents a substantial new variation by combining certificate-bound authority, runtime enforcement, and scoped identity minting into a unified execution broker, distinct from prior identity-based or assurance-only approaches."
+    },
+    "reproducibility": {
+      "score": 7,
+      "justification": "The paper describes a concrete prototype implementation and evaluates it on AWS and Kubernetes, but does not explicitly state that the code or artefacts are publicly available."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is solidly written, with a clear problem statement, well-defined execution model, and a defensible evaluation measuring latency, revocation, drift, and security."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper is directly in the applied-AI sweet spot, addressing a critical security and control problem for builders deploying autonomous agents connected to production infrastructure."
+    }
+  },
+  "composite": 8.2
+}
