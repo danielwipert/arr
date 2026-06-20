@@ -1,0 +1,46 @@
+{
+  "arxiv_id": "2606.20544v1",
+  "title": "Toward Calibrated Mixture-of-Experts Under Distribution Shift",
+  "authors": [
+    "Gina Wong",
+    "Drew Prinster",
+    "Suchi Saria",
+    "Rama Chellappa",
+    "Anqi Liu"
+  ],
+  "abstract": "Calibration aligns a model's predictive uncertainty with the frequencies of its empirical outcomes and is important for understanding and trusting reported probabilities. Recent work shows that enforcing calibration at the level of individual predictors can improve ensemble accuracy and calibration, with mixture-of-experts (MoE) models showing strong empirical improvements in particular; however, the conditions under which calibration helps MoE are not well understood. In this work, we study how MoE models behave under distribution shift, focusing on how routing mechanisms interact with expert-level calibration. We show that expert calibration is sufficient to ensure calibration of the overall model under a broad class of distribution shifts in hard-routed models, but is insufficient for calibrating soft-routed models. To address this, we propose an adversarial reweighting that penalizes calibration errors of the routed aggregate under distribution shift, and we demonstrate that it improves the accuracy-calibration tradeoff both on average and on difficult subsets of the data, across model classes, prediction tasks, and distribution shifts.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI",
+    "cs.LG"
+  ],
+  "submitted_at": "2026-06-18T17:55:00Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.20544v1",
+  "in_scope": true,
+  "primary_topic": "adjacent_infrastructure",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper refines mixture-of-expert techniques with a proposed adversarial reweighting method that demonstrably improves the accuracy-calibration tradeoff under distribution shift, offering a reproducible gain for builders concerned with model reliability."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "It provides a substantial new analysis by formally studying the interaction between routing mechanisms and expert-level calibration under distribution shift, a specific condition not well understood in prior work."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement, with specific claims about model classes, tasks, and shifts tested, but the paper does not mention public release of code or artifacts."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is solidly written, with a clear problem statement, theoretical analysis, and empirical evaluation methodology that is defensible and appropriately scopes its claims."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper is directly in the applied-AI sweet spot, analyzing and improving a core architecture (Mixture-of-Experts) for building more reliable LLM-based systems."
+    }
+  },
+  "composite": 6.95
+}
