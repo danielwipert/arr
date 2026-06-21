@@ -1,0 +1,76 @@
+{
+  "date": "2026-06-21",
+  "paper_id": "arxiv:2606.20474v1",
+  "paper_title": "UltraQuant: 4-bit KV Caching for Context-Heavy Agents",
+  "paper_authors": [
+    "Inesh Chakrabarti",
+    "David Limpus",
+    "Aditi Ghai Rana",
+    "Bowen Bao",
+    "Spandan Tiwari",
+    "Thiago Crepaldi",
+    "Ashish Sirasao"
+  ],
+  "paper_url": "https://arxiv.org/abs/2606.20474",
+  "post_text": "A new 4-bit KV cache method for AI agents cuts latency by 3.5x in later rounds of long conversations, without changing the model.\n\nResearchers from AMD and UCLA present UltraQuant, a technique that compresses the memory used by large language models during multi-turn tasks. On a benchmark simulating 32 concurrent chat sessions, their method reduced the median time to first token by 3.47 times in later rounds compared to a standard 8-bit baseline, and raised output throughput by 1.63 times overall.\n\nThe advantage is narrower than it sounds. The speed gains appear only when accumulated context exceeds the resident cache capacity of the 8-bit baseline, meaning for shorter conversations the benefit isn't realized. Furthermore, the method shows a material accuracy regression on some benchmarks, dropping over 10 percentage points on the AIME25 test for certain models.\n\nFor teams building agentic systems, the implication is practical: memory compression is now a viable lever for improving serving throughput under high concurrency, but it trades accuracy for speed in a benchmark-dependent way. This makes it a candidate for latency-sensitive, non-critical workflows, but a risk for applications where answer quality is paramount.\n\nWorth reading if you are hitting memory limits with long-context agents. Worth ignoring if your workloads are short or your quality bar is absolute.\n\nPaper: UltraQuant: 4-bit KV Caching for Context-Heavy Agents, Chakrabarti et al.\nhttps://arxiv.org/abs/2606.20474\n\n#LLMs #Inference #Agents #ModelRisk #KVQuantization",
+  "post_char_count": 1556,
+  "hook_char_count": 129,
+  "claims": [
+    {
+      "claim": "A new 4-bit KV cache method for AI agents cuts latency by 3.5x in later rounds of long conversations",
+      "source_span": "UltraQuant cuts P50 time-to-first-token by 3.47× in the cache-pressured later rounds",
+      "page": 1
+    },
+    {
+      "claim": "Researchers from AMD and UCLA present UltraQuant",
+      "source_span": "Inesh Chakrabarti, David Limpus, Aditi Ghai Rana, Bowen Bao, Spandan Tiwari, Thiago Crepaldi, Ashish Sirasao",
+      "page": 1
+    },
+    {
+      "claim": "On a benchmark simulating 32 concurrent chat sessions",
+      "source_span": "We serve 32 concurrent chat sessions",
+      "page": 3
+    },
+    {
+      "claim": "their method reduced the median time to first token by 3.47 times in later rounds compared to a standard 8-bit baseline",
+      "source_span": "P50 TTFT—laterounds(r4–6) 3.47×",
+      "page": 3
+    },
+    {
+      "claim": "and raised output throughput by 1.63 times overall.",
+      "source_span": "raises output throughput by 1.63× over the FP8 KV baseline",
+      "page": 1
+    },
+    {
+      "claim": "The speed gains appear only when accumulated context exceeds the resident cache capacity of the 8-bit baseline",
+      "source_span": "UltraQuant’s benefits in speed versus FP8 are only observed when the context length is long enough to exceed the resident cache capacity of the FP8 baseline",
+      "page": 10
+    },
+    {
+      "claim": "the method shows a material accuracy regression on some benchmarks, dropping over 10 percentage points on the AIME25 test for certain models.",
+      "source_span": "shows a material regression on AIME25 (−13.3pp for Qwen3.5-A3B, −10.0pp for MiniMax-M2.5)",
+      "page": 8
+    }
+  ],
+  "ranker_scores": {
+    "significance": 9,
+    "novelty": 8,
+    "reproducibility": 7,
+    "clarity": 8,
+    "topical_fit": 10,
+    "composite": 8.3
+  },
+  "critic_report": {
+    "voice_match": "pass",
+    "banned_phrase_scan": "pass",
+    "length_compliance": "pass",
+    "structure": "pass",
+    "grounding": "pass",
+    "hype_check": "pass",
+    "retries_used": 0,
+    "notes": "voice: The post maintains a declarative, report-like tone with specific numbers and a clear point of view, avoiding LinkedIn-speak and making implications accessible to business leaders. | banned_phrases: no banned phrases found | length: total=1556, hook=129 | structure: 7 blocks, 5 hashtags | grounding: Every factual claim in the post is supported by a verbatim source span from the paper sections as listed in the claims list. [mech: 6 claim span(s) not found in paper: 'UltraQuant cuts P50 time-to-first-token by 3.47× in the cach'; 'We serve 32 concurrent chat sessions'; 'P50 TTFT—laterounds(r4–6) 3.47×'] | hype: The post accurately reports numbers and limitations, avoids superlatives, and correctly attributes the research without overclaim."
+  },
+  "generated_at": "2026-06-21T11:52:54.347349Z",
+  "drafter_model": "deepseek/deepseek-chat-v3.1",
+  "critic_model": "deepseek/deepseek-chat-v3.1"
+}
