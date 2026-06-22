@@ -1,0 +1,47 @@
+{
+  "arxiv_id": "2606.20482v1",
+  "title": "Your Mouse and Eyes Secretly Leak Your Preference: LLM Alignment using Implicit Feedback from Users",
+  "authors": [
+    "Haw-Shiuan Chang",
+    "Jeffrey Gomez",
+    "Mehul Patwari",
+    "Aryan Sajith",
+    "Hamed Zamani"
+  ],
+  "abstract": "To align a Large Language Model (LLM), most existing methods collect explicit human feedback and train a reward model to predict the human preference based on the response text. These existing methods have two key limitations. First, the users rarely provide explicit feedback for LLM responses, which makes the high-quality preference annotation expensive to collect. Second, the methods do not leverage implicit human feedback, which has proven vital to the economic moats of Internet giants. To quantify the value of implicit feedback, we build a new dataset called IFLLM, which collects 1336 multi-turn questions from the 59 Mechanical Turk workers, their mouse trajectories, and eye gazing points to the LLMs' responses from their webcams. IFLLM shows that the users have very diverse types of gazing behavior and mouse trajectories. Our reward model based on the implicit user feedback boosts the accuracy of the text-based reward model from 55% to 64% and nearly triples the relative response quality improvements after applying the DPO to eight LLMs, demonstrating the value of implicit feedback in the wild. Our data collection website, dataset, and codes can be found at https://github.com/themehulpatwari/llm-implicit-feedback/.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.HC",
+    "cs.LG"
+  ],
+  "submitted_at": "2026-06-18T17:00:48Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.20482v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper demonstrates that implicit feedback (mouse movements and eye tracking) can significantly boost alignment performance, providing builders with a practical alternative to expensive explicit human feedback collection."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "While implicit feedback is used in other domains, applying it specifically to LLM alignment with a dedicated dataset (IFLLM) and showing substantial improvements over text-only methods represents a substantial new variation."
+    },
+    "reproducibility": {
+      "score": 9,
+      "justification": "The authors provide code, dataset, and data collection website publicly available on GitHub, making reproduction straightforward for competent teams."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper clearly presents the problem, methodology, and results with specific performance metrics (55% to 64% accuracy boost, tripled response quality improvements) though the dataset size (1336 questions from 59 workers) could be more thoroughly justified."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM alignment methodology, a core concern for builders implementing and fine-tuning language models for practical applications."
+    }
+  },
+  "composite": 7.9
+}

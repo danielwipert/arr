@@ -1,0 +1,49 @@
+{
+  "arxiv_id": "2606.20517v1",
+  "title": "Multi-LCB: Extending LiveCodeBench to Multiple Programming Languages",
+  "authors": [
+    "Maria Ivanova",
+    "Pavel Zadorozhny",
+    "Rodion Levichev",
+    "Ivan Petrov",
+    "Adamenko Pavel",
+    "Ivan Lopatin",
+    "Alexey Kutalev",
+    "Dmitrii Babaev"
+  ],
+  "abstract": "LiveCodeBench (LCB) has recently become a widely adopted benchmark for evaluating large language models (LLMs) on code-generation tasks. By curating competitive programming problems, constantly adding fresh problems to the set, and filtering them by release dates, LCB provides contamination-aware evaluation and offers a holistic view of coding capability. However, LCB remains restricted to Python, leaving open the question of whether LLMs can generalize across the diverse programming languages required in real-world software engineering.\n  We introduce Multi-LCB, a benchmark for evaluating LLMs across twelve programming languages, including Python. Multi-LCB transforms Python tasks from the LCB dataset into equivalent tasks in other languages while preserving LCB's contamination controls and evaluation protocol. Because it is fully compatible with the original LCB format, Multi-LCB will automatically track future LCB updates, enabling systematic assessment of cross-language code generation competence and requiring models to sustain performance well beyond Python.\n  We evaluated 24 LLMs for instruction and reasoning on Multi-LCB, uncovering evidence of Python overfitting, language-specific contamination, and substantial disparities in multilingual performance. Our results establish Multi-LCB as a rigorous new benchmark for multi-programming-language code evaluation, directly addressing LCB's primary limitation and exposing critical gaps in current LLM capabilities.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI",
+    "cs.PL"
+  ],
+  "submitted_at": "2026-06-18T17:35:57Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.20517v1",
+  "in_scope": true,
+  "primary_topic": "evaluation",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper addresses a critical gap in LLM evaluation by extending code generation benchmarks beyond Python to 12 languages, directly impacting how builders should assess model capabilities for real-world software engineering."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "While building on LiveCodeBench, the multi-language extension represents a substantial new contribution that systematically addresses Python overfitting and enables cross-language evaluation at scale."
+    },
+    "reproducibility": {
+      "score": 9,
+      "justification": "The paper states Multi-LCB is fully compatible with LCB format, automatically tracks updates, and preserves contamination controls, suggesting high reproducibility with available code and protocols."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper clearly articulates the problem, methodology, and findings about Python overfitting and language disparities, with well-scoped claims about benchmark utility."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM code generation evaluation, a core concern for builders implementing coding assistants and assessing model capabilities across programming languages."
+    }
+  },
+  "composite": 8.05
+}
