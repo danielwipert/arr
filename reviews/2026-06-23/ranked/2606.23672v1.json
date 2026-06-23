@@ -1,0 +1,45 @@
+{
+  "arxiv_id": "2606.23672v1",
+  "title": "Teaching LLMs String Matching, Backtracking, and Error Recovery to Deduce Bases and Truth Tables for the Combinatorially Exploding Bit Manipulation Puzzles",
+  "authors": [
+    "Prateek Agnihotri",
+    "Sanchit Jain",
+    "Prabhat Agnihotri",
+    "Aditya Prasad",
+    "Shubham Jain"
+  ],
+  "abstract": "This paper presents our algorithmic innovations for the NVIDIA Nemotron Model Reasoning Challenge, focusing on Bit Manipulation Puzzles. In this task, the objective is to discover a hidden logical rule transforming input binary strings to outputs, then apply it to unseen inputs. Large Language Models (LLMs) notoriously struggle here; traditional methods force them to simulate complex boolean logic and arithmetic, leading to hallucinations. Furthermore, the search space of bitwise operations (combinations of shifts, rotations, and logic gates) suffers from a severe combinatorial explosion. To overcome this computational intractability, we present a novel approach that abandons arithmetic logic entirely in favor of string similarity, structured search, and autonomous error recovery.\n  Our core contributions are: 1. Bases and Truth Table Formulation: We reframe logic-gate deduction into a base-selection task, leveraging string similarity (minimal bit flips) to isolate primitive transformations (\"bases\") and deduce truth tables without complex arithmetic. 2. Backtracking DFS and Error Recovery: We formalize a search process that tests candidate bases, detects logical collisions across examples, and backtracks upon failure to perform robust error recovery. 3. Bit Tokenization and Interactive Reasoning SFT: We force the tokenizer to encode binary strings as individual single-bit tokens. We use dynamic masking to simulate external oracle feedback, training the model to hypothesize, self-evaluate, and backtrack natively.\n  Evaluated on bit manipulation puzzles, our approach achieved over 96% validation accuracy. This represents the highest performance in this category, driving our 7th Place overall finish in the contest.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI"
+  ],
+  "submitted_at": "2026-06-22T17:57:08Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.23672v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper refines a known technique (LLM reasoning for puzzles) with measurable, reproducible gains of over 96% accuracy, which could influence how builders approach structured reasoning tasks."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The paper introduces a substantial new variation by reframing logic-gate deduction as a base-selection task using string similarity and formalizing a backtracking DFS with error recovery, distinct from prior arithmetic-focused approaches."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly enough to reimplement with details on bases formulation, backtracking DFS, and bit tokenization, but no mention of public code, weights, or datasets is provided."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is solidly written with a clear abstract outlining core contributions and a defensible evaluation methodology showing 96% validation accuracy and a 7th place contest finish."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper is directly in the applied-AI sweet spot, focusing on algorithmic innovations to improve LLM reasoning for combinatorial puzzles, which is highly relevant for engineers building systems with LLMs."
+    }
+  },
+  "composite": 7.25
+}

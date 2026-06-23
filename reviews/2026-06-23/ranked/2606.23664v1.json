@@ -1,0 +1,43 @@
+{
+  "arxiv_id": "2606.23664v1",
+  "title": "MAS-PromptBench: When Does Prompt Optimization Improve Multi-Agent LLM Systems?",
+  "authors": [
+    "Juyang Bai",
+    "Laixi Shi"
+  ],
+  "abstract": "Multi-agent systems (MAS) offer a scalable path forward for agentic AI, comprising multiple LLM-based agents, each assigned a system prompt and a position within a workflow that governs inter-agent coordination and output aggregation. System prompts thus form a critical and accessible optimization surface: they specify agents' roles and behaviors, enabling system-level improvements without model finetuning. Although prompt optimization has shown substantial potential for single LLMs, extending it to MAS poses distinct challenges, notably an exponentially growing search space. It remains unclear whether, when, and by how much prompt optimization improves MAS performance, and how sensitive such gains are to system configuration. In this work, we systematically study system-prompt optimization across a broad range of MAS setups varying in task, workflow, communication protocol, and team size, benchmarking two prompt optimizers that naturally extend state-of-the-art single-agent methods. The results reveal its potential to unlock significant gains while exposing open challenges, characterizing when and how much prompt optimization helps across diverse MAS settings.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG",
+    "cs.MA"
+  ],
+  "submitted_at": "2026-06-22T17:48:40Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.23664v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper provides a systematic study of prompt optimization for multi-agent LLM systems, offering concrete guidance on when and how much it improves performance, directly informing a builder's decision to invest in prompt optimization for agentic workflows."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The work introduces a substantial new variation by extending single-agent prompt optimization methods to the distinct, exponentially larger search space of multi-agent systems, benchmarking across diverse MAS setups."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly enough to reimplement, with detailed benchmarks across tasks, workflows, and team sizes, but the paper does not mention public release of code or artifacts."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is solidly written, with a clear abstract that appropriately scopes the problem of extending prompt optimization to multi-agent systems and characterizing its potential and challenges."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper is directly in the applied-AI sweet spot, providing actionable insights for builders working with multi-agent LLM systems, a core area of contemporary LLM application development."
+    }
+  },
+  "composite": 7.45
+}

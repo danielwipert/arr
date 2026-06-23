@@ -1,0 +1,49 @@
+{
+  "arxiv_id": "2606.23654v1",
+  "title": "EnterpriseClawBench: Benchmarking Agents from Real Workplace Sessions",
+  "authors": [
+    "Jincheng Zhong",
+    "Weizhi Wang",
+    "Che Jiang",
+    "Kai Tian",
+    "Zhenzhao Yuan",
+    "Junlin Yang",
+    "Dianqiao Lei",
+    "Kaiyan Zhang"
+  ],
+  "abstract": "Enterprise agents increasingly operate inside workspaces: they read heterogeneous files, invoke tools, and deliver business artifacts. We introduce EnterpriseClawBench, an enterprise agent benchmark constructed from proprietary, real-world agent sessions. Starting from a large archive of workplace sessions, the EnterpriseClawBench produces 852 reproducible tasks, each paired with recovered fixtures, rewritten prompts, role classes, skill subclasses, hard rules, and semantic rubrics. Because the sessions contain internal enterprise content, we do not release the benchmark data; instead, our reusable contribution is the construction and evaluation protocol. On EnterpriseClawBench, the best configuration reaches only 0.663 (Codex with GPT-5.5). These results show that enterprise agent evaluation must report harness--model combinations, artifact delivery, visual quality, cost, runtime, and skill-transfer behavior, rather than collapsing performance into a single score. Code: https://github.com/FrontisAI/EnterpriseClawBench",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.SE"
+  ],
+  "submitted_at": "2026-06-22T17:39:43Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.23654v1",
+  "in_scope": true,
+  "primary_topic": "evaluation",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces a comprehensive evaluation framework that forces builders to measure multiple dimensions of agent performance beyond simple accuracy scores."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "While agent benchmarking exists, constructing benchmarks from real enterprise sessions with recovered fixtures and semantic rubrics represents a substantial new variation."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The construction protocol is described clearly enough to reimplement, but the proprietary benchmark data is not released, requiring teams to source their own enterprise sessions."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper clearly explains the benchmark construction methodology and appropriately scopes claims about enterprise agent evaluation requirements."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM agent evaluation methodology, which is central to builders deploying enterprise AI systems."
+    }
+  },
+  "composite": 7.25
+}

@@ -1,0 +1,70 @@
+{
+  "date": "2026-06-23",
+  "paper_id": "arxiv:2606.23608v1",
+  "paper_title": "Causal Discovery in the Era of Agents",
+  "paper_authors": [
+    "Yujia Zheng",
+    "Vishal Verma",
+    "Mantej Gill",
+    "Haoyue Dai",
+    "Peter Spirtes",
+    "Kun Zhang"
+  ],
+  "paper_url": "https://arxiv.org/abs/2606.23608",
+  "post_text": "A new paper argues that language models should assist causal discovery workflows but never provide causal evidence themselves.\n\nResearchers from Carnegie Mellon and Monash University propose a principle for AI-assisted causal analysis: agents can coordinate tools, explain assumptions, and interpret results, but all causal claims must come from formal algorithms and explicit user decisions. They built causal-learn+, an online platform that implements this separation while making complex causal methods more accessible.\n\nThe distinction matters because causal discovery outputs are easily overinterpreted. A partially directed graph represents a class of possible causal models, not a single definitive answer. When language models directly inject edges or orientations, it becomes impossible to separate data-based evidence from prompt artifacts or common beliefs in the training corpus.\n\nFor teams evaluating causal AI tools, this suggests asking vendors how they separate workflow assistance from causal inference. The safest systems will keep language models clearly outside the algorithmic core while providing transparent audit trails of data, assumptions, and user approvals.\n\nWorth reading if you're considering AI for causal analysis. Worth ignoring if you believe language model fluency equals causal reasoning.\n\nPaper: Causal Discovery in the Era of Agents, Zheng et al.\nhttps://arxiv.org/abs/2606.23608\n\n#CausalDiscovery #AI #ScientificWorkflow #ModelRisk #CausalLearn",
+  "post_char_count": 1483,
+  "hook_char_count": 126,
+  "claims": [
+    {
+      "claim": "Researchers from Carnegie Mellon and Monash University",
+      "source_span": "Yujia Zheng, Vishal Verma, Mantej Gill, Haoyue Dai, Peter Spirtes, Kun Zhang",
+      "page": 1
+    },
+    {
+      "claim": "agents can coordinate tools, explain assumptions, and interpret results",
+      "source_span": "Agents should inspect data, retrieve context, explain method assumptions and clarify graph outputs",
+      "page": 1
+    },
+    {
+      "claim": "causal claims must come from formal algorithms and explicit user decisions",
+      "source_span": "causal claims remain grounded in data, explicit assumptions, formal algorithms, diagnostics and user or domain-expert decisions",
+      "page": 1
+    },
+    {
+      "claim": "built causal-learn+, an online platform",
+      "source_span": "causal-learn+, an online platform that coordinates data analysis",
+      "page": 1
+    },
+    {
+      "claim": "A partially directed graph represents a class of possible causal models",
+      "source_span": "A CPDAG (Completed Partially Directed Acyclic Graph) is not a single DAG; it represents a Markov equivalence class of DAGs",
+      "page": 3
+    },
+    {
+      "claim": "When language models directly inject edges or orientations, it becomes impossible to separate data-based evidence from prompt artifacts or common beliefs in the training corpus",
+      "source_span": "If language model outputs enter the search procedure, a discovered relation may reflect statistical evidence in the dataset, background knowledge from the pretraining corpus, prompt wording, common scientific belief or a hallucinated explanation",
+      "page": 2
+    }
+  ],
+  "ranker_scores": {
+    "significance": 8,
+    "novelty": 7,
+    "reproducibility": 9,
+    "clarity": 8,
+    "topical_fit": 9,
+    "composite": 8.05
+  },
+  "critic_report": {
+    "voice_match": "pass",
+    "banned_phrase_scan": "pass",
+    "length_compliance": "pass",
+    "structure": "pass",
+    "grounding": "pass",
+    "hype_check": "pass",
+    "retries_used": 1,
+    "notes": "Required 1 retry/retries before passing. | voice: The post maintains a declarative, analytical tone with specific methodological distinctions and avoids LinkedIn-speak while remaining accessible to business leaders. | banned_phrases: no banned phrases found | length: total=1483, hook=126 | structure: 7 blocks, 5 hashtags | grounding: All factual claims about the research team, platform capabilities, and methodological principles are supported by verbatim source spans from the paper. | hype: The post maintains appropriate caution about causal discovery limitations and avoids overclaiming the paper's significance."
+  },
+  "generated_at": "2026-06-23T12:19:53.856228Z",
+  "drafter_model": "deepseek/deepseek-chat-v3.1",
+  "critic_model": "deepseek/deepseek-chat-v3.1"
+}
