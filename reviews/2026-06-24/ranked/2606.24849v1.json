@@ -1,0 +1,54 @@
+{
+  "arxiv_id": "2606.24849v1",
+  "title": "IV-CoT: Implicit Visual Chain-of-Thought for Structure-Aware Text-to-Image Generation",
+  "authors": [
+    "Zixuan Li",
+    "Haokun Lin",
+    "Yicheng Xiao",
+    "Zhiwei Li",
+    "Xinyang Song",
+    "Zelong Zheng",
+    "Yong He",
+    "Heng Yao",
+    "Ke Ding",
+    "Chao Yu",
+    "Chuan Yuan",
+    "Qi Li",
+    "Zhenan Sun"
+  ],
+  "abstract": "Unified multi-modal large language models (MLLMs) have achieved strong text-to-image generation quality, but still struggle with structure-aware prompt following, where object counts, spatial relations, attribute bindings, and coarse layouts must be preserved. We attribute this limitation in part to the entanglement of structural planning and appearance rendering within a single conditioning stream. To address this issue, we propose Implicit Visual Chain-of-Thought (IV-CoT), a latent visual reasoning framework for query-conditioned image generation. IV-CoT decomposes the visual conditioning queries into a structural-to-semantic cascade, where structural queries first form a latent visual plan and semantic queries then render appearance conditioned on this plan. To guide the structural queries, we introduce training-only sketch supervision, which encourages them to capture structure from sketches without requiring sketch extraction or intermediate decoding at inference time. IV-CoT performs implicit CoT reasoning in a single forward pass and achieves superior results on GenEval and T2I-CompBench. Visualizations and analyses demonstrate that the learned structural and semantic queries play complementary roles in structure-aware generation.",
+  "primary_cat": "cs.CV",
+  "all_cats": [
+    "cs.CV",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-06-23T17:28:00Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.24849v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces a novel framework that addresses a critical limitation in current MLLMs by improving structure-aware prompt following, which directly impacts how builders approach text-to-image generation architecture."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "IV-CoT's structural-to-semantic cascade approach with latent visual planning represents a substantial new variation in conditioning methodologies distinct from prior single-stream approaches."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly enough for reimplementation, but the paper does not mention code or artifacts being publicly available."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with clear problem formulation, method description, and evaluation on standard benchmarks like GenEval and T2I-CompBench."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "This paper directly addresses LLM-based text-to-image generation improvements, sitting squarely in the applied-AI sweet spot for builders working with multimodal systems."
+    }
+  },
+  "composite": 7.45
+}

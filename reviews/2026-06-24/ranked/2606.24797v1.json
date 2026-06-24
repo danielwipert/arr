@@ -1,0 +1,46 @@
+{
+  "arxiv_id": "2606.24797v1",
+  "title": "EG-VQA: Benchmarking Verifiable Video Question Answering with Grounded Temporal Evidence",
+  "authors": [
+    "Linpeng Huang",
+    "Weixing Chen",
+    "Zexin Chen",
+    "Yang Liu",
+    "Liang Lin"
+  ],
+  "abstract": "Recent advances in Video Large Language Models (Video-LLMs) have yielded promising performance on video question answering (VideoQA). Nevertheless, existing benchmarks are predominantly evaluated through answer correctness, while the grounding of predictions in relevant video evidence remains largely unexamined. This disconnect between answer generation and evidence understanding motivates the construction of the Evidence-Grounded Video Question Answering Benchmark (EG-VQA), an open-ended evaluation protocol in which each QA pair is explicitly annotated with supporting temporal evidence, thereby requiring joint reasoning and precise evidence localization. EG-VQA is comprised of 2,067 videos and 11,838 QA pairs with fine-grained evidence annotations. To evaluate predicted evidence, Evidence-Grounded F1 (EG-F1) is introduced as a unified metric in which temporal alignment and semantic consistency against ground-truth evidence are jointly measured. Experimental evaluation reveals that even strong proprietary models struggle to accurately ground their predictions, exposing a fundamental discrepancy between answer correctness and faithful evidence localization. To bridge this gap, EG-Reasoner, an evidence-grounded reasoning model trained with explicit supervision, is proposed. State-of-the-art performance is achieved among open-source models, with results competitive against proprietary systems, particularly pronounced gains are observed on reasoning-intensive tasks such as counterfactual questions. These findings demonstrate that scaling alone is insufficient for robust video understanding and that structured evidence supervision is essential for the development of more reliable and interpretable VideoQA systems.",
+  "primary_cat": "cs.CV",
+  "all_cats": [
+    "cs.CV",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-06-23T16:49:28Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.24797v1",
+  "in_scope": true,
+  "primary_topic": "evaluation",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The benchmark introduces EG-F1 metric that forces models to ground predictions in temporal evidence, addressing a critical gap in VideoQA evaluation methodology."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "While VideoQA benchmarks exist, EG-VQA is the first to require explicit temporal evidence grounding with unified evaluation metric EG-F1 measuring both alignment and semantic consistency."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "Method is clearly described including dataset construction (2,067 videos, 11,838 QA pairs) and EG-F1 metric definition, but no mention of code or dataset release."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "Well-written abstract clearly articulates the problem, solution, and findings with appropriate scope and measurable results across proprietary and open-source models."
+    },
+    "topical_fit": {
+      "score": 7,
+      "justification": "Directly relevant to LLM builders working on multimodal systems, though focused specifically on video understanding rather than general LLM applications."
+    }
+  },
+  "composite": 6.95
+}
