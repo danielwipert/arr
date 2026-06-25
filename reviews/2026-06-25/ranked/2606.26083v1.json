@@ -1,0 +1,44 @@
+{
+  "arxiv_id": "2606.26083v1",
+  "title": "Real-Time Voice AI Hears but Does Not Listen",
+  "authors": [
+    "Martijn Bartelds",
+    "Federico Bianchi",
+    "James Zou"
+  ],
+  "abstract": "Speech conveys information through both words and vocal delivery. We evaluate four leading production realtime voice systems-OpenAI's GPT Realtime 2, Google's Gemini 3.1 Flash Live, and Alibaba's Qwen3.5 Omni Plus and Omni Flash-on tasks where the words and the delivery patterns both convey meaningful information. Across three consequential scenarios, all four systems act on the words rather than the voice. They end calls with crying callers who insist nothing is wrong, approve wire transfers authorized in frightened voices, and enroll callers whose agreement is clearly sarcastic. Surprisingly, this is often not a failure of perception. When asked directly, three of the four systems reliably identify the distress, fear, or sarcasm they later ignore when making decisions. We observe a similar pattern when these realtime voice systems estimate accent and age, as their responses frequently follow the biases of the words rather than the acoustic properties of the speaker. We term this disconnect between perception and action the emotional intelligence gap of voice AI. Prompting systems to explicitly attend to vocal delivery improves performance only partially and inconsistently. Our findings show that current realtime voice AI systems often behave as if speech had been reduced to a transcript, suggesting that they should be used with caution in settings where the tone and emotion of delivery convey important information.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "eess.AS"
+  ],
+  "submitted_at": "2026-06-24T17:55:38Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.26083v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 9,
+      "justification": "The paper reveals a critical flaw in production voice AI systems that could lead to dangerous real-world consequences like approving fraudulent transactions or ignoring distressed callers, directly impacting how builders should implement voice interfaces."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The paper introduces the concept of an 'emotional intelligence gap' and systematically demonstrates that voice AI systems can perceive emotional cues but fail to act on them, a distinction not previously documented in production systems."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The methodology is clearly described with specific scenarios and systems tested, but no code or datasets are provided to replicate the evaluation framework."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with clear problem framing, concrete examples of system failures, and appropriately scoped claims about the implications for voice AI deployment."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly relevant to LLM builders working on voice interfaces, highlighting critical safety and performance considerations for real-time AI systems that process multimodal inputs."
+    }
+  },
+  "composite": 8.0
+}

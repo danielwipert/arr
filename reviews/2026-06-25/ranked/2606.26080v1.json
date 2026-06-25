@@ -1,0 +1,47 @@
+{
+  "arxiv_id": "2606.26080v1",
+  "title": "Neglected Free Lunch from Post-training: Progress Advantage for LLM Agents",
+  "authors": [
+    "Changdae Oh",
+    "Wendi Li",
+    "Seongheon Park",
+    "Samuel Yeh",
+    "Tanwi Mallick",
+    "Sharon Li"
+  ],
+  "abstract": "Process reward models enable fine-grained, step-level evaluation of LLMs, yet building them for agentic settings remains prohibitively difficult: long-horizon interactions, irreversible actions, and stochastic environment feedback make both human annotation and Monte Carlo estimation infeasible at scale. In this work, we show that reinforcement learning (RL) post-training already provides the ingredients for effective step-level scoring, eliminating the need for dedicated reward model training altogether. Concretely, we derive an implicit advantage under a general stochastic Markov decision process, which we term progress advantage -- log-probability ratio between the RL-trained policy and its reference policy exactly recovers the optimal advantage function. This formulation makes the resulting signal annotation-free, domain-agnostic, and available as a byproduct of the standard RL post-training pipeline. We validate the effectiveness of the progress advantage across three different applications: test-time scaling, uncertainty quantification, and failure attribution on five benchmarks and four model families. Across all settings, it consistently outperforms confidence-based baselines and, despite requiring no task-specific training, surpasses dedicated trained reward models. We complement these results with deeper analyses on characteristics of progress advantage, offering practical guidance for adoption in real-world agentic systems.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-06-24T17:54:08Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.26080v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 9,
+      "justification": "The paper introduces a method that eliminates the need for dedicated reward model training in LLM agents, directly impacting how builders approach RL post-training and step-level evaluation."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The derivation of 'progress advantage' as an implicit advantage function from standard RL post-training represents a substantial new variation that repurposes existing training artifacts in a novel way."
+    },
+    "reproducibility": {
+      "score": 7,
+      "justification": "The method leverages standard RL post-training pipelines and requires no additional training, making it reproducible by teams with access to RL-trained models, though specific implementation details may vary."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper clearly articulates the problem, solution, and validation across multiple benchmarks, with well-scoped claims supported by comprehensive evaluation."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses core LLM agent challenges including reward modeling, RL post-training, and practical evaluation methods highly relevant to builders implementing agentic systems."
+    }
+  },
+  "composite": 8.2
+}

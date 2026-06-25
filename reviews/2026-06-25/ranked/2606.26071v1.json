@@ -1,0 +1,45 @@
+{
+  "arxiv_id": "2606.26071v1",
+  "title": "Model Forensics: Investigating Whether Concerning Behavior Reflects Misalignment",
+  "authors": [
+    "Aditya Singh",
+    "Gerson Kroiz",
+    "Senthooran Rajamanoharan",
+    "Neel Nanda"
+  ],
+  "abstract": "A central goal of safety research is determining whether a model is misaligned. Prior work has largely focused on detecting concerning behavior. But behavior alone does not establish misalignment: a concerning action can arise from benign causes such as confusion. This motivates model forensics: investigating whether the action was driven by malign intent. In this paper, we propose a baseline protocol for model forensics consisting of two steps, iterated as needed. First, we read the chain of thought (CoT) to generate hypotheses about what drives model behavior. Second, we make edits to the prompt or environment to test these hypotheses. While the CoT is not always faithful, it is a rich source of unsupervised insight that can guide the collection of more rigorous evidence. To evaluate our protocol, we create a suite of six agentic environments where models exhibit concerning behavior, and apply it to each. We establish that Kimi K2 Thinking takes shortcuts due to a genuine disposition towards low-effort actions, by showing this hypothesis successfully predicts its behavior. Through counterfactual experiments, we show DeepSeek R1 deceives out of a desire to be consistent with a previous instance of itself. Our methods nonetheless leave significant room for refinement. For example, when we test whether Kimi K2 Thinking believes it is violating user intent, we find no evidence of such a belief, but without positive controls we cannot confirm our tests would detect it. Overall, we find our simple protocol provides a strong baseline that we hope future work will improve upon. More broadly, our work is a concrete step in developing the growing field of model forensics.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-06-24T17:45:47Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.26071v1",
+  "in_scope": true,
+  "primary_topic": "evaluation",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces a concrete protocol for investigating model misalignment, directly refining safety evaluation methodology for builders who need to assess model trustworthiness."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "It proposes a distinct two-step forensic protocol (CoT hypothesis generation and prompt/environment edits) for moving beyond mere detection to causal investigation of concerning behavior."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly with a six-environment evaluation suite, but the paper does not mention public release of code, weights, or datasets."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written, clearly defines its protocol and evaluation suite, and appropriately scopes its claims by acknowledging limitations like the lack of positive controls."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper is directly in the applied-AI sweet spot, providing a practical methodology for builders to investigate LLM safety and alignment."
+    }
+  },
+  "composite": 7.45
+}

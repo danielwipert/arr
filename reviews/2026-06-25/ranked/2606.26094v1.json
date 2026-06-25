@@ -1,0 +1,45 @@
+{
+  "arxiv_id": "2606.26094v1",
+  "title": "RevengeBench: Reverse Engineering Code-Space Policies from Behavioral Experiments",
+  "authors": [
+    "Babak Rahmani",
+    "Sebastian Dziadzio",
+    "Joschka Strüber",
+    "Sergio Hernández-Gutiérrez",
+    "Matthias Bethge"
+  ],
+  "abstract": "For most of scientific history, researchers studying behavior could only infer hidden mechanisms from outward actions: an inverse problem that becomes more tractable when observation is augmented by targeted intervention. We pose a computational analogue: given only behavioral traces of an agent in a game environment, can a learner reconstruct the underlying decision program as executable code, and how much does this reconstruction improve with the ability to design controlled experiments? We introduce RevengeBench, a benchmark of 75 LLM generated, Elo-calibrated policies across five game environments, drawn from CodeClash tournament trajectories. The learner observes the hidden target policy play against sampled opponents and designs behavioral probes in the form of custom opponent policies that elicit informative behavior. It then submits an executable hypothesis, which is evaluated using continuous action-distance metrics. We further validate that recovered code carries informative signal in downstream player-versus-player tournaments. Across twelve frontier LLMs, recovery quality varies substantially (34 to 72% of initial distance closed), with reconstructed policies yielding measurable competitive advantage, particularly for weaker models that otherwise struggle to design effective counter-strategies. Our benchmark positions behavioral recovery of programmatic policies as a tractable inverse problem in code-space, opening a path to opponent modeling, policy interpretability, and the broader question of inferring latent mechanisms from observations.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG"
+  ],
+  "submitted_at": "2026-06-24T17:59:46Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.26094v1",
+  "in_scope": true,
+  "primary_topic": "evaluation",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper introduces a benchmark and methodology for reverse-engineering executable policies from behavioral traces, which refines the technique of opponent modeling and interpretability with measurable, reproducible gains for builders working on agent behavior analysis."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The work presents a substantial new variation by framing policy recovery as a tractable inverse problem in code-space, combining behavioral probes, executable hypothesis submission, and validation in competitive tournaments in a distinct way from prior interpretability research."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method of using game environments, behavioral probes, and action-distance metrics is described clearly enough to reimplement, but the paper does not mention public release of the RevengeBench code, weights, or datasets."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is solidly written, with a clear problem statement, well-defined benchmark construction (75 policies across five games), and defensible evaluation methodology using continuous action-distance metrics and downstream tournament validation."
+    },
+    "topical_fit": {
+      "score": 7,
+      "justification": "The paper is clearly in scope for LLM builders, focusing on benchmarking frontier LLMs for policy recovery and interpretability, though its specific application to game environments is not the central focus of most applied LLM work."
+    }
+  },
+  "composite": 7.2
+}

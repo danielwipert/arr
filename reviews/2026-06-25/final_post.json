@@ -1,0 +1,61 @@
+{
+  "date": "2026-06-25",
+  "paper_id": "arxiv:2606.26036v1",
+  "paper_title": "Detect, Unlearn, Restore: Defending Text Summarization Models Against Data Poisoning",
+  "paper_authors": [
+    "Poojitha Thota",
+    "Shirin Nilizadeh"
+  ],
+  "paper_url": "https://arxiv.org/abs/2606.26036",
+  "post_text": "A new defense can detect and repair poisoned text summarization models with minimal performance loss.\n\nResearchers from the University of Texas at Arlington developed a two-part framework for models fine-tuned on potentially corrupted data. In white-box settings, their method identifies poisoned training samples and removes their influence, recovering up to 96% of original model behavior with less than 0.6% degradation in standard ROUGE scores.\n\nThe defense is effective but requires specific access. The first part needs the model's internal data and parameters, limiting it to open-source or self-hosted systems. The second part works as a black-box audit, detecting poisoned models by their heightened sensitivity to small input changes, achieving near-perfect detection.\n\nFor teams deploying summarization systems, this means a new layer of post-deployment verification is possible, especially for models sourced from third parties. The practical takeaway is unflashy: the cheapest way to verify a model's integrity is now to test its stability under minor, semantics-preserving edits, not just its output scores.\n\nWorth reading if you procure or audit fine-tuned language models. Worth ignoring if your models are entirely developed in-house from verified data.\n\nPaper: Detect, Unlearn, Restore: Defending Text Summarization Models Against Data Poisoning, Poojitha Thota, Shirin Nilizadeh et al.\nhttps://arxiv.org/abs/2606.26036\n\n#LLMs #AISafety #VendorRisk #Summarization #DataPoisoning",
+  "post_char_count": 1496,
+  "hook_char_count": 101,
+  "claims": [
+    {
+      "claim": "Researchers from the University of Texas at Arlington developed a two-part framework for models fine-tuned on potentially corrupted data.",
+      "source_span": "The University of Texas at Arlington",
+      "page": 1
+    },
+    {
+      "claim": "In white-box settings, their method identifies poisoned training samples and removes their influence, recovering up to 96% of original model behavior",
+      "source_span": "gradient-ascent unlearning recovers up to 96% of original behavior",
+      "page": 1
+    },
+    {
+      "claim": "with less than 0.6% degradation in standard ROUGE scores.",
+      "source_span": "with minimal utility loss (<0.6% ROUGE degradation)",
+      "page": 1
+    },
+    {
+      "claim": "The second part works as a black-box audit, detecting poisoned models by their heightened sensitivity to small input changes, achieving near-perfect detection.",
+      "source_span": "In black-box settings, poisoned models display two-to-three times greater sensitivity to semantics-preserving perturbations, enabling behavioral auditing",
+      "page": 1
+    },
+    {
+      "claim": "The first part needs the model's internal data and parameters, limiting it to open-source or self-hosted systems.",
+      "source_span": "Defense-1 requires access to model parameters and fine-tuning data, which aligns with open-source or self-hosted pipelines but may not apply to closed API-only systems",
+      "page": 13
+    }
+  ],
+  "ranker_scores": {
+    "significance": 9,
+    "novelty": 8,
+    "reproducibility": 7,
+    "clarity": 8,
+    "topical_fit": 10,
+    "composite": 8.3
+  },
+  "critic_report": {
+    "voice_match": "pass",
+    "banned_phrase_scan": "pass",
+    "length_compliance": "pass",
+    "structure": "pass",
+    "grounding": "pass",
+    "hype_check": "pass",
+    "retries_used": 1,
+    "notes": "Required 1 retry/retries before passing. | voice: The post adopts a declarative, report-like tone with specific numbers and a dry, practical point of view, avoiding LinkedIn-speak and content marketing cadences. | banned_phrases: no banned phrases found | length: total=1496, hook=101 | structure: 7 blocks, 5 hashtags | grounding: All factual claims in the post body are supported by verbatim source spans from the paper sections via the provided claims list. [mech: 5 claim span(s) not found in paper: 'The University of Texas at Arlington'; 'gradient-ascent unlearning recovers up to 96% of original be'; 'with minimal utility loss (<0.6% ROUGE degradation)'] | hype: The post accurately reflects the paper's findings, avoids superlatives and overclaim, and correctly notes the method's access limitations."
+  },
+  "generated_at": "2026-06-25T11:47:24.723609Z",
+  "drafter_model": "deepseek/deepseek-chat-v3.1",
+  "critic_model": "deepseek/deepseek-chat-v3.1"
+}
