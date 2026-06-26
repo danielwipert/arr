@@ -1,0 +1,43 @@
+{
+  "arxiv_id": "2606.27359v1",
+  "title": "When are likely answers right? On Sequence Probability and Correctness in LLMs",
+  "authors": [
+    "Johannes Zenn",
+    "Jonas Geiping"
+  ],
+  "abstract": "Many decoding methods for large language models can be understood as shifting probability mass toward outputs that are more likely under the model, either locally at the token level or globally at the sequence level. Therefore, their success depends on a fundamental question: when does sequence probability, that is, the conditional probability of a continuation given a prompt, actually align with correctness? In this paper, we set out to quantify this relationship across decoding methods, models, and benchmarks at four levels: across decoding methods, across hyperparameters within a method, across prompt-answer pairs within a dataset, and across repeated responses to the same prompt. We find that higher sequence probability is often predictive of correctness across prompt-answer pairs within a fixed dataset. However, this relationship does not generally transfer to decoding decisions: increasing sequence probability by changing hyperparameters or methods does not reliably improve accuracy. Further, sequence probability is not a good indicator of correctness for responses to the same prompt. These findings clarify when decoding can and cannot be expected to improve correctness, and provide practical guidance for decoding, self-consistency, and verifier-free self-improvement.",
+  "primary_cat": "stat.ML",
+  "all_cats": [
+    "stat.ML",
+    "cs.LG"
+  ],
+  "submitted_at": "2026-06-25T17:58:02Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.27359v1",
+  "in_scope": true,
+  "primary_topic": "evaluation",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper provides practical guidance on when decoding methods can improve correctness, directly informing builders' choices in RAG architecture and evaluation methodology."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The paper offers a substantial new variation by systematically quantifying the relationship between sequence probability and correctness across multiple dimensions not previously explored together."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly enough to reimplement across decoding methods, models, and benchmarks, though no code or datasets are provided."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with appropriately scoped claims and a clear evaluation methodology across four distinct levels of analysis."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper is directly in the LLM sweet spot, providing practical guidance on decoding methods that builders use daily with language models."
+    }
+  },
+  "composite": 7.45
+}

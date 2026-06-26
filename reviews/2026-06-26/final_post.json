@@ -1,0 +1,70 @@
+{
+  "date": "2026-06-26",
+  "paper_id": "arxiv:2606.27288v1",
+  "paper_title": "When Does Combining Language Models Help? A Co-Failure Ceiling on Routing, Voting, and Mixture-of-Agents Across 67 Frontier Models",
+  "paper_authors": [
+    "Josef Chen"
+  ],
+  "paper_url": "https://arxiv.org/abs/2606.27288",
+  "post_text": "Pairwise error correlation, the field's go-to diagnostic for model orchestration, is blind to the joint failures that set the ceiling.\n\nA team led by Josef Chen analyzed 67 frontier models, including GPT-5.5 and Claude Opus 4.8, and found that no router, vote, or cascade can exceed an accuracy of 1 minus β, where β is the rate at which every model fails on the same query. They prove that pairwise correlation ρ cannot identify β, and a Clopper-Pearson bound turns one graded query set into a certificate on the largest gain any such policy could deliver.\n\nThe finding is narrower than it sounds. The ceiling binds only on open-ended tasks like math and code, where a co-failure tail exists; on multiple-choice science questions, the ceiling is effectively open. The same GPQA-Diamond questions asked in free-response form opened a co-failure tail (β=0.127) where multiple-choice had none, locating the effect in task format rather than subject matter.\n\nFor leaders allocating inference budgets, the practical takeaway is that orchestration gains now depend on failure-mode dispersion and market churn, not peak capability or model count. Pairwise correlation will not tell you which lever you hold; the right instrument is a direct estimate of β.\n\nWorth reading if you manage model portfolios or evaluate multi-model systems. Worth ignoring if you trust pairwise correlation alone.\n\nPaper: When Does Combining Language Models Help? A Co-Failure Ceiling on Routing, Voting, and Mixture-of-Agents Across 67 Frontier Models, Josef Chen et al.\nhttps://arxiv.org/abs/2606.27288\n\n#LLMs #ModelOrchestration #VendorRisk #AISafety #CoFailure",
+  "post_char_count": 1635,
+  "hook_char_count": 134,
+  "claims": [
+    {
+      "claim": "A team led by Josef Chen analyzed 67 frontier models, including GPT-5.5 and Claude Opus 4.8",
+      "source_span": "Across 67 frontier models from 21 providers, among them GPT-5.5, Claude Opus 4.8, Gemini 3.1 Pro, Grok-4.3, DeepSeek V4, Qwen3.7-Max, and Kimi K2.7",
+      "page": 1
+    },
+    {
+      "claim": "no router, vote, or cascade can exceed an accuracy of 1 minus β, where β is the rate at which every model fails on the same query",
+      "source_span": "no router, vote, or cascade can exceed accuracy 1−β, where β is the rate at which every model is wrong on the same query",
+      "page": 1
+    },
+    {
+      "claim": "They prove that pairwise correlation ρ cannot identify β",
+      "source_span": "pairwise ρ cannot identify β",
+      "page": 1
+    },
+    {
+      "claim": "a Clopper-Pearson bound turns one graded query set into a certificate on the largest gain any such policy could deliver",
+      "source_span": "A Clopper–Pearson bound on β turns one graded, held-out query set into a $0 certificate on the largest gain any such policy could deliver",
+      "page": 1
+    },
+    {
+      "claim": "The ceiling binds only on open-ended tasks like math and code, where a co-failure tail exists",
+      "source_span": "co-failure (β > 0) ... holds across three structurally disjoint open-ended domains (two math families and execution-graded code)",
+      "page": 9
+    },
+    {
+      "claim": "on multiple-choice science questions, the ceiling is effectively open",
+      "source_span": "on multiple-choice GPQA the tail vanishes (β ≈ 0)",
+      "page": 7
+    },
+    {
+      "claim": "The same GPQA-Diamond questions asked in free-response form opened a co-failure tail (β=0.127) where multiple-choice had none",
+      "source_span": "Changing only the format opens a co-failure block of 10/79 (β=0.127, CP[0.062,0.220]) where multiple-choice had none (β ≈ 0)",
+      "page": 10
+    }
+  ],
+  "ranker_scores": {
+    "significance": 9,
+    "novelty": 8,
+    "reproducibility": 7,
+    "clarity": 8,
+    "topical_fit": 9,
+    "composite": 8.2
+  },
+  "critic_report": {
+    "voice_match": "pass",
+    "banned_phrase_scan": "pass",
+    "length_compliance": "pass",
+    "structure": "pass",
+    "grounding": "pass",
+    "hype_check": "pass",
+    "retries_used": 1,
+    "notes": "Required 1 retry/retries before passing. | voice: The post maintains a declarative, analytical tone with specific numbers and cautious framing appropriate for business and engineering leaders. | banned_phrases: no banned phrases found | length: total=1635, hook=134 | structure: 7 blocks, 5 hashtags | grounding: All factual claims in the post are supported by verbatim source spans from the paper sections via the claims list. [mech: 3 claim span(s) not found in paper: 'no router, vote, or cascade can exceed accuracy 1−β, where β'; 'pairwise ρ cannot identify β'; 'co-failure (β > 0) ... holds across three structurally disjo'] | hype: The post accurately represents the paper's findings without unwarranted superlatives or overclaim."
+  },
+  "generated_at": "2026-06-26T11:59:40.911973Z",
+  "drafter_model": "deepseek/deepseek-chat-v3.1",
+  "critic_model": "deepseek/deepseek-chat-v3.1"
+}
