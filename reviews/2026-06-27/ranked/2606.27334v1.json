@@ -1,0 +1,43 @@
+{
+  "arxiv_id": "2606.27334v1",
+  "title": "Language-Based Digital Twins for Elderly Cognitive Assistance",
+  "authors": [
+    "Mohammad Mehdi Hosseini",
+    "Mohammad H. Mahoor",
+    "Hiroko H. Dodge"
+  ],
+  "abstract": "Digital twins have emerged as a promising paradigm for personalized healthcare, enabling modeling of individual behavior and health trajectories. In cognitive health, early detection of Mild Cognitive Impairment (MCI) remains challenging, where language and conversational patterns serve as non-invasive biomarkers. In this work, we propose a language-based digital twin framework that leverages large language models (LLMs) to mimic the conversational behavior of elderly individuals by incorporating stylometric cues and contextual metadata. To evaluate fidelity and cognitive consistency, we introduce a multi-head conditional variational autoencoder (cVAE) that jointly measures reconstruction quality and predicts cognitive scores. Experiments on the I-CONECT dataset show that the digital twin preserves identity-specific characteristics and achieves reconstruction and MoCA prediction errors comparable to real data, while outperforming baseline GPT-generated responses. These results highlight the potential of language-based digital twins as a scalable and non-invasive approach for personalized and continuous cognitive health monitoring.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI"
+  ],
+  "submitted_at": "2026-06-25T17:45:53Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.27334v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper introduces a practical framework for non-invasive cognitive health monitoring using LLMs, which could influence how healthcare builders implement personalized digital health solutions."
+    },
+    "novelty": {
+      "score": 6,
+      "justification": "While digital twins and LLMs are established concepts, the specific application to cognitive health through language modeling represents a clear but incremental advancement in the field."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described with sufficient detail for reimplementation, but the paper does not mention public availability of code, weights, or datasets."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with a clear problem statement, methodology, and evaluation, though some technical details of the multi-head cVAE could be more thoroughly explained."
+    },
+    "topical_fit": {
+      "score": 7,
+      "justification": "The use of LLMs for modeling conversational behavior and cognitive health monitoring is relevant to builders working on applied AI in healthcare, though it may not be central to all LLM applications."
+    }
+  },
+  "composite": 6.5
+}

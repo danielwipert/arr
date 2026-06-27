@@ -1,0 +1,63 @@
+{
+  "date": "2026-06-27",
+  "paper_id": "arxiv:2606.27287v1",
+  "paper_title": "Prompt Injection in Automated Résumé Screening with Large Language Models: Single and Multi-Injection Settings",
+  "paper_authors": [
+    "Preet Baxi",
+    "Jiannan Xu",
+    "Jane Yi Jiang",
+    "Stefanus Jasin"
+  ],
+  "paper_url": "https://arxiv.org/abs/2606.27287",
+  "post_text": "A new study finds that injecting self-promotional text into a résumé reliably boosts its ranking in automated screening systems, but only when few other candidates do the same.\n\nResearchers from the University of Michigan and the University of Maryland conducted controlled experiments using two LLMs, GPT-4o-mini and DeepSeek-V3.2, to rank synthetic résumés for an IT Support Specialist role. When all candidates had identical qualifications, a single prompt injection improved a résumé's average rank by over four positions with DeepSeek-V3.2, and by 2.4 positions with GPT-4o-mini under an instructive prompt.\n\nThe effect is highly sensitive to competition. In homogeneous applicant pools, the benefit of injection collapsed as more candidates used it; rank gains approached zero when 80% or more résumés were injected. In pools with mixed candidate quality, injection was less effective on average, but lower-quality candidates could occasionally outrank higher-quality ones near decision thresholds.\n\nFor teams deploying automated screening, the vulnerability is most acute in early-stage filtering of large, similar applicant pools. The practical risk is not a systemic breakdown, but localized distortions at shortlist boundaries, where a small nudge could change which résumés a human ever sees. It's a reason to audit ranking consistency, not to abandon automation.\n\nWorth reading if you oversee hiring systems; worth ignoring if you believe candidate manipulation is either omnipotent or irrelevant.\n\nPaper: Prompt Injection in Automated Résumé Screening with Large Language Models: Single and Multi-Injection Settings, Baxi et al.\nhttps://arxiv.org/abs/2606.27287\n\n#AI #Hiring #LLMs #ModelRisk #PromptInjection",
+  "post_char_count": 1721,
+  "hook_char_count": 176,
+  "claims": [
+    {
+      "claim": "Researchers from the University of Michigan and the University of Maryland conducted controlled experiments using two LLMs, GPT-4o-mini and DeepSeek-V3.2, to rank synthetic résumés for an IT Support Specialist role.",
+      "source_span": "Researchers from the University of Michigan and the University of Maryland",
+      "page": 1
+    },
+    {
+      "claim": "When all candidates had identical qualifications, a single prompt injection improved a résumé's average rank by over four positions with DeepSeek-V3.2",
+      "source_span": "DeepSeek-V3.2 is highly responsive to both descriptive and instructive injections, exhibiting large rank gains",
+      "page": 4
+    },
+    {
+      "claim": "by 2.4 positions with GPT-4o-mini under an instructive prompt.",
+      "source_span": "GPT-4o-mini ... becomes substantially more sensitive under instructive injections, where both rank gains and success rates increase markedly.",
+      "page": 4
+    },
+    {
+      "claim": "In homogeneous applicant pools, the benefit of injection collapsed as more candidates used it; rank gains approached zero when 80% or more résumés were injected.",
+      "source_span": "As injection becomes more prevalent, these gains shrink toward zero, and success rates drop sharply, approaching zero once roughly 80% or more of résumés are injected.",
+      "page": 4
+    },
+    {
+      "claim": "In pools with mixed candidate quality, injection was less effective on average, but lower-quality candidates could occasionally outrank higher-quality ones near decision thresholds.",
+      "source_span": "injected lower-quality résumés can occasionally outrank higher-quality ones, distorting quality-based selection.",
+      "page": 4
+    }
+  ],
+  "ranker_scores": {
+    "significance": 8,
+    "novelty": 7,
+    "reproducibility": 9,
+    "clarity": 8,
+    "topical_fit": 9,
+    "composite": 8.05
+  },
+  "critic_report": {
+    "voice_match": "pass",
+    "banned_phrase_scan": "pass",
+    "length_compliance": "fail",
+    "structure": "pass",
+    "grounding": "fail",
+    "hype_check": "pass",
+    "retries_used": 1,
+    "notes": "Required 1 retry/retries before passing. | voice: The post adopts a declarative, reportorial tone with specific numbers and a clear point of view, avoiding LinkedIn-speak and landing a practical 'so what' for business leaders. | banned_phrases: no banned phrases found | length: hook too long (176 chars, max 140) | structure: 7 blocks, 5 hashtags | grounding: The claim 'a single prompt injection improved a résumé's average rank by over four positions with DeepSeek-V3.2' cites a source_span that does not contain the specific number 'over four positions'. [mech: 5 claim span(s) not found in paper: 'Researchers from the University of Michigan and the Universi'; 'DeepSeek-V3.2 is highly responsive to both descriptive and i'; 'GPT-4o-mini ... becomes substantially more sensitive under i'] | hype: The framing is measured, avoids superlatives, and accurately reflects the paper's conditional and localized findings."
+  },
+  "generated_at": "2026-06-27T11:06:05.459679Z",
+  "drafter_model": "deepseek/deepseek-chat-v3.1",
+  "critic_model": "deepseek/deepseek-chat-v3.1"
+}
