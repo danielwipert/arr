@@ -1,0 +1,49 @@
+{
+  "arxiv_id": "2606.27330v1",
+  "title": "Empowering GUI Agents via Autonomous Experience Exploration and Hindsight Experience Utilization for Task Planning",
+  "authors": [
+    "Tianyi Men",
+    "Zhuoran Jin",
+    "Pengfei Cao",
+    "Yubo Chen",
+    "Kang Liu",
+    "Jun Zhao"
+  ],
+  "abstract": "Multimodal web agents can assist humans in operating repetitive GUI tasks, where effective task planning is essential for decomposing complex tasks into executable actions. While small open source MLLMs are cost efficient and privacy preserving compared with commercial large models, they suffer from weak planning and limited cross website generalization. To address these limitations, we introduce the planning experience exploration and utilization (PEEU) method, which autonomously explores environments to discover experiences and utilizes hindsight experience to synthesize strictly aligned, high level training data. To quantitatively analyze the generalization behaviors driving this performance, we propose the task decomposition hierarchical analysis framework (TDHAF) to systematically study compositional generalization across three task granularities: low, middle and high levels. Our analysis reveals that mastering low level atomic skills does not guarantee high level planning competence, while high level task training yields stronger OOD generalization. Experiments on real world benchmarks demonstrate PEEU's superior effectiveness: our 7B model achieves 30.6% accuracy, outperforming the much larger Qwen2.5-VL-32B model. These demonstrate constructing hindsight high level tasks and leveraging experiences is crucial for OOD planning abilities of small MLLMs.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.AI",
+    "cs.CV",
+    "cs.LG"
+  ],
+  "submitted_at": "2026-06-25T17:44:48Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.27330v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces a method that improves GUI agent task planning with 30.6% accuracy on benchmarks, directly addressing practical limitations of small MLLMs for real-world automation tasks."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "PEEU method combines autonomous experience exploration with hindsight experience utilization in a novel way, though building on existing reinforcement learning concepts for GUI agents."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "Method is described clearly enough for reimplementation but no mention of code, weights, or datasets being publicly available."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "Well-structured paper with clear methodology description and appropriate evaluation on real-world benchmarks, though some technical details could be more explicit."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "Directly relevant to LLM builders working on multimodal agents and GUI automation, addressing practical limitations of smaller models for real-world applications."
+    }
+  },
+  "composite": 7.0
+}

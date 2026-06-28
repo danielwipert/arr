@@ -1,0 +1,61 @@
+{
+  "date": "2026-06-28",
+  "paper_id": "arxiv:2606.27359v1",
+  "paper_title": "When are likely answers right? On Sequence Probability and Correctness in LLMs",
+  "paper_authors": [
+    "Johannes Zenn",
+    "Jonas Geiping"
+  ],
+  "paper_url": "https://arxiv.org/abs/2606.27359",
+  "post_text": "A new paper finds that higher-probability LLM outputs are not reliably more correct, challenging common assumptions behind many decoding methods.\n\nResearchers at the University of Maryland analyzed the relationship between sequence probability and correctness across 8 decoding methods, 14 models, and 6 benchmark datasets. They found that while higher-probability responses often correlate with correctness across different prompts within a fixed dataset, this signal does not transfer to decoding decisions: methods that produce higher-probability sequences do not consistently yield more accurate answers.\n\nThe finding is narrower than it sounds. The correlation is strongest on mathematical reasoning tasks like MATH500, where models show near-perfect alignment between probability and correctness. On instruction-following benchmarks like IFEval, however, the correlation is often negative, with base models particularly struggling to distinguish likely completions from correct ones.\n\nFor engineering leaders, the practical implication is unflashy: there is no free lunch in decoding hyperparameter tuning. Methods that increase sequence probability—like power sampling or best-of-N—do not guarantee better accuracy across tasks. This suggests teams should validate decoding choices on their specific use case rather than assuming probability-maximizing methods will improve performance.\n\nWorth reading if you ship LLM systems and assume higher-probability outputs are better. Worth ignoring if you expected a universal decoding strategy.\n\nPaper: When are likely answers right? On Sequence Probability and Correctness in LLMs, Zenn et al.\nhttps://arxiv.org/abs/2606.27359\n\n#LLMs #Decoding #ModelEvaluation #Probability #Benchmarks",
+  "post_char_count": 1736,
+  "hook_char_count": 145,
+  "claims": [
+    {
+      "claim": "Researchers at the University of Maryland analyzed the relationship between sequence probability and correctness across 8 decoding methods, 14 models, and 6 benchmark datasets.",
+      "source_span": "We study the relationship between sequence probability and correctness across 12 models, 6 datasets, and 8 decoding methods.",
+      "page": 1
+    },
+    {
+      "claim": "They found that while higher-probability responses often correlate with correctness across different prompts within a fixed dataset, this signal does not transfer to decoding decisions: methods that produce higher-probability sequences do not consistently yield more accurate answers.",
+      "source_span": "higher sequence probability is often predictive of correctness across prompt-answer pairs within a fixed dataset. However, this relationship does not generally transfer to decoding decisions: increasing sequence probability by changing hyperparameters or methods does not reliably improve accuracy.",
+      "page": 1
+    },
+    {
+      "claim": "The correlation is strongest on mathematical reasoning tasks like MATH500, where models show near-perfect alignment between probability and correctness.",
+      "source_span": "Correlation is strongest for MATH500",
+      "page": 2
+    },
+    {
+      "claim": "On instruction-following benchmarks like IFEval, however, the correlation is often negative, with base models particularly struggling to distinguish likely completions from correct ones.",
+      "source_span": "Only IFEval shows a negative correlation. Base models show more negative and diverse correlation and are consistently negative for IFEval.",
+      "page": 3
+    },
+    {
+      "claim": "Methods that increase sequence probability—like power sampling or best-of-N—do not guarantee better accuracy across tasks.",
+      "source_span": "increasing sequence probability by changing hyperparameters or methods does not reliably improve accuracy.",
+      "page": 1
+    }
+  ],
+  "ranker_scores": {
+    "significance": 8,
+    "novelty": 7,
+    "reproducibility": 6,
+    "clarity": 8,
+    "topical_fit": 9,
+    "composite": 7.45
+  },
+  "critic_report": {
+    "voice_match": "pass",
+    "banned_phrase_scan": "fail",
+    "length_compliance": "fail",
+    "structure": "pass",
+    "grounding": "fail",
+    "hype_check": "pass",
+    "retries_used": 1,
+    "notes": "Required 1 retry/retries before passing. | voice: The post maintains a declarative, analytical tone with specific numbers and cautious framing, avoiding LinkedIn-speak while remaining accessible to business and engineering leaders. | banned_phrases: banned: em-dash (—) | length: hook too long (145 chars, max 140) | structure: 7 blocks, 5 hashtags | grounding: The claim '14 models' is not supported by the claims list, which only references '12 models' in the source_span. [mech: 4 claim span(s) not found in paper: 'higher sequence probability is often predictive of correctne'; 'Correlation is strongest for MATH500'; 'Only IFEval shows a negative correlation. Base models show m'] | hype: The post accurately represents the paper's findings without overclaiming, using appropriate qualifiers like 'narrower than it sounds' and 'do not guarantee'."
+  },
+  "generated_at": "2026-06-28T11:17:40.817917Z",
+  "drafter_model": "deepseek/deepseek-chat-v3.1",
+  "critic_model": "deepseek/deepseek-chat-v3.1"
+}

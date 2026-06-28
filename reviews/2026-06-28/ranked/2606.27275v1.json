@@ -1,0 +1,42 @@
+{
+  "arxiv_id": "2606.27275v1",
+  "title": "How Surprising Is Historical Italian to Language Models? Tokenization Tax, Comprehension Tax, and a Simple Mitigation",
+  "authors": [
+    "Maria Levchenko"
+  ],
+  "abstract": "Large language models (LLMs) are increasingly critical to digital library workflows, yet their ability to process historical language remains poorly understood. Historical difficulty is typically treated as a monolithic barrier, conflating orthographic variation, linguistic distance, and pretraining exposure. In this paper, we propose a diagnostic framework that decomposes this difficulty into four distinct dimensions: tokenization cost, predictive uncertainty (surprisal), semantic robustness, and context sensitivity.\n  We evaluate this framework on three datasets spanning three centuries: (1) a newly curated corpus of 17th-century Italian texts (1610-1689) digitized from original page images; (2) canonical 19th-century Italian \"I Promessi Sposi\" serving as a high-exposure control; and (3) 18th-century Russian civil print books as a contrastive orthographic stress test.\n  Our results reveal a distinct dissociation between encoding cost and comprehension. While Russian and early modern Italian incur comparable tokenization penalties (25-30% inflation), their predictive difficulty diverges sharply. 17th-century Italian is on average 2.4 times more surprising than its modern equivalent - with academic prose reaching 3.2 times - whereas Russian shows only a modest increase. But predictive uncertainty does not imply representational degradation: embedding similarity remains robust (> 0.85) across all datasets, confirming that models can represent historical meaning even when generation is unstable.\n  Finally, we demonstrate that a minimal temporal context prompt reduces historical surprisal by approximately 60%, offering a simple, model-agnostic mitigation. These findings suggest that while historical text imposes a consistent encoding tax, digital libraries can safely deploy LLMs for semantic retrieval tasks, provided that generative applications are carefully adapted.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.DL"
+  ],
+  "submitted_at": "2026-06-25T16:52:21Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.27275v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper provides actionable insights for builders working with historical texts, showing that LLMs can handle semantic retrieval tasks despite generation challenges, and offers a simple mitigation technique."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "Introduces a novel diagnostic framework that decomposes historical language difficulty into four distinct dimensions, providing a more nuanced understanding than previous monolithic approaches."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "Method is clearly described with specific metrics and datasets, but no mention of code or artifacts being publicly available for direct reproduction."
+    },
+    "clarity": {
+      "score": 9,
+      "justification": "Well-written abstract with clear research questions, specific quantitative results, and appropriately scoped claims about implications for digital library workflows."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "Directly addresses LLM performance characteristics and provides practical mitigation techniques relevant to builders working with non-standard text inputs."
+    }
+  },
+  "composite": 7.45
+}

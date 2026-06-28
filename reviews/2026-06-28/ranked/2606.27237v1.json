@@ -1,0 +1,43 @@
+{
+  "arxiv_id": "2606.27237v1",
+  "title": "LMs as Task-Specific Knowledge Bases: An Interpretability Analysis",
+  "authors": [
+    "Amit Elhelo",
+    "Amir Globerson",
+    "Mor Geva"
+  ],
+  "abstract": "Language models (LMs) capture large amounts of factual knowledge applicable to a wide range of tasks, motivating the view of their parameters as a knowledge base. An important property of knowledge bases is that different queries for the same fact return consistent results, drawing on a single source of truth. We investigate whether LMs satisfy this property through behavioral and mechanistic analyses. Our results suggest that they encode knowledge in a task-specific manner. Behaviorally, facts acquired on one task frequently fail to co-emerge on others during training. Parameter localization experiments suggest a mechanistic explanation, revealing distinct parameter subsets underlying different tasks for the same fact. Finally, we show that chain-of-thought reasoning draws part of its effectiveness from engaging task-specific parameters beyond those tied to the evaluation task. Our findings suggest that what the model knows and how it is asked are intertwined in parameter space, undermining the \"knowledge base\" analogy and carrying implications for the reliability and controllability of factual knowledge in LMs.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL"
+  ],
+  "submitted_at": "2026-06-25T16:22:43Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.27237v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper reveals that LMs encode knowledge in task-specific ways, challenging the 'knowledge base' analogy and directly impacting how builders should approach RAG systems and knowledge extraction methodologies."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The paper introduces novel behavioral and mechanistic analyses showing distinct parameter subsets underlie different tasks for the same fact, providing a fresh perspective on knowledge representation in LMs."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement with standard LM architectures, though no code or specific datasets are provided in the abstract."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The abstract is well-written with clear claims about behavioral patterns, mechanistic explanations, and implications for LM reliability and controllability."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses core questions about how LMs represent and access knowledge, which is fundamental for builders working with factual knowledge extraction and RAG systems."
+    }
+  },
+  "composite": 7.25
+}
