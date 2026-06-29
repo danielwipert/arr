@@ -1,0 +1,47 @@
+{
+  "arxiv_id": "2606.28062v1",
+  "title": "Single and Multi Truth Data Fusion using Large Language Models",
+  "authors": [
+    "Hira Beril Kucuk",
+    "Norman W Paton",
+    "Jiaoyan Chen",
+    "Zhenyu Wu"
+  ],
+  "abstract": "Data fusion, also known as truth discovery, is a data integration problem that aims to determine the correct value or set of values for each attribute of an object when presented with potentially conflicting values from multiple sources. Data fusion tasks belong to two main categories: single-truth scenarios, where each attribute has only one correct value, and multi-truth scenarios, where multiple values can be valid simultaneously. This paper investigates the use of Large Language Models (LLMs) in data fusion tasks for tabular data. Various prompting strategies, encompassing both single-truth and multi-truth scenarios, are investigated empirically. Domain-dependent, domain-independent, zero-shot and one-shot prompts are evaluated on three different benchmark datasets. Experimental results demonstrate that LLM-based approaches outperform traditional unsupervised truth discovery methods, such as DART and LTM, across all datasets. The codebase of this study has been made publicly available on GitHub.",
+  "primary_cat": "cs.DB",
+  "all_cats": [
+    "cs.DB",
+    "cs.AI",
+    "cs.CL",
+    "cs.IR"
+  ],
+  "submitted_at": "2026-06-26T13:10:11Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.28062v1",
+  "in_scope": true,
+  "primary_topic": "rag",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper demonstrates LLMs outperform traditional truth discovery methods like DART and LTM, providing builders with a practical alternative for data integration tasks involving conflicting data sources."
+    },
+    "novelty": {
+      "score": 6,
+      "justification": "While applying LLMs to data fusion is a natural extension, the systematic evaluation across single/multi-truth scenarios and different prompting strategies provides clear delta from prior work in this specific application area."
+    },
+    "reproducibility": {
+      "score": 8,
+      "justification": "The codebase is publicly available on GitHub, and the paper describes specific prompting strategies and benchmark datasets used, enabling competent teams to reproduce the approach with minor friction."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper clearly defines the problem space, evaluates multiple prompting strategies across different scenarios, and presents results showing LLM superiority over traditional methods with appropriate scope."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "Directly applies LLMs to practical data integration problems, making it highly relevant for builders working with conflicting data sources who need to determine ground truth values."
+    }
+  },
+  "composite": 7.05
+}

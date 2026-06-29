@@ -1,0 +1,45 @@
+{
+  "arxiv_id": "2606.28061v1",
+  "title": "ToolPrivacyBench: Benchmarking Purpose-Bound Privacy in Tool-Using LLM Agents",
+  "authors": [
+    "Shijing Hu",
+    "Liang Liu",
+    "Zhu Meng",
+    "Zhicheng Zhao"
+  ],
+  "abstract": "Large language models (LLMs) have increasingly moved from standalone text generation systems to agents that invoke external tools, access environments, and execute multi-step tasks. However, conventional function-calling benchmarks mainly evaluate task completion and API correctness, while privacy evaluation benchmarks typically focus on final responses or privacy judgments. Neither perspective captures purpose-bound information flow across an executed multi-tool trajectory. Motivated by this limitation in current agent evaluation, ToolPrivacyBench audits whether task-private atoms are routed only to authorized tools and downstream sinks, thereby evaluating both task completion and privacy over-disclosure during tool use. The benchmark contains 2,150 cases, including 1,150 fully synthetic privacy-sensitive business workflows and 1,000 cases adapted from existing multi-tool and function-calling benchmarks. Each case is represented by a policy knowledge base. After an agent executes against mock business backends, the evaluator compares recorded tool arguments and backend audit logs with this policy knowledge base. The evaluation covers nine widely used agents to characterize purpose-bound privacy over-disclosure. The results show that successful tool execution does not imply appropriate privacy disclosure: an agent may complete a task while transmitting unnecessary private information through intermediate tool calls. ToolPrivacyBench therefore formalizes a need-to-know disclosure boundary, under which each tool should receive only the information necessary for its stated purpose, and uses trajectory-level auditing to identify privacy over-disclosure in multi-tool workflows.",
+  "primary_cat": "cs.CR",
+  "all_cats": [
+    "cs.CR",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-06-26T13:08:46Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.28061v1",
+  "in_scope": true,
+  "primary_topic": "evaluation",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces a benchmark that directly addresses a core security and privacy decision for builders deploying tool-using LLM agents, formalizing the 'need-to-know' disclosure boundary."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "It introduces a substantial new variation by shifting privacy evaluation from final responses to auditing information flow across multi-tool trajectories, a distinct approach from prior benchmarks."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method of policy-based auditing of tool arguments and logs is described clearly enough to reimplement, but the paper does not mention public release of the benchmark code or datasets."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is solidly written, clearly defining the problem of trajectory-level privacy over-disclosure and presenting a defensible evaluation methodology across nine agents."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper is directly in the applied-AI sweet spot, providing a crucial benchmark for builders implementing and securing tool-using LLM agents."
+    }
+  },
+  "composite": 7.45
+}

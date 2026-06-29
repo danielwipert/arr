@@ -1,0 +1,47 @@
+{
+  "arxiv_id": "2606.28294v1",
+  "title": "Democratic ICAI: Debating Our Way to Steering Principles from Preferences",
+  "authors": [
+    "Kevin Kingslin",
+    "Anish Natekar",
+    "Ashutosh Ranjan",
+    "Vivek Srivastava",
+    "Savita Bhat",
+    "Shirish Karande"
+  ],
+  "abstract": "Preference-based alignment often struggles to capture the reasoning that underlies human judgments. Many evaluations rely on multiple interacting criteria, yet pairwise labels reveal only the final choice rather than the considerations that shape preferences. Inverse Constitutional AI (ICAI) improves interpretability in decision making by summarizing preferences into natural-language principles, but its single-pass explanations miss much of the nuance involved in complex decisions. We introduce Democratic ICAI, a novel approach that gathers multiple competing rationales through structured persona debate, offering a broader and more expressive account of the factors influencing each comparison. From these richer signals, we derive clearer and more comprehensive steering principles and use them to guide decision modeling through both LLM-based and decision-tree judges. Experiments on creative preference benchmarks, MuCE-Pref and LiTBench, across multiple creative task categories show that Democratic ICAI yields a more faithful preference structure. It improves average preference prediction across tasks relative to deliberative prompting and principle-based baselines, while producing constitutions that LLM annotators prefer.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG",
+    "cs.MA"
+  ],
+  "submitted_at": "2026-06-26T17:38:47Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.28294v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper introduces a method (Democratic ICAI) that refines preference-based alignment by generating multiple competing rationales through structured debate, offering measurable improvements in preference prediction accuracy on creative benchmarks."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The approach substantially extends Inverse Constitutional AI by introducing structured persona debate to gather multiple competing rationales, a distinct variation from the single-pass explanations of prior work."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement, with detailed explanations of the debate process and evaluation on public benchmarks (MuCE-Pref and LiTBench), but no mention of code or artifact release."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is solidly written with a clear problem statement, method description, and defensible evaluation comparing against deliberative prompting and principle-based baselines across multiple creative task categories."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper is directly in the LLM and applied-AI sweet spot, addressing preference-based alignment and interpretability in decision making—core concerns for builders working with LLM steering and constitutional principles."
+    }
+  },
+  "composite": 7.05
+}

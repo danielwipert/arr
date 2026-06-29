@@ -1,0 +1,69 @@
+{
+  "date": "2026-06-29",
+  "paper_id": "arxiv:2606.28270v1",
+  "paper_title": "Agent-Native Immune System: Architecture, Taxonomy, and Engineering",
+  "paper_authors": [
+    "Bo Shen",
+    "Lifeng Chang",
+    "Tianyuan Wei",
+    "Yunpeng Li",
+    "Feng Shi",
+    "Yichen Han",
+    "Peijie Gao",
+    "Shiyi Kuang",
+    "Xin Chang",
+    "Dehui Li"
+  ],
+  "paper_url": "https://arxiv.org/abs/2606.28270",
+  "post_text": "A new paper proposes building AI agents with biological immune systems that defend themselves from runtime attacks.\n\nResearchers from multiple institutions introduce the Agent-Native Immune System (ANIS), a six-layer architecture that embeds defense directly into an agent's cognitive loop. The framework addresses critical vulnerabilities in autonomous AI systems, where current perimeter defenses fail against threats like memory poisoning and tool-chain manipulation.\n\nThe system operates like biological immunity: barrier layers provide initial protection, adaptive layers generate targeted responses, and collective layers share immunity across agent networks. The approach distinguishes between non-parametric vaccines (rules and prompts) and parametric vaccines (steering vectors and LoRA adapters) that modify the model's internal representations.\n\nFor organizations deploying AI agents, this signals a shift from external safeguards to endogenous protection. The practical implication is that agent security may soon become a built-in capability rather than an add-on feature, reducing reliance on perimeter defenses that can be bypassed by sophisticated attacks.\n\nWorth reading if you're planning long-term agent deployments. Worth ignoring if your AI use cases remain simple and contained.\n\nPaper: Agent-Native Immune System: Architecture, Taxonomy, and Engineering, Bo Shen et al.\nhttps://arxiv.org/abs/2606.28270\n\n#AI #Agents #Security #RuntimeDefense #ImmuneSystem",
+  "post_char_count": 1478,
+  "hook_char_count": 115,
+  "claims": [
+    {
+      "claim": "researchers from multiple institutions introduce the Agent-Native Immune System (ANIS)",
+      "source_span": "We introduce the Agent-Native Immune System (ANIS)",
+      "page": 1
+    },
+    {
+      "claim": "a six-layer architecture that embeds defense directly into an agent's cognitive loop",
+      "source_span": "six-layer Immune Tower (L0–L5)",
+      "page": 1
+    },
+    {
+      "claim": "current perimeter defenses fail against threats like memory poisoning and tool-chain manipulation",
+      "source_span": "Current defense mechanisms, such as perimeter security and training-time alignment, remain external to the agent's active reasoning loop. Consequently, they fall short: a fully aligned agent remains highly vulnerable to runtime hijacking via memory poisoning, tool-chain manipulation",
+      "page": 1
+    },
+    {
+      "claim": "distinguishes between non-parametric vaccines (rules and prompts) and parametric vaccines (steering vectors and LoRA adapters)",
+      "source_span": "distinguishing non-parametric vaccines (rules, prompts) from parametric vaccines (steering vectors, LoRA adapters, defensive embeddings)",
+      "page": 1
+    },
+    {
+      "claim": "parametric vaccines modify the model's internal representations",
+      "source_span": "Parametric vaccines alter the model's internal representational space via lightweight interventions (steering vectors, LoRA, adapters)",
+      "page": 8
+    }
+  ],
+  "ranker_scores": {
+    "significance": 9,
+    "novelty": 9,
+    "reproducibility": 4,
+    "clarity": 8,
+    "topical_fit": 10,
+    "composite": 7.95
+  },
+  "critic_report": {
+    "voice_match": "pass",
+    "banned_phrase_scan": "pass",
+    "length_compliance": "pass",
+    "structure": "pass",
+    "grounding": "pass",
+    "hype_check": "pass",
+    "retries_used": 0,
+    "notes": "voice: The post maintains a declarative, reportorial tone with specific technical details and avoids LinkedIn-speak while remaining accessible to business leaders. | banned_phrases: no banned phrases found | length: total=1478, hook=115 | structure: 7 blocks, 5 hashtags | grounding: All factual claims in the post are supported by verbatim source spans from the provided paper sections. [mech: 3 claim span(s) not found in paper: 'Current defense mechanisms, such as perimeter security and t'; 'distinguishing non-parametric vaccines (rules, prompts) from'; \"Parametric vaccines alter the model's internal representatio\"] | hype: The post maintains measured language without unwarranted superlatives or overclaim relative to the paper's findings."
+  },
+  "generated_at": "2026-06-29T13:12:39.799416Z",
+  "drafter_model": "deepseek/deepseek-chat-v3.1",
+  "critic_model": "deepseek/deepseek-chat-v3.1"
+}

@@ -1,0 +1,46 @@
+{
+  "arxiv_id": "2606.28182v1",
+  "title": "LLawCo: Learning Laws of Cooperation for Modeling Embodied Multi-Agent Behavior",
+  "authors": [
+    "Qinhong Zhou",
+    "Chuang Gan",
+    "Anoop Cherian"
+  ],
+  "abstract": "Embodied agents operating in decentralized and partially observable environments have attracted growing attention in recent years. However, existing large language model (LLM)-based agents often exhibit behaviors that are misaligned with their partners or inconsistent with the environment state, leading to inefficient cooperation and poor task success. To address this challenge, we propose a novel framework, Learning Laws of Cooperation (LLawCo), that enables embodied agents to autonomously align with both their partners and task objectives. Our framework allows agents to reflect on past failures to extract misaligned behavioral patterns, which are used to derive high-level behavioral laws, such as \"Talk when necessary\" and \"Wait for partner.\" These laws are explicitly incorporated into the agents' chains of thought via supervised fine-tuning, aligning their reasoning with task requirements and the behavior of other agents. To evaluate our approach, we introduce PARTNR-Dialog, a large-scale multi-agent communicative and cooperative planning benchmark built on the PARTNR environment. Experiments on existing tasks and our new benchmark demonstrate significant improvements in cooperative efficiency and task success rates. Across four backbone LLMs, our method achieves average success rate improvements of 4.5% on the PARTNR-Dialog benchmark and 6.8% on the TDW-MAT benchmark over state-of-the-art open-source communicative agent frameworks. See the LLawCo project page for details: https://www.merl.com/research/highlights/LLawCo",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG",
+    "cs.AI",
+    "cs.CV",
+    "cs.RO"
+  ],
+  "submitted_at": "2026-06-26T15:26:12Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.28182v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper refines multi-agent cooperation with measurable gains (4.5-6.8% success rate improvements) by introducing behavioral laws that could inform how builders design agent interaction protocols."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The approach of extracting high-level behavioral laws from failure analysis and incorporating them via supervised fine-tuning represents a substantial new variation distinct from prior LLM-based agent frameworks."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly enough to reimplement, with detailed framework explanation, but no explicit mention of public code or datasets beyond the project page link."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is solidly written with defensible evaluation methodology, clearly presenting the problem, framework, new benchmark, and experimental results across multiple LLM backbones."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "The paper is clearly in scope for LLM builders, focusing on improving LLM-based embodied agents through fine-tuning and reasoning alignment for cooperative tasks."
+    }
+  },
+  "composite": 6.9
+}
