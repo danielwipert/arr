@@ -1,0 +1,43 @@
+{
+  "arxiv_id": "2606.30571v1",
+  "title": "Attractor States Emerge in Multi-Turn LLM Conversations",
+  "authors": [
+    "Ting-Wen Ko",
+    "Jonas Geiping"
+  ],
+  "abstract": "Large language models (LLMs) are increasingly used in open-ended multi-agent settings, but the long-run dynamics of model--model interaction remain poorly understood. We study whether open-ended LLM discussions exhibit attractor-like behavior, i.e. topic-independent stable sets of behaviors which conversations settle into. Across 7 LLMs and 20 controversial topics, we compare self-play and mixed-play dyadic debates, tracking trajectories in representation space, discourse traits, and stances. We find self-play trajectories to be model-specific attractors that draw their conversation partners asymmetrically in mixed-play debates, influencing the other models' stylistic choices and behavior. For example, Claude Haiku is a strong attractor of other models in latent space, corresponding to other models taking on its traits like metacommentary, and models like GPT-4.1 nano are especially malleable. Our results suggest that open-ended LLM interactions are partially predictable from model-specific attractors, but shaped by structured and asymmetric partner influence. Overall, our analysis sheds some light on the complex behavior of open-ended multi-agent interaction, which we hope is helpful in designing, predicting, and monitoring autonomous agentic systems in the real world.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG",
+    "cs.CL"
+  ],
+  "submitted_at": "2026-06-29T17:14:29Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.30571v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper identifies model-specific attractor states that can influence partner behavior in multi-agent LLM systems, which refines understanding of agent interaction dynamics for builders designing such systems."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The paper introduces the novel framing of 'attractor states' to analyze multi-turn LLM conversations, a substantial new variation distinct from prior work on single-turn or human-AI interaction."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method of comparing self-play and mixed-play debates across models and topics is described clearly enough to reimplement, but the paper does not mention public code or datasets."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is solidly written, with a clear abstract, well-defined research question, and defensible methodology using representation space, discourse traits, and stance tracking."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper is directly in the applied-AI sweet spot, studying the emergent dynamics of LLMs in multi-agent settings which is highly relevant for builders designing autonomous agentic systems."
+    }
+  },
+  "composite": 7.4
+}

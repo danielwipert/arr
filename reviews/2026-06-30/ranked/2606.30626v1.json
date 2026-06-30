@@ -1,0 +1,56 @@
+{
+  "arxiv_id": "2606.30626v1",
+  "title": "DOPD: Dual On-policy Distillation",
+  "authors": [
+    "Xinlei Yu",
+    "Gen Li",
+    "Qingyi Si",
+    "Guibin Zhang",
+    "Yuqi Xu",
+    "Congcong Wang",
+    "Shuai Dong",
+    "Kaiwen Tuo",
+    "Xiangyu Zeng",
+    "Kaituo Feng",
+    "Qunzhong Wang",
+    "Yang Shi",
+    "Xiaobin Hu",
+    "Xiangyu Yue",
+    "Jiaqi Wang",
+    "Shuicheng Yan"
+  ],
+  "abstract": "On-policy distillation (OPD) offers superior capacity transfer by supervising student-sampled trajectories with dense token-level signals. To furnish high-quality supervision sources and thereby elevate the performance frontier of distillation, an intuitive direction is to infuse privileged information to either teacher or student itself. However, this additional input induces a potential failure mode we dub privilege illusion: a pattern that conflates the transferable capability gap that students are meant to close, and the information asymmetry gap that can only be mimicked but never replicated. This issue is further amplified by the inherent non-uniformity of token-level supervision, where only a small subset of tokens carries pivotal capability-bearing signals. To this end, we propose DOPD, an advantage-aware dual distillation paradigm that dynamically routes token-level supervision between privileged teacher and privileged student policies based on their advantage gap and relative probabilities. Each token receives supervision of different strength, objective, and strategy from either teacher or student itself, which transfers credible capability while simultaneously receiving auxiliary signals, to alleviate privilege illusion. Extensive experiments on both large language model (LLM) and vision-language model (VLM) settings demonstrate that DOPD consistently outperforms Vanilla OPD and other counterparts. Further results on stability, robustness, continual learning, and out-of-distribution tasks validate its superiority.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI"
+  ],
+  "submitted_at": "2026-06-29T17:55:53Z",
+  "pdf_url": "https://arxiv.org/pdf/2606.30626v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper introduces a method that refines on-policy distillation with measurable gains, providing builders with a more stable and effective approach for knowledge transfer in LLM/VLM training."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "DOPD introduces a novel dual distillation paradigm with dynamic routing based on advantage gaps, addressing privilege illusion in a way that has no clear precedent in prior distillation literature."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement, but the paper does not mention code or artifacts being publicly available."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is well-written with clear problem formulation and methodology, though some implementation details could be more explicit for full reproducibility."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM and VLM training methodologies, making it highly relevant for builders working on model distillation and knowledge transfer techniques."
+    }
+  },
+  "composite": 7.05
+}
