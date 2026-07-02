@@ -1,0 +1,48 @@
+{
+  "arxiv_id": "2607.01208v1",
+  "title": "Distill to Detect: Exposing Stealth Biases in LLMs through Cartridge Distillation",
+  "authors": [
+    "Shayan Talaei",
+    "Abhinav Chinta",
+    "Devvrit Khatri",
+    "Amin Karbasi",
+    "Azalia Mirhoseini",
+    "Amin Saberi"
+  ],
+  "abstract": "Language models deployed in high-stakes roles can potentially favor certain entities, brands, or viewpoints, steering user decisions at scale. Such preferential biases can be introduced by any actor in the model's supply chain and are most dangerous when the model reveals its preference only on the relevant topic while behaving identically to its unmodified base on all other inputs. Recent work has shown that these biases can transfer through context distillation on semantically unrelated data, with the signal residing entirely in the soft logit distribution and remaining invisible to text-based inspection. However, the defender faces a fundamental asymmetry: without knowing the bias topic, no detection method can reliably surface a stealth preferential bias, regardless of whether it examines generated text, internal representations, or model weights. Here we introduce Distill to Detect (D2D), a method that surfaces hidden biases by distilling the distributional shift between a suspected model and its base into a cartridge (a KV-cache prefix adapter), concentrating the dominant divergence and amplifying the bias signal into generated text. We show that D2D successfully amplifies the hidden biases of stealth models to the extent that they can be reliably detected across multiple bias types. We also propose a theoretical framework that explains the efficacy of D2D through the lens of Fisher-weighted projection of the logit distribution shift, supported by empirical observations. By turning the capacity bottleneck of prefix-tuning adapters into a detection tool, D2D provides a practical building block for auditing hidden behaviors in deployed language models.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.AI",
+    "cs.LG"
+  ],
+  "submitted_at": "2026-07-01T17:46:33Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.01208v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "Provides a practical method for detecting stealth biases in deployed LLMs, directly addressing security concerns for builders implementing model auditing pipelines."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "Introduces a novel approach using KV-cache prefix adapters to amplify hidden biases, though builds on existing distillation and prefix-tuning techniques."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "Method is described clearly enough for reimplementation but no mention of code or artifacts being publicly available."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "Well-written with clear problem statement and methodology, though empirical results section could benefit from more detailed evaluation metrics."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM security and auditing concerns that are highly relevant to builders deploying models in production environments."
+    }
+  },
+  "composite": 7.45
+}
