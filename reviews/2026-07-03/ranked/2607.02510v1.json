@@ -1,0 +1,50 @@
+{
+  "arxiv_id": "2607.02510v1",
+  "title": "Online Safety Monitoring for LLMs",
+  "authors": [
+    "Mona Schirmer",
+    "Metod Jazbec",
+    "Alexander Timans",
+    "Christian Naesseth",
+    "Maja Waldron",
+    "Eric Nalisnick"
+  ],
+  "abstract": "Despite alignment training, LLMs remain prone to generating unsafe outputs at deployment time. Monitoring outputs online and raising an alarm when safety can no longer be assumed is therefore critical. We study a simple real-time monitor that turns a verifier signal from an external model into an alarm decision by thresholding, with the threshold calibrated via risk control. In experiments on mathematical reasoning and red teaming datasets, we show that this simple design is competitive with more advanced monitors based on sequential hypothesis testing.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI",
+    "cs.CL",
+    "cs.LG",
+    "stat.AP",
+    "stat.ML"
+  ],
+  "submitted_at": "2026-07-02T17:59:43Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.02510v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper provides a practical, reproducible method for real-time safety monitoring that builders can implement immediately using risk control for threshold calibration."
+    },
+    "novelty": {
+      "score": 5,
+      "justification": "While the risk control framework for threshold calibration is applied effectively, the core monitoring approach of thresholding verifier signals is a well-established technique in the field."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is clearly described with specific datasets (mathematical reasoning and red teaming) and the risk control approach is explained, though no code or artifacts are mentioned as being publicly available."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The abstract clearly states the problem, method, and experimental validation with appropriate scope and measurable claims about competitive performance."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses a critical deployment concern for LLM builders - real-time safety monitoring - which is central to production LLM systems."
+    }
+  },
+  "composite": 6.65
+}
