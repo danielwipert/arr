@@ -1,0 +1,43 @@
+{
+  "arxiv_id": "2607.02514v1",
+  "title": "Distributed Attacks in Persistent-State AI Control",
+  "authors": [
+    "Josh Hills",
+    "Ida Caspary",
+    "Asa Cooper Stickland"
+  ],
+  "abstract": "As AI coding agents become more autonomous, they increasingly ship code iteratively, with the codebase persisting across sessions. This persistence creates a new attack surface: a misaligned or prompt-injected agent can distribute attacks across pull requests (PRs) and time its payload for the PR with the best natural cover. To study the resulting dynamics, we introduce Iterative VibeCoding, a setting for AI control, the study of safely deploying capable but potentially untrusted AI. In Iterative VibeCoding, a coding agent builds software over a sequence of PRs in a persistent codebase while pursuing a covert side task. Our benchmark includes two task families: CLI tools and Flask web services, across 20 total task variations. We use Claude Sonnet 4.5 as the attack agent and GPT-4o as the monitor. We compare gradual attacks, which distribute the side task across PRs, against non-gradual attacks concentrated in a single PR. No single monitor is robust to both: which strategy evades best (success while evading the monitor) depends on the monitor type, so a defender cannot close off both gradual and non-gradual attacks with any one monitor. High evasion (>= 65%) generalizes across model attack agent backends (Sonnet 4.5, Gemini 3.1 Pro, Kimi K2.5), confirming this is a property of the persistent-state attack surface rather than a single model's capability. Evasion also remains high across state-of-the-art monitor models and the gap between gradual and non-gradual evasion widens for more capable models. We introduce a stateful link-tracker monitor that tracks suspicious buildup across PRs. On both task families, it detects gradual attacks substantially better than diff monitors that merely see more accumulated history. Combining this stronger monitor with trajectory monitors in a four-monitor ensemble reduces gradual-attack evasion from 93% under the weakest standard diff monitor to 47%.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-02T17:59:56Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.02514v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 9,
+      "justification": "The paper identifies a critical new attack vector in persistent-state AI coding agents that directly impacts how builders should architect and monitor AI-assisted development pipelines."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "Introduces the novel concept of distributed attacks across pull requests in persistent codebases, a previously unexplored attack surface in AI control research."
+    },
+    "reproducibility": {
+      "score": 7,
+      "justification": "Methodology is clearly described with specific task families, model backends, and monitoring approaches, though no explicit mention of code or dataset availability."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "Well-structured with clear problem definition, systematic evaluation across multiple dimensions, and appropriately scoped claims supported by comprehensive experiments."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses security concerns for builders deploying AI coding agents, with immediate relevance to real-world LLM application development workflows."
+    }
+  },
+  "composite": 8.2
+}
