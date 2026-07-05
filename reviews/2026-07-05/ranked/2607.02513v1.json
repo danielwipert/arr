@@ -1,0 +1,47 @@
+{
+  "arxiv_id": "2607.02513v1",
+  "title": "LACUNA: A Testbed for Evaluating Localization Precision for LLM Unlearning",
+  "authors": [
+    "Matteo Boglioni",
+    "Thibault Rousset",
+    "Siva Reddy",
+    "Marius Mosbach",
+    "Verna Dankers"
+  ],
+  "abstract": "LLMs memorize sensitive training data, including personally identifiable information (PII), creating a pressing need for reliable post hoc removal methods. Unlearning has emerged as a promising solution, with state-of-the-art(SOTA) methods often following a localize-first, unlearn-second paradigm that targets specific model parameters. However, existing benchmarks evaluate unlearning solely at the output level, leaving open the question of whether unlearning truly erases knowledge from a model's parameters or merely obfuscates it, a concern reinforced by the success of resurfacing attacks. To bridge this gap, we introduce LACUNA: the first unlearning testbed with ground-truth parameter-level localization. LACUNA injects PII of synthetic individuals into predefined parameters of 1B and 7B OLMo-based models via masked continual pretraining, enabling direct evaluation of whether unlearning targets the weights responsible for knowledge storage. We use LACUNA to benchmark current SOTA unlearning methods and find that, despite strong output-level performance, existing methods are highly imprecise and susceptible to resurfacing attacks. We further show that when localization is successful, even a simple gradient-based unlearning method achieves strong erasure and robustness to resurfacing attacks, highlighting the importance of precise unlearning. We release LACUNA to complement behavioral evaluations and drive further advances in robust, localization-based unlearning.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.AI",
+    "cs.LG"
+  ],
+  "submitted_at": "2026-07-02T17:59:52Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.02513v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces a testbed that enables direct evaluation of unlearning precision at the parameter level, addressing a critical gap in assessing whether unlearning truly removes knowledge or merely obfuscates it."
+    },
+    "novelty": {
+      "score": 9,
+      "justification": "LACUNA is the first unlearning testbed with ground-truth parameter-level localization, enabling direct evaluation of whether unlearning targets the weights responsible for knowledge storage."
+    },
+    "reproducibility": {
+      "score": 8,
+      "justification": "The paper states 'We release LACUNA' and describes the methodology clearly, including model sizes (1B and 7B OLMo-based) and injection method (masked continual pretraining)."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The abstract clearly articulates the problem gap, proposed solution, methodology, and key findings with appropriate scope and measurable results."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM safety and unlearning techniques, which are core concerns for builders implementing LLM systems that handle sensitive data."
+    }
+  },
+  "composite": 8.35
+}
