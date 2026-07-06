@@ -1,0 +1,49 @@
+{
+  "arxiv_id": "2607.02502v1",
+  "title": "DemoPSD: Disagreement-Modulated Policy Self-Distillation",
+  "authors": [
+    "Yunhe Li",
+    "Hao Shi",
+    "Wenhao Liu",
+    "Mengzhe Ruan",
+    "Hanxu Hou",
+    "Zhongxiang Dai",
+    "Shuang Qiu",
+    "Linqi Song"
+  ],
+  "abstract": "On-policy self-distillation (OPSD) has emerged as a practical method for training large language models (LLMs) to reason, where a single model acts as both the teacher and the student with different levels of information access. However, recent studies have found that the teacher's dense token-level supervision, conditioned on privileged information, can lead to overfitting to in-domain patterns, suppress exploration, and hurt cross-domain generalization, while also introducing a more fundamental issue: *privileged information leakage*, where the student encodes answer-dependent shortcuts that are unavailable at test time. We introduce **DemoPSD**, a novel framework that resolves such problems through the idea of *selective adoption of teacher guidance*. Instead of fitting the full teacher distribution, DemoPSD steers the student toward a *reverse-KL barycenter target*, a weighted geometric combination of the teacher and student distributions, that naturally balances learning from the teacher with preserving the student's own reasoning capacity. We measure the difference between their distributions and use such a discrepancy to adaptively control the blending at each token position. We provably show that DemoPSD achieves **(1)** *leakage attenuation*, i.e., effective mitigation of privileged information leakage; and **(2)** *exploration preservation*, i.e., preservation of exploration capacity under dense token-level distillation. Extensive experiments on SciKnowEval across four scientific fields show that DemoPSD outperforms both GRPO and SDPO while maintaining higher training entropy and robustly generalizing to out-of-distribution GPQA benchmarks.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-02T17:58:29Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.02502v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper addresses a practical problem in LLM reasoning training (privileged information leakage) and demonstrates measurable gains on SciKnowEval and GPQA benchmarks, providing builders with a refined technique for policy distillation."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "Introduces the novel concept of 'reverse-KL barycenter target' and adaptive discrepancy-based blending, representing a substantial variation from standard on-policy self-distillation approaches."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly with theoretical proofs, but the paper does not mention code release or availability of datasets, requiring reimplementation from the description."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "Well-written with clear problem formulation, theoretical grounding, and comprehensive evaluation across multiple scientific domains and benchmarks."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM training methodology for reasoning tasks, squarely in the applied-AI sweet spot for builders working with language model fine-tuning and distillation techniques."
+    }
+  },
+  "composite": 7.25
+}

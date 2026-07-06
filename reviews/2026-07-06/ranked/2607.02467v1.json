@@ -1,0 +1,42 @@
+{
+  "arxiv_id": "2607.02467v1",
+  "title": "Human Capital, Not Model Benchmarks, Predicts Hybrid Intelligence in Forecasting",
+  "authors": [
+    "Vivienne Ming"
+  ],
+  "abstract": "Whether pairing people with AI helps or hurts is usually reported as a single average effect. Using a real-money prediction market (Polymarket) as an objective, externally resolved benchmark, this pilot shows that the value of human-AI collaboration depends on a specific, measurable form of human capital. Analyzed at the level of the individual forecaster, hybrid performance is trimodal: most people either deferred to the model (matching it) or used it to rubber-stamp a prior guess (performing worse than the model alone), while a minority engaged in genuine complementary reasoning and reached accuracy matching or even exceeding (i.e., lower error than) the market itself. Collaborative traits (perspective-taking, intellectual humility, and curiosity) rather than raw cognitive ability or model benchmarks, distinguished who reached that mode. The results are preliminary but statistically robust, and motivate a pre-registered replication now in preparation.",
+  "primary_cat": "cs.CY",
+  "all_cats": [
+    "cs.CY",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-02T17:34:37Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.02467v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper identifies specific human traits that predict successful human-AI collaboration, providing actionable guidance for team composition and training in real-world AI deployment scenarios."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "While human-AI collaboration has been studied, the trimodal performance pattern and focus on collaborative traits rather than cognitive ability represents a substantial new variation in approach."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method uses a public prediction market (Polymarket) and describes the experimental design clearly enough for reimplementation, though no code or datasets are provided."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with clear claims, appropriate scope limitations noted as 'preliminary but statistically robust,' and a defensible evaluation methodology using real-money markets."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses human-AI collaboration dynamics, a core concern for builders implementing LLMs in real-world applications where human oversight and interaction are critical."
+    }
+  },
+  "composite": 7.45
+}
