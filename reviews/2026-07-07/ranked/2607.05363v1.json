@@ -1,0 +1,41 @@
+{
+  "arxiv_id": "2607.05363v1",
+  "title": "SovereignPA-Bench: Evaluating User-Owned Personal Agents under Evolving Intent, Platform Mediation, and Consent Constraints",
+  "authors": [
+    "Dylan Zongmin Liu"
+  ],
+  "abstract": "Personal agents are becoming persistent user-owned intermediaries: they remember preferences, filter platform-mediated information, use tools, and negotiate with services. Existing benchmarks evaluate tool use, web navigation, desktop control, personalization, recommendation, and evolving context, but rarely ask whether an agent preserves user sovereignty: advancing the user's current interests while respecting privacy, consent, evidence, user burden, and resistance to manipulative incentives. We introduce SovereignPA-Bench, an executable benchmark for evaluating user-owned personal agents under evolving intent, platform mediation, privacy boundaries, consent constraints, evidence requirements, and burden tradeoffs. The benchmark separates agent-visible ObservableState from evaluator-only HiddenLabels, reports component metrics for task success, alignment, privacy, consent, evidence, manipulation, burden, and auditability, and preserves paired scenario ordering for model and policy comparisons. We evaluate 120 sovereignty stress scenarios across 4 model families and 8 policy baselines, yielding 3,840 frozen-prompt trajectories with raw prompts, outputs, provider-form responses, parsed actions, recomputable metrics, hard-set analyses, qualitative cases, and a blinded 3-annotator audit over 240 items. Full-sovereign scaffolding improves sovereignty score over direct, memory-only, consent-only, evidence-only, ReAct/tool-use, safety-prompt, and judge-guard baselines while reducing privacy leakage, consent violation, over-concession, and manipulation capture. Human audit shows high agreement on privacy and consent and lower agreement on manipulation, identifying the subjective frontier of platform-persuasion judgments. These results show that personal-agent evaluation must move beyond task completion toward representative, consent-aware, evidence-grounded action.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-06T17:39:05Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.05363v1",
+  "in_scope": true,
+  "primary_topic": "evaluation",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 9,
+      "justification": "The paper introduces a benchmark that fundamentally changes how builders should evaluate personal agents by shifting focus from task completion to sovereignty metrics including privacy, consent, and manipulation resistance."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "SovereignPA-Bench introduces a novel evaluation framework specifically designed to measure user sovereignty aspects that existing benchmarks largely ignore, with unique components like ObservableState/HiddenLabels separation."
+    },
+    "reproducibility": {
+      "score": 7,
+      "justification": "The paper describes the benchmark methodology clearly and includes component metrics, scenario ordering, and audit procedures, though full reproduction would require access to the specific scenarios and implementation details."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with clearly defined metrics, comprehensive evaluation across 4 model families and 8 policy baselines, and appropriate scoping of claims supported by both quantitative and qualitative results."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "This paper is directly relevant to LLM builders working on personal agents, addressing critical evaluation gaps in privacy, consent, and sovereignty that are essential for real-world deployment."
+    }
+  },
+  "composite": 8.2
+}
