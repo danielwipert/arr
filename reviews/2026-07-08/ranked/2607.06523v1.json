@@ -1,0 +1,47 @@
+{
+  "arxiv_id": "2607.06523v1",
+  "title": "DepthWeave-KV: Token-Adaptive Cross-Layer Residual Factorization for Long-Context KV Cache Compression",
+  "authors": [
+    "Anna Cordoba",
+    "Adam Puente Tercero",
+    "Nerea Angulo Hijo",
+    "Mar Linares Tercero",
+    "Julia Barrientos",
+    "Ainhoa Miranda",
+    "Jesus Olivera"
+  ],
+  "abstract": "Long-context language model inference is increasingly limited by the memory bandwidth and capacity required to store key-value caches, yet existing compression methods often apply uniform budgets across layers or tokens and degrade retrieval when lexical cues and semantic states require different preservation. We introduce DepthWeave-KV, a token-adaptive cache compression method that factorizes key and value states across neighboring transformer layers using shared low-rank channel bases while retaining lightweight token-specific residuals where attention behavior is sensitive. DepthWeave-KV combines cross-depth residual factorization with a token-conditional depth router that allocates higher reconstruction rank to instruction-bearing and retrieval-critical tokens, and uses calibration-free online error tracking from attention-output probes to adapt compression during generation without retraining the base model. A fused CUDA implementation jointly performs basis lookup, residual dequantization, and attention projection to reduce decode-time memory traffic. Across LongBench, Needle-in-a-Haystack, L-Eval, and long-form QA and summarization benchmarks, DepthWeave-KV achieves near-full-cache task quality with substantially lower memory use, improving average score and retrieval accuracy over prior compressed caches while reaching 8.3x KV memory reduction and 72.8 tokens per second at 64K context.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-07T17:29:01Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.06523v1",
+  "in_scope": true,
+  "primary_topic": "adjacent_infrastructure",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 9,
+      "justification": "The paper introduces a novel KV cache compression method that achieves 8.3x memory reduction while maintaining near-full-cache performance, directly addressing a critical bottleneck in long-context LLM deployment."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The token-adaptive approach with depth routing and calibration-free error tracking represents a substantial innovation beyond uniform compression methods, though builds on existing low-rank factorization concepts."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly with comprehensive benchmarks, but the paper mentions a fused CUDA implementation without specifying code availability or detailed implementation artifacts."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with clear problem framing, method description, and comprehensive evaluation across multiple benchmarks including LongBench and Needle-in-a-Haystack."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "KV cache optimization is directly relevant to LLM builders dealing with memory constraints in production systems, making this highly applicable to engineers building with LLMs."
+    }
+  },
+  "composite": 8.0
+}

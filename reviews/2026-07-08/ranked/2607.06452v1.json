@@ -1,0 +1,47 @@
+{
+  "arxiv_id": "2607.06452v1",
+  "title": "From Voting to Agent Collaboration: Answer-Type-Aware LLM Pipelines for BioASQ 14b",
+  "authors": [
+    "Taeyun Roh",
+    "Eunha Lee",
+    "Wonjune Jang",
+    "Sohyun Chung",
+    "Junha Jung",
+    "Jaewoo Kang"
+  ],
+  "abstract": "Biomedical question answering requires not only accurate extraction of information from scientific literature but also reliable integration of evidence across multiple documents. This study presents a question-type-specific large language model (LLM) framework for BioASQ 14b Task B, designed to improve answer robustness and evidence grounding in biomedical question answering. Rather than applying a single prompting strategy to all questions, the framework selects different inference procedures for yes/no, factoid, and list questions according to their distinct reasoning and evaluation requirements. For yes/no questions, snippet shuffling and self-reflection are used to reduce sensitivity to evidence ordering and improve decision stability. For factoid questions, full-snippet input is combined with chain-of-thought-based in-context learning to support accurate biomedical entity identification. For list questions, a multi-agent architecture is employed, in which evidence extraction, candidate generation, answer verification, and final aggregation are handled collaboratively. Preliminary experiments on BioASQ 13b were used to identify effective inference strategies for each question type, and the resulting framework was subsequently evaluated in the official BioASQ 14b Task B challenge. In the official evaluation, our framework showed competitive performance across multiple batches and achieved first place in the factoid subtask of Batch 4. These results demonstrate the effectiveness of combining question-type-specific inference, ensemble prediction, and agent-based verification for reliable biomedical question answering.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-07T16:12:51Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.06452v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper introduces a question-type-specific LLM framework that refines RAG architecture with measurable gains in biomedical QA, directly applicable to builders working on specialized domain implementations."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The approach substantially combines ensemble methods, agent collaboration, and question-type-specific pipelines in a novel way for biomedical QA, though building on existing techniques like chain-of-thought and multi-agent architectures."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly with specific strategies for each question type, but no mention of code or artifacts being publicly available for direct reproduction."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with a clear structure, defensible evaluation methodology on BioASQ benchmarks, and appropriately scoped claims supported by competition results."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "The paper focuses on LLM pipeline optimization, ensemble methods, and agent collaboration—core topics for builders implementing specialized QA systems with LLMs."
+    }
+  },
+  "composite": 6.85
+}

@@ -1,0 +1,45 @@
+{
+  "arxiv_id": "2607.06482v1",
+  "title": "Data Analysis in the Wild: Benchmarking Large Language Models Against Real-World Data Complexities",
+  "authors": [
+    "So Hasegawa",
+    "Shailaja Keyur Sampat",
+    "Lei Liu",
+    "Wei-Peng Chen"
+  ],
+  "abstract": "Current benchmarks for evaluating Large Language Models (LLMs) in data analysis often fail to reflect real-world settings. They typically focus on fact retrieval from small tables and overlook the challenges of large multi-tabular datasets, external knowledge integration, and exploratory insight discovery. We introduce DataGovBench, a benchmark derived from governmental open data designed to evaluate LLMs in practical scenarios. The benchmark includes two tasks: Table QA that requires solving complex decomposable questions and producing textual answers or visualizations, and Table Insight that evaluates the ability of models to generate expert-level findings through exploratory data analysis. Comprehensive experiments with state-of-the-art LLMs, both with and without agentic frameworks, reveal significant performance gaps across both tasks. These results suggest that current LLM-based systems remain far from satisfying the demands of real-world data analytics. DataGovBench provides a challenging benchmark for advancing research on LLMs capable of both answering analytical queries and discovering insights from data. Code and sample data are available at https://github.com/SoHasegawa/datagovbench.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-07T16:43:05Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.06482v1",
+  "in_scope": true,
+  "primary_topic": "evaluation",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The benchmark addresses core data analysis challenges that builders face with RAG systems and provides measurable performance gaps for real-world applications."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "Introduces a novel benchmark derived from governmental open data with two distinct tasks that go beyond traditional table QA to include exploratory insight discovery."
+    },
+    "reproducibility": {
+      "score": 8,
+      "justification": "Code and sample data are publicly available at the provided GitHub repository, enabling reproduction with minor friction for accessing full datasets."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "Well-written abstract clearly defines the problem, methodology, and findings with appropriately scoped claims about LLM limitations in real-world data analysis."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM evaluation for practical data analysis applications, which is central to builders working on RAG systems and analytical tools."
+    }
+  },
+  "composite": 7.85
+}
