@@ -1,0 +1,43 @@
+{
+  "arxiv_id": "2607.07706v1",
+  "title": "The Key to Going Linear: Analysis-Driven Transformer Linearization",
+  "authors": [
+    "Anna Kuzina",
+    "Paul N. Whatmough",
+    "Babak Ehteshami Bejnordi"
+  ],
+  "abstract": "The quadratic cost of causal self-attention severely bottlenecks long-context transformer inference. While numerous post hoc linearization pipelines exist, it is difficult to identify which components preserve model quality. This work isolates the effect of state update design in a strict frozen-backbone regime. We show that softmax relies on key-dependent, rank-1 orthogonal projections, elucidating why delta-style networks outperform purely gated accumulation. We identify a potential source of approximation errors and introduce structural interventions, specifically sink tokens, short convolutions, and fixed-budget cache routing, which reduces the remaining gap. We scale this linearization approach across LLaMA and Qwen models up to 32B parameters, outperforming prior post hoc baselines on MMLU and matching the long-context retrieval of complex adaptive-caching frameworks.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG"
+  ],
+  "submitted_at": "2026-07-08T17:59:09Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.07706v1",
+  "in_scope": true,
+  "primary_topic": "adjacent_infrastructure",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 9,
+      "justification": "The paper addresses the critical bottleneck of quadratic attention cost in long-context transformers, directly impacting architectural decisions builders must make for efficient inference."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The work introduces structural interventions like sink tokens and fixed-budget cache routing while providing novel analysis-driven insights into why delta-style networks outperform gated accumulation."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly enough for reimplementation but no mention of code, weights, or datasets being publicly available."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The abstract is well-written with clear problem statement, methodology, and results across multiple model scales up to 32B parameters."
+    },
+    "topical_fit": {
+      "score": 10,
+      "justification": "Directly addresses transformer architecture optimization for LLM inference, which is core to building efficient LLM systems."
+    }
+  },
+  "composite": 8.1
+}

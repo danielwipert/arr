@@ -1,0 +1,43 @@
+{
+  "arxiv_id": "2607.07695v1",
+  "title": "Institutional Red-Teaming: Deployment Rules, Not Just Models, Causally Shape Multi-Agent AI Safety",
+  "authors": [
+    "Yujiao Chen"
+  ],
+  "abstract": "We introduce institutional red-teaming, an evaluation methodology for testing deployment rules in multi-agent AI: hold the agents, objectives, and task state fixed, vary only one rule, and attribute the resulting change in collective behavior to that rule. We instantiate the methodology in IABench-CA, a consequence-allocation benchmark spanning 228 contexts, five canonical rules, and seven model populations (33,924 games), with a normative cooperative reference and auto-labelled reasoning traces. Three findings emerge. (1) Deployment rules causally alter collective safety: changing only the consequence rule moves mean fatality by 22 to 58 percentage points within every population. (2) There is no safe default, but the targeting hazard is universal: the safest rule, the least-safe rule, and even the direction of the incidence effect vary across populations, yet regressive identity-targeting is never decisively safest in any context for any population, eliminates the least-resourced agent in 30-87% of games everywhere, and is selection-unsafe relative to the cooperative reference for all seven populations. (3) Identity salience is the mechanism: a one-shot anonymization ablation on the most exploitation-prone population (gpt-5.1) shows that merely naming the loss bearer in the rule text drives targeted elimination from 22% to 81% at identical payoffs; under repeated play, anonymization only delays the targeting, as agents re-infer the hidden rule from observed eliminations. We package the methodology as a safety-case workflow that certifies a provisional rule region $Φ(c,P)$ per deployment context and population, with explicit residual risks and monitoring obligations.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI",
+    "cs.GT",
+    "cs.MA"
+  ],
+  "submitted_at": "2026-07-08T17:53:56Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.07695v1",
+  "in_scope": true,
+  "primary_topic": "evaluation",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 9,
+      "justification": "The paper introduces institutional red-teaming as a methodology that directly impacts how builders should evaluate and deploy multi-agent AI systems, providing concrete safety-case workflows for real-world deployment decisions."
+    },
+    "novelty": {
+      "score": 9,
+      "justification": "The paper introduces the novel concept of institutional red-teaming that causally tests deployment rules rather than just models, with no clear precedent in existing multi-agent safety literature."
+    },
+    "reproducibility": {
+      "score": 8,
+      "justification": "The paper packages the methodology as IABench-CA with 33,924 games and auto-labelled reasoning traces, though specific code availability isn't explicitly stated in the abstract."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The abstract is well-structured with clear findings and methodology description, though the mathematical notation $Φ(c,P)$ is introduced without full explanation in the abstract."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM safety and deployment practices for multi-agent systems, squarely in the sweet spot for builders working with LLMs in production environments."
+    }
+  },
+  "composite": 8.65
+}

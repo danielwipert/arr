@@ -1,0 +1,43 @@
+{
+  "arxiv_id": "2607.07678v1",
+  "title": "How Data Shapes RoPE Frequency Usage: From Positional Scale Matching to Length Generalization",
+  "authors": [
+    "Xinyi Wu",
+    "Siyuan Liu",
+    "Ali Jadbabaie"
+  ],
+  "abstract": "Rotary Position Embeddings (RoPE) provide transformers with a fixed grid of positional frequencies, yet trained models use these frequencies highly non-uniformly. We study what determines this frequency usage and propose a data-centered explanation: RoPE frequencies are selected to match the relative-distance structure of the training data. Viewing each frequency as a positional lens, we formalize a field-resolution tradeoff and show that, for a data-induced dependency profile of width $W$, the optimal frequency scales as $1/W$. This frequency-matching principle explains controlled observations on synthetic and text-based data, and suggests that the mid-low frequency bands observed in language models arise from the multi-scale dependency structure of natural language. We further connect frequency selection to position-interpolation-based length generalization: scaling frequencies down expands the effective field while reducing resolution. This helps when longer-context dependencies are approximate dilations of those seen during training, but can fail when relevant dependencies do not scale with context length. Empirically, we show that natural language exhibits approximate self-similarity across positional scales, explaining why test-time frequency scaling can support long-context generalization. Overall, our results identify a data-driven mechanism behind emergent RoPE frequency usage and show that long-context generalization depends on two forms of scale matching: between learned frequencies and training-time dependencies, and between frequency scaling and how those dependencies extend to longer contexts.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG"
+  ],
+  "submitted_at": "2026-07-08T17:38:14Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.07678v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper provides a data-driven explanation for RoPE frequency selection that directly informs practical decisions about position embedding design and length generalization strategies for LLM builders."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The paper introduces a novel frequency-matching principle that explains observed RoPE usage patterns and connects frequency selection to length generalization through a data-centric lens."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is clearly described with mathematical formalization and empirical validation on synthetic/text data, though no code or datasets are mentioned as being publicly available."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-structured with clear explanations of the frequency-matching principle and its implications for length generalization, supported by controlled experiments."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses core transformer architecture components (position embeddings) and practical length generalization challenges faced by LLM builders."
+    }
+  },
+  "composite": 7.45
+}
