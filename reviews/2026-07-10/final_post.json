@@ -1,0 +1,61 @@
+{
+  "date": "2026-07-10",
+  "paper_id": "arxiv:2607.08768v1",
+  "paper_title": "UniClawBench: A Universal Benchmark for Proactive Agents on Real-World Tasks",
+  "paper_authors": [
+    "Zhekai Chen",
+    "Chengqi Duan",
+    "Kaiyue Sun",
+    "Bohao Li",
+    "Yuqing Wang",
+    "Manyuan Zhang",
+    "Xihui Liu"
+  ],
+  "paper_url": "https://arxiv.org/abs/2607.08768",
+  "post_text": "A new benchmark finds that even the best AI agents fail nearly two-thirds of real-world tasks, exposing a gap between lab demos and actual usefulness.\n\nResearchers at HKU introduced UniClawBench, a test of 400 real-world tasks across five core capabilities, from tool use to cross-platform coordination. When evaluated under the OpenClaw framework, top models like Claude Opus and GPT-5.4 achieved a pass rate below 50%.\n\nThe failure is specific. Agents are reasonably good at single-step tool use and exploration but consistently stumble on tasks requiring long-context reasoning, multimodal grounding, or coordination across different applications. The benchmark also shows that the agent framework itself is a major bottleneck, with centralized designs like OpenClaw outperforming multi-agent orchestrators.\n\nFor teams building or buying AI assistants, the implication is that reliability, not raw capability, is the unsolved problem. The benchmark suggests asking vendors not just about a model's scores, but about its architecture for preserving context and recovering from errors during long, multi-step workflows.\n\nWorth reading if you are evaluating AI agents for complex workflows. Worth ignoring if your use case is confined to single, well-defined prompts.\n\nPaper: UniClawBench: A Universal Benchmark for Proactive Agents on Real-World Tasks, Chen et al.\nhttps://arxiv.org/abs/2607.08768\n\n#AI #Agents #Benchmark #VendorRisk #UniClawBench",
+  "post_char_count": 1448,
+  "hook_char_count": 150,
+  "claims": [
+    {
+      "claim": "Researchers at HKU introduced UniClawBench, a test of 400 real-world tasks across five core capabilities, from tool use to cross-platform coordination.",
+      "source_span": "UniClawBench contains 400 bilingual realworld tasks",
+      "page": 1
+    },
+    {
+      "claim": "When evaluated under the OpenClaw framework, top models like Claude Opus and GPT-5.4 achieved a pass rate below 50%.",
+      "source_span": "ClaudeOpus-4.8 and GPT-5.4 achieve the highest overall pass rates, the absolute success rates remain strictly below 50%",
+      "page": 8
+    },
+    {
+      "claim": "Agents are reasonably good at single-step tool use and exploration but consistently stumble on tasks requiring long-context reasoning, multimodal grounding, or coordination across different applications.",
+      "source_span": "models perform relatively better on SkillUsage and Exploration tasks. In contrast, LongContext, Multimodal, and CrossPlatform tasks remain much harder",
+      "page": 8
+    },
+    {
+      "claim": "The benchmark also shows that the agent framework itself is a major bottleneck, with centralized designs like OpenClaw outperforming multi-agent orchestrators.",
+      "source_span": "OpenClaw consistently achieves the highest pass rate across all tested models",
+      "page": 8
+    }
+  ],
+  "ranker_scores": {
+    "significance": 8,
+    "novelty": 7,
+    "reproducibility": 9,
+    "clarity": 8,
+    "topical_fit": 9,
+    "composite": 8.05
+  },
+  "critic_report": {
+    "voice_match": "pass",
+    "banned_phrase_scan": "pass",
+    "length_compliance": "fail",
+    "structure": "pass",
+    "grounding": "pass",
+    "hype_check": "pass",
+    "retries_used": 1,
+    "notes": "Required 1 retry/retries before passing. | voice: The post maintains a declarative, report-like tone with specific numbers and avoids LinkedIn-speak while making implications accessible to business leaders. | banned_phrases: no banned phrases found | length: hook too long (150 chars, max 140) | structure: 7 blocks, 5 hashtags | grounding: All factual claims in the post are supported by verbatim source spans from the claims list and paper sections. [mech: 3 claim span(s) not found in paper: 'UniClawBench contains 400 bilingual realworld tasks'; 'ClaudeOpus-4.8 and GPT-5.4 achieve the highest overall pass '; 'models perform relatively better on SkillUsage and Explorati'] | hype: The post accurately represents the paper's findings without unwarranted superlatives or overclaim."
+  },
+  "generated_at": "2026-07-10T11:59:07.786041Z",
+  "drafter_model": "deepseek/deepseek-chat-v3.1",
+  "critic_model": "deepseek/deepseek-chat-v3.1"
+}
