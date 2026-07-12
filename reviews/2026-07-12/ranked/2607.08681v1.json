@@ -1,0 +1,43 @@
+{
+  "arxiv_id": "2607.08681v1",
+  "title": "SolarChain-Eval: A Physics-Constrained Benchmark for Trustworthy Economic Agents in Decentralized Energy Markets",
+  "authors": [
+    "Shilin Ou",
+    "Yifan Xu",
+    "Luyao Zhang"
+  ],
+  "abstract": "As agentic AI systems are increasingly applied to cyber-physical environments, their evaluation requires assessment of both task performance and trustworthiness. In decentralized energy markets, autonomous agents may improve market utility, but may also exploit invalid physical data, create artificial liquidity, and produce unstable governance decisions. Therefore, we propose SolarChain-Eval, a physics-constrained benchmark for evaluating trustworthy economic agents. It formulates market governance as a Gymnasium-compatible Markov Decision Process, where agents make hourly decisions. SolarChain-Eval evaluates each policy across multiple dimensions, including market utility, physical safety, slippage, action smoothness, spatial fairness, and auditability. To support agentic evaluation, SolarChain-Eval incorporates an LLM-based Planner/Auditor layer. The Planner defines episode-level action bounds and audit rules, while the Auditor reviews and revises high-risk actions. All interventions are recorded through structured logs, including trigger signals, proposed actions, revised actions, and audit rationales. Experiments with static, random, myopic, RL, and RL+LLM policies reveal a clear utility-safety trade-off. RL agents improve market utility but can still produce unsafe behavior. When the physics penalty is removed, reward-maximizing agents exploit invalid generation and increase artificial liquidity. The LLM Planner/Auditor improves auditability and mitigates selected risks, but it cannot fully compensate for a misspecified reward function. These results indicate that trustworthy agentic AI evaluation requires both physical constraints and transparent intervention traces. We release data and code as open access on GitHub for replicability.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-09T16:43:42Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.08681v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper introduces a physics-constrained benchmark for evaluating trustworthy economic agents in energy markets, providing measurable gains in assessing both utility and safety trade-offs for builders deploying AI agents in cyber-physical systems."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "SolarChain-Eval combines physics constraints with economic market simulation and incorporates an LLM-based Planner/Auditor layer for structured intervention logging, creating a novel evaluation framework distinct from prior benchmarks."
+    },
+    "reproducibility": {
+      "score": 9,
+      "justification": "The authors release data and code as open access on GitHub, providing all necessary artifacts including Gymnasium-compatible MDP implementation and structured logging components for full reproducibility."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with clearly defined evaluation dimensions (market utility, physical safety, slippage, etc.) and provides comprehensive experimental results comparing multiple policy types with appropriate scope."
+    },
+    "topical_fit": {
+      "score": 7,
+      "justification": "While focused on energy markets, the paper's LLM-based Planner/Auditor layer and evaluation methodology for trustworthy AI agents are directly relevant to builders working with LLM-based systems in constrained environments."
+    }
+  },
+  "composite": 7.8
+}

@@ -1,0 +1,43 @@
+{
+  "arxiv_id": "2607.08733v1",
+  "title": "Super Weights in LLMs and the Failure of Selective Training",
+  "authors": [
+    "Shreyas Subramanian",
+    "Adewale Akinfaderin",
+    "Akarsha Sehwag"
+  ],
+  "abstract": "Recent work identified Super Weights, individual parameters whose removal degrades model performance by orders of magnitude. We show that this degradation due to pruning Super Weights does not universally apply to all LLMs. Furthermore, if these parameters are so important, Super Weight-aware training should be effective. We show the opposite. Training Super Weights in isolation (100 to 8,192 parameters) drops accuracy to random-guessing levels on both OLMo-1B and OLMo-7B, and expanding to local neighborhoods of up to 36K parameters provides no improvement. The failure is specific to Super Weight coordinates: training an equal number of randomly chosen positions in the same down_proj layers instead improves over the baseline, so the collapse comes from targeting Super Weights, not from sparsity itself. Vanilla LoRA, updating every position in attention weight matrices through low-rank structure, succeeds with only 0.16% of parameters, and applying the same low-rank update to down_proj succeeds as well. A 10-seed ablation confirms that constraining LoRA updates at positions corresponding to Super Weight coordinates yields statistically indistinguishable results. These findings establish that parameter importance does not imply parameter trainability in isolation, and that effective fine-tuning relies on structured decompositions over entire layers rather than targeting individually important weights.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG"
+  ],
+  "submitted_at": "2026-07-09T17:35:00Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.08733v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper demonstrates that targeting individually important weights fails while structured approaches like LoRA succeed, directly impacting how builders should approach fine-tuning strategies."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The paper provides a substantial new variation by showing that Super Weight-aware training fails despite parameter importance, challenging conventional wisdom about weight pruning and fine-tuning approaches."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly enough to reimplement with OLMo models, but no code or specific implementation details are provided in the abstract."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The abstract is well-written with clear claims, specific experimental results, and appropriate scoping of findings about parameter trainability versus importance."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper directly addresses LLM fine-tuning techniques and parameter efficiency, which is central to practical LLM building and deployment decisions."
+    }
+  },
+  "composite": 7.45
+}
