@@ -1,0 +1,44 @@
+{
+  "arxiv_id": "2607.09600v1",
+  "title": "Agora: Enhancing LLM Agent Reasoning Via Auction-Based Task Allocation",
+  "authors": [
+    "Kaiji Zhou",
+    "Ales Leonardis",
+    "Yue Feng"
+  ],
+  "abstract": "Enhancing the reasoning capabilities of large language model (LLM) agents requires effective orchestration of diverse expert models and tools. However, existing frameworks typically call APIs based on coarse-grained matching between tasks and the functions of expert models or tools, while overlooking critical factors such as performance variability and cost efficiency among functionally similar alternatives. To address this, we propose Agora, a framework that introduces an incentive-compatible auction mechanism for dynamically allocating tasks to expert models and tools. By treating reasoning steps as tradeable items, Agora enables agents to bid based on their rectified competence-ensuring that critical logic is routed to the most capable solver rather than the most overconfident one. Evaluations across five benchmarks show that Agora improves over matched single-model, routing, and cascade baselines under comparable candidate pools, while exposing a controllable cost-quality trade-off through a single auction parameter.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI",
+    "cs.CL"
+  ],
+  "submitted_at": "2026-07-10T16:54:52Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.09600v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper refines agent orchestration with a novel auction mechanism that directly impacts a builder's decision on how to route tasks among multiple LLMs, offering measurable gains in cost-quality trade-offs."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "It introduces a substantial new variation by applying an incentive-compatible auction mechanism to LLM agent task allocation, a distinct approach from prior coarse-grained matching or cascade methods."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement the auction framework and evaluation on five benchmarks, but the paper does not mention public release of code or artefacts."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is solidly written, with a defensible evaluation methodology comparing against single-model, routing, and cascade baselines across five benchmarks."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper is directly in the applied-AI sweet spot, addressing a core challenge in enhancing LLM agent reasoning and orchestration for builders."
+    }
+  },
+  "composite": 7.35
+}

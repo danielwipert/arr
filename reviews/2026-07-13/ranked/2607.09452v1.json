@@ -1,0 +1,45 @@
+{
+  "arxiv_id": "2607.09452v1",
+  "title": "Practical Source Code Recovery from Binary Functions Using Anchor-Based Retrieval and LLM Reasoning",
+  "authors": [
+    "Charles Edward Gagnon",
+    "Steven H. H. Ding",
+    "Philippe Charland",
+    "Benjamin C. M. Fung"
+  ],
+  "abstract": "We present a practical pipeline for recovering source code from stripped binary functions by combining reverse engineering, anchor-based source code retrieval, and large language model reasoning. Our binary-to-source-code retrieval method attempts to identify the source function from a source code database, rather than generating approximate decompiled pseudocode. It extracts anchors such as strings, constants, external calls, and available function names using Ghidra, retrieves candidate files via an inverted-index search database, narrows candidates to likely function snippets, and re-ranks them with a large language model (LLM) based on disassembly, decompiled code, and source metadata. Confident matches can also serve as anchors in later passes. In an evaluation backed by our high-fidelity source code database on a stripped, optimized tcpdump binary, our proposed binary-to-source matching method achieves 95.2% assembly instruction coverage. Experiments on a GitHub-based retrieval database showed lower performance with 35.5% instruction coverage on average, mainly due to retrieval misses. These results show that source-level binary recovery excels with high-quality databases and remains a useful tool in noisy environments.",
+  "primary_cat": "cs.SE",
+  "all_cats": [
+    "cs.SE",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-10T14:22:30Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.09452v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper presents a practical pipeline that could change how engineers approach binary analysis and source code recovery, offering measurable 95.2% instruction coverage with high-quality databases."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The method combines anchor-based retrieval with LLM reasoning in a novel pipeline that retrieves actual source code rather than generating decompiled pseudocode, representing a substantial variation from prior work."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly enough to reimplement with Ghidra and standard tools, though no specific code or datasets are mentioned as publicly available."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with clear methodology, defensible evaluation showing 95.2% vs 35.5% coverage across different database qualities, and appropriately scoped claims."
+    },
+    "topical_fit": {
+      "score": 7,
+      "justification": "The paper applies LLM reasoning to a practical engineering problem (binary analysis), making it clearly relevant to builders working with LLMs for code understanding tasks."
+    }
+  },
+  "composite": 7.25
+}

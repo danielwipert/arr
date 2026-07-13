@@ -1,0 +1,51 @@
+{
+  "arxiv_id": "2607.09521v1",
+  "title": "SAGEAgent: A Self-Evolving Agent for Cost-Aware Modality Acquisition in Multimodal Survival Prediction",
+  "authors": [
+    "Chongyu Qu",
+    "Can Cui",
+    "Zhengyi Lu",
+    "Junchao Zhu",
+    "Tianyuan Yao",
+    "Junlin Guo",
+    "Juming Xiong",
+    "Yanfan Zhu",
+    "Yuechen Yang",
+    "Bennett A. Landman",
+    "Yuankai Huo"
+  ],
+  "abstract": "Does every cancer patient truly need a complete diagnostic workup for accurate survival prediction? In multimodal clinical oncology, diagnostic modalities follow a clinically mandated order of escalating burden -- from demographics collected at intake to genomic profiling requiring specialized tissue analysis. Current multimodal survival methods either assume all modalities are available or passively handle missing data, but none actively reason about whether acquiring the next modality is justified for a given patient along this ordered workflow. We formulate this as a sequential decision problem and propose SAGEAgent (Sequential Acquisition Guided by Experience), a self-evolving LLM-based clinical agent that decides which diagnostic modalities to acquire for each patient, balancing predictive accuracy against clinical invasiveness. SAGEAgent reasons about each patient's evolving diagnostic state through clinical tools that translate numerical predictions into text, an episodic memory that retrieves similar past cases, and a semantic memory that accumulates reusable decision patterns from experience. Experiments on a glioma cohort combining TCGA-LGG, TCGA-GBM, and BraTS with four diagnostic modalities demonstrate that SAGEAgent achieves competitive survival prediction accuracy while reducing average acquisition burden by 55%.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-10T15:32:11Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.09521v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces a novel sequential decision framework that could change how builders approach multimodal clinical systems by actively balancing accuracy against acquisition cost, reducing burden by 55% while maintaining competitive performance."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The work introduces SAGEAgent, a self-evolving LLM-based agent that actively reasons about modality acquisition in a sequential workflow, a substantial new variation distinct from prior passive missing-data approaches."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly enough to reimplement with components like clinical tools, episodic memory, and semantic memory, but no mention of code or dataset artifacts being publicly available."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is solidly written with a clear problem formulation and evaluation methodology showing 55% burden reduction on glioma cohorts, though some implementation details remain high-level."
+    },
+    "topical_fit": {
+      "score": 7,
+      "justification": "The paper is clearly in scope as it presents an LLM-based agent architecture for sequential decision-making, though the clinical oncology application is somewhat specialized within the broader LLM builder focus."
+    }
+  },
+  "composite": 7.35
+}

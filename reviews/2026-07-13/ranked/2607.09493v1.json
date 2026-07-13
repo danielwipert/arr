@@ -1,0 +1,45 @@
+{
+  "arxiv_id": "2607.09493v1",
+  "title": "Shared Selective Persistent Memory for Agentic LLM Systems",
+  "authors": [
+    "Sanjana Pedada",
+    "Aditya Dhavala",
+    "Neelraj Patil"
+  ],
+  "abstract": "Agentic LLM systems that generate code through multi-turn tool use face a fundamental context problem: each session starts from zero, discarding the configuration choices, domain constraints, data schemas, and tool-use patterns that made previous sessions productive. Naively persisting entire conversation histories is token-inefficient and counterproductive: irrelevant context degrades generation quality. We introduce shared selective persistent memory, an architecture that identifies and retains four categories of reusable context (task specifications, data schemas, tool configurations, and output constraints) while discarding session-specific reasoning traces. Crucially, this memory is shared: workspaces encapsulating selective memory can be transferred across users with role-based access control, enabling collaborative reuse without redundant specification. We implement it in a deployed collaborative workspace platform where LLM agents produce, edit, and maintain git-versioned artifacts (dashboards, reports, and data-driven documents) from heterogeneous sources (CSV, SQL, REST APIs, and MCP servers). A complementary zero-token data refresh mechanism decouples generated programs from runtime data, enabling artifact reuse without re-invocation. Across three enterprise scenarios, shared selective persistent memory achieves 96% task completion (vs. 79% without memory and 71% with full history). Zero-token refresh eliminates LLM re-invocation for recurring updates (14x task-time reduction), while summary-driven generation cuts per-invocation token cost by 97x versus raw data injection. A replication on four public datasets confirms generalizability, with zero-token refresh succeeding in 12/12 trials. Notably, naive full-history persistence actively degrades completion by biasing the agent with stale traces, while selective memory outperforms both extremes.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI",
+    "cs.MA",
+    "cs.SE"
+  ],
+  "submitted_at": "2026-07-10T15:07:00Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.09493v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 9,
+      "justification": "The paper introduces a practical architecture that directly addresses the context management problem in agentic LLM systems, demonstrating 96% task completion and 14x task-time reduction with zero-token refresh, which changes how builders should approach persistent memory in LLM applications."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The concept of shared selective persistent memory with four specific context categories and zero-token refresh mechanism represents a substantial new variation in memory architectures, distinct from simple full-history persistence approaches."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly with specific categories of reusable context and implementation details, but no mention of code or artifacts being publicly available for direct reproduction."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with clear problem definition, specific architectural components, and comprehensive evaluation across enterprise scenarios and public datasets with quantifiable results."
+    },
+    "topical_fit": {
+      "score": 10,
+      "justification": "This is directly in the LLM and applied-AI sweet spot, addressing core architectural challenges for building practical agentic LLM systems with persistent memory and collaborative features."
+    }
+  },
+  "composite": 8.1
+}

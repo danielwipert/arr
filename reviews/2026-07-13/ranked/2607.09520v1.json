@@ -1,0 +1,46 @@
+{
+  "arxiv_id": "2607.09520v1",
+  "title": "Seeing is Free, Speaking is Not: Uncovering the True Energy Bottleneck in Edge VLM Inference",
+  "authors": [
+    "Junfei Zhan",
+    "Haoxun Shen",
+    "Mingang Guo",
+    "Zixuan Huang",
+    "Tengjiao He"
+  ],
+  "abstract": "Vision-Language Models (VLMs) are the perceptual backbone of embodied AI, but their energy footprint on edge hardware remains poorly understood. Existing efficiency efforts focus predominantly on reducing visual tokens, implicitly treating visual processing as the dominant energy cost. We overturn this implicit assumption through the first systematic energy profiling of on-device VLM inference, spanning five models across three architecture families, four input resolutions, and two hardware platforms (NVIDIA RTX 3070 and Jetson Orin NX). Our analysis yields three findings. First, average inference power is a model-intrinsic constant, invariant to input resolution, image complexity, and prompt type, with less than 5% variation across all conditions. This means that all energy variation across inputs must arise from variation in inference time, not from variation in power draw. Second, each output token costs 11 to 39x more wall-clock time than each input token due to the compute-bound and memory-bound asymmetry between prefill and decode, making output token count the dominant driver of both latency and energy. Third, image complexity, measured by the number of objects in an image, induces up to 4.1x energy differences at identical resolution. This variation arises not from increased visual processing cost, but from differences in output length. These findings expose a fundamental limitation of visual token pruning: even removing all visual tokens saves at most 10% of total energy for fixed-token models. Across models spanning 1 billion to 8 billion parameters, controlling output length saves up to 97% of total energy, with the energy dominance of decoding growing stronger at larger model scale. In short, the true energy bottleneck in edge VLM inference is not what the model sees, but how much it says.",
+  "primary_cat": "cs.CV",
+  "all_cats": [
+    "cs.CV",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-10T15:31:06Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.09520v1",
+  "in_scope": true,
+  "primary_topic": "adjacent_infrastructure",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 9,
+      "justification": "The paper overturns the fundamental assumption that visual processing dominates VLM energy costs, revealing that output token generation is the true bottleneck, which directly impacts how builders should optimize edge AI systems."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "This is the first systematic energy profiling of on-device VLM inference, providing empirical evidence that challenges the prevailing focus on visual token reduction in efficiency research."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The methodology is clearly described with specific models, hardware platforms, and test conditions, but no code or datasets are mentioned as being publicly available."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper presents clear, counterintuitive findings with well-supported evidence across multiple models and hardware platforms, with claims appropriately scoped to the empirical results."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses practical efficiency concerns for builders deploying VLMs on edge devices, with immediate implications for optimization strategies in real-world LLM applications."
+    }
+  },
+  "composite": 8.0
+}

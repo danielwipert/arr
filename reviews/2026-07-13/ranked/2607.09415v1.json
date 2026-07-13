@@ -1,0 +1,54 @@
+{
+  "arxiv_id": "2607.09415v1",
+  "title": "Self-Guided Test-Time Training for Long-Context LLMs",
+  "authors": [
+    "Xinyu Zhu",
+    "Zhe Xu",
+    "Xiaohan Wei",
+    "Yunchen Pu",
+    "Fei Tian",
+    "Chonglin Sun",
+    "Kaushik Rangadurai",
+    "Hua Zhi",
+    "Frank Shyu",
+    "Sandeep Pandey",
+    "Luke Simon",
+    "Yu Meng",
+    "Xi Liu"
+  ],
+  "abstract": "Long-context processing has become increasingly important for large language models (LLMs), but simply extending the context window does not guarantee effective utilization of long inputs. As input length grows, accuracy often degrades, indicating that models still struggle to identify and use the evidence most relevant to a question. A promising way to improve long-context utilization is test-time training (TTT), which treats the test context as a training example for instance-specific parameter adaptation. However, applying TTT to the entire long context is prohibitively expensive, while adapting on randomly sampled spans introduces severe noise. Because most spans in a long context are irrelevant to the specific question, training on them may even degrade the base model's performance. Our preliminary study shows that TTT is highly sensitive to training-span quality: on LongBench-v2, TTT on randomly sampled spans hurts performance, whereas TTT on oracle spans substantially improves it. Motivated by this, we propose a simple method, Self-Guided TTT (S-TTT): before adaptation, the model identifies the evidence spans it should learn from, and the standard language-modeling training objective is applied only to those selected spans. On two challenging long-context reasoning benchmarks, LongBench-v2 and LongBench-Pro, S-TTT improves accuracy for both Qwen3-4B-Thinking-2507 and Llama-3.1-8B-Instruct, achieving up to a 15% relative improvement.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-10T13:45:56Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.09415v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces a practical method that could change how builders implement long-context LLM applications by providing measurable 15% accuracy improvements on challenging benchmarks."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The self-guided approach to test-time training represents a substantial variation that addresses the critical limitation of random span sampling in long-context adaptation."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is clearly described with specific benchmarks and models used, but the paper does not mention code or dataset availability for direct reproduction."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with clear problem framing, methodology description, and evaluation on established benchmarks with appropriately scoped claims."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses a core challenge in applied LLM usage - effective long-context utilization - with practical implications for builders working with models like Qwen3 and Llama-3.1."
+    }
+  },
+  "composite": 7.45
+}
