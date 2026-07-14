@@ -1,0 +1,46 @@
+{
+  "arxiv_id": "2607.11707v1",
+  "title": "An Explainable Agentic System for Detection of Conversational Scams with Summary-Based Memory",
+  "authors": [
+    "Ahmed Omar Salim Adnan",
+    "Yogananda Manjunath",
+    "Shivanjali Khare"
+  ],
+  "abstract": "Following the rapid progress of generative Artificial Intelligence, there is a growing threat posed by conversational scams. These scams often span over multiple weeks or months, gradually build trust and request for money or sensitive information. Existing scam-detection systems mainly focus on isolated messages, which renders them inadequate against this evolving threat. This paper extends single-message phishing detection and presents an explainable agentic system for detecting sophisticated conversational scams. It also introduces ConScamBench-278, an initial public multi-category benchmark for conversational scam detection spanning eight scam types, released to support reproducible evaluation and future expansion. On isolated messages the single-message detector attains 100% phishing recall, while the conversation-level detector identifies all conversational scams in the public LoveFraud02 corpus (83/83) and reaches 97.8% accuracy (95% CI [95.4, 99.0]) on ConScamBench-278. Two user studies (N = 100 and N = 45) further motivate the system: participants report frequently experiencing uncertainty when judging suspicious conversations. In an uncontrolled pre/post comparison, users self-reported trust, self-confidence, and perceived need for AI-based scam detection all increased (p < 0.001, Wilcoxon signed-rank). The system also receives a System Usability Scale score of 74.7 (95% CI [72.5, 76.9]), above the established usability benchmark.",
+  "primary_cat": "cs.MA",
+  "all_cats": [
+    "cs.MA",
+    "cs.AI",
+    "cs.CR",
+    "cs.HC"
+  ],
+  "submitted_at": "2026-07-13T15:36:19Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.11707v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper addresses a critical emerging threat (conversational scams) with a system that achieves 97.8% accuracy and includes user studies showing practical impact on user confidence and trust."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "Extends single-message detection to conversational scams with an explainable agentic system and introduces ConScamBench-278, a new multi-category benchmark for this emerging problem domain."
+    },
+    "reproducibility": {
+      "score": 7,
+      "justification": "The paper releases ConScamBench-278 publicly and provides clear evaluation metrics, though specific implementation details of the agentic system could be more thoroughly documented."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "Well-structured with clear problem statement, comprehensive evaluation including benchmark results and user studies, and appropriately scoped claims supported by statistical evidence."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "Directly addresses applied AI security challenges with LLMs, focusing on practical scam detection systems that builders would need to implement or understand."
+    }
+  },
+  "composite": 7.55
+}

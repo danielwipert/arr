@@ -1,0 +1,46 @@
+{
+  "arxiv_id": "2607.11736v1",
+  "title": "MET: Theory-Grounded and Culture-Aware Multilingual Moral Reasoning",
+  "authors": [
+    "Ayoung Lee",
+    "Ryan Kwon",
+    "Yunxiang Zhang",
+    "Yuxuan Liu",
+    "Peter Railton",
+    "Lu Wang"
+  ],
+  "abstract": "Language models are increasingly used for moral decision-making across diverse linguistic and cultural contexts, yet existing work overlooks multilinguality on three aspects: 1) multilingual evaluation benchmarks use direct translation, failing to adapt culture-specific items; 2) inference-time methods for moral reasoning rely on static, English-centric scaffolds and lack grounding in moral theory; 3) training methods for moral decision-making typically require expensive supervision from stronger models or human annotators. We address these gaps with three contributions. First, we introduce MCLASH, a multilingual moral decision-making benchmark to capture culturally situated moral intuitions and social norms across languages. Second, we propose MET (Multilingual Ethics with Theory-grounded reasoning), a two-step prompting method built on expert-curated, theory-based grounds drawn from psychology and philosophy: the model first selects situation- and culture-specific grounds, then reasons over them in the native language of the user. Third, we introduce MET-D (MET-Distillation), which enhances the second step through a self-distillation training stage that requires no external supervision. MET-D improves macro-F1 over the base model on all three models of different sizes and families (Qwen3-4B, Qwen3-8B, Gemma3-4B), by an average of 3.71 points on MCLASH and 4.23 on MMoralExceptQA, with a peak MCLASH gain of 12.94 points for Malay on Qwen3-8B. We further reveal that MET-D increases native-language reasoning by 62.13 points on average, and that beneficial grounds differ systematically across cultures. Together, these contributions open the path for culture-aligned, theory-grounded multilingual moral reasoning.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL"
+  ],
+  "submitted_at": "2026-07-13T15:59:25Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.11736v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces a practical method for improving multilingual moral reasoning in LLMs that directly addresses real-world deployment challenges for builders working with diverse user bases."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The combination of theory-grounded reasoning with culture-aware adaptation and self-distillation without external supervision represents a substantial new approach in multilingual ethics research."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly enough for reimplementation, but the paper does not mention code or dataset availability for the MCLASH benchmark."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper clearly articulates three specific gaps in existing work and presents well-structured contributions with measurable results across multiple model families."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses practical LLM deployment challenges with multilingual prompting techniques and model improvement methods highly relevant to builders."
+    }
+  },
+  "composite": 7.45
+}
