@@ -1,0 +1,42 @@
+{
+  "arxiv_id": "2607.12885v1",
+  "title": "LLM Judges Can Be Too Generous When There Is No Reference Answer",
+  "authors": [
+    "Chalamalasetti Kranti",
+    "Sowmya Vajjala"
+  ],
+  "abstract": "LLM judges are increasingly being used to evaluate open-ended model responses, often in no-reference settings where a ground-truth answer is unavailable. However, can they reliably assess in such evaluation setups? We explore this question in this paper through a two stage pipeline with a) calibration experiments that assess the judge model's knowledge of the task it is evaluating, and b) sensitivity experiments that assess how the judge model's performance is impacted by the presence and positioning of the reference answer in the prompt. Across experiments covering three languages, we show that the judge models we evaluated tend to over-credit incorrect answers in the absence of a reference answer, and adding reference answer information to the prompt flips the judge model's correct/incorrect decisions by as much as 85% in some experimental settings. Comparison with a subset of human annotations shows that these reference-driven changes generally align with human judgments. Our results emphasize the need for calibrating the LLM judges with a sample with reference-aware evaluation before using them in reference-free setups reliably, and our methodology provides a blueprint for researchers and practitioners in doing such calibration of LLM judges for other tasks.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL"
+  ],
+  "submitted_at": "2026-07-14T15:31:33Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.12885v1",
+  "in_scope": true,
+  "primary_topic": "evaluation",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper reveals a critical flaw in LLM judge evaluation methodology that directly impacts how builders should implement automated evaluation systems for open-ended responses."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "While LLM evaluation is studied, the systematic analysis of reference answer positioning effects and the calibration methodology represent a substantial new contribution to the field."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The methodology is clearly described across three languages but no mention of code or datasets being publicly available for direct reproduction."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "Well-written with clear experimental design and appropriately scoped claims about LLM judge calibration needs."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM evaluation methodology, a core concern for builders implementing automated assessment systems."
+    }
+  },
+  "composite": 7.45
+}
