@@ -1,0 +1,46 @@
+{
+  "arxiv_id": "2607.14051v1",
+  "title": "Hindcast: Replaying Prediction Markets to Evaluate LLM Forecasters",
+  "authors": [
+    "Xiao Ye",
+    "Jacob Dineen",
+    "Evan Zhu",
+    "Shijie Lu",
+    "Kevin Song",
+    "Ben Zhou"
+  ],
+  "abstract": "Forecasters are evaluated by backtesting, which replays resolved questions and grades the probability the system would have assigned before the outcome was known. For LLMs, two channels leak the answer into this test. A model that retrieves can surface reports written after the event, turning forecasting into a lookup, and each new model is trained on data closer to the event, so a question that lay in the future for last year's models sits inside this year's training data. Either way, the test grades recall while claiming to grade foresight. We introduce Hindcast, which closes both leaks by grading a model as if it stood at a chosen past date $t_0$, before the outcome existed in either channel. Hindcast replays resolved Polymarket prediction markets against a frozen snapshot of public Reddit, lets the model read only posts written before $t_0$, and scores each forecast against both what happened and the market's own price at $t_0$, itself a human forecast made from the same past information. Because the cutoff is set per market and the snapshot never changes, the evaluation re-runs on new markets as models improve, without going stale. Once the leak is closed, retrieval still helps most models, but only where Reddit discussed the event beforehand. Where the archive carried only speculation, retrieval hurts.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL"
+  ],
+  "submitted_at": "2026-07-15T17:21:43Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.14051v1",
+  "in_scope": true,
+  "primary_topic": "evaluation",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 9,
+      "justification": "The paper introduces Hindcast, a novel evaluation framework that directly addresses a critical flaw in current LLM forecasting benchmarks, changing how builders should assess and select forecasting models."
+    },
+    "novelty": {
+      "score": 9,
+      "justification": "The method of replaying prediction markets against a frozen snapshot of public data to close temporal data leaks has no clear precedent in LLM evaluation literature."
+    },
+    "reproducibility": {
+      "score": 7,
+      "justification": "The paper describes the Hindcast methodology clearly and uses public data sources (Polymarket, Reddit snapshot), though the specific frozen snapshot and implementation code are not explicitly stated as public."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written, clearly defines the problem of temporal data leaks, and presents a defensible methodology for closing them."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper is directly in the LLM and applied-AI sweet spot, providing a critical new evaluation framework for LLM forecasting capabilities."
+    }
+  },
+  "composite": 8.45
+}

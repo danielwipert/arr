@@ -1,0 +1,53 @@
+{
+  "arxiv_id": "2607.13940v1",
+  "title": "A Self-Evolving Agent for Longitudinal Personal Health Management",
+  "authors": [
+    "Haoran Li",
+    "Jiebi Deng",
+    "Tong Jin",
+    "Jinghong Han",
+    "Yuxin Wang",
+    "Zexin Wang",
+    "Qingyi Si",
+    "Weikang Gong",
+    "Xiahai Zhuang",
+    "Jia You",
+    "Wei Cheng",
+    "Jianfeng Feng",
+    "Hongcheng Guo"
+  ],
+  "abstract": "Personal health management unfolds over repeated encounters, yet most health AI systems treat each request in isolation. We developed HealthClaw, an open-source agent architecture that updates support as a person's routines, preferences, measurements and risks change. It separates shared safety rules and medical knowledge from private longitudinal memory containing profile facts, reusable procedures and episodic traces. After each episode, induction determines what should update the profile, revise a procedure, remain episodic or be excluded. We evaluated HealthClaw with a synthetic year-long benchmark and nine 200-case biomedical tasks. Across 900 longitudinal support probes, answer accuracy increased from 0.2% with current-query prompting to 45.7% with HealthClaw, while prompt-side context exposure was 71.7% lower than with full-history prompting. In 100 privacy probes, HealthClaw produced higher privacy-aware answer quality and fewer unsafe disclosures than both baselines. Across the biomedical tasks, the mean absolute gain in the task-specific primary metric was 27.0 percentage points, and seven gains remained significant after false-discovery-rate correction. These offline benchmarks support governed, self-evolving memory for longitudinal personal health agents, although clinical effectiveness requires prospective evaluation. HealthClaw is publicly available at https://github.com/HC-Guo/HealthClaw.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-15T15:22:11Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.13940v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper refines agent architecture for longitudinal health management with measurable gains in accuracy (45.7% vs 0.2%) and reduced context exposure (71.7% lower), offering a reproducible framework for builders working on persistent memory systems."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "It introduces a substantial new variation with a self-evolving memory architecture that separates shared safety rules from private longitudinal memory and includes an induction process for updating profiles, distinct from prior isolated-query approaches."
+    },
+    "reproducibility": {
+      "score": 9,
+      "justification": "The HealthClaw system is fully open-source with code, architecture, and clear instructions publicly available at the provided GitHub repository, enabling competent teams to reproduce the results."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is solidly written with a defensible evaluation methodology using a synthetic year-long benchmark and nine biomedical tasks, though it appropriately scopes claims by noting clinical effectiveness requires prospective evaluation."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "The paper is clearly in scope for builders using LLMs, focusing on an agent architecture with memory and induction processes directly applicable to developing longitudinal AI systems."
+    }
+  },
+  "composite": 7.65
+}

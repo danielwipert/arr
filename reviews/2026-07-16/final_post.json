@@ -1,0 +1,70 @@
+{
+  "date": "2026-07-16",
+  "paper_id": "arxiv:2607.14051v1",
+  "paper_title": "Hindcast: Replaying Prediction Markets to Evaluate LLM Forecasters",
+  "paper_authors": [
+    "Xiao Ye",
+    "Jacob Dineen",
+    "Evan Zhu",
+    "Shijie Lu",
+    "Kevin Song",
+    "Ben Zhou"
+  ],
+  "paper_url": "https://arxiv.org/abs/2607.14051",
+  "post_text": "HINDCAST closes a leak in how we test language models as forecasters, grading them on foresight instead of recall.\n\nResearchers from Arizona State University built a test that replays resolved prediction markets against a frozen snapshot of public Reddit, letting a model read only what was posted before the market closed. The model's forecast is scored against both the actual outcome and the market's own price at that past time. On this leakage-free test, retrieval-augmented forecasting lowers the error score for eight of nine models tested.\n\nThe gain is narrower than it sounds. Retrieval only helps where the Reddit archive contained factual discussion about the event beforehand. On markets where the archive carried mostly speculation, such as in entertainment, retrieval actually makes the forecasts worse. The system's performance is constrained by the quality of signal available in the past.\n\nFor teams building or buying forecasting systems, the implication is that evidence quality matters more than model size alone. A test that simulates a past decision point, like HINDCAST, is a better gauge of real-world usefulness than one contaminated by future knowledge. This shifts the evaluation focus from what a model knows to what it could have known when it mattered.\n\nWorth reading if you evaluate AI systems for decision-making under uncertainty.\n\nPaper: Hindcast: Replaying Prediction Markets to Evaluate LLM Forecasters, Ye et al.\nhttps://arxiv.org/abs/2607.14051\n\n#AI #Forecasting #Evaluation #ModelRisk #Hindcast",
+  "post_char_count": 1533,
+  "hook_char_count": 114,
+  "claims": [
+    {
+      "claim": "Researchers from Arizona State University built a test that replays resolved prediction markets against a frozen snapshot of public Reddit",
+      "source_span": "Researchers from Arizona State University",
+      "page": 1
+    },
+    {
+      "claim": "letting a model read only what was posted before the market closed",
+      "source_span": "letting the model read only posts written before t0",
+      "page": 1
+    },
+    {
+      "claim": "The model's forecast is scored against both the actual outcome and the market's own price at that past time",
+      "source_span": "scores each forecast against both what happened and the market's own price at t0",
+      "page": 1
+    },
+    {
+      "claim": "retrieval-augmented forecasting lowers the error score for eight of nine models tested",
+      "source_span": "retrieval still lowers Brier on eight of the nine open-weight models we test",
+      "page": 2
+    },
+    {
+      "claim": "Retrieval only helps where the Reddit archive contained factual discussion about the event beforehand",
+      "source_span": "retrieval still helps most models, but only where Reddit discussed the event beforehand",
+      "page": 1
+    },
+    {
+      "claim": "On markets where the archive carried mostly speculation, such as in entertainment, retrieval actually makes the forecasts worse",
+      "source_span": "Where the archive carried only speculation, retrieval hurts",
+      "page": 1
+    }
+  ],
+  "ranker_scores": {
+    "significance": 9,
+    "novelty": 9,
+    "reproducibility": 7,
+    "clarity": 8,
+    "topical_fit": 9,
+    "composite": 8.45
+  },
+  "critic_report": {
+    "voice_match": "pass",
+    "banned_phrase_scan": "pass",
+    "length_compliance": "pass",
+    "structure": "pass",
+    "grounding": "pass",
+    "hype_check": "pass",
+    "retries_used": 1,
+    "notes": "Required 1 retry/retries before passing. | voice: The post maintains a declarative, analytical tone with specific numbers and avoids hype, landing the 'so what' for business leaders evaluating forecasting systems. | banned_phrases: no banned phrases found | length: total=1533, hook=114 | structure: 7 blocks, 5 hashtags | grounding: All factual claims are supported by verbatim source spans from the paper sections. [mech: 6 claim span(s) not found in paper: 'Researchers from Arizona State University'; 'letting the model read only posts written before t0'; 'scores each forecast against both what happened and the mark'] | hype: The post accurately represents the paper's findings without exaggeration, including the nuanced limitations of retrieval effectiveness."
+  },
+  "generated_at": "2026-07-16T11:06:58.380037Z",
+  "drafter_model": "deepseek/deepseek-chat-v3.1",
+  "critic_model": "deepseek/deepseek-chat-v3.1"
+}

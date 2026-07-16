@@ -1,0 +1,43 @@
+{
+  "arxiv_id": "2607.13920v1",
+  "title": "DeepStress: Stress-Testing Deep Search Agents",
+  "authors": [
+    "Ismael Rousseau",
+    "Geraldine Damnati",
+    "Frederic Bechet"
+  ],
+  "abstract": "While search agents demonstrate impressive capabilities in multi-step question answering, their robustness to poor-quality evidence remains under-explored. This phenomenon occurs rarely in realistic benchmarks but can lead to dramatic failure in real life applications. Therefore in this study we propose DeepStress, a stress testing framework that controls the frequency of challenging evidence by replacing the retrieval module of search agents with a controlled synthetic environment. We use this framework to control three dimensions that can affect document reliability: trustworthiness, relevance, and factuality. Testing several search agents on HotpotQA and BrowseCompPlus, we demonstrate that agents exhibit substantial differences in their ability to handle unreliable information and propose new metrics that better document systems outcomes as well as the interactions between conflicting parametric and retrieved knowledge.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL"
+  ],
+  "submitted_at": "2026-07-15T14:59:29Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.13920v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper introduces a practical stress-testing framework that helps builders evaluate search agent robustness to poor-quality evidence, directly informing deployment decisions about which agents to use in real-world applications."
+    },
+    "novelty": {
+      "score": 6,
+      "justification": "While stress testing is not new, the specific framework for controlling document reliability across trustworthiness, relevance, and factuality dimensions in search agents represents a clear delta from prior work in this specific domain."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement the synthetic environment and testing framework, though the paper does not mention code or dataset availability."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is well-written with a clear problem statement and methodology, though it lacks detail on the specific implementation of the synthetic environment and new metrics."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "Directly relevant to builders working with search agents and RAG systems, providing practical evaluation methodology for real-world deployment considerations."
+    }
+  },
+  "composite": 6.45
+}

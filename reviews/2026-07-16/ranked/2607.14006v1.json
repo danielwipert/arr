@@ -1,0 +1,44 @@
+{
+  "arxiv_id": "2607.14006v1",
+  "title": "Rethinking Penetration Testing for AI-Enabled Systems: From Resource Compromise to Behavioral Objective Violation",
+  "authors": [
+    "Mohammad Allahbakhsh",
+    "Mohammad Hassan Bahari",
+    "Moslem Attar-Raouf"
+  ],
+  "abstract": "Penetration testing traditionally evaluates whether adversaries can exploit weaknesses in software, infrastructure, configurations, or operational controls to achieve security-relevant compromise. This paradigm remains necessary for AI-enabled systems, but it is no longer sufficient. In such systems, adversaries may influence prompts, retrieved content, sensor inputs, training data, memory, tools, or human-AI interaction loops to alter system behavior without directly compromising the underlying infrastructure. This paper reframes penetration testing for AI-enabled systems as objective-driven behavioral evaluation. We define an AI-enabled system as one in which learned models materially influence behavior affecting operational outcomes, and we define AI-enabled penetration as the feasible induction of AI-governed behavior that violates one or more operational objectives under an explicit threat model. This definition preserves conventional penetration testing while extending it to adversarial pathways such as prompt injection, indirect prompt injection, data poisoning, sensor manipulation, retrieval poisoning, tool misuse, and agentic misalignment. We further propose a testing workflow that identifies operational objectives, maps AI-governed behavior, analyzes adversarial influence surfaces, defines behavioral failure criteria, executes scenario-based tests, and reports evidence linking adversarial action to objective violation. A running example involving an AI-enabled security operations center assistant illustrates how penetration may occur through behavioral influence rather than infrastructure compromise. Together, the definitions, workflow, and example provide a technical framework for evaluating adversarial success in deployed AI-enabled systems.",
+  "primary_cat": "cs.CR",
+  "all_cats": [
+    "cs.CR",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-15T16:36:54Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.14006v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 9,
+      "justification": "The paper reframes penetration testing for AI systems, directly changing how security engineers should approach testing LLM-integrated applications this quarter."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "It introduces the novel concept of 'objective-driven behavioral evaluation' for AI penetration testing, substantially extending traditional security paradigms."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method and workflow are described clearly enough to reimplement, but no code, datasets, or specific testing tools are provided."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with clear definitions, a structured workflow, and a concrete running example that appropriately scopes its claims."
+    },
+    "topical_fit": {
+      "score": 10,
+      "justification": "The paper directly addresses security for deployed AI/LLM systems, sitting perfectly in the applied-AI sweet spot for engineers building with LLMs."
+    }
+  },
+  "composite": 7.9
+}
