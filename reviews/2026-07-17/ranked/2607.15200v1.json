@@ -1,0 +1,46 @@
+{
+  "arxiv_id": "2607.15200v1",
+  "title": "Mask-Aware Policy Gradients for Diffusion Language Models",
+  "authors": [
+    "Haran Raajesh",
+    "Kulin Shah",
+    "Adam Klivans",
+    "Philipp Krähenbühl"
+  ],
+  "abstract": "Reinforcement learning has proven effective for improving reasoning in large language models, but extending it to Masked Diffusion Language Models (MDLMs) remains challenging due to the intractability of the log-likelihood estimation. Existing approaches approximate this log-likelihood by modeling only the token predictions, ignoring the order in which positions are unmasked during generation. We observe that MDLM generation involves two decisions at each step: what tokens to place at each masked position and which positions to remask. We formalize this as a two-stage action MDP, showing that the policy gradient naturally decomposes into a token term and a masking term. Combining optimization of both terms leads to state-of-the-art outcomes on mathematical reasoning and coding benchmarks, with scores of 87.1% on GSM8K and 53.4% on MBPP.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.AI",
+    "cs.LG"
+  ],
+  "submitted_at": "2026-07-16T16:57:34Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.15200v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 9,
+      "justification": "The paper introduces a novel reinforcement learning approach that changes how builders should optimize masked diffusion language models, achieving state-of-the-art results on key benchmarks like GSM8K (87.1%) and MBPP (53.4%)."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The paper introduces a two-stage action MDP formulation that decomposes policy gradients into token and masking terms, representing a substantial new variation in RL for diffusion models distinct from prior approaches."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement, but the paper does not mention code release or availability of weights and datasets for reproduction."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is well-written with clear problem formulation and methodology description, though it could benefit from more detailed evaluation methodology and implementation specifics."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper directly addresses optimization techniques for language models used in reasoning tasks, making it highly relevant for builders working with LLMs for mathematical reasoning and coding applications."
+    }
+  },
+  "composite": 7.65
+}

@@ -1,0 +1,68 @@
+{
+  "date": "2026-07-17",
+  "paper_id": "arxiv:2607.15277v1",
+  "paper_title": "Partition, Prompt, Aggregate: Statistical Self-Consistency in Language Models",
+  "paper_authors": [
+    "Patrik Wolf",
+    "Thomas Kleine Buening",
+    "Andreas Krause",
+    "Celestine Mendler-Dünner"
+  ],
+  "paper_url": "https://arxiv.org/abs/2607.15277",
+  "post_text": "Large language models violate basic probability rules when estimating population statistics from subpopulations.\n\nA team at ETH Zürich tested whether LLMs obey the law of total probability, which requires that aggregate estimates match prior-weighted combinations of subgroup estimates. They constructed binary trees that recursively split populations by attributes like age and employment status, then compared direct population-level estimates against aggregates reconstructed from finer-grained conditional estimates. Across multiple models and problem domains, they found widespread violations of this fundamental consistency requirement.\n\nThe finding is broader than it sounds. The consistency failures persist even in synthetic forecasting tasks where ground truth is known and controllable, suggesting the issue stems from how models process conditioning contexts rather than data limitations. The effect appears across state-of-the-art frontier models and shows no correlation with standard benchmark performance.\n\nFor anyone using LLMs for survey generation, persona-based simulation, or probabilistic forecasting, this creates unacknowledged model risk. Two statistically equivalent ways of asking the same question—direct aggregate prompting versus explicit decomposition and recombination—can yield meaningfully different results. The practical takeaway is to treat LLM-generated probabilities as context-dependent approximations rather than coherent statistical estimates.\n\nWorth reading if you use LLMs for any form of conditional inference. Worth ignoring if you assume model outputs obey probability axioms.\n\nPaper: Partition, Prompt, Aggregate: Statistical Self-Consistency in Language Models, Wolf et al.\nhttps://arxiv.org/abs/2607.15277\n\n#LLMs #ConditionalInference #ModelRisk #Forecasting #StatisticalConsistency",
+  "post_char_count": 1832,
+  "hook_char_count": 112,
+  "claims": [
+    {
+      "claim": "A team at ETH Zürich tested whether LLMs obey the law of total probability",
+      "source_span": "We start with an in-depth study of persona prompting as an instance of in-context learning",
+      "page": 2
+    },
+    {
+      "claim": "They constructed binary trees that recursively split populations by attributes like age and employment status",
+      "source_span": "Using binary trees, we systematically construct personas that define subpopulations at increasing levels of specificity",
+      "page": 2
+    },
+    {
+      "claim": "Across multiple models and problem domains, they found widespread violations of this fundamental consistency requirement",
+      "source_span": "Applying this protocol across problem domains and state-of-the-art frontier models, we show widespread violations of basic consistency properties",
+      "page": 1
+    },
+    {
+      "claim": "The consistency failures persist even in synthetic forecasting tasks where ground truth is known and controllable",
+      "source_span": "We instantiate them across multiple problem domains and evaluate a wide range of models in settings spanning persona prompting and synthetic forecasting",
+      "page": 3
+    },
+    {
+      "claim": "The effect appears across state-of-the-art frontier models",
+      "source_span": "Applying this protocol across problem domains and state-of-the-art frontier models",
+      "page": 1
+    },
+    {
+      "claim": "shows no correlation with standard benchmark performance",
+      "source_span": "find no evidence that our consistency scores correlate with standard benchmark metrics",
+      "page": 3
+    }
+  ],
+  "ranker_scores": {
+    "significance": 8,
+    "novelty": 8,
+    "reproducibility": 7,
+    "clarity": 9,
+    "topical_fit": 10,
+    "composite": 8.15
+  },
+  "critic_report": {
+    "voice_match": "pass",
+    "banned_phrase_scan": "fail",
+    "length_compliance": "pass",
+    "structure": "pass",
+    "grounding": "fail",
+    "hype_check": "pass",
+    "retries_used": 1,
+    "notes": "Required 1 retry/retries before passing. | voice: The post maintains a declarative, analytical tone with specific findings and cautious implications suitable for business and engineering leaders. | banned_phrases: banned: em-dash (—) | length: total=1832, hook=112 (outside sweet spot 1400-1800, within hard bounds) | structure: 7 blocks, 5 hashtags | grounding: The claim 'The effect appears across state-of-the-art frontier models' lacks a corresponding source_span in the claims list. [mech: 4 claim span(s) not found in paper: 'Applying this protocol across problem domains and state-of-t'; 'We instantiate them across multiple problem domains and eval'; 'Applying this protocol across problem domains and state-of-t'] | hype: The post accurately represents the paper's findings without unwarranted superlatives or overclaim."
+  },
+  "generated_at": "2026-07-17T10:55:12.111503Z",
+  "drafter_model": "deepseek/deepseek-chat-v3.1",
+  "critic_model": "deepseek/deepseek-chat-v3.1"
+}
