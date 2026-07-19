@@ -1,0 +1,46 @@
+{
+  "arxiv_id": "2607.15200v1",
+  "title": "Mask-Aware Policy Gradients for Diffusion Language Models",
+  "authors": [
+    "Haran Raajesh",
+    "Kulin Shah",
+    "Adam Klivans",
+    "Philipp Krähenbühl"
+  ],
+  "abstract": "Reinforcement learning has proven effective for improving reasoning in large language models, but extending it to Masked Diffusion Language Models (MDLMs) remains challenging due to the intractability of the log-likelihood estimation. Existing approaches approximate this log-likelihood by modeling only the token predictions, ignoring the order in which positions are unmasked during generation. We observe that MDLM generation involves two decisions at each step: what tokens to place at each masked position and which positions to remask. We formalize this as a two-stage action MDP, showing that the policy gradient naturally decomposes into a token term and a masking term. Combining optimization of both terms leads to state-of-the-art outcomes on mathematical reasoning and coding benchmarks, with scores of 87.1% on GSM8K and 53.4% on MBPP.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.AI",
+    "cs.LG"
+  ],
+  "submitted_at": "2026-07-16T16:57:34Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.15200v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 9,
+      "justification": "The paper introduces a novel RL approach for diffusion language models that achieves state-of-the-art results on key benchmarks (87.1% on GSM8K, 53.4% on MBPP), directly impacting how builders might approach reasoning and coding tasks with diffusion models."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The paper introduces a two-stage MDP formulation that considers both token selection and masking decisions, a substantial new variation from prior work that only modeled token predictions."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly with formal MDP formulation, but the paper does not mention code release, weights, or datasets, requiring reimplementation from the description."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper clearly identifies the limitation of existing approaches and presents a well-structured solution with concrete benchmark results, though specific implementation details are somewhat sparse."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses RL techniques for improving LLM reasoning and coding performance, squarely in the sweet spot for builders working with LLMs."
+    }
+  },
+  "composite": 7.65
+}

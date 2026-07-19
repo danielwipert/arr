@@ -1,0 +1,45 @@
+{
+  "arxiv_id": "2607.15247v1",
+  "title": "AutoSynthesis: An agentic system for automated meta-analysis",
+  "authors": [
+    "Moein Taherinezhad",
+    "Sebastian Maier",
+    "Gerardo Vitagliano",
+    "Francesco Pierri",
+    "Stefan Feuerriegel"
+  ],
+  "abstract": "Evidence synthesis is crucial for turning primary research into reliable knowledge for science, medicine, education, and policy. Yet, quantitative evidence synthesis remains largely manual and difficult to scale. Here, we introduce AutoSynthesis, an end-to-end multi-agent system for automated meta-analysis. Given a research question in natural language, AutoSynthesis formulates a search strategy, retrieves scientific literature, screens candidate studies, assesses full-text eligibility, extracts quantitative statistics, computes standardized effect sizes, and finally performs random-effects meta-analysis. AutoSynthesis further supports heterogeneity analysis to examine how effect sizes vary across moderators, as well as risk-of-bias assessment. As output, AutoSynthesis produces a transparent report aligned with PRISMA guidelines. In our application, AutoSynthesis screened over 28 studies and extracted more than 20 quantitative claims. The pooled effect estimates produced by AutoSynthesis are similar to Hedges' $g$ of expert-conducted meta-analyses, indicating close agreement with manual evidence synthesis. Together, these results show that AutoSynthesis can make quantitative evidence synthesis more scalable, thereby supporting evidence-based decision-making across disciplines.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-16T17:45:27Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.15247v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper presents an automated system for meta-analysis that could change how builders approach evidence synthesis in scientific and medical applications, though the impact is more specialized than core LLM architecture decisions."
+    },
+    "novelty": {
+      "score": 6,
+      "justification": "While the multi-agent approach to meta-analysis is a clear innovation, the paper builds on established techniques for literature review and statistical analysis rather than introducing fundamentally new methods."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough for reimplementation but the paper does not mention code or dataset availability, requiring significant implementation effort."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with clear methodology description and appropriately scoped claims, including validation against expert-conducted meta-analyses."
+    },
+    "topical_fit": {
+      "score": 6,
+      "justification": "The agentic system approach is relevant to LLM builders, though the specific application to meta-analysis is somewhat adjacent to core LLM development concerns."
+    }
+  },
+  "composite": 6.4
+}

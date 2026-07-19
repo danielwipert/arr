@@ -1,0 +1,82 @@
+{
+  "date": "2026-07-19",
+  "paper_id": "arxiv:2607.15253v1",
+  "paper_title": "Bridge Evidence: Static Retrieval Utility Does Not Predict Causal Utility in Multi-Step Agentic Search",
+  "paper_authors": [
+    "Debayan Mukhopadhyay",
+    "Utshab Kumar Ghosh",
+    "Shubham Chatterjee"
+  ],
+  "paper_url": "https://arxiv.org/abs/2607.15253",
+  "post_text": "A team at Missouri University of Science and Technology shows that standard retrieval metrics fail to predict which documents actually help multi-step AI agents succeed.\n\nThe researchers ran a ReAct-style agent on 1,000 multi-hop questions from HotpotQA, intervening at each step to remove individual documents and replay the trajectory. They found that static utility measures—like whether a document contains the answer—correlated almost zero (Spearman ρ = -0.026) with causal utility, a composite score measuring whether removing the document hurt the agent's final answer, next query, or efficiency.\n\nThe gap is systematic, not noise. About 35.7% of documents the agent read were causally load-bearing while scoring low on static metrics. These \"bridge documents\" work by supplying discriminative entities—terms that help the agent redirect its search—which appear in the next query 4.02 times more often than non-discriminative entities.\n\nFor builders of agentic systems, the implication is that retrieval should be optimized for what enables the next step, not what answers the current question. This shifts the focus from answer containment to entity relevance, and may require new training signals beyond traditional reader-based metrics.\n\nWorth reading if you design or evaluate multi-step AI agents. Worth skipping if your retrieval stops at single-turn question answering.\n\nPaper: Bridge Evidence: Static Retrieval Utility Does Not Predict Causal Utility in Multi-Step Agentic Search, Mukhopadhyay et al.\nhttps://arxiv.org/abs/2607.15253\n\n#AI #Retrieval #Agents #ModelRisk #CounterfactualEvaluation",
+  "post_char_count": 1609,
+  "hook_char_count": 169,
+  "claims": [
+    {
+      "claim": "A team at Missouri University of Science and Technology",
+      "source_span": "Debayan Mukhopadhyay, Utshab Kumar Ghosh, Shubham Chatterjee Missouri University of Science and Technology",
+      "page": 1
+    },
+    {
+      "claim": "shows that standard retrieval metrics fail to predict which documents actually help multi-step AI agents succeed",
+      "source_span": "static retrieval utility does not predict causal utility in multi-step agentic search",
+      "page": 1
+    },
+    {
+      "claim": "The researchers ran a ReAct-style agent on 1,000 multi-hop questions from HotpotQA",
+      "source_span": "ReAct style agent over HotpotQA, replay a stratified sample of 1000 development questions",
+      "page": 1
+    },
+    {
+      "claim": "intervening at each step to remove individual documents and replay the trajectory",
+      "source_span": "for every document the agent actually read, delete it and re-run the rest of the trajectory from that point",
+      "page": 1
+    },
+    {
+      "claim": "They found that static utility measures—like whether a document contains the answer—correlated almost zero (Spearman ρ = -0.026) with causal utility",
+      "source_span": "Spearman ρ = −0.026",
+      "page": 1
+    },
+    {
+      "claim": "a composite score measuring whether removing the document hurt the agent's final answer, next query, or efficiency",
+      "source_span": "Counterfactual Trajectory Utility (CTU) score built from three deltas: the quality of the final answer, the retrieval quality of the query the agent issues next, and the number of turns it needs",
+      "page": 1
+    },
+    {
+      "claim": "About 35.7% of documents the agent read were causally load-bearing while scoring low on static metrics",
+      "source_span": "35.7% of the documents the agent reads are causally load bearing while looking useless to a static reader",
+      "page": 1
+    },
+    {
+      "claim": "These \"bridge documents\" work by supplying discriminative entities—terms that help the agent redirect its search",
+      "source_span": "A bridge document earns its keep by handing the agent a discriminative entity that redirects the search",
+      "page": 1
+    },
+    {
+      "claim": "which appear in the next query 4.02 times more often than non-discriminative entities",
+      "source_span": "appear in the agent’s next query 4.02 times more often than entities found only in non-relevant documents",
+      "page": 1
+    }
+  ],
+  "ranker_scores": {
+    "significance": 9,
+    "novelty": 8,
+    "reproducibility": 7,
+    "clarity": 8,
+    "topical_fit": 9,
+    "composite": 8.2
+  },
+  "critic_report": {
+    "voice_match": "pass",
+    "banned_phrase_scan": "fail",
+    "length_compliance": "fail",
+    "structure": "pass",
+    "grounding": "pass",
+    "hype_check": "pass",
+    "retries_used": 1,
+    "notes": "Required 1 retry/retries before passing. | voice: The post maintains a declarative, reportorial tone with specific numbers and avoids LinkedIn-speak or content marketing cadences. | banned_phrases: banned: em-dash (—) | length: hook too long (169 chars, max 140) | structure: 7 blocks, 5 hashtags | grounding: All factual claims in the post are supported by verbatim source spans from the provided paper sections. [mech: 8 claim span(s) not found in paper: 'Debayan Mukhopadhyay, Utshab Kumar Ghosh, Shubham Chatterjee'; 'ReAct style agent over HotpotQA, replay a stratified sample '; 'for every document the agent actually read, delete it and re'] | hype: The post accurately represents the paper's findings without unwarranted superlatives or overclaim."
+  },
+  "generated_at": "2026-07-19T10:32:31.360400Z",
+  "drafter_model": "deepseek/deepseek-chat-v3.1",
+  "critic_model": "deepseek/deepseek-chat-v3.1"
+}
