@@ -1,0 +1,58 @@
+{
+  "date": "2026-07-20",
+  "paper_id": "arxiv:2607.16184v1",
+  "paper_title": "PagedWeight: Efficient MoE LLM Serving with Dynamic Quality-Aware Weight Quantization",
+  "paper_authors": [
+    "Yuchen Yang",
+    "Yifan Zhao",
+    "Anisha Dasgupta",
+    "Sasa Misailovic"
+  ],
+  "paper_url": "https://arxiv.org/abs/2607.16184",
+  "post_text": "PagedWeight, a new system from UIUC researchers, dynamically quantizes MoE model weights at runtime to free GPU memory for growing KV caches.\n\nThe team built PagedWeight to manage the tension between model weights and KV cache memory in Mixture-of-Experts LLM serving. Their method achieves FP16-equivalent accuracy with up to 72.0% GPU memory savings and 1.94× throughput improvement across three open MoE models.\n\nThe approach is more surgical than it appears. PagedWeight uses routing statistics to identify less critical experts for aggressive quantization, protecting frequently used experts with higher precision. This routing-aware grouping means the system adapts to actual usage patterns rather than applying uniform compression.\n\nFor engineering leaders deploying MoE models, this demonstrates that memory optimization isn't just about static compression. The real gains come from dynamic reallocation between weights and cache during inference. Worth asking your team about runtime memory management strategies, not just offline quantization.\n\nWorth reading if you're hitting memory constraints with long-context MoE workloads. Worth ignoring if your serving patterns don't involve variable context lengths.\n\nPaper: PagedWeight: Efficient MoE LLM Serving with Dynamic Quality-Aware Weight Quantization, Yang et al.\nhttps://arxiv.org/abs/2607.16184\n\n#LLMs #Inference #GPU #MemoryManagement #MoE",
+  "post_char_count": 1404,
+  "hook_char_count": 141,
+  "claims": [
+    {
+      "claim": "achieves FP16-equivalent accuracy with up to 72.0% GPU memory savings and 1.94× throughput improvement",
+      "source_span": "PagedWeight achieves FP16-equivalent accuracy with upto72.0% GPUmemorysavings and1.94× throughputimprovement",
+      "page": 1
+    },
+    {
+      "claim": "across three open MoE models",
+      "source_span": "We evaluate PagedWeight on three common open MoE models",
+      "page": 2
+    },
+    {
+      "claim": "PagedWeight uses routing statistics to identify less critical experts for aggressive quantization",
+      "source_span": "routing-aware grouping (protection for frequently routed experts)",
+      "page": 2
+    },
+    {
+      "claim": "protecting frequently used experts with higher precision",
+      "source_span": "protection for frequently routed experts",
+      "page": 2
+    }
+  ],
+  "ranker_scores": {
+    "significance": 9,
+    "novelty": 8,
+    "reproducibility": 6,
+    "clarity": 8,
+    "topical_fit": 10,
+    "composite": 8.1
+  },
+  "critic_report": {
+    "voice_match": "pass",
+    "banned_phrase_scan": "pass",
+    "length_compliance": "fail",
+    "structure": "pass",
+    "grounding": "fail",
+    "hype_check": "pass",
+    "retries_used": 1,
+    "notes": "Required 1 retry/retries before passing. | voice: The post maintains a declarative, report-like tone with specific numbers and avoids LinkedIn-speak while making implications accessible to business leaders. | banned_phrases: no banned phrases found | length: hook too long (141 chars, max 140) | structure: 7 blocks, 5 hashtags | grounding: The claim about 'three open MoE models' is not supported by the provided claims list, which only references evaluation on models without specifying they are open. [mech: 3 claim span(s) not found in paper: 'PagedWeight achieves FP16-equivalent accuracy with upto72.0%'; 'routing-aware grouping (protection for frequently routed exp'; 'protection for frequently routed experts'] | hype: The post accurately represents the research findings without unwarranted superlatives or attribution drift."
+  },
+  "generated_at": "2026-07-20T11:51:19.559509Z",
+  "drafter_model": "deepseek/deepseek-chat-v3.1",
+  "critic_model": "deepseek/deepseek-chat-v3.1"
+}

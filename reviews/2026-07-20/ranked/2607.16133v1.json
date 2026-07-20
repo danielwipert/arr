@@ -1,0 +1,50 @@
+{
+  "arxiv_id": "2607.16133v1",
+  "title": "When Do Multi-Agent Systems Help? An Information Bottleneck Perspective",
+  "authors": [
+    "Wendi Yu",
+    "Lianhao Zhou",
+    "Xiangjue Dong",
+    "Sai Sudarshan Barath",
+    "Declan Staunton",
+    "Byung-Jun Yoon",
+    "Xiaoning Qian",
+    "James Caverlee",
+    "Shuiwang Ji"
+  ],
+  "abstract": "LLM powered multi-agent systems (MAS) have emerged as a promising paradigm for complex tasks. However, their advantages over single-agent systems (SAS) remain unclear, with performance varying inconsistently across settings. Here, we provide an information bottleneck perspective on elucidating the differences between MAS and SAS. Specifically, our key observation is that a SAS accumulates its full reasoning trace in one shared context, while a MAS uses isolated local contexts connected by bounded relay messages. We show that, under infinite relay bandwidth, any SAS can be simulated by a MAS that transmits the full upstream context. Thus, the nontrivial advantage of MAS arises under bounded relays, where compression introduces a fundamental trade-off: reducing redundant context can improve efficiency, but may also incur loss of task-relevant information. We formalize this trade-off as an information bottleneck controlled by an effective parameter $β$, which captures how the balance shifts with model capability, and shows that MAS gains arise when context reduction outweighs relay information loss. We conduct 18 controlled experiments across five benchmarks and three model scales to validate our theoretical studies. We observe that MAS consistently helps when relays are near-sufficient, especially for weaker models. In contrast, MAS gains shrink or reverse when relays incur information loss, especially for stronger models that can already extract useful information from redundant context and thus gain little from compression. Our study shows that multi-agent design is fundamentally an information-bottleneck optimization problem. This perspective explains when bounded inter-agent communication helps or hurts.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-17T17:13:44Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.16133v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper provides a theoretical framework that helps builders decide when to use multi-agent systems versus single-agent approaches based on model capability and communication constraints."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The paper introduces an information bottleneck perspective to analyze multi-agent systems, providing a novel theoretical foundation for understanding when MAS provides advantages over SAS."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is clearly described with 18 controlled experiments across five benchmarks, but no mention of code or dataset availability is provided."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with a clear theoretical framework and systematic experimental validation across multiple model scales and benchmarks."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses practical decisions LLM builders face regarding multi-agent system architecture and when they provide meaningful advantages."
+    }
+  },
+  "composite": 7.45
+}

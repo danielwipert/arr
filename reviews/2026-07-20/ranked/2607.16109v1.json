@@ -1,0 +1,44 @@
+{
+  "arxiv_id": "2607.16109v1",
+  "title": "The Honest Quorum Problem: Epistemic Byzantine Fault Tolerance for Agentic Infrastructure",
+  "authors": [
+    "Jun He",
+    "Deying Yu"
+  ],
+  "abstract": "State machine replication (SMR) and Byzantine fault-tolerant (BFT) consensus guarantee agreement despite a bounded number of arbitrary, colluding faulty participants. However, these guarantees rely on participants outside this set correctly executing the protocol's transition semantics. Agentic validators expose a weaker boundary: an authenticated, responsive, non-equivocating, and protocol-compliant reasoning participant may still endorse a semantically invalid transition due to reasoning errors.\n  We call this failure mode an epistemic fault, and the collective phenomenon the Honest Quorum Problem (where \"honest\" means protocol-compliant, not semantically correct). Such a quorum can satisfy ordinary checks while forming a certificate for an invalid transition. Thus, agreement alone does not guarantee semantic validity or execution safety. Furthermore, because agentic validators often share model weights, training distributions, prompts, or toolchains, they are highly susceptible to correlated epistemic faults.\n  We define Epistemic Byzantine Fault Tolerance (EBFT), a fault-tolerance model for agentic infrastructure and post-deterministic distributed systems. EBFT augments the conventional Byzantine fault bound with two separate, confidence-indexed quantities: $e_δ$ bounds coherent invalid endorsements outside the Byzantine set, and $u_ε$ bounds unusable validator support that degrades liveness. These quantities characterize semantic safety risk and liveness degradation independently. We derive quorum-threshold conditions for semantic validity, consensus agreement, liveness, and feasible threshold selection, and outline a calibration methodology for estimating these budgets. We show that adding nominally distinct agents improves fault tolerance only when it measurably reduces the upper-tail concentration of invalid endorsements or unusable support.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG",
+    "cs.DC",
+    "cs.MA"
+  ],
+  "submitted_at": "2026-07-17T16:43:00Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.16109v1",
+  "in_scope": true,
+  "primary_topic": "adjacent_infrastructure",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 9,
+      "justification": "The paper introduces EBFT, which fundamentally changes how builders should approach fault tolerance in agentic systems by addressing correlated reasoning errors that traditional BFT consensus cannot handle."
+    },
+    "novelty": {
+      "score": 9,
+      "justification": "The concept of epistemic faults and the Honest Quorum Problem represents a genuinely new framing that has no clear precedent in existing Byzantine fault tolerance literature."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The paper provides clear mathematical formulations and threshold derivations that enable reimplementation, but lacks published code, datasets, or specific implementation details."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with precise definitions and logical progression from problem statement to solution, though some concepts require careful reading to fully grasp."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses core infrastructure challenges for building reliable LLM-based agentic systems, making it highly relevant for engineers working with LLMs in production environments."
+    }
+  },
+  "composite": 8.05
+}
