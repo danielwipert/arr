@@ -1,0 +1,46 @@
+{
+  "arxiv_id": "2607.18235v1",
+  "title": "Automated Discovery Has No Universally Superior Harness",
+  "authors": [
+    "Akshat Gupta",
+    "Jermaine Lei",
+    "Alexander Lu",
+    "Gopala Anumanchipalli",
+    "Leshem Choshen"
+  ],
+  "abstract": "Autonomous discovery systems such as OpenEvolve and TTT-Discover are often used as general-purpose harnesses. However, in practice these are composite systems combining several design choices about archives, parent selection, exploration, and budget allocation into a single recipe. Because discovery runs are expensive and inherently stochastic, existing harnesses are often compared using too few independent trials to distinguish key methodological improvements from run-to-run variance. We systematically decompose OpenEvolve-style evolutionary search and the TTT-Discover search harness into its constituent components and systematically evaluate 30 budget-matched harnesses across 12 model-problem pairs using more than 3.1 million LLM rollouts and repeated-trial statistical analysis. Our results show that discovery harnesses have a generalization problem: No fixed harness is reliably superior across the evaluated model-problem pairs, and variants of OpenEvolve generally underperform simpler alternatives. Thus, harness choice is better viewed as a hyperparameter rather than as a universal recipe, and should be tailored to the specific problem and underlying model. We also find that early discovery progress predicts final performance, and use this property to present a budget-matched adaptive-allocation experiment that starts multiple harnesses, prunes weak partial runs, and reallocates compute to stronger survivors, outperforming both commitment to a randomly sampled fixed harness and a non-adaptive harness ensemble. Together, these results motivate shifting from fixed harness selection to online adaptation guided by early performance. We release all run pools including baseline null distributions for every model-problem pair as reusable statistical infrastructure against for future harness proposals.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-20T17:59:37Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.18235v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper's finding that no fixed discovery harness is universally superior and that harness choice should be treated as a problem-specific hyperparameter directly changes a builder's core decision about how to configure and budget expensive autonomous discovery systems."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The work provides a substantial new variation by systematically decomposing and evaluating 30 budget-matched harness variants across 12 model-problem pairs, introducing a repeated-trial statistical analysis framework not present in prior harness comparisons."
+    },
+    "reproducibility": {
+      "score": 9,
+      "justification": "The authors state they release all run pools including baseline null distributions for every model-problem pair as reusable statistical infrastructure, providing the core artifacts needed for reproduction."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is solidly written with a clear abstract that scopes claims appropriately to the systematic evaluation conducted and the resulting recommendation to treat harness choice as a hyperparameter."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "The paper is clearly in scope as it provides actionable guidance for engineers building with LLMs on how to configure and adapt autonomous discovery systems that use LLM rollouts."
+    }
+  },
+  "composite": 7.95
+}

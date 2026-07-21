@@ -1,0 +1,44 @@
+{
+  "arxiv_id": "2607.18181v1",
+  "title": "VEHBench: A Stage-Local Diagnostic Benchmark for LLM-Assisted Vibration Energy Harvester Design",
+  "authors": [
+    "Depeng Su",
+    "Yuyu Luo",
+    "Guobiao Hu"
+  ],
+  "abstract": "Battery-free Internet of Things (IoT) requires iterative design of vibration energy harvesters (VEHs) under coupled physical constraints, while LLMs are emerging as interface layers for engineering workflows. However, existing engineering benchmarks primarily assess final artifact validity, offering limited insights into how LLMs behave across different stages of coupled physical design. We introduce VEHBench, an engineering-native diagnostic benchmark for LLM-assisted VEH design, featuring 763 literature-grounded tasks scored by an analytical physical oracle. VEHBench evaluates four design roles: specification triage, verifier-guided search, corrupted-state recovery, and policy-conditioned selection. Experimental results reveal that LLM capability is strongly stage-dependent: no single model consistently dominates the entire workflow, and response-control profiles expose distinct behavioral patterns across design roles. VEHBench thus provides a stage-aware foundation for evaluating, selecting, routing, and improving verifier-grounded engineering LLMs. The benchmark artifact is available at https://huggingface.co/datasets/AnonymousVehbench/vehbench",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.SE"
+  ],
+  "submitted_at": "2026-07-20T17:17:05Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.18181v1",
+  "in_scope": true,
+  "primary_topic": "evaluation",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper introduces a diagnostic benchmark that helps builders understand how to route LLMs across different engineering workflow stages, which directly impacts how they should architect LLM-assisted design systems."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "VEHBench introduces a novel stage-local evaluation framework with four distinct design roles, moving beyond final-artifact assessment to analyze LLM behavior across coupled physical design workflows."
+    },
+    "reproducibility": {
+      "score": 9,
+      "justification": "The benchmark artifact is publicly available on Hugging Face with 763 literature-grounded tasks and an analytical physical oracle, providing all necessary components for reproduction."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper clearly defines four design roles and demonstrates stage-dependent LLM capabilities with experimental results, though some technical details of the physical oracle could be more explicit."
+    },
+    "topical_fit": {
+      "score": 6,
+      "justification": "While focused on engineering workflows with LLMs, the vibration energy harvester domain is somewhat specialized, requiring builders to extrapolate principles to their own applications."
+    }
+  },
+  "composite": 7.55
+}

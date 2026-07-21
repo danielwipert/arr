@@ -1,0 +1,46 @@
+{
+  "arxiv_id": "2607.18225v1",
+  "title": "Vector Search As Nearest Neighbor Matching: RAG-based Policy Learning in Causal Inference",
+  "authors": [
+    "Masahiro Kato",
+    "Taka Kato"
+  ],
+  "abstract": "We propose one-step and two-step methods for policy learning with retrieval-augmented generation (RAG). We formulate RAG-based action selection under the potential outcome framework. In the two-step method, vector search retrieves action-specific neighboring evidence in an embedding space, the generator estimates conditional expected outcomes or their contrasts, and a plug-in rule selects an action. This formulation connects action-specific vector search with nearest-neighbor matching in causal inference. We decompose the regret of the two-step method into candidate-generation regret and within-candidate choice regret, and we bound the latter using prediction-error guarantees for nearest-neighbor estimators and transformers. We evaluate the one-step method directly as a policy because its intermediate computation is unobserved.",
+  "primary_cat": "econ.EM",
+  "all_cats": [
+    "econ.EM",
+    "cs.LG",
+    "math.ST",
+    "stat.ME",
+    "stat.ML"
+  ],
+  "submitted_at": "2026-07-20T17:57:20Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.18225v1",
+  "in_scope": true,
+  "primary_topic": "rag",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper provides a formal causal inference framework for RAG-based policy learning, offering measurable improvements in action selection methodology that could influence how builders approach decision-making systems."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The paper introduces a novel connection between vector search in RAG and nearest-neighbor matching in causal inference, providing a substantial new theoretical foundation for action selection methods."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough for reimplementation with mathematical formulations and regret bounds, but no mention of code, datasets, or weights being publicly available."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is well-structured with clear mathematical formulations and regret decomposition, though the abstract could provide more concrete evaluation results beyond theoretical guarantees."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses RAG-based systems and policy learning with LLMs, sitting squarely in the applied-AI sweet spot for builders working on decision-making applications."
+    }
+  },
+  "composite": 7.05
+}
