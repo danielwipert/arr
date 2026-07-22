@@ -1,0 +1,45 @@
+{
+  "arxiv_id": "2607.19345v1",
+  "title": "Copy Less, Ground More: Overcoming Repetitive Copying in Long-Context Reasoning via Evidence-Aware Reinforcement Learning",
+  "authors": [
+    "Lizhe Fang",
+    "Weizhou Shen",
+    "Tianyi Tang",
+    "Yisen Wang"
+  ],
+  "abstract": "Large language models that generate step-by-step reasoning traces have achieved strong performance on complex tasks, and extending them to long-context settings has emerged as an important frontier. However, we identify a critical failure mode in this regime: \\emph{repetitive copying}, where models extensively copy text from the input into their reasoning traces rather than productively solving the problem. We show that this behavior is pervasive across frontier long-context LLMs and intensifies with context length. By separating each prompt into task-relevant key evidence and irrelevant distractor context, we further show that the root cause is insufficient grounding: models copy from the prompt indiscriminately, and those that fail to focus on key evidence are far more likely to answer incorrectly. Motivated by this diagnosis, we propose GEAR (Grounding Evidence-Aware Reward), a reward shaping method that augments the accuracy signal with a grounding reward for overlap with key evidence and a distractor penalty for overlap with irrelevant context. To enable GEAR on natural-language data, we develop an automated pipeline that constructs evidence-annotated training data from arbitrary documents. We validate GEAR across multiple model scales and benchmarks, showing consistent improvements of up to +4.6 average points over standard RL with accuracy-based rewards, with larger gains at longer contexts, while also reducing repetitive copying and thinking length. Our findings suggest that, even as long-context evaluation shifts from simple retrieval toward complex reasoning, accurate grounding in relevant evidence remains an indispensable capability with substantial room for improvement.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-21T17:59:21Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.19345v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces GEAR, a reward shaping method that directly addresses a critical failure mode (repetitive copying) in long-context LLM reasoning, providing a concrete technique builders can implement to improve model grounding and performance on complex tasks."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The work provides a substantial new variation by diagnosing the specific 'repetitive copying' failure mode in long-context reasoning and proposing an automated evidence-annotation pipeline and a novel reward function (GEAR) that combines accuracy, grounding reward, and distractor penalty."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method (separating key evidence from distractors, constructing evidence-annotated data, and the GEAR reward formula) is described clearly enough to reimplement, but the paper does not mention public release of code, weights, or the automated annotation pipeline."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is solidly written, with a clear problem statement, diagnostic experiments, proposed solution, and validation across multiple scales and benchmarks, though it could provide more detail on the automated annotation pipeline's limitations."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper is directly in the applied-AI sweet spot, focusing on improving the reasoning and grounding capabilities of large language models, a core concern for engineers building systems with LLMs."
+    }
+  },
+  "composite": 7.45
+}

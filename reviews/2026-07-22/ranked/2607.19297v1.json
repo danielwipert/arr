@@ -1,0 +1,46 @@
+{
+  "arxiv_id": "2607.19297v1",
+  "title": "Graph-Based Agentic AI with LangGraph: Workflow Pathways for Long-Running Stateful Business Processes",
+  "authors": [
+    "Daniel Pearson",
+    "Sidney Shapiro",
+    "Emiliano Sebastian Gonzalez Venegas",
+    "Sanad Al-Khatib",
+    "Aurora Pinzón Arzola"
+  ],
+  "abstract": "This paper is a practitioner guide to graph-based workflow pathways for long-running, stateful, multi-step generative AI systems in business processes. Rather than treating LangGraph, a low-level orchestration framework for stateful agents, as a model-quality benchmark target, we present three executable recipes -- SQL analytics with repair loops, agentic retrieval-augmented generation with evidence gating, and human-in-the-loop policy review with interrupt and checkpoint recovery -- to show how typed state, conditional routing, deterministic tools, retries, interrupts, checkpoints, and traces fit together. LangGraph is positioned by workflow-complexity fit, not as a universal default: simpler ReAct-style or plain SDK loops may be better for basic tool use, schema-first tools for structured extraction and validation, and DSPy when prompt or program optimization is the main goal. Each recipe explains when LangGraph is worth the extra structure and which implementation patterns make routes, pauses, and audit trails explicit product behavior rather than hidden prompt logic.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI",
+    "cs.SE"
+  ],
+  "submitted_at": "2026-07-21T17:07:13Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.19297v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper provides concrete, executable recipes for implementing stateful agent workflows that directly address practical challenges LLM builders face with RAG architectures, human-in-the-loop systems, and error recovery patterns."
+    },
+    "novelty": {
+      "score": 6,
+      "justification": "While LangGraph itself is established, the paper offers novel implementation patterns and workflow-complexity analysis that provide clear delta from basic agent tutorials but operates within the well-trodden agent orchestration space."
+    },
+    "reproducibility": {
+      "score": 7,
+      "justification": "The paper provides detailed recipes with implementation patterns and architectural guidance, though it lacks explicit code repositories or datasets for direct reproduction."
+    },
+    "clarity": {
+      "score": 9,
+      "justification": "Exceptionally well-written with clear scope definition, practical examples, and appropriate positioning of LangGraph relative to alternatives like ReAct and DSPy without overclaiming."
+    },
+    "topical_fit": {
+      "score": 10,
+      "justification": "Directly in the LLM builder sweet spot, providing actionable guidance on agent orchestration frameworks and implementation patterns for engineers building production LLM systems."
+    }
+  },
+  "composite": 7.65
+}
