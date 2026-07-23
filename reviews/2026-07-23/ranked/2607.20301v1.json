@@ -1,0 +1,47 @@
+{
+  "arxiv_id": "2607.20301v1",
+  "title": "The Blessing of Dimensionality: How Near-Orthogonality in High-Dimensional Spaces Explains Temporal Portability",
+  "authors": [
+    "Abigail Woodring",
+    "Adrian Chan",
+    "Rana Muhammad Shahroz Khan",
+    "Sukwon Yun",
+    "Chau-Wai Wong",
+    "Tianlong Chen"
+  ],
+  "abstract": "Fine-tuning has been widely used to adapt large language models (LLMs) for domain-specific tasks. Parameter efficient fine-tuning (PEFT) methods such as low-rank adaptation (LoRA) are frequently used to reduce computational costs. PortLLM is a training-free and data-free scheme used to adapt LLMs after continual pretraining. Although the initial PortLLM results show that LoRA patches exhibit short-term temporal portability, the long-term performance of PortLLM across several updates of continual pretraining remains underexplored. Furthermore, the intriguing effectiveness of PortLLM is not well understood from a theoretical standpoint. We address these two open questions by (1) performing an extensive empirical study of the long-term temporal portability of PortLLM patches across 10 continual pretraining steps using base models Mistral, Gemma, and Qwen; and (2) offering two theoretical analyses to explain our observation that the simple PortLLM method achieves competitive performance. We find empirically that the portability persists across longer time duration, indicating that repeated fine-tuning is not required when the base model is periodically updated. We find theoretically that near-orthogonality of high-dimensional vectors is a key justification for temporal portability. Our analyses also demonstrate a geometric perspective of the loss landscape in facilitating the theoretical comparison of different adaptation options.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG",
+    "cs.CL"
+  ],
+  "submitted_at": "2026-07-22T15:48:39Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.20301v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper demonstrates that LoRA patches remain effective across multiple model updates, potentially eliminating the need for repeated fine-tuning when base models are updated, which directly impacts how builders approach model maintenance and deployment strategies."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "While building on existing PortLLM work, the paper provides the first extensive empirical study of long-term temporal portability across 10 pretraining steps and offers novel theoretical explanations using high-dimensional geometry and near-orthogonality."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is clearly described and uses standard base models (Mistral, Gemma, Qwen), but the paper does not mention code or dataset availability, requiring reimplementation."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper clearly articulates its contributions, presents both empirical results and theoretical analysis, and appropriately scopes claims about temporal portability across multiple model updates."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses practical LLM fine-tuning challenges with PortLLM and LoRA methods, providing actionable insights for builders working with continually updated base models."
+    }
+  },
+  "composite": 7.45
+}

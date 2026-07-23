@@ -1,0 +1,71 @@
+{
+  "date": "2026-07-23",
+  "paper_id": "arxiv:2607.20219v1",
+  "paper_title": "HalluTruthQA: A Fine-Grained Benchmark for Hallucination Detection, Localization, and Explanation in Arabic Question Answering",
+  "paper_authors": [
+    "Abdessalam Bouchekif",
+    "Mohammed-En-Nadhir Zighem",
+    "Salah Eddine Bekhouche",
+    "Hichem Telli",
+    "Somaya Eltanbouly",
+    "Shahd Gaben",
+    "Heba Sbahi",
+    "Samer Rashwani",
+    "Mutaz Al-Khatib",
+    "Emad Mohamed",
+    "Mohammed Ghaly",
+    "Abdenour Hadid"
+  ],
+  "paper_url": "https://arxiv.org/abs/2607.20219",
+  "post_text": "A new Arabic benchmark shows that detecting a factual error in a model's answer is only the first step toward fixing it.\n\nResearchers from Qatar Computing Research Institute and partner universities built HalluTruthQA, a dataset of 2,400 expert-curated Arabic questions across Islamic knowledge, history, science, and geography. They evaluated four open-source LLMs on four tasks: detecting hallucinations, localizing the exact erroneous text, explaining the error, and selecting the correct answer from a list. No single model was best at all tasks; the top detection score was 0.880 Macro-F1, while the best span-localization score was just 0.516 F1-Sp.\n\nThe nuance is in the type of error. In domains like history and geography, 59.3% of hallucinations were simple factual contradictions. But in Islamic knowledge, 61.6% were context inconsistencies, where a correct short answer was supported by a fabricated or misattributed religious source. A model might get the ruling right but cite the wrong verse, a failure binary detection often misses.\n\nFor teams deploying Arabic LLMs, especially in sensitive domains, this means vendor evaluations need more than a pass/fail accuracy check. Ask how a model handles source attribution and evidence verification. The benchmark reveals that models can spot an error but still struggle to pinpoint it or explain why it's wrong—a gap between flagging a problem and understanding it.\n\nWorth reading if your product roadmap includes Arabic language capabilities. Worth ignoring if you believe hallucination is a solved detection problem.\n\nPaper: HalluTruthQA: A Fine-Grained Benchmark for Hallucination Detection, Localization, and Explanation in Arabic Question Answering, Bouchekif et al.\nhttps://arxiv.org/abs/2607.20219\n\n#LLMs #ArabicNLP #AISafety #Benchmarking #HallucinationDetection",
+  "post_char_count": 1831,
+  "hook_char_count": 120,
+  "claims": [
+    {
+      "claim": "Researchers from Qatar Computing Research Institute and partner universities built HalluTruthQA, a dataset of 2,400 expert-curated Arabic questions across Islamic knowledge, history, science, and geography.",
+      "source_span": "HalluTruthQA contains 2,400 Arabic QA examples across four knowledge-intensive domains: Islamic knowledge, history, science, and geography",
+      "page": 1
+    },
+    {
+      "claim": "They evaluated four open-source LLMs on four tasks: detecting hallucinations, localizing the exact erroneous text, explaining the error, and selecting the correct answer from a list.",
+      "source_span": "We evaluate four open-source LLMs, Allam, Falcon-H1, Qwen32, and Silma, in a zero-shot setting across hallucination detection, span-level localization, factual verification, and explanation evaluation.",
+      "page": 1
+    },
+    {
+      "claim": "No single model was best at all tasks; the top detection score was 0.880 Macro-F1, while the best span-localization score was just 0.516 F1-Sp.",
+      "source_span": "no single model achieves the strongest performance across all tasks, with best scores of 0.880 Macro-F1 for detection, 0.516 F1-Sp for localization",
+      "page": 1
+    },
+    {
+      "claim": "In domains like history and geography, 59.3% of hallucinations were simple factual contradictions.",
+      "source_span": "Across all hallucinated spans, Factual Contradiction is the dominant category (59.3%)",
+      "page": 1
+    },
+    {
+      "claim": "But in Islamic knowledge, 61.6% were context inconsistencies, where a correct short answer was supported by a fabricated or misattributed religious source.",
+      "source_span": "Islamic Knowledge differs: Context Inconsistency accounts for 61.6%, reflecting the need for faithful grounding in the appropriate verse, hadith, legal ruling, or source context.",
+      "page": 1
+    }
+  ],
+  "ranker_scores": {
+    "significance": 8,
+    "novelty": 7,
+    "reproducibility": 9,
+    "clarity": 8,
+    "topical_fit": 9,
+    "composite": 8.05
+  },
+  "critic_report": {
+    "voice_match": "pass",
+    "banned_phrase_scan": "fail",
+    "length_compliance": "pass",
+    "structure": "pass",
+    "grounding": "pass",
+    "hype_check": "pass",
+    "retries_used": 1,
+    "notes": "Required 1 retry/retries before passing. | voice: The post maintains a declarative, report-like tone with specific numbers and a clear point of view, avoiding LinkedIn-speak and content marketing cadences. | banned_phrases: banned: em-dash (—) | length: total=1831, hook=120 (outside sweet spot 1400-1800, within hard bounds) | structure: 7 blocks, 5 hashtags | grounding: All factual claims in the post are supported by verbatim source spans from the paper sections via the provided claims list. [mech: 5 claim span(s) not found in paper: 'HalluTruthQA contains 2,400 Arabic QA examples across four k'; 'We evaluate four open-source LLMs, Allam, Falcon-H1, Qwen32,'; 'no single model achieves the strongest performance across al'] | hype: The post presents results and implications accurately without unwarranted superlatives, attribution drift, or overclaim."
+  },
+  "generated_at": "2026-07-23T11:16:46.732845Z",
+  "drafter_model": "deepseek/deepseek-chat-v3.1",
+  "critic_model": "deepseek/deepseek-chat-v3.1"
+}

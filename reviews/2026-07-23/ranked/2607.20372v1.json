@@ -1,0 +1,43 @@
+{
+  "arxiv_id": "2607.20372v1",
+  "title": "Notes to Self: Can LLMs Benefit from Experiential Abstractions?",
+  "authors": [
+    "Chang Liu",
+    "Xinyu Li",
+    "Artur Dubrawski"
+  ],
+  "abstract": "Humans distill experience into reusable abstractions, e.g., strategies and cautionary reminders, and apply them to gradually solve problems more effectively. We study whether Large Language Models (LLMs) can similarly benefit from such experiential abstractions. From LLMs' solution traces on the MATH training set, a stronger teacher or the LLMs themselves extract natural-language abstractions into a retrievable library. We explore two usage modes: (1) inference-time retrieval and (2) reinforcement learning (RL) with abstraction-augmented training prompts. Experiential abstractions improve LLM performance on mathematical and logical reasoning benchmarks. Self-extracted abstractions match teacher-extracted ones, and our abstraction usage framework can transfer to other datasets and models. These findings suggest LLMs can extract and apply experiential abstractions much as humans leverage distilled experience.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL"
+  ],
+  "submitted_at": "2026-07-22T17:02:34Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.20372v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces a practical framework for improving LLM reasoning through experiential abstractions that could influence how builders approach knowledge distillation and retrieval-augmented generation systems."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "While building on retrieval-augmented generation concepts, the approach of extracting natural-language abstractions from solution traces represents a substantial variation from prior work."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly enough for reimplementation, but the paper does not mention code or dataset availability."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The abstract clearly outlines the approach, methodology, and findings with appropriately scoped claims about experiential abstractions improving LLM performance."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM improvement techniques for reasoning tasks, making it highly relevant for builders working with LLM systems."
+    }
+  },
+  "composite": 7.45
+}
