@@ -1,0 +1,45 @@
+{
+  "arxiv_id": "2607.21552v1",
+  "title": "MIRROR: Learning from the Other View for Multi-Modal Reasoning",
+  "authors": [
+    "Wen Ye",
+    "Yuxiao Qu",
+    "Aviral Kumar",
+    "Xuezhe Ma"
+  ],
+  "abstract": "Unlike large language models (LLMs) that exhibit strong reasoning capabilities, vision-language models (VLMs) struggle with visual reasoning, even on geometry problems that admit equivalent text, diagram, and combined diagram+text views. We show that these views often elicit different behaviors: a model may solve a problem from text but fail on the corresponding diagram, or succeed visually while failing textually. This inconsistency suggests that different views expose complementary reasoning paths and failure modes that standard multimodal post-training does not fully exploit. To study and exploit this phenomenon, we construct ODA-Data, a high-quality paired multimodal geometry dataset with text-dominant, image-dominant, and combined image+text views of the same problems, together with splits for training and evaluating modality-dependent reasoning behaviors. We then develop Modality-Informed Reciprocal Reasoning Optimization (MIRROR), a reinforcement learning approach for improving multimodal reasoning via self supervision. For each problem, MIRROR evaluates the model under all views, selects the best-performing view as a teacher, and trains other views with a reverse-KL objective towards the teacher. Across reasoning benchmarks that evaluate on geometry problems, MIRROR improves over standard RL and yields more accurate and consistent behavior across modalities",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI",
+    "cs.LG"
+  ],
+  "submitted_at": "2026-07-23T17:35:56Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.21552v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper refines multimodal training with a measurable, reproducible technique (MIRROR) that improves consistency and accuracy across text, diagram, and combined views, directly impacting how builders might approach VLM training for reasoning tasks."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "It introduces a substantial new variation—Modality-Informed Reciprocal Reasoning Optimization (MIRROR)—that uses the best-performing view as a teacher for others, a distinct approach from standard multimodal post-training."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method (MIRROR with reverse-KL objective) and dataset (ODA-Data) are described clearly enough to reimplement, but the paper does not confirm public release of code, weights, or datasets."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is solidly written, with a clear problem statement (inconsistent VLM reasoning across views), a defensible methodology (RL with self-supervision), and appropriately scoped claims of improved accuracy and consistency."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "The paper is clearly in scope, focusing on improving vision-language models (VLMs) for reasoning tasks, which sits directly within the applied-AI and LLM-adjacent builder space."
+    }
+  },
+  "composite": 6.85
+}
