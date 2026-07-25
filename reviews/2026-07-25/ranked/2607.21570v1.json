@@ -1,0 +1,52 @@
+{
+  "arxiv_id": "2607.21570v1",
+  "title": "MedGame: Storytelling Gamification Empowered by Large Language Models for Medical Education",
+  "authors": [
+    "Qian Wu",
+    "Xinrong Zhou",
+    "Zizhan Ma",
+    "Kai Chen",
+    "Zheyao Gao",
+    "Xun Lin",
+    "Hongqiu Wu",
+    "Longfei Gou",
+    "Yixiao Liu",
+    "Ann Sin Nga Lau",
+    "Qi Dou"
+  ],
+  "abstract": "Large Language Models (LLMs) show promise for medical education, but most existing systems focus on localized interactions such as question answering or single-turn feedback, rather than organizing an entire clinical case into a decision-centered learning trajectory. We introduce \\textit{MedGame}, a framework that transforms static clinical cases into structured, executable storytelling games. MedGame uses a dual-engine design: a Medical Narrative Designer synthesizes case-grounded clinical storylines with states and decision nodes, while a Story Director converts them into dependency-aware multimodal orchestration plans rendered by our released interactive platform. We construct MedGame Bench, a 5,000-case benchmark and evaluation protocol for Medical Narrative Generation and Story Direction. Experiments show that task-specific fine-tuning substantially improves open-source LLMs on MedGame Bench and narrows the gap with commercial models. A pilot student study further shows that learners perceive MedGame as more engaging and useful than text-only alternatives.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.HC"
+  ],
+  "submitted_at": "2026-07-23T17:50:28Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.21570v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper introduces a framework that transforms clinical cases into structured, executable storytelling games, which refines educational techniques with measurable gains in engagement and usefulness for medical learners."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The dual-engine design (Medical Narrative Designer and Story Director) for creating dependency-aware multimodal orchestration plans from clinical cases represents a substantial new variation in applying LLMs to structured educational narratives."
+    },
+    "reproducibility": {
+      "score": 8,
+      "justification": "The paper mentions a released interactive platform and constructs MedGame Bench, a 5,000-case benchmark with an evaluation protocol, though specific code repository links are not provided in the abstract."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The abstract clearly defines the problem, proposed framework components, benchmark creation, experimental results, and pilot study outcomes with appropriately scoped claims."
+    },
+    "topical_fit": {
+      "score": 7,
+      "justification": "The paper applies LLMs to create structured educational systems, which is clearly in scope for builders working on LLM applications, though medical education is a specific vertical rather than a core LLM infrastructure focus."
+    }
+  },
+  "composite": 7.35
+}

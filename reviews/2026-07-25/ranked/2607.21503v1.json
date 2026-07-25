@@ -1,0 +1,42 @@
+{
+  "arxiv_id": "2607.21503v1",
+  "title": "Agentic Context Management: Solving Agent Memory and Cost by Treating Them as Lifecycle and Architecture Problems",
+  "authors": [
+    "Gaurav Dadhich"
+  ],
+  "abstract": "Production AI agents' failures are less often due to an inability to reason well and more often because they cannot manage what is in their reasoning context: conversation histories, large prompts, large tool definitions, and ballooning tool outputs. Agents drown in their own accumulating history while paying a token cost that grows every turn, producing missing recalls within and across conversations. The incumbent response treats this as a storage-and-retrieval problem. We argue that framing is too narrow. Actively managing what an agent holds in mind is a lifecycle, not merely a store: it spans deciding what to remember, extracting and structuring it, choosing the right store per data type, consolidating and forgetting while preserving provenance, deciding what is relevant now, anticipating what is needed next, and compacting context to a budget without losing what matters. In serious production this operates not over a single user but across an organizational scope hierarchy. We name this discipline Agentic Context Management (ACM) and decompose it into five primitives: architecting, ingesting, scoping, anticipating, and compacting & consolidation. We then make the economic case: naive context accumulation grows token cost quadratically in conversation length, crude summarization buys linear cost at the price of an accuracy cliff, and only validated compaction achieves linear cost with preserved fidelity. We describe a reference implementation, Maximem Synap, that realizes the five primitives as a multi-tenant service and reports 92% on LongMemEval and 93.2% on LoCoMo under the configuration detailed in Section 6. We close with dimensions existing benchmarks do not yet capture, latency, token efficiency, and context-rot resistance, and the frontier of decision-level and organization-level context the category points toward.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI",
+    "cs.IR"
+  ],
+  "submitted_at": "2026-07-23T16:51:31Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.21503v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 9,
+      "justification": "The paper introduces a comprehensive framework for managing agent context that directly addresses core architectural decisions builders face with production AI agents, including cost optimization and memory management."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The paper reframes agent memory from a storage-retrieval problem to a lifecycle management discipline with five novel primitives, offering a substantial new architectural approach rather than incremental improvements."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is clearly described with five well-defined primitives and implementation details, but no code or artifacts are mentioned, requiring reimplementation effort."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with clear problem framing, economic analysis, and concrete primitives, though it could benefit from more detailed evaluation methodology beyond the reported metrics."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper directly addresses practical production challenges with LLM agents, including cost management and architectural patterns, making it highly relevant for engineers building LLM systems."
+    }
+  },
+  "composite": 8.0
+}

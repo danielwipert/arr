@@ -1,0 +1,49 @@
+{
+  "arxiv_id": "2607.21550v1",
+  "title": "X$^3$-OPD: Distilling Reasoning into Large Audio-Language Models via On-Policy Alignment",
+  "authors": [
+    "Dongjie Fu",
+    "Di Cao",
+    "Xize Cheng",
+    "Zihan Zhang",
+    "Wenxu Jia",
+    "Yifu Chen",
+    "Shengpeng Ji",
+    "Yu Zhang",
+    "Tao Jin"
+  ],
+  "abstract": "While large audio-language models have achieved remarkable progress in auditory perception, they still lag behind text-based large language models in deep logical reasoning, primarily due to the scarcity of high-quality audio reasoning data. To bridge this gap, we propose X$^3$-OPD, a cross-modal on-policy distillation framework that transfers reasoning capabilities from a powerful text teacher to an audio-language student. During training, the student generates reasoning trajectories conditioned on its own acoustic perception, while the teacher provides token-level guidance using matched textual inputs and verified answers. We further construct a three-tier symmetric corpus covering textual reasoning rendered into speech, audio-event reasoning grounded in complex acoustic scenes, and spoken-dialogue reasoning involving paralinguistic cues. This design extends cross-modal distillation beyond textually recoverable content to reasoning grounded in non-linguistic events, prosody, and conversational context. Experiments on MMSU, MMAU, BIG Bench Audio, and MMAR demonstrate that X$^3$-OPD substantially improves audio-grounded reasoning and chain-of-thought quality while largely preserving the model's existing capabilities under domain shift.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG"
+  ],
+  "submitted_at": "2026-07-23T17:35:20Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.21550v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper introduces a practical distillation framework that improves audio-language models' reasoning capabilities, directly addressing a key limitation builders face when working with multimodal systems."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The cross-modal on-policy distillation approach with token-level guidance and three-tier symmetric corpus represents a substantial new variation in knowledge transfer techniques."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough for reimplementation but the abstract doesn't mention code or dataset availability, requiring significant effort to reproduce."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The abstract is well-written with clear problem statement, methodology, and results, though evaluation details are limited in the abstract."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "This directly addresses improving LLM reasoning capabilities through distillation techniques, squarely in the applied-AI sweet spot for builders working with multimodal systems."
+    }
+  },
+  "composite": 7.05
+}

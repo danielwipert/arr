@@ -1,0 +1,65 @@
+{
+  "date": "2026-07-25",
+  "paper_id": "arxiv:2607.21503v1",
+  "paper_title": "Agentic Context Management: Solving Agent Memory and Cost by Treating Them as Lifecycle and Architecture Problems",
+  "paper_authors": [
+    "Gaurav Dadhich"
+  ],
+  "paper_url": "https://arxiv.org/abs/2607.21503",
+  "post_text": "A new paper argues that AI agents fail in production not because they lack intelligence, but because they cannot manage what they hold in their reasoning context.\n\nGaurav Dadhich of Maximem reframes the problem from \"memory\"—a storage and retrieval issue—to \"Agentic Context Management,\" a full lifecycle with five primitives. The paper quantifies the economic case: naïve context accumulation makes token costs grow quadratically with conversation length, while unvalidated summarization trades that for an accuracy cliff.\n\nThe finding is broader than it sounds. The proposed lifecycle—architecting, ingesting, scoping, anticipating, and compacting—must operate across an organizational scope hierarchy, from individual users to entire customers. This moves the challenge from a technical retrieval problem to a system-design and governance one.\n\nFor teams building or buying agent platforms, the implication is a shift in evaluation criteria. The next infrastructure contest will be over who manages context best, not who stores the most. This means asking vendors about validated compaction, organizational scoping, and their approach to the reasoning-sufficiency gap that most benchmarks miss.\n\nWorth reading if you are responsible for the stability or cost of production AI agents. Worth ignoring if you believe a larger context window alone is the answer.\n\nPaper: Agentic Context Management: Solving Agent Memory and Cost by Treating Them as Lifecycle and Architecture Problems, Gaurav Dadhich\nhttps://arxiv.org/abs/2607.21503\n\n#AI #Agents #Enterprise #ModelRisk #ContextManagement",
+  "post_char_count": 1587,
+  "hook_char_count": 162,
+  "claims": [
+    {
+      "claim": "AI agents fail in production not because they lack intelligence, but because they cannot manage what they hold in their reasoning context.",
+      "source_span": "Production AI agents’ failures are less often because of an inability to reason well and more often because they cannot manage what is in their reasoning context",
+      "page": 1
+    },
+    {
+      "claim": "Gaurav Dadhich of Maximem reframes the problem from \"memory\"—a storage and retrieval issue—to \"Agentic Context Management,\" a full lifecycle with five primitives.",
+      "source_span": "We propose that actively managingwhatanagentholdsinmindisalifecycle,notmerelyastore",
+      "page": 1
+    },
+    {
+      "claim": "The paper quantifies the economic case: naïve context accumulation makes token costs grow quadratically with conversation length",
+      "source_span": "naïve context accumulation grows tokencostquadraticallyinconversationlength",
+      "page": 1
+    },
+    {
+      "claim": "unvalidated summarization trades that for an accuracy cliff.",
+      "source_span": "crudesummarizationbuyslinearcostattheprice of an accuracy cliff",
+      "page": 1
+    },
+    {
+      "claim": "The proposed lifecycle—architecting, ingesting, scoping, anticipating, and compacting—must operate across an organizational scope hierarchy, from individual users to entire customers.",
+      "source_span": "decompose it into five primitives: architecting, ingesting, scoping, anticipating, and compacting & consolidation",
+      "page": 1
+    },
+    {
+      "claim": "This moves the challenge from a technical retrieval problem to a system-design and governance one.",
+      "source_span": "We argue that this framing is too narrow",
+      "page": 1
+    }
+  ],
+  "ranker_scores": {
+    "significance": 9,
+    "novelty": 8,
+    "reproducibility": 6,
+    "clarity": 8,
+    "topical_fit": 9,
+    "composite": 8.0
+  },
+  "critic_report": {
+    "voice_match": "pass",
+    "banned_phrase_scan": "fail",
+    "length_compliance": "fail",
+    "structure": "pass",
+    "grounding": "fail",
+    "hype_check": "pass",
+    "retries_used": 1,
+    "notes": "Required 1 retry/retries before passing. | voice: The post maintains a declarative, analytical tone with specific numbers and avoids hype, fitting the FT/New Yorker style for a business audience. | banned_phrases: banned: em-dash (—) | length: hook too long (162 chars, max 140) | structure: 7 blocks, 5 hashtags | grounding: The claim 'This moves the challenge from a technical retrieval problem to a system-design and governance one' lacks a verbatim source_span in the claims list or paper sections. | hype: The post avoids superlatives and overclaim, accurately representing the paper's scope and findings."
+  },
+  "generated_at": "2026-07-25T10:34:00.692848Z",
+  "drafter_model": "deepseek/deepseek-chat-v3.1",
+  "critic_model": "deepseek/deepseek-chat-v3.1"
+}
