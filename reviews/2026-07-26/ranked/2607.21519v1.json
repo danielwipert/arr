@@ -1,0 +1,51 @@
+{
+  "arxiv_id": "2607.21519v1",
+  "title": "Diffusion Language Model for Recommendation",
+  "authors": [
+    "Chengyi Liu",
+    "Yongqi Zhou",
+    "Junwei Pan",
+    "Zhixiang Feng",
+    "Chengguo Yin",
+    "Haijie Gu",
+    "Jie Jiang",
+    "Yinghao Liu",
+    "Yujuan Ding",
+    "Qing Li",
+    "Wenqi Fan"
+  ],
+  "abstract": "Large language model (LLM)-empowered recommender systems have emerged as a promising paradigm for generative recommendation, leveraging their strong semantic reasoning and generative capacity to model complex, diverse user preferences. However, most existing approaches rely on an autoregressive paradigm that is suboptimal for recommendation. The next-token objective emphasizes sequential order rather than the structural inter-item dependencies underlying user preferences. In addition, prefix-constrained generation restricts bidirectional context and commits to left-to-right decoding, causing early errors to accumulate without correction. Inspired by the success of diffusion language models, we propose \\textbf{DLMRec}, a discrete diffusion language model tailored for recommendation that offers a compelling alternative to autoregressive generation. Specifically, DLMRec introduces three key components to bridge diffusion language modeling with recommendation. First, a collaborative-aware stochastic tokenizer encodes multi-hop collaborative signals into expressive discrete tokens compatible with diffusion modeling. Second, a curriculum-driven training strategy aligns the denoising process with preference recovery through progressive item- and token-level learning. Third, a stability-aware voting mechanism aggregates iterative predictions to improve generation consistency and robustness.",
+  "primary_cat": "cs.IR",
+  "all_cats": [
+    "cs.IR"
+  ],
+  "submitted_at": "2026-07-23T17:02:12Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.21519v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper proposes replacing autoregressive generation with diffusion modeling for recommender systems, which could change how builders approach sequential recommendation architecture by addressing error accumulation and bidirectional context limitations."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "DLMRec introduces a novel adaptation of discrete diffusion language models specifically for recommendation, with three distinct components (collaborative-aware tokenizer, curriculum training, and stability-aware voting) that represent substantial innovation beyond autoregressive approaches."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough for reimplementation, but the abstract does not mention code or dataset availability, suggesting reproduction would require significant implementation effort without provided artifacts."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The abstract clearly articulates the limitations of existing approaches and presents a well-structured solution with three key components, though full evaluation details are not visible in the abstract alone."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "This paper sits directly in the LLM and applied-AI sweet spot, addressing how to better leverage language models for practical recommendation systems that builders would implement."
+    }
+  },
+  "composite": 7.05
+}

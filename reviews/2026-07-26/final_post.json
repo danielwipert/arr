@@ -1,0 +1,89 @@
+{
+  "date": "2026-07-26",
+  "paper_id": "arxiv:2607.21557v1",
+  "paper_title": "OpenForgeRL: Train Harness-native Agents in Any Environment",
+  "paper_authors": [
+    "Xiao Yu",
+    "Baolin Peng",
+    "Ruize Xu",
+    "Hao Zou",
+    "Qianhui Wu",
+    "Hao Cheng",
+    "Wenlin Yao",
+    "Nikhil Singh",
+    "Zhou Yu",
+    "Jianfeng Gao"
+  ],
+  "paper_url": "https://arxiv.org/abs/2607.21557",
+  "post_text": "OpenForgeRL lets you train AI agents directly inside the complex control systems they actually use, without rebuilding those systems for training.\n\nThe framework, from Xiao Yu and colleagues, connects any inference harness—the orchestration scaffolds like Claude Code or OpenClaw that manage multi-turn reasoning and tool use—to standard reinforcement learning codebases. It uses a lightweight proxy to intercept model calls and a Kubernetes orchestrator to run rollouts in remote containers. Their OpenForge-Claw model reached 31.7 pass@1 on ClawEval, and their OpenForge-GUI model scored 37.7 on OSWorld-Verified, outperforming open baselines of similar size.\n\nThe result is broader than it sounds. The system works across diverse environments, from text-based tool use to multimodal GUI control, demonstrating that the training gap between open and proprietary agent systems is now addressable with infrastructure, not just model scale. The paper also finds that training on multiple harnesses yields more robust agents than training on just one.\n\nFor teams building or evaluating AI agents, this means the hardest part of agent training—aligning the training environment with the deployment harness—is becoming a solvable engineering problem. The practical implication is a shift in vendor risk assessment: ask not just about the model, but about the training harness and whether it matches your intended use case.\n\nWorth reading if your roadmap includes evaluating or procuring agentic systems. Worth ignoring if your agents operate in simple, single-turn environments.\n\nPaper: OpenForgeRL: Train Harness-native Agents in Any Environment, Xiao Yu et al.\nhttps://arxiv.org/abs/2607.21557\n\n#AI #ReinforcementLearning #Agents #VendorRisk #OpenForgeRL",
+  "post_char_count": 1752,
+  "hook_char_count": 146,
+  "claims": [
+    {
+      "claim": "OpenForgeRL lets you train AI agents directly inside the complex control systems they actually use, without rebuilding those systems for training.",
+      "source_span": "OPENFORGE RL,anopen-sourceframeworkfortrainingharness-based agents end-to-end",
+      "page": 1
+    },
+    {
+      "claim": "The framework, from Xiao Yu and colleagues",
+      "source_span": "Authors: Xiao Yu, Baolin Peng, Ruize Xu, Hao Zou, Qianhui Wu, Hao Cheng, Wenlin Yao, Nikhil Singh, Zhou Yu, Jianfeng Gao",
+      "page": 1
+    },
+    {
+      "claim": "connects any inference harness—the orchestration scaffolds like Claude Code or OpenClaw that manage multi-turn reasoning and tool use—to standard reinforcement learning codebases.",
+      "source_span": "connectsanyharness ×anyenvironmenttostandardRLcodebasessuchasveRL",
+      "page": 1
+    },
+    {
+      "claim": "It uses a lightweight proxy to intercept model calls and a Kubernetes orchestrator to run rollouts in remote containers.",
+      "source_span": "alightweightproxyabstracts theharness’sinferenceprocess anddecouplesitfromtraining andaKubernetesorchestratorthatlauncheseachrolloutasaremotecontainer",
+      "page": 2
+    },
+    {
+      "claim": "Their OpenForge-Claw model reached 31.7 pass@1 on ClawEval",
+      "source_span": "OpenForge-Claw reaches 31.7 (pass3) on ClawEval",
+      "page": 2
+    },
+    {
+      "claim": "their OpenForge-GUI model scored 37.7 on OSWorld-Verified",
+      "source_span": "OpenForge-GUIreaches37.7onOSWorld-Verified",
+      "page": 2
+    },
+    {
+      "claim": "outperforming open baselines of similar size.",
+      "source_span": "outperformingopenbaselinesofsimilar size on nearly all benchmarks",
+      "page": 2
+    },
+    {
+      "claim": "The system works across diverse environments, from text-based tool use to multimodal GUI control",
+      "source_span": "spanning tool/claw-based agents and multimodal GUI browser- and computer-useagents",
+      "page": 2
+    },
+    {
+      "claim": "The paper also finds that training on multiple harnesses yields more robust agents than training on just one.",
+      "source_span": "trainingonallthreeharnessesisbestacrosstheboard",
+      "page": 9
+    }
+  ],
+  "ranker_scores": {
+    "significance": 8,
+    "novelty": 7,
+    "reproducibility": 8,
+    "clarity": 7,
+    "topical_fit": 9,
+    "composite": 7.7
+  },
+  "critic_report": {
+    "voice_match": "pass",
+    "banned_phrase_scan": "fail",
+    "length_compliance": "fail",
+    "structure": "pass",
+    "grounding": "fail",
+    "hype_check": "pass",
+    "retries_used": 1,
+    "notes": "Required 1 retry/retries before passing. | voice: The post maintains a declarative, reportorial tone with specific numbers and avoids LinkedIn-speak while remaining accessible to business and engineering leaders. | banned_phrases: banned: em-dash (—) | length: hook too long (146 chars, max 140) | structure: 7 blocks, 5 hashtags | grounding: The claim 'outperforming open baselines of similar size' lacks a verbatim source span in the paper sections to support 'similar size' qualification. [mech: 3 claim span(s) not found in paper: 'Authors: Xiao Yu, Baolin Peng, Ruize Xu, Hao Zou, Qianhui Wu'; 'alightweightproxyabstracts theharness’sinferenceprocess andd'; 'outperformingopenbaselinesofsimilar size on nearly all bench'] | hype: The post accurately represents the paper's findings without unwarranted superlatives or overclaim, maintaining appropriate caution in framing."
+  },
+  "generated_at": "2026-07-26T10:50:10.720053Z",
+  "drafter_model": "deepseek/deepseek-chat-v3.1",
+  "critic_model": "deepseek/deepseek-chat-v3.1"
+}

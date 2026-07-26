@@ -1,0 +1,42 @@
+{
+  "arxiv_id": "2607.21498v1",
+  "title": "Artificial Epanorthosis: Why large language models overuse a classical rhetorical figure, and how to mitigate it",
+  "authors": [
+    "Federico Boggia"
+  ],
+  "abstract": "A rhetorical figure that Cicero and Quintilian catalogued two thousand years ago reappears, systematically, in the text of large language models: epanorthosis, the self-correction of the specimen «This is not a course. It is a journey of transformation». This essay argues that the overuse is a trained disposition, driven mainly by a training distribution rich in promotional prose and by preference tuning (RLHF) that rewards confident, emphatic phrasing; the left-to-right nature of generation is an amplifier rather than the root cause. Building on evidence that models diverge from human rhetorical style, and on Fontanier's classification of epanorthosis as a figure of thought, it sets out a programme that scores the figure against genre-specific human baselines through an Epanorthosis Index (density relative to the human rate). A first measurement, on three sizes of one instruction-tuned model family, finds mis-calibration by register in both directions: the models overshoot in oratory (about twofold, near threefold in Italian, concentrated in the larger tiers) and undershoot in informal question-and-answer writing, while matching humans in argument, journalism, and encyclopedic prose. Three constructive contributions follow: a survey of mitigation techniques centred on lightweight LoRA adapters; a demonstration, in Italian, that a one-line instruction cuts the figure by half to nearly three-quarters and that a supervised-fine-tuning adapter removes it almost entirely, with a scaling coefficient that dials the reduction back onto the human rate; and the argument that the target is calibration to the human rate for each genre, not elimination. It closes on the stakes: the real risk is that we begin to write like the machines.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-23T16:47:39Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.21498v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper provides concrete mitigation techniques (LoRA adapters, one-line instructions) that builders can implement to reduce rhetorical overcorrection in LLM outputs, directly addressing a practical deployment issue."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "Introduces the novel Epanorthosis Index metric and applies classical rhetorical analysis to LLM text generation, a fresh perspective distinct from typical technical approaches."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "Methodology for measuring epanorthosis density is clearly described, but no code, datasets, or specific model weights are mentioned for reproduction."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "Well-written with clear argument structure and appropriately scoped claims, though evaluation details could be more comprehensive."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "Directly addresses LLM text generation quality and provides practical mitigation techniques relevant to builders deploying language models in production."
+    }
+  },
+  "composite": 6.95
+}
