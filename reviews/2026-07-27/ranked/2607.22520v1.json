@@ -1,0 +1,42 @@
+{
+  "arxiv_id": "2607.22520v1",
+  "title": "The Regression Tax: Decomposing Why Skills Help and Hurt LLM Agents",
+  "authors": [
+    "Darshan Tank",
+    "Baran Nama"
+  ],
+  "abstract": "Adding procedural skills to an LLM agent is typically evaluated by average improvement in task success. However, this metric hides an important cost: skills can also make agents worse. We measure both sides by comparing agents with and without skills across nearly 6,000 runs spanning two office automation benchmarks and three model harness stacks. This allows us to distinguish two outcomes. A regression is a task solved without skills but failed after skills are added. A residual failure is a task that fails both with and without skills. We find that regressions are substantial enough that the best performing skills outperform others primarily by regressing less, not by gaining more. We identify three causes of regression: (i) skill description osmosis, a skill changes an agent's behavior simply by being present in context, even when it is never invoked; (ii) grounding displacement, a skill's prescribed procedure overrides how the agent interprets its inputs; and (iii) verification displacement, where the procedure suppresses checks the agent would otherwise perform on its outputs. Analysing persistent failures reveals the same underlying pattern. Existing skills overemphasize procedural guidance the stage least often responsible for failure while under supporting grounding and verification, the dominant sources of remaining errors. After correcting evaluation artifacts and studying traces, we find many regressions and persistent failures recoverable through better grounding and verification. Procedural skills should be evaluated by decomposing their net effect into gains and regressions, not by aggregate improvement alone. We identify three regression modes skills should avoid, and find that reliability depends more on grounding and verification than on procedural skill choice.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-24T17:50:03Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.22520v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 9,
+      "justification": "The paper changes a core decision by showing that adding procedural skills to LLM agents can cause regressions and that reliability depends more on grounding and verification than on procedural skill choice, directly impacting how builders should architect and evaluate agent systems."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "It introduces the novel concepts of 'regression tax' and specific regression modes like 'skill description osmosis' and 'grounding displacement', providing a substantial new framing for evaluating agent skills distinct from prior work focused on average improvement."
+    },
+    "reproducibility": {
+      "score": 7,
+      "justification": "The method is described clearly with specific benchmarks and model stacks, and the analysis of regression causes is detailed, though the paper does not explicitly state that code and datasets are public, implying some reproduction friction."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with a clear problem statement, a well-defined methodology comparing nearly 6,000 runs, and claims appropriately scoped to the identified regression modes and their implications for evaluation."
+    },
+    "topical_fit": {
+      "score": 10,
+      "justification": "The paper is directly in the applied-AI sweet spot, providing actionable insights for engineers building LLM agent systems, specifically on skill integration and evaluation, which is a central concern for builders."
+    }
+  },
+  "composite": 8.3
+}

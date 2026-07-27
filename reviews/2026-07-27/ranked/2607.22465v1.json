@@ -1,0 +1,48 @@
+{
+  "arxiv_id": "2607.22465v1",
+  "title": "TRACE-ROUTER: Task-Consistent and Adaptive Online Routing for Agentic AI",
+  "authors": [
+    "Ritik Raj",
+    "Souvik Kundu",
+    "Sarbartha Banerjee",
+    "Dheemanth Joshi",
+    "Ishita Vohra",
+    "Tushar Krishna"
+  ],
+  "abstract": "Routing to select large language models (LLMs) with different cost-quality trade-offs has become a fundamental deployment feature of enterprise AI. Existing routers, primarily make independent routing decisions for each LLM call. However, agentic applications execute as long-horizon workflows whose quality is determined only by a delayed, task-level outcome. This mismatch prevents per-call routers from correctly attributing feedback to individual routing decisions. Towards mitigating this, we present TRACE-Router, a task-level routing framework that aligns routing with the unit of supervision. TRACE-Router assigns each task to a model once at admission using a contextual bandit, pins all subsequent LLM calls to the selected backend, and updates its policy using the task's terminal reward, jointly accounting for accuracy and latency. By leveraging delayed task feedback, TRACE-Router learns routing policies that adapt to the workload while avoiding explicit task-complexity estimation. Across three agentic benchmarks, TRACE-Router consistently improves the accuracy-latency trade-off, achieving non-dominated Pareto frontier points. On tau2-Bench, it outperforms latency-matched interpolation between individual models by 7-8 accuracy points, while on Terminal-Bench it achieves 7.1 higher accuracy points than the strongest single model baseline with 36% lower latency.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI",
+    "cs.LG",
+    "cs.MA"
+  ],
+  "submitted_at": "2026-07-24T16:29:06Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.22465v1",
+  "in_scope": true,
+  "primary_topic": "adjacent_infrastructure",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces a task-level routing framework that addresses a fundamental limitation in agentic AI deployment by aligning routing decisions with delayed task outcomes rather than per-call metrics."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "While routing for LLMs exists, the approach of using contextual bandits for task-level routing that pins all subsequent calls to a single backend based on terminal reward is a substantial new variation in this space."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly with contextual bandits and task-level routing framework, but no mention of code or artifacts being publicly available for reproduction."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The abstract is well-written, clearly explains the problem and solution, and provides specific quantitative results across multiple benchmarks."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM routing for agentic applications, which is a core concern for engineers building LLM systems with workflow-based deployments."
+    }
+  },
+  "composite": 7.25
+}

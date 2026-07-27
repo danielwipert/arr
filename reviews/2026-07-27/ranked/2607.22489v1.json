@@ -1,0 +1,47 @@
+{
+  "arxiv_id": "2607.22489v1",
+  "title": "\\k{appa}-LoRA: Condition Numbers Reveal Which LoRA Matrices Worth Updating",
+  "authors": [
+    "Jianghui Wang",
+    "Silong Yong",
+    "Francesco Orabona",
+    "Marco Canini",
+    "Katia P. Sycara",
+    "Yaqi Xie"
+  ],
+  "abstract": "Low-Rank Adaptation (LoRA) has become a widely adopted technique for efficient neural network fine-tuning, decomposing model updates into low-rank matrices. However, LoRA remains computationally costly because it updates all matrices uniformly, regardless of their actual contribution to adaptation. This cost is especially prohibitive for large-scale models with billions of parameters and for resource-constrained settings such as edge deployment and on-device fine-tuning. We show for the first time that not all LoRA matrices are equally worth tuning: matrices with smaller condition numbers (the ratio of largest to smallest singular value) are already well-balanced across directions and contribute only marginally to adaptation, whereas matrices with larger condition numbers contain underdeveloped directions that span richer subspaces and drive most of the performance gains. This observation itself is a key contribution of our work, and it motivates a more selective approach to fine-tuning. Building on this insight, we propose \\k{appa}-LoRA, a method that optimizes LoRA by focusing updates on the matrices with the largest condition numbers, which capture the most informative directions of change. By restricting LoRA updates to the top 50% of weight matrices ranked by condition number, \\k{appa}-LoRA halves the trainable parameter count and correspondingly reduces compute and memory cost. Extensive experiments across multiple benchmarks show that this design cuts fine-tuning time by 16.2% on average while matching the accuracy of standard LoRA and reducing memory cost by 4.5%. Further analysis reveals that the condition numbers of the selected matrices consistently decrease over training, suggesting that \\k{appa}-LoRA's effectiveness stems from targeted spectral rebalancing rather than parameter selection alone.",
+  "primary_cat": "cs.LG",
+  "all_cats": [
+    "cs.LG",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-24T17:00:40Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.22489v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper provides a practical method to reduce LoRA fine-tuning costs by 16.2% while maintaining accuracy, directly impacting how builders approach efficient model adaptation."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The insight that condition numbers reveal which LoRA matrices are worth updating is novel, though builds on existing LoRA optimization techniques."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is clearly described with specific selection criteria (top 50% by condition number), though no mention of code or dataset availability."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "Well-written with clear problem statement, methodology, and results showing 16.2% time reduction and 4.5% memory savings across multiple benchmarks."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses efficient LLM fine-tuning techniques, which is core to builders working with large language models in resource-constrained environments."
+    }
+  },
+  "composite": 7.45
+}
