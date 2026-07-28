@@ -1,0 +1,47 @@
+{
+  "arxiv_id": "2607.24617v1",
+  "title": "LaRec: Unleashing LLM-based Latent Reasoning for Generative Recommendation",
+  "authors": [
+    "Yu Xia",
+    "Zihan Lin",
+    "Wei Yang",
+    "Rui Zhong",
+    "Cheng Chen",
+    "Huan Ren",
+    "Yao Hu"
+  ],
+  "abstract": "Large Language Models (LLMs) have shown great promise in recommendation due to superior reasoning abilities. However, existing methods mainly rely on explicit Chain-of-Thought (CoT), resulting in verbose reasoning texts and inefficient response times. latent reasoning aims to balance efficiency by thinking within a continuous latent space, yet it faces two major challenges: (1) Lack of Fine-grained Supervision: Latent reasoning relies solely on feedback from the final labels, providing sparse supervisory signals that struggle to effectively guide the optimization of multiple hidden reasoning steps. (2) Single Reasoning Path: The deterministic nature of latent reasoning impedes the exploration of users' diverse interests and preferences, thereby limiting the recommendation capabilities of LLMs. To address these issues, we propose \\textbf{$LaRec$}, an efficient generative recommendation framework designed to unleash the potential of latent reasoning in LLMs. $LaRec$ consists of two core stages: First, we design Latent Pre-training that empowers LLMs with latent reasoning capabilities by providing rich supervisory signals to the latent space reasoning via step-level alignment and process direction alignment. Second, we introduce Personalized RL-tuning. Specifically, we construct a personalized Gaussian Mixture Distribution for each user based on their historical interests. By randomly sampling distinct reasoning starting points from this distribution during training, we guide the LLMs to traverse diverse reasoning paths within the latent space, enabling efficient exploration of user's multi-faceted interests. Experiments on multiple datasets show that $LaRec$ significantly outperforms existing baselines with comparable efficiency.",
+  "primary_cat": "cs.IR",
+  "all_cats": [
+    "cs.IR"
+  ],
+  "submitted_at": "2026-07-27T16:14:57Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.24617v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces a practical framework that addresses key efficiency bottlenecks in LLM-based recommendation systems, offering measurable improvements that could influence how builders implement generative recommendation architectures."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "While building on latent reasoning concepts, the paper introduces novel components like step-level alignment and personalized Gaussian mixture distributions for diverse reasoning paths, representing a substantial variation from prior work."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly enough for reimplementation with detailed explanations of the two-stage framework, though no mention of code or dataset availability is provided in the abstract."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The abstract clearly articulates the problem, proposed solution, and core contributions with well-defined technical components and experimental validation across multiple datasets."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM-based recommendation systems, a core application area for builders working with LLMs, with clear relevance to practical implementation challenges like efficiency and personalization."
+    }
+  },
+  "composite": 7.45
+}

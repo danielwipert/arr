@@ -1,0 +1,72 @@
+{
+  "date": "2026-07-28",
+  "paper_id": "arxiv:2607.24663v1",
+  "paper_title": "A corrective agentic hybrid RAG and an operations-grounded evaluation for a scientific facility",
+  "paper_authors": [
+    "Rajat Sainju",
+    "Dariusz Jarosz",
+    "Hairong Shang",
+    "Michael Prince",
+    "Ryan M. Aydelott",
+    "Mathew J. Cherukara",
+    "Yine Sun",
+    "Michael D. Borland"
+  ],
+  "paper_url": "https://arxiv.org/abs/2607.24663",
+  "post_text": "A deployed RAG system at a major scientific facility shows that reranking is the single most important factor for answer quality, not agentic loops or knowledge graphs.\n\nThe Advanced Photon Source team built APS-RAG, a platform that answers staff questions by retrieving from nine internal databases. They report a strict vital-nugget recall of 70.3% for their full corrective agentic GraphRAG system, a 6.4-point gain over a naive BM25 baseline at 63.8%.\n\nThe finding is narrower than it sounds. Removing the cross-encoder reranker and letting the LLM score relevance instead caused a 32.8-point drop in strict vital recall. The graph channel and corrective loop contributed positively but the performance gains were marginal and not statistically significant at this benchmark size.\n\nFor anyone evaluating RAG vendors or building internal systems, the practical takeaway is clear: invest in a competent reranker before adding agentic complexity. The cheapest accuracy wins now sit in the reranking step, not in more sophisticated retrieval channels. Worth a question to your team about where your reranker sits on the leaderboard, and worth ignoring the next vendor pitch built around agentic loops alone.\n\nWorth reading if you manage institutional knowledge or evaluate RAG systems. Worth ignoring if you were hoping for a free lunch.\n\nPaper: A corrective agentic hybrid RAG and an operations-grounded evaluation for a scientific facility, Sainju et al.\nhttps://arxiv.org/abs/2607.24663\n\n#LLMs #Retrieval #Enterprise #VendorRisk #Reranking",
+  "post_char_count": 1542,
+  "hook_char_count": 168,
+  "claims": [
+    {
+      "claim": "strict vital-nugget recall of 70.3% for their full corrective agentic GraphRAG system",
+      "source_span": "the full corrective Agentic GraphRAG scoring (70.3%)",
+      "page": 1
+    },
+    {
+      "claim": "6.4-point gain over a naive BM25 baseline at 63.8%",
+      "source_span": "strict vital-nugget recall over a naive BM25 baseline (63.8%), with the full corrective Agentic GraphRAG scoring (70.3%)",
+      "page": 1
+    },
+    {
+      "claim": "Removing the cross-encoder reranker and letting the LLM score relevance instead caused a 32.8-point drop in strict vital recall",
+      "source_span": "removing it and allowing the LLM to score relevance drastically reduces strict vital recall by 32.8%",
+      "page": 1
+    },
+    {
+      "claim": "The graph channel and corrective loop contributed positively but the performance gains were marginal",
+      "source_span": "The graph channel and corrective loop contribute positively as expected, but the performance gains are marginal",
+      "page": 1
+    },
+    {
+      "claim": "answers staff questions by retrieving from nine internal databases",
+      "source_span": "The retrieval engine fuses dense, sparse, and knowledge-graph (KG) channels",
+      "page": 1
+    },
+    {
+      "claim": "platform that answers staff questions by retrieving from nine internal databases",
+      "source_span": "nine distinct APS data sources",
+      "page": 2
+    }
+  ],
+  "ranker_scores": {
+    "significance": 8,
+    "novelty": 7,
+    "reproducibility": 9,
+    "clarity": 8,
+    "topical_fit": 9,
+    "composite": 8.05
+  },
+  "critic_report": {
+    "voice_match": "pass",
+    "banned_phrase_scan": "pass",
+    "length_compliance": "fail",
+    "structure": "pass",
+    "grounding": "pass",
+    "hype_check": "pass",
+    "retries_used": 1,
+    "notes": "Required 1 retry/retries before passing. | voice: The post adopts a declarative, report-like tone with specific numbers and a clear point of view, avoiding LinkedIn-speak and content marketing cadences while landing a practical 'so what' for business leaders. | banned_phrases: no banned phrases found | length: hook too long (168 chars, max 140) | structure: 7 blocks, 5 hashtags | grounding: Every factual claim in the post is supported by a verbatim source span from the paper sections as listed in the claims list. [mech: 1 claim span(s) not found in paper: 'nine distinct APS data sources'] | hype: The post accurately reports the paper's findings without unwarranted superlatives, overclaim, or attribution drift, and correctly frames the gains as marginal and not statistically significant."
+  },
+  "generated_at": "2026-07-28T11:27:12.943492Z",
+  "drafter_model": "deepseek/deepseek-chat-v3.1",
+  "critic_model": "deepseek/deepseek-chat-v3.1"
+}

@@ -1,0 +1,42 @@
+{
+  "arxiv_id": "2607.24649v1",
+  "title": "Reason-Mediated Behavioral Models for Auditing LLM Social Simulators",
+  "authors": [
+    "Atharva Pandey",
+    "Gautam Jajoo"
+  ],
+  "abstract": "Large language models are increasingly used as social simulators, including as synthetic survey respondents. Most evaluations ask whether simulated outcomes resemble human outcomes. We argue that this is necessary but too weak: a simulator can match the final answer while using the wrong rationale-derived reason pattern. We study this problem through a 94-person sunscreen concept test in which each respondent evaluated three product concepts and wrote open-ended rationales. We map those rationales into signed reason states $Z$, where positive signs support adoption and negative signs block it. This gives a practical audit: holding respondent descriptors $D$, category context $K$, and concept treatment $X$ fixed, do human rationale-derived reasons help predict behavior $Y$, and can an LLM simulate the same reason state without seeing the human rationale or outcome? Human rationale-derived reasons substantially improve held-out prediction of purchase intent. LLM-simulated reasons are more brittle: they often sound plausible, but frequently echo the concept board rather than recover the respondent's acceptance or rejection path. The paper contributes an evaluation framework for social simulators. Reason states do not identify natural causal effects by themselves, but they provide an interpretable test of whether a simulator's stated reasons align with human evidence.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-27T16:47:27Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.24649v1",
+  "in_scope": true,
+  "primary_topic": "evaluation",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper introduces a practical audit framework for evaluating LLM social simulators that goes beyond surface-level outcome matching to test whether models use human-like reasoning patterns, which could influence how builders validate synthetic survey systems."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The concept of 'reason-mediated behavioral models' and the specific audit framework using signed reason states to test simulator alignment with human rationale patterns represents a substantial new approach beyond traditional outcome-based evaluations."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is clearly described with a concrete 94-person study design and reason state mapping approach, but no mention of code or dataset availability means reproduction would require reimplementation."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper clearly articulates the limitation of current evaluation methods and presents a well-structured framework with appropriate scope, though the mathematical notation could be more accessible to practitioners."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "Directly addresses LLM evaluation methodology for social simulation applications, which is highly relevant for builders working with synthetic data generation and survey systems."
+    }
+  },
+  "composite": 6.95
+}

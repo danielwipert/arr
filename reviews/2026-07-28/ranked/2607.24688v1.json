@@ -1,0 +1,47 @@
+{
+  "arxiv_id": "2607.24688v1",
+  "title": "Beyond Scale and Generation: Understanding Language Model-based Entity Matching",
+  "authors": [
+    "Zeyu Zhang",
+    "Xue Li",
+    "Iacer Calixto",
+    "Paul Groth",
+    "Sebastian Schelter"
+  ],
+  "abstract": "Entity matching identifies records that refer to the same real-world entity. Language models can be adapted to this task through bi-encoder, cross-encoder, and generative matcher architectures. However, prior studies often conflate matcher architecture with differences in model backbone, model variant(reflecting different pretraining objectives), and model size, making it difficult to isolate the sources of performance gains. We address this issue through a controlled factorial study spanning three matcher architectures, three model variants and three model sizes from the Qwen3 family, and nine datasets, totaling 1,215 fine-tuning runs. We also evaluate cross-dataset transferability and computational cost.\n  Our results show that model variant is critical for bi-encoders: embedding-oriented variants provide stronger initialization and more favorable representation geometry predictive of downstream matching performance. Cross-encoders retain a consistent advantage over bi-encoders because they jointly encode record pairs rather than representing each record independently, although larger models partially narrow this gap. Generative matchers do not universally outperform cross-encoders. Instead, their advantages concentrate under distribution shift, including subtle unseen differences in record schemas and cross-dataset transfer. We further find that larger models rely more heavily on shortcut learning and therefore do not necessarily perform better. These findings clarify the factors underlying performance differences across matcher architectures and motivate future research and benchmark designs that better disentangle architectural choices from model-level factors while explicitly evaluating distribution shift and cross-dataset transferability. We release our experimental results, code, training scripts, and evaluation data at https://github.com/Jantory/llm-trained-matcher.",
+  "primary_cat": "cs.DB",
+  "all_cats": [
+    "cs.DB",
+    "cs.CL",
+    "cs.LG"
+  ],
+  "submitted_at": "2026-07-27T17:29:18Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.24688v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper provides concrete guidance on architecture selection for entity matching systems, showing that cross-encoders maintain advantages over bi-encoders and generative approaches, which directly impacts how builders should structure their data matching pipelines."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The factorial study design systematically disentangles architecture, model variant, and size effects in entity matching, providing a more rigorous analysis than prior work that often conflated these factors."
+    },
+    "reproducibility": {
+      "score": 9,
+      "justification": "The authors release all experimental results, code, training scripts, and evaluation data at a public GitHub repository, enabling full reproduction of their 1,215 fine-tuning runs."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper clearly articulates the research gap, methodology, and key findings about model variant importance for bi-encoders and cross-encoder advantages, with well-scoped claims supported by extensive experimentation."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "Entity matching is a core data processing task for LLM applications, and the systematic comparison of different LM-based architectures provides practical insights for builders implementing data pipelines."
+    }
+  },
+  "composite": 7.95
+}
