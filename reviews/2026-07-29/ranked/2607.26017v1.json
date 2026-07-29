@@ -1,0 +1,51 @@
+{
+  "arxiv_id": "2607.26017v1",
+  "title": "UniMem: Complementary Episodic-to-Parametric Memory for Boundary-Agnostic Task Streams",
+  "authors": [
+    "Siyu Xia",
+    "Chenheng Zhang",
+    "Yanting Wu",
+    "Haoxuan Li",
+    "Jiajun Chai",
+    "Xiaohan Wang",
+    "Guojun Yin",
+    "Wei Lin",
+    "Zhouchen Lin",
+    "Haifeng Zhang",
+    "Jun Wang"
+  ],
+  "abstract": "Memory is essential for LLM agents to accumulate task experience and reuse task-specific execution strategies. However, real-world deployment over boundary-agnostic and evolving task streams exposes a fundamental stability-plasticity dilemma. External retrieval-based memory can rapidly absorb new evidence, but it often fails to internalize recurring execution patterns and incurs inference-time retrieval overhead. Parametric memory enables stable and efficient execution once learned, but typically relies on explicit task boundaries and fixed parameter budgets. Inspired by the human brain, which balances plasticity and stability through complementary episodic storage and gradual consolidation, we propose UniMem, a self-routing framework for autonomous memory management. UniMem uses learnable routing tokens as memory controllers, enabling adaptive coordination between complementary memory pathways: novel or sparse tasks are retained in an episodic buffer for retrieval-augmented execution, while recurring and reliable patterns are consolidated into expandable parametric memory. By decoupling task identification from task execution with routing tokens and parametric memory blocks, UniMem expands memory on demand without task labels during deployment or uncontrolled parameter growth. Experiments on long-horizon streaming task sequences show that UniMem consistently outperforms baselines while maintaining execution fidelity, achieving an average gain of 4.0 EM points across three backbone models.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL"
+  ],
+  "submitted_at": "2026-07-28T17:28:21Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.26017v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces a practical memory management framework that addresses the stability-plasticity dilemma in LLM agents, directly impacting how builders design systems for evolving task streams."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The self-routing framework with complementary episodic and parametric memory pathways represents a substantial new variation on memory management, distinct from prior approaches in its adaptive coordination mechanism."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement with routing tokens and parametric memory blocks, but no mention of code or artifacts being publicly available."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with clear problem framing and appropriate scoping of claims, though specific evaluation details are not fully elaborated in the abstract."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM agent memory management, a core concern for builders working with long-horizon streaming task sequences and practical deployment scenarios."
+    }
+  },
+  "composite": 7.25
+}

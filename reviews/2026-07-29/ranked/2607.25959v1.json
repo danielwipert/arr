@@ -1,0 +1,44 @@
+{
+  "arxiv_id": "2607.25959v1",
+  "title": "Detecting Knowledge Inconsistencies Across Text, Tables, and Knowledge Graphs",
+  "authors": [
+    "Fanfu Wei",
+    "Thibault Ehrhart",
+    "Raphaël Troncy"
+  ],
+  "abstract": "Wikipedia and Wikidata are widely used for information access, LLM pre-training, and retrieval-augmented generation. Their knowledge is deeply connected but scattered across text, tables, and knowledge graphs. This raises a practical question: when these modalities disagree, how can we detect and explain the conflict? We study this problem as \\emph{modality-level inconsistency detection}. We first introduce a taxonomy of cross-modal knowledge inconsistencies, covering information granularity differences, direct conflicts, temporal changes, and KG incompleteness. We then present \\textsc{Kontrast}, an automatic framework that uses Text-to-SPARQL and LLM reasoning to compare table-based answers with KG evidence and categorize the resulting inconsistencies. Experiments on various Table-QA datasets show that cross-modal inconsistencies are common and informative. They reveal not only true knowledge conflicts, but also missing KG structure and temporal mismatches while being limited by Text-to-SPARQL errors and noise. Our analysis shows that text, tables, and KGs can complement and correct one another through systematic comparison. \\textsc{Kontrast} provides a practical tool for large-scale knowledge auditing and establishes a benchmark for future work on cross-modal knowledge consistency. Code and data are available at https://github.com/ECLADATTA/KONTRAST.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-28T16:43:56Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.25959v1",
+  "in_scope": true,
+  "primary_topic": "rag",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper provides a practical framework for detecting knowledge inconsistencies across modalities, which directly impacts how builders approach knowledge validation in RAG systems and data quality assessment."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "Introduces a novel taxonomy of cross-modal knowledge inconsistencies and presents Kontrast as the first systematic framework for detecting and categorizing these specific modality-level conflicts."
+    },
+    "reproducibility": {
+      "score": 8,
+      "justification": "Code and data are publicly available at the provided GitHub repository, enabling competent teams to reproduce the framework with minor implementation effort."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "Well-written with clear problem definition, methodology description, and appropriately scoped claims about limitations and applications."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "Directly relevant to LLM builders working with multi-modal knowledge sources, RAG systems, and knowledge validation pipelines."
+    }
+  },
+  "composite": 7.45
+}

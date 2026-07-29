@@ -1,0 +1,49 @@
+{
+  "arxiv_id": "2607.26057v1",
+  "title": "Pass the Baton: Trajectory-Relayed On-Policy Distillation",
+  "authors": [
+    "Haolei Xu",
+    "Xiaowen Xu",
+    "Haiwen Hong",
+    "Zixuan Ni",
+    "Hongxing Li",
+    "Yiwen Qiu",
+    "Weiming Lu",
+    "Yongliang Shen"
+  ],
+  "abstract": "On-policy distillation (OPD) grounds token-level supervision in the student's own trajectory, yet suffers from prefix failure: once the student commits to a wrong reasoning direction, all subsequent generation builds on this deviation, producing misdirected continuations that elicit unreliable supervision and waste compute. We identify a teacher-student continuation asymmetry on failed prefixes, where the teacher tends to redirect while the student continues along the original direction, and convert it into a label-free handoff trigger in Relay On-Policy Distillation (Relay-OPD). During training, Relay-OPD constructs relay trajectories by letting the teacher briefly take over at detected trigger points to produce a teacher leg, after which the student resumes and is optimized on the resulting trajectory. A limited relay budget concentrates intervention on critical early positions while limiting departure from the student policy. With a Qwen3-4B-Instruct-2507 teacher and Qwen3-0.6B/1.7B-Non-Thinking students on eight mathematical reasoning benchmarks, Relay-OPD achieves the best or second-best results on every benchmark, outperforming standard OPD by +5.73% and the strongest baseline FastOPD by +1.49% on average for 1.7B, with consistent gains at 0.6B. Training trajectory length is reduced by over 50%.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-28T17:59:46Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.26057v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces a method that reduces training trajectory length by over 50% while improving mathematical reasoning performance, directly impacting how builders approach knowledge distillation efficiency."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The relay mechanism with teacher takeover at trigger points represents a substantial new variation in on-policy distillation, distinct from prior approaches like standard OPD and FastOPD."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is clearly described with specific benchmarks and model architectures mentioned, but no mention of code or artifacts being publicly available."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "Well-written with clear problem identification (prefix failure) and solution description, supported by comprehensive benchmarking across eight mathematical reasoning tasks."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM knowledge distillation and efficiency improvements, core concerns for builders working with smaller, more deployable models."
+    }
+  },
+  "composite": 7.45
+}

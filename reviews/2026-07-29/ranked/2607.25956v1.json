@@ -1,0 +1,46 @@
+{
+  "arxiv_id": "2607.25956v1",
+  "title": "Large Language Model for Operations Research Formulation Selection in Multi-Warehouse Inventory Allocation",
+  "authors": [
+    "Jintao Xu",
+    "Yingzheng Ma",
+    "Jiong Dong",
+    "Yongzhi Qi",
+    "Jianshen Zhang"
+  ],
+  "abstract": "Multi-warehouse inventory allocation is typically formulated as a mixed-integer programming (MIP) problem, yet no single formulation consistently matches heterogeneous instance-level regimes induced by demand concentration, inventory imbalance, replenishment scale, service constraints, and forecast volatility. We study this issue as instance-wise operations research (OR) formulation selection, where each allocation instance is assigned to a solver-executable formulation from a candidate OR expert library. We propose a solver-guided large language model (LLM) framework for OR formulation selection, in which each OR expert corresponds to a MIP formulation encoding a distinct allocation priority. To train the selector, the framework first constructs balanced expert-conditioned supervised fine-tuning (SFT) records for schema learning, and then uses MIP solver evaluation on historical instances to convert solver-evaluated allocation-quality gaps into margin-weighted identity preference optimization (IPO) preferences and per-instance expert-score metadata for reward lookup during group relative policy optimization (GRPO) to assign rewards to sampled responses. Experiments on multi-warehouse inventory allocation instances from JD$\\mathord{.}$com, one of China's largest e-retailers, demonstrate that GRPO substantially improves expert-selection accuracy relative to the SFT+IPO selector and, more importantly, produces higher realized allocation quality than both the preference-trained selector and the best fixed formulation. With GRPO, Hit Ratio@1 and Hit Ratio@2 increase from 21.45% to 50.42% and from 70.47% to 82.31%. The resulting selector achieves an allocation accuracy gain of 12.57 percentage points over the incumbent baseline, outperforming both the SFT+IPO selector and the best fixed OR expert, and reduces the gap to the ex-post oracle to 4.85 percentage points.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI",
+    "math.OC"
+  ],
+  "submitted_at": "2026-07-28T16:41:54Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.25956v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper demonstrates measurable 12.57 percentage point gains in allocation accuracy over baselines, providing concrete improvements for inventory optimization systems."
+    },
+    "novelty": {
+      "score": 6,
+      "justification": "While applying LLMs to OR formulation selection is novel, the approach builds on established preference optimization techniques like IPO and extends them with GRPO."
+    },
+    "reproducibility": {
+      "score": 4,
+      "justification": "The method is described but no code or datasets are mentioned, and reproduction would require significant guesswork about implementation details."
+    },
+    "clarity": {
+      "score": 5,
+      "justification": "The paper is readable but contains dense technical jargon and some overclaiming in abstract versus actual results scope."
+    },
+    "topical_fit": {
+      "score": 7,
+      "justification": "The paper applies LLMs to a practical optimization problem with clear relevance to builders working on inventory systems and decision automation."
+    }
+  },
+  "composite": 5.85
+}
