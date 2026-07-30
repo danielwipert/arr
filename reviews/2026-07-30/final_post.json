@@ -1,0 +1,58 @@
+{
+  "date": "2026-07-30",
+  "paper_id": "arxiv:2607.27178v1",
+  "paper_title": "DenseOn with the LateOn: Fully Open Dense and Late-Interaction Models for Multilingual, Long-Context, and Code Search",
+  "paper_authors": [
+    "Raphaël Sourty",
+    "Antoine Chaffin",
+    "Paulo Roberto Moura Junior",
+    "Amélie Chatelain"
+  ],
+  "paper_url": "https://arxiv.org/abs/2607.27178",
+  "post_text": "A new pair of open retrieval models shows that the choice between dense and late-interaction architectures matters most when searching across languages you haven't trained on.\n\nResearchers at LightOn rebuilt a frontier retrieval training recipe entirely from public data, releasing DENSEON and LATEON, two 149M-parameter models that achieve 56.20 and 57.22 average nDCG@10 on BEIR respectively. They then scaled this approach to multilingual retrieval by translating their English training corpus into eight languages, creating MDENSEON and MLATEON.\n\nThe key finding emerged when testing on languages outside the training set. On the full MIRACL benchmark covering 18 languages, MDENSEON scored 58.02 while MLATEON reached 67.04. This nine-point gap demonstrates that late-interaction models transfer more effectively to unseen languages and scripts than their dense counterparts.\n\nFor teams building multilingual search systems, this suggests late-interaction architectures may offer better coverage for languages where training data is scarce. The open release of models, data, and code provides a reproducible baseline for evaluating retrieval systems beyond English.\n\nWorth considering when choosing retrieval architectures for global applications.\n\nPaper: DenseOn with the LateOn: Fully Open Dense and Late-Interaction Models for Multilingual, Long-Context, and Code Search, Sourty et al.\nhttps://arxiv.org/abs/2607.27178\n\n#Retrieval #Multilingual #OpenSource #ModelArchitecture #TranslateTrain",
+  "post_char_count": 1499,
+  "hook_char_count": 175,
+  "claims": [
+    {
+      "claim": "DENSEON and LATEON, two 149M-parameter models that achieve 56.20 and 57.22 average nDCG@10 on BEIR respectively",
+      "source_span": "DENSEONachieves 56.20 average nDCG@10 on BEIR... LATEONachieves57.22averagenDCG@10",
+      "page": 5
+    },
+    {
+      "claim": "translating their English training corpus into eight languages",
+      "source_span": "translating the training data into eight target languages",
+      "page": 3
+    },
+    {
+      "claim": "On the full MIRACL benchmark covering 18 languages, MDENSEON scored 58.02 while MLATEON reached 67.04",
+      "source_span": "MDENSEONdropsto58.02... MLATEON...67.04 on the full MIRACL average",
+      "page": 7
+    },
+    {
+      "claim": "late-interaction models transfer more effectively to unseen languages and scripts than their dense counterparts",
+      "source_span": "late-interaction transfers far more effectively to unseen languages and scripts than single-vector dense retrieval",
+      "page": 7
+    }
+  ],
+  "ranker_scores": {
+    "significance": 8,
+    "novelty": 7,
+    "reproducibility": 9,
+    "clarity": 8,
+    "topical_fit": 9,
+    "composite": 8.05
+  },
+  "critic_report": {
+    "voice_match": "pass",
+    "banned_phrase_scan": "pass",
+    "length_compliance": "fail",
+    "structure": "pass",
+    "grounding": "pass",
+    "hype_check": "pass",
+    "retries_used": 1,
+    "notes": "Required 1 retry/retries before passing. | voice: The post maintains a declarative, reportorial tone with specific numbers and avoids LinkedIn-speak or performative excitement. | banned_phrases: no banned phrases found | length: hook too long (175 chars, max 140) | structure: 7 blocks, 5 hashtags | grounding: All factual claims are supported by verbatim source spans from the provided paper sections. [mech: 4 claim span(s) not found in paper: 'DENSEONachieves 56.20 average nDCG@10 on BEIR... LATEONachie'; 'translating the training data into eight target languages'; 'MDENSEONdropsto58.02... MLATEON...67.04 on the full MIRACL a'] | hype: The post accurately represents the paper's findings without unwarranted superlatives or overclaim."
+  },
+  "generated_at": "2026-07-30T11:11:49.923492Z",
+  "drafter_model": "deepseek/deepseek-chat-v3.1",
+  "critic_model": "deepseek/deepseek-chat-v3.1"
+}

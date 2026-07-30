@@ -1,0 +1,46 @@
+{
+  "arxiv_id": "2607.27109v1",
+  "title": "MMAC: A Massive Multi-dimensional Benchmark for Audio Captioning",
+  "authors": [
+    "Weijie Wu",
+    "Junbo Li",
+    "Lin Li",
+    "Jun Fang",
+    "Qingyang Hong"
+  ],
+  "abstract": "With the development of audio large language models (AudioLLMs), audio captioning needs to move from brief descriptions toward open-ended and fine-grained free-form descriptions. Existing evaluations often focus on generation quality or task performance, making it difficult to diagnose information coverage and description reliability. We propose MMAC, a \\textbf{M}assive \\textbf{M}ulti-dimensional benchmark for \\textbf{A}udio \\textbf{C}aptioning. MMAC contains 5,638 audio clips from more than 20 data sources, covering 6 capability categories and 15 evaluation dimensions. Given a model-generated caption, MMAC checks whether it mentions relevant information in the target dimension and whether the mentioned content is consistent with the reference label. We evaluate representative open-source and proprietary AudioLLMs. Results show clear differences across evaluation dimensions, information coverage, and description reliability. We will release the MMAC benchmark and evaluation code.",
+  "primary_cat": "cs.SD",
+  "all_cats": [
+    "cs.SD",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-29T16:38:08Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.27109v1",
+  "in_scope": true,
+  "primary_topic": "evaluation",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The MMAC benchmark provides a standardized evaluation framework that could influence how builders assess and improve audio captioning models, addressing critical gaps in information coverage and reliability assessment."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "While building on existing audio captioning work, MMAC introduces a multi-dimensional evaluation approach covering 6 capability categories and 15 dimensions, which represents a substantial new variation in benchmarking methodology."
+    },
+    "reproducibility": {
+      "score": 8,
+      "justification": "The paper explicitly states 'We will release the MMAC benchmark and evaluation code,' indicating that code and most artifacts will be publicly available with only minor reproduction friction."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper clearly articulates the problem space, methodology, and contributions, with defensible evaluation methodology and appropriately scoped claims about benchmarking audio captioning models."
+    },
+    "topical_fit": {
+      "score": 6,
+      "justification": "While focused on audio LLMs rather than text LLMs, the benchmarking methodology and evaluation framework are adjacent to core LLM builder concerns, requiring some explanation of relevance to the broader LLM building community."
+    }
+  },
+  "composite": 7.1
+}

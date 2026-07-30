@@ -1,0 +1,50 @@
+{
+  "arxiv_id": "2607.27172v1",
+  "title": "Improving Item Discoverability in e-Commerce Search via Related Intent Generation",
+  "authors": [
+    "Ji Xin",
+    "Xiao Xiao",
+    "Ishan Bhatt",
+    "Vinesh Gudla",
+    "Trace Levinson",
+    "Raochuan Fan",
+    "Shishir Kumar Prasad",
+    "Prakash Putta",
+    "Tejaswi Tenneti"
+  ],
+  "abstract": "Traditional search systems are optimized to retrieve items that strictly match a query, often prioritizing precision over recall. In e-commerce marketplaces and particularly grocery, this paradigm is limiting, as user satisfaction and commercial outcomes depend heavily on the discoverability of substitute, complementary, and thematically related items. In this paper, we present a scalable system for discovery-augmented search that leverages intent-conditioned recall expansion. Our approach generates implicit user intents to expand candidate recall while maintaining relevance.\n  The system addresses the cost-quality tradeoff of generative retrieval through a two-stage hybrid architecture. First, we leverage closed-weight large language models (LLMs) to maximize discoverability for head queries. To extend these benefits to tail queries, we then introduce a finetuned small language model (SLM), trained via LoRA adapters and teacher-student distillation. We evaluate the system using a rigorous dual framework: (a) LLM-as-a-judge metrics validated against human preferences for semantic quality, and (b) end-to-end session-level purchase analysis. Results demonstrate that our approach improves both intent generation quality and downstream retrieval effectiveness, extending discovery coverage from approximately 60% to 80% of query traffic at roughly 30% of the teacher model's inference cost, offering a viable path for deployment in large-scale marketplaces. Beyond relevance gains, discovery-augmented search may serve as a marketplace-balancing mechanism, giving long-tail and emerging supply an opportunity for query-conditioned exposure.",
+  "primary_cat": "cs.IR",
+  "all_cats": [
+    "cs.IR",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-29T17:46:35Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.27172v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper refines the known technique of retrieval augmentation with a two-stage hybrid architecture that measurably improves coverage from 60% to 80% of query traffic at 30% of the cost, directly impacting decisions about deploying generative retrieval in production e-commerce systems."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The work presents a substantial new variation by combining closed-weight LLMs for head queries with a distilled, LoRA-finetuned SLM for tail queries to address the cost-quality tradeoff in a scalable discovery system."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement the two-stage hybrid architecture and training approach, but the paper does not mention public release of code, weights, or datasets."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is solidly written with a defensible dual evaluation framework using both LLM-as-a-judge metrics validated against human preferences and end-to-end session-level purchase analysis."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "The paper is directly in the applied-AI sweet spot, focusing on the practical deployment of LLMs and SLMs via techniques like LoRA and distillation to solve a core engineering problem in scalable e-commerce search."
+    }
+  },
+  "composite": 7.25
+}

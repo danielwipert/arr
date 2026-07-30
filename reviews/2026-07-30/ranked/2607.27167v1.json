@@ -1,0 +1,48 @@
+{
+  "arxiv_id": "2607.27167v1",
+  "title": "SpecFirst: Behavioral Specification Elicitation as a First-Class Step in Agent-Based Program Synthesis from Scratch",
+  "authors": [
+    "Yihao Chen",
+    "Shi Chang",
+    "Feng Lin",
+    "Khaled Chawa",
+    "Boyuan Chen",
+    "Shaowei Wang",
+    "Ahmed E. Hassan"
+  ],
+  "abstract": "LLM-based agents excel at software engineering tasks where an existing codebase provides context, but constructing a program from scratch remains fundamentally harder. Recent benchmarks such as ProgramBench quantify this gap: given only natural-language documentation and an execute-only binary as a behavioral oracle, even frontier models solve fewer than 1% of instances. Existing frameworks conflate documentation reading, behavioral exploration, and code synthesis into a single pass, causing agents to probe insufficiently, lose behavioral intent as context drifts, and propagate early misinterpretations into the final implementation. Inspired by classical requirements engineering, we argue that behavioral specification elicitation should be a first-class phase that precedes implementation. We present SpecFirst, a two-stage framework that forces the specification elicitation before code synthesis. A dedicated spec agent first probes the binary and combines observations with documentation into a structured specification. Next, a code synthesis agent then uses this specification to drive implementation. This decomposition resolves documentation ambiguities before coding begins and provides a stable behavioral reference throughout synthesis. We evaluate SpecFirst on all 200 ProgramBench instances across four models spanning two families and an order of magnitude of capability. SpecFirst consistently outperforms the single-loop baseline, improving test pass rates by 6.9%-21.3% and binary exploration coverage by 9.4%-18.5%, all statistically significant. Behavioral analysis on code synthesis further shows that a prior specification enables earlier and more sustained code construction. Our results demonstrate that an explicit requirements-engineering phase is an effective paradigm for from-scratch program construction.",
+  "primary_cat": "cs.SE",
+  "all_cats": [
+    "cs.SE",
+    "cs.CL"
+  ],
+  "submitted_at": "2026-07-29T17:42:47Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.27167v1",
+  "in_scope": true,
+  "primary_topic": "applied_llm_systems",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces a framework that improves test pass rates by 6.9%-21.3% on ProgramBench, directly addressing the critical problem of from-scratch program synthesis where current models fail on 99% of instances."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The paper introduces a novel two-stage framework inspired by classical requirements engineering that separates specification elicitation from code synthesis, a distinct approach from existing single-pass methods."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is clearly described with detailed framework architecture and evaluation methodology, but no mention of code or artifacts being publicly available."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-structured with clear problem framing, method description, and comprehensive evaluation across 200 ProgramBench instances with statistically significant results."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM-based program synthesis, a core challenge for builders working with AI coding assistants and agent systems."
+    }
+  },
+  "composite": 7.45
+}

@@ -1,0 +1,45 @@
+{
+  "arxiv_id": "2607.27178v1",
+  "title": "DenseOn with the LateOn: Fully Open Dense and Late-Interaction Models for Multilingual, Long-Context, and Code Search",
+  "authors": [
+    "Raphaël Sourty",
+    "Antoine Chaffin",
+    "Paulo Roberto Moura Junior",
+    "Amélie Chatelain"
+  ],
+  "abstract": "State-of-the-art retrieval models increasingly rely on closed training data, creating a reproducibility gap. We present an open end-to-end recipe for training retrieval models and study how English supervision transfers to multilingual retrieval through translate-train. We first reconstruct and curate 665M English contrastive pre-training pairs from 1.4B pairs across 34 public sources and build 1.88M supervised fine-tuning pairs with mined hard negatives. Training yields two 149M-parameter models: DenseOn, a single-vector dense model, and LateOn, a ColBERT-style late-interaction model. They achieve 56.20 and 57.22 average nDCG@10 on BEIR, respectively, setting new state-of-the-art results for this size class. We then translate the validated English data into eight languages, yielding 2.8B pairs with cross-lingual samples, and train mDenseOn and mLateOn, two 307M-parameter models built on mmBERT-base. Despite sharing their backbone, data, and objectives, their representations behave differently: the dense model is strong on English and translated languages but degrades outside translate-train support, whereas the late-interaction model generalizes better to unseen languages and scripts. This suggests that token-level matching turns translate-train from a target-language expansion strategy into a multilingual generalization recipe. We publicly release the models, datasets, and training code.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.IR"
+  ],
+  "submitted_at": "2026-07-29T17:50:51Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.27178v1",
+  "in_scope": true,
+  "primary_topic": "rag",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper provides a fully open recipe for training retrieval models that achieves state-of-the-art results for their size class, directly impacting builders' decisions about open vs. closed training data and multilingual retrieval strategies."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The work introduces a systematic study of how English supervision transfers to multilingual retrieval through translate-train, revealing distinct behaviors between dense and late-interaction models that provide new insights into multilingual generalization."
+    },
+    "reproducibility": {
+      "score": 9,
+      "justification": "The authors publicly release models, datasets (665M English pairs and 2.8B multilingual pairs), and training code, providing all necessary artifacts for reproduction."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with clear methodology, specific performance metrics (56.20 and 57.22 nDCG@10 on BEIR), and appropriately scoped claims about the differences between dense and late-interaction models."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "This is directly in the LLM and applied-AI sweet spot, providing practical retrieval models and training recipes highly relevant to builders working with multilingual, long-context, and code search applications."
+    }
+  },
+  "composite": 8.05
+}

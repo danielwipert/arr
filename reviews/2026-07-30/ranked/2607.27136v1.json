@@ -1,0 +1,45 @@
+{
+  "arxiv_id": "2607.27136v1",
+  "title": "KAMR: Grounding Generation via Knowledge-Aligned Multi-hop Retrieval",
+  "authors": [
+    "Xiaochen Wang",
+    "Yuan Zhong",
+    "Haoyu Wang",
+    "Ting Wang",
+    "Fenglong Ma"
+  ],
+  "abstract": "Graph-based retrieval-augmented generation increasingly relies on multi-hop retrieval, where answering a query requires composing multiple connected knowledge-graph triplets. However, existing retrievers often rank triplets independently via global semantic matching. Moreover, many multi-hop benchmarks provide only final answers, which limits supervision for query--triplet alignment and causes structurally necessary but weakly aligned facts to be missed. To address these issues, we propose a knowledge-aligned multi-hop retriever, KAMR, which distinguishes anchor triplets that are strongly constrained by the query from connected triplets that are weakly aligned yet structurally linked to the anchors. To mitigate the lack of query-triplet alignment supervision, we build a partial alignment dataset by masking triplet elements and prompting an LLM to generate corresponding queries, and optimize two contrastive objectives for pair-level and element-level matching. At inference time, KAMR retrieves anchors globally and then expands locally to collect connected evidence. Across four benchmarks, three LLM backbones, and fourteen baselines, KAMR consistently improves multi-hop retrieval and downstream question answering performance.",
+  "primary_cat": "cs.IR",
+  "all_cats": [
+    "cs.IR"
+  ],
+  "submitted_at": "2026-07-29T17:07:37Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.27136v1",
+  "in_scope": true,
+  "primary_topic": "rag",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces a novel retrieval approach that directly addresses a key challenge in RAG systems - handling multi-hop reasoning with structurally connected but weakly aligned facts - which could influence how builders design retrieval components for complex queries."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The anchor triplet vs connected triplet distinction and the partial alignment dataset generation via LLM prompting represent substantial new variations in multi-hop retrieval methodology beyond standard semantic matching approaches."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly enough for reimplementation, but the paper does not mention code or dataset availability, requiring implementation from scratch."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper clearly articulates the problem, methodology, and evaluation across multiple benchmarks and baselines, with well-scoped claims supported by comprehensive experiments."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses RAG architecture improvements for LLMs, which is a core concern for builders implementing retrieval-augmented generation systems."
+    }
+  },
+  "composite": 7.45
+}

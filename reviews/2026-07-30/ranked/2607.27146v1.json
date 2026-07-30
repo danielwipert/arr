@@ -1,0 +1,49 @@
+{
+  "arxiv_id": "2607.27146v1",
+  "title": "MindForge: Teaching Small Language Models Whole-Life-Cycle Software Engineering via Source-Free Program Synthesis",
+  "authors": [
+    "Yihao Chen",
+    "Shi Chang",
+    "Khaled Chawa",
+    "Feng Lin",
+    "Boyuan Chen",
+    "Shaowei Wang",
+    "Ahmed E. Hassan"
+  ],
+  "abstract": "Coding agents have made substantial progress on software engineering tasks that modify existing codebases, including bug fixing and feature implementation. However, constructing a complete program from scratch remains a major challenge: even the frontier models evaluated on ProgramBench fully resolve fewer than 1% of tasks. One obstacle is the lack of scalable training environments for this from-scratch setting, spanning the whole software engineering life cycle, as existing environment-construction frameworks focus only on a single phase in software development. To address this gap, we introduce MindForge, an automated pipeline that converts open-source command-line programs into source-free environments that expose only a compiled reference executable and its documentation. Using MindForge, we construct training environments from repositories disjoint from those in ProgramBench, and curate a high-quality data recipe consisting of program synthesis trajectories using GLM-5.2 as the teacher agent. Fine-tuning Qwen3.6-27B on these trajectories increases its ProgramBench average test pass rate from 37.98% to 49.51%, achieving performance comparable to substantially larger frontier models. Moreover, the fine-tuned model consistently improves over the base model across all seven unseen software engineering benchmarks, spanning long-horizon repository generation and translation, bug fixing, feature implementation, and cross-language issue resolution, with absolute gains of 31.00 points on RepoZero-C2Rust, 14.16 on DeepSWE, 10.70/4.56 on NL2Repo-Bench (with/without tests), 5.04 on SWE-bench Verified, 5.93 on SWE-bench Pro, 5.22 on SWE-bench Multilingual, and 4.94 on FeatBench.",
+  "primary_cat": "cs.SE",
+  "all_cats": [
+    "cs.SE",
+    "cs.CL",
+    "cs.LG"
+  ],
+  "submitted_at": "2026-07-29T17:23:02Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.27146v1",
+  "in_scope": true,
+  "primary_topic": "post_training",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper demonstrates a 11.53% absolute improvement on ProgramBench and consistent gains across 7 software engineering benchmarks, providing builders with a practical approach to enhance coding agents' program synthesis capabilities."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "MindForge introduces a novel source-free environment construction pipeline that converts command-line programs into training environments, addressing the gap in whole-life-cycle software engineering training."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is described clearly with specific performance metrics across multiple benchmarks, but the paper does not mention code or dataset availability for direct reproduction."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-structured with clear problem statement, methodology description, and comprehensive evaluation across multiple relevant benchmarks with specific numerical results."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses LLM capabilities for software engineering tasks, providing builders with concrete methods to improve coding agents' performance on real-world programming challenges."
+    }
+  },
+  "composite": 7.45
+}

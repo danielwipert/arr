@@ -1,0 +1,45 @@
+{
+  "arxiv_id": "2607.27130v1",
+  "title": "AgentMap: Joint Equivalence and Subsumption Discovery for Ontology Matching",
+  "authors": [
+    "Yiping Song",
+    "Jiaoyan Chen",
+    "Renate Schmidt",
+    "Hui Yang",
+    "Wen Zhang"
+  ],
+  "abstract": "Ontology matching (OM) has traditionally been formulated as either equivalence discovery or subsumption matching. The existing OM systems identify only one type of semantic correspondence and cannot simultaneously discover equivalence and subsumption mappings. In this paper, we introduce Hybrid Ontology Matching (HOM), a new OM task that unifies equivalence and subsumption discovery, and accordingly propose a Large Language Model (LLM)-based multi-agent OM framework AgentMap that is implemented by a series of interdependent semantic decisions. Given a concept in the source ontology, AgentMap integrates semantic retrieval, hierarchical search, and collaborative multi-agent LLM reasoning to progressively explore the target ontology, identifying either the equivalent concept, if one exists, or the most fine-grained subsumer. We further extend four OM datasets for a HOM benchmark and evaluate AgentMap under hybrid, equivalence-only, and subsumption-only settings. Experimental results show that AgentMap achieves promising performance on the hybrid setting, and at the same time outperforms equivalence matching and subsumption matching baselines on the equivalence-only and subsumption-only settings, respectively.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-29T16:58:10Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.27130v1",
+  "in_scope": true,
+  "primary_topic": "llm_capabilities",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 6,
+      "justification": "The paper introduces a novel LLM-based multi-agent framework for ontology matching that could influence how builders approach semantic integration tasks, though the application is somewhat specialized."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The paper introduces Hybrid Ontology Matching (HOM) as a new task that unifies equivalence and subsumption discovery, representing a substantial variation from prior work."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement with multi-agent LLM reasoning, but no mention of code or datasets being publicly available."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is well-structured with clear problem formulation, methodology description, and comprehensive evaluation across multiple settings."
+    },
+    "topical_fit": {
+      "score": 6,
+      "justification": "The paper applies LLMs in a multi-agent framework for semantic tasks, which is adjacent to but not central to mainstream LLM application building."
+    }
+  },
+  "composite": 6.2
+}
