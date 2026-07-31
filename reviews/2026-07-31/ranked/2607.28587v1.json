@@ -1,0 +1,44 @@
+{
+  "arxiv_id": "2607.28587v1",
+  "title": "PAIChecker: Uncovering and Checking PR-Issue Misalignment in SWE-Bench-Like Benchmarks",
+  "authors": [
+    "Manyi Wang",
+    "Junjielong Xu",
+    "Pinjia He"
+  ],
+  "abstract": "SWE-bench-like benchmarks are widely used for evaluating LLM's issue resolution capability. They typically follow a common construction pipeline: each PR (Pull Request) is paired with its linked issue by extracting issue references from the PR description; the issue description is used as the problem statement, and the PR patch serves as the test oracle. However, due to the inherent complexity of developing and maintaining large repositories, such PR-Issue pairings are often misaligned in practice. In this work, we systematically study SWE-bench Verified instances, finding that 13.6% exhibit misalignment across five patterns in eleven fine-grained scenarios. To enable reliable and scalable construction of those benchmarks in the future, we propose PAIChecker, a multi-agent system for checking PR-Issue misalignment in SWE-bench-like benchmarks. Specifically, PAIChecker adopts a three-phase design that combines specific pattern identification, cross-agent label synthesis, and code-level validation, thereby enabling more accurate, generalizable, and progressively verified detection. Experiments on SWE-Gym and SWE-bench Multilingual show that PAIchecker achieves the best performance across all four LLM backbones, reaching up to 92.12% and 91.67% binary accuracy, respectively.",
+  "primary_cat": "cs.SE",
+  "all_cats": [
+    "cs.SE",
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-30T17:42:44Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.28587v1",
+  "in_scope": true,
+  "primary_topic": "evaluation",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper identifies a critical flaw (13.6% misalignment) in widely used SWE-bench benchmarks and provides a tool to improve benchmark reliability, which directly impacts how builders should evaluate LLMs for code tasks."
+    },
+    "novelty": {
+      "score": 6,
+      "justification": "While the multi-agent approach builds on existing techniques, the systematic analysis of PR-Issue misalignment patterns and the specific application to SWE-bench benchmarks represent a clear delta from prior work."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described with a three-phase design and evaluated on standard benchmarks, but the paper does not mention code or dataset availability for reproduction."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper clearly explains the misalignment problem, presents a well-structured solution, and provides concrete accuracy results (92.12% and 91.67%) across multiple benchmarks."
+    },
+    "topical_fit": {
+      "score": 8,
+      "justification": "Directly relevant to builders using LLMs for code generation and evaluation, as it addresses benchmark reliability for assessing LLM performance on software engineering tasks."
+    }
+  },
+  "composite": 6.45
+}

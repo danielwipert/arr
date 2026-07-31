@@ -1,0 +1,45 @@
+{
+  "arxiv_id": "2607.28580v1",
+  "title": "DualG-MRAG: Decoupling Macro-Reasoning and Micro-Matching for Multimodal Retrieval-Augmented Generation",
+  "authors": [
+    "Jiacheng Tao",
+    "Qingyun Sun",
+    "Haonan Yuan",
+    "Ziwei Zhang",
+    "Jianxin Li"
+  ],
+  "abstract": "While Multimodal Retrieval-Augmented Generation (MM-RAG) has shown promising results, it still struggles with complex multi-hop reasoning tasks. Existing methods primarily focus on independent instance-level matching, which often fails to capture explicit relationships across modalities and documents. Although Graph-enhanced methods introduce structural modeling, they face a fundamental challenge in multimodal scenarios: incorporating fine-grained visual features leads to rapid graph expansion and retrieval noise, whereas coarse-grained representations cause the discarding of critical local evidence. To address this dilemma, we propose DualG-MRAG, a Dual-tier framework that introduces a decoupled architecture comprising Macro-reasoning and Micro-matching Graphs for Multimodal RAG. Specifically, to suppress retrieval noise by isolating global structural reasoning from fine-grained evidence matching, we construct a Macro Graph for global topological routing and a Micro Graph for precise local verification. Subsequently, to enable dynamic relevance propagation across heterogeneous evidence sources, we formulate retrieval as a query-driven message passing process via a GNN Retriever. Furthermore, to provide the generative model with coherent structural guidance, we introduce a dynamic programming decoding mechanism that extracts explicit reasoning paths directly from the GNN's forward pass, replacing the standard input of isolated document chunks. Extensive experiments demonstrate that DualG-MRAG outperforms baselines in both evidence recall and complex QA accuracy.",
+  "primary_cat": "cs.AI",
+  "all_cats": [
+    "cs.AI"
+  ],
+  "submitted_at": "2026-07-30T17:40:05Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.28580v1",
+  "in_scope": true,
+  "primary_topic": "rag",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces a decoupled architecture for multimodal RAG that addresses fundamental limitations in handling complex multi-hop reasoning, which directly impacts how builders should approach multimodal retrieval systems."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "The dual-tier graph approach that separates macro-reasoning from micro-matching represents a substantial new variation in RAG architecture, distinct from prior graph-enhanced methods."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "The method is described clearly enough to reimplement with detailed architectural components, but no mention of code or datasets being publicly available."
+    },
+    "clarity": {
+      "score": 7,
+      "justification": "The paper is well-structured with clear problem formulation and solution description, though specific experimental details and dataset information are limited in the abstract."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly addresses multimodal RAG systems, which is a core concern for builders working with LLMs in multimodal applications."
+    }
+  },
+  "composite": 7.1
+}

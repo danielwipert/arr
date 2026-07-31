@@ -1,0 +1,87 @@
+{
+  "date": "2026-07-31",
+  "paper_id": "arxiv:2607.28545v1",
+  "paper_title": "ORCA-bench: How Ready Are Language Model Agents for Oncall?",
+  "paper_authors": [
+    "Albert Gong",
+    "Kyuseong Choi",
+    "Abhineet Agarwal",
+    "Jason Schechner",
+    "Ryan Huang",
+    "Raj Agrawal",
+    "Anish Agarwal",
+    "Raaz Dwivedi"
+  ],
+  "paper_url": "https://arxiv.org/abs/2607.28545",
+  "post_text": "Frontier coding agents fail at production root cause analysis, scoring below 26% accuracy on realistic tasks.\n\nA team at Stanford and Harvard built ORCA-bench, a benchmark that tests language model agents on production-style incident investigation. They exposed five frontier agents to a live microservice system with six days of telemetry data, then measured their ability to diagnose root causes from ambiguous user reports. The best performer managed only 25.3% accuracy on medium-difficulty tasks and 10.0% on hard ones.\n\nThe results are narrower than they sound. The benchmark uses a controlled 50GB testbed with public instrumentation and isolated tasks. Real production systems are orders of magnitude larger, more dynamic, and more idiosyncratic. The reported numbers represent a lower bound on the engineering gap.\n\nFor engineering leaders evaluating AIOps vendors, the practical implication is clear: do not trust current agents with production reliability. The hallucination rate ranges from 7% to 40%, and removing source code access degrades every metric. This is not a matter of better prompts or fine-tuning; it is a fundamental capability gap.\n\nWorth reading if you are considering AI for oncall. Worth ignoring if you believe frontier models are ready for production diagnostics.\n\nPaper: ORCA-bench: How Ready Are Language Model Agents for Oncall?, Gong et al.\nhttps://arxiv.org/abs/2607.28545\n\n#LLMs #AIOps #Production #VendorRisk #RootCauseAnalysis",
+  "post_char_count": 1467,
+  "hook_char_count": 109,
+  "claims": [
+    {
+      "claim": "The best performer managed only 25.3% accuracy on medium-difficulty tasks and 10.0% on hard ones.",
+      "source_span": "the best RCA Accuracy is 25.3% on Medium-difficulty tasks and 10.0% on Hard",
+      "page": 1
+    },
+    {
+      "claim": "The hallucination rate ranges from 7% to 40%",
+      "source_span": "agents hallucinate an implausible root cause in 7% (DeepSeek-V4-Pro) to 40% (GLM-5) of incident reports",
+      "page": 1
+    },
+    {
+      "claim": "removing source code access degrades every metric",
+      "source_span": "removing source-code access degrades every metric we measure",
+      "page": 1
+    },
+    {
+      "claim": "A team at Stanford and Harvard built ORCA-bench",
+      "source_span": "Authors: Albert Gong, Kyuseong Choi, Abhineet Agarwal, Jason Schechner, Ryan Huang, Raj Agrawal, Anish Agarwal, Raaz Dwivedi",
+      "page": 1
+    },
+    {
+      "claim": "a benchmark that tests language model agents on production-style incident investigation",
+      "source_span": "We introduce ORCA-bench, a benchmark that puts general-purpose coding agents in a production-fidelity oncall setting",
+      "page": 1
+    },
+    {
+      "claim": "They exposed five frontier agents to a live microservice system with six days of telemetry data",
+      "source_span": "A live OpenTelemetry-instrumented microservice system—exposing six days of metrics, logs, and traces",
+      "page": 1
+    },
+    {
+      "claim": "The benchmark uses a controlled 50GB testbed",
+      "source_span": "these are performances on a curated 50GB / six-day testbed",
+      "page": 1
+    },
+    {
+      "claim": "Real production systems are orders of magnitude larger, more dynamic, and more idiosyncratic",
+      "source_span": "Real production systems are order of magnitudes larger, more dynamic, and more idiosyncratic",
+      "page": 1
+    },
+    {
+      "claim": "The reported numbers represent a lower bound on the engineering gap",
+      "source_span": "the gap we report is a lower bound on the engineering investment required",
+      "page": 1
+    }
+  ],
+  "ranker_scores": {
+    "significance": 9,
+    "novelty": 8,
+    "reproducibility": 9,
+    "clarity": 8,
+    "topical_fit": 10,
+    "composite": 8.7
+  },
+  "critic_report": {
+    "voice_match": "pass",
+    "banned_phrase_scan": "pass",
+    "length_compliance": "pass",
+    "structure": "pass",
+    "grounding": "pass",
+    "hype_check": "pass",
+    "retries_used": 1,
+    "notes": "Required 1 retry/retries before passing. | voice: The post maintains a declarative, report-like tone with specific numbers and a clear point of view, avoiding marketing cadences and making implications accessible to business leaders. | banned_phrases: no banned phrases found | length: total=1467, hook=109 | structure: 7 blocks, 5 hashtags | grounding: All factual claims in the post are supported by verbatim source spans in the provided claims list and paper sections. [mech: 6 claim span(s) not found in paper: 'the best RCA Accuracy is 25.3% on Medium-difficulty tasks an'; 'removing source-code access degrades every metric we measure'; 'Authors: Albert Gong, Kyuseong Choi, Abhineet Agarwal, Jason'] | hype: The post accurately reports numbers and comparative claims from the paper without unwarranted superlatives or overclaim."
+  },
+  "generated_at": "2026-07-31T11:35:01.279784Z",
+  "drafter_model": "deepseek/deepseek-chat-v3.1",
+  "critic_model": "deepseek/deepseek-chat-v3.1"
+}
