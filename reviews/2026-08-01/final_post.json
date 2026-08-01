@@ -1,0 +1,93 @@
+{
+  "date": "2026-08-01",
+  "paper_id": "arxiv:2607.28568v1",
+  "paper_title": "Frontis-MA1: Training an AI4AI Model towards Recursive Self-Improvement in Machine Learning Engineering",
+  "paper_authors": [
+    "Junlin Yang",
+    "Che Jiang",
+    "Yu Fu",
+    "Tianwei Luo",
+    "Can Ren",
+    "Weizhi Wang",
+    "Kaikai Zhao",
+    "Hongyi Liu",
+    "Yuxin Zuo",
+    "Yuru Wang",
+    "Yuchen Fan",
+    "Kai Tian",
+    "Zhenzhao Yuan",
+    "Xiaojian Lin",
+    "Li Sheng",
+    "Rushi Qiang",
+    "Guoli Jia",
+    "Xingtai Lv",
+    "Ermo Hua",
+    "Dianqiao Lei",
+    "Youbang Sun",
+    "Ning Ding",
+    "Bowen Zhou",
+    "Kaiyan Zhang"
+  ],
+  "paper_url": "https://arxiv.org/abs/2607.28568",
+  "post_text": "A team from Tsinghua University and Frontis.AI built an AI system that improves its own ability to build machine learning solutions through executable feedback.\n\nThey trained Frontis-MA1, a 35-billion-parameter model, using their OpenMLE framework which combines verifiable task environments, execution-grounded training, and evolutionary search. The system improved from 39.39% to 60.61% Medal Average on MLE-Bench Lite under a fixed 12-hour budget per task, and reached 71.21% with enhanced search configuration.\n\nThe result is narrower than it sounds. The framework relies on 5,758 quality-gated executable tasks and a specific evolutionary harness that may not transfer directly to other environments. The headline numbers represent performance within their carefully constructed testbed rather than general capability.\n\nFor engineering leaders, this suggests that the next efficiency gains in AI development may come from better feedback loops and evolutionary search rather than larger base models alone. Worth asking your team about iterative improvement systems, worth ignoring if you expect immediate production-ready self-improving AI.\n\nPaper: Frontis-MA1: Training an AI4AI Model towards Recursive Self-Improvement in Machine Learning Engineering, Yang et al.\nhttps://arxiv.org/abs/2607.28568\n\n#AI4AI #MachineLearning #EvolutionarySearch #EngineeringSystems #OpenMLE",
+  "post_char_count": 1377,
+  "hook_char_count": 160,
+  "claims": [
+    {
+      "claim": "A team from Tsinghua University and Frontis.AI",
+      "source_span": "Junlin Yang1,2,*,† Che Jiang1,2,*,† Yu Fu1,3,* Tianwei Luo2,* Can Ren1,* Weizhi Wang1,2,* Kaikai Zhao2,* Hongyi Liu2 Yuxin Zuo2 Yuru Wang1,2 Yuchen Fan4 Kai Tian1,2 Zhenzhao Yuan1,2 Xiaojian Lin2 Li Sheng2 Rushi Qiang5 Guoli Jia2 Xingtai Lv1,2 Ermo Hua2 Dianqiao Lei1,2 Youbang Sun2 Ning Ding2 Bowen Zhou2 Kaiyan Zhang1,‡ 1HorizonResearch,Frontis.AI 2TsinghuaUniversity",
+      "page": 31
+    },
+    {
+      "claim": "35-billion-parameter model",
+      "source_span": "Frontis-MA1-35B",
+      "page": 5
+    },
+    {
+      "claim": "OpenMLE framework which combines verifiable task environments, execution-grounded training, and evolutionary search",
+      "source_span": "OpenMLE, an open full-stack technical solution for training language models to construct and iteratively improve machine learning solutions using executable feedback",
+      "page": 4
+    },
+    {
+      "claim": "improved from 39.39% to 60.61% Medal Average on MLE-Bench Lite",
+      "source_span": "Frontis-MA1-35B improves over Qwen3.6-35B-A3B from 39.39% to 60.61% Medal Average",
+      "page": 5
+    },
+    {
+      "claim": "12-hour budget per task",
+      "source_span": "12-hour per-task budget",
+      "page": 1
+    },
+    {
+      "claim": "reached 71.21% with enhanced search configuration",
+      "source_span": "Frontis-MA1-35B with OpenMLE-Evo-Max1 reaches 71.21% Medal Average",
+      "page": 5
+    },
+    {
+      "claim": "5,758 quality-gated executable tasks",
+      "source_span": "OpenMLE-Gym contains 5,758 executable tasks",
+      "page": 9
+    }
+  ],
+  "ranker_scores": {
+    "significance": 9,
+    "novelty": 8,
+    "reproducibility": 10,
+    "clarity": 7,
+    "topical_fit": 10,
+    "composite": 8.75
+  },
+  "critic_report": {
+    "voice_match": "pass",
+    "banned_phrase_scan": "pass",
+    "length_compliance": "fail",
+    "structure": "fail",
+    "grounding": "pass",
+    "hype_check": "pass",
+    "retries_used": 1,
+    "notes": "Required 1 retry/retries before passing. | voice: The post maintains a declarative, measured tone with specific numbers and cautious framing appropriate for business and engineering leaders. | banned_phrases: no banned phrases found | length: hook too long (160 chars, max 140) | structure: expected 7 blocks (hook + 3 paras + close + meta + tags), got 6 | grounding: All factual claims in the post are supported by verbatim source spans from the provided paper sections. | hype: The post accurately represents the paper's findings without exaggeration, including appropriate caveats about the narrowness of results."
+  },
+  "generated_at": "2026-08-01T10:50:06.522102Z",
+  "drafter_model": "deepseek/deepseek-chat-v3.1",
+  "critic_model": "deepseek/deepseek-chat-v3.1"
+}

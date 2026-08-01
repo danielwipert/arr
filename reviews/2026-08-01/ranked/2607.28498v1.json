@@ -1,0 +1,44 @@
+{
+  "arxiv_id": "2607.28498v1",
+  "title": "TCA-SIR: Learning Target-Conditioned Abstractions for Scientific Inspiration Retrieval",
+  "authors": [
+    "Yuto Suzuki",
+    "Farnoush Banaei-Kashani"
+  ],
+  "abstract": "Scientific hypothesis generation for AI for Science typically involves Scientific Inspiration Retrieval (SIR) followed by hypothesis composition. Existing SIR methods rank papers by topical similarity and do not explicitly represent how a candidate inspiration transfers to a target problem. This is especially limiting for remote inspirations, whose value often lies in reusable problem-solving principles rather than topical overlap. Motivated by how humans abstract transferable aspects of a source and remap them to a new target, we reformulate SIR as target-conditioned abstraction (TCA). The retrieval object is a transferable abstract principle extracted from a candidate specifically for the target. We present TCA-SIR, which learns to generate target-conditioned abstractions and uses their representations to predict transferability. On ResearchBench, TCA-SIR outperforms prior SIR methods and direct LLM retrieval, improving HitRate@top4% over MOOSE-Chem by more than 10 percentage points. Learned abstractions also recover target-relevant mechanisms more clearly than an untrained TCA prompt, yielding both stronger retrieval and an interpretable rationale for scientific inspiration.",
+  "primary_cat": "cs.IR",
+  "all_cats": [
+    "cs.IR",
+    "cs.AI",
+    "cs.CL"
+  ],
+  "submitted_at": "2026-07-30T16:43:03Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.28498v1",
+  "in_scope": true,
+  "primary_topic": "rag",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 7,
+      "justification": "The paper introduces a novel retrieval method that improves scientific inspiration retrieval by 10+ percentage points, offering builders a more effective approach for AI-assisted scientific discovery workflows."
+    },
+    "novelty": {
+      "score": 8,
+      "justification": "The target-conditioned abstraction approach reformulates scientific inspiration retrieval by extracting transferable principles rather than relying on topical similarity, representing a substantial departure from prior methods."
+    },
+    "reproducibility": {
+      "score": 5,
+      "justification": "While the method is clearly described for reimplementation, the paper does not mention code or dataset availability, requiring implementation from scratch."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with clear problem formulation, method description, and evaluation showing measurable improvements over baseline methods."
+    },
+    "topical_fit": {
+      "score": 7,
+      "justification": "The paper focuses on LLM-based retrieval for scientific inspiration, which is relevant to builders working on AI-assisted research and discovery systems."
+    }
+  },
+  "composite": 7.0
+}

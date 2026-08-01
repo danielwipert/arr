@@ -1,0 +1,47 @@
+{
+  "arxiv_id": "2607.28618v1",
+  "title": "AskChem: Claim-Centered Infrastructure for Chemistry Literature Synthesis",
+  "authors": [
+    "Bing Yan",
+    "Gregory Wolfe",
+    "Stefano Martiniani",
+    "Kyunghyun Cho"
+  ],
+  "abstract": "Chemistry literature synthesis often requires assembling specific findings scattered across many publications, yet existing literature-search systems primarily return ranked document lists. As a result, scientists and AI agents need to locate relevant information, verify their provenance, and assemble cross-paper answers manually. We present AskChem, a claim-centered infrastructure for cross-paper chemistry search. AskChem changes the unit of retrieval from the paper to the provenance-carrying claim: each paper is converted into atomic, typed claims, each grounded by a source DOI and a verbatim quote or an explicit evidence locator. Over this shared claim store, AskChem exposes complementary structures for search and synthesis: a stabilized faceted taxonomy for hierarchical retrieval and browsing, an evidence graph linking claims through relations, and an exploratory living taxonomy that situates indexed papers under scientific principles. AskChem currently indexes 2.4M claims from 147K papers and provides a web interface, as well as REST, SDK, and MCP access for AI agents. On AskChem-Bench, grounding a GPT-5.5 reader in AskChem yields 100% resolvable DOIs, compared with 88.3% without retrieval, and the highest citation density among five tested systems. AskChem is live at https://askchem.org.",
+  "primary_cat": "cs.CL",
+  "all_cats": [
+    "cs.CL",
+    "cs.AI",
+    "cs.IR",
+    "cs.LG"
+  ],
+  "submitted_at": "2026-07-30T17:59:11Z",
+  "pdf_url": "https://arxiv.org/pdf/2607.28618v1",
+  "in_scope": true,
+  "primary_topic": "rag",
+  "dedup_similarity": null,
+  "noise_flagged": false,
+  "scores": {
+    "significance": {
+      "score": 8,
+      "justification": "The paper introduces a claim-centered infrastructure that changes how builders approach scientific literature retrieval by shifting from document-level to claim-level search with provenance tracking."
+    },
+    "novelty": {
+      "score": 7,
+      "justification": "While document-to-claim conversion exists in other domains, the paper presents substantial new variations including a stabilized faceted taxonomy, evidence graph, and living taxonomy specifically for chemistry literature."
+    },
+    "reproducibility": {
+      "score": 6,
+      "justification": "The method is clearly described with specific architectural components, but no mention of code or dataset availability for reproduction outside their live system at askchem.org."
+    },
+    "clarity": {
+      "score": 8,
+      "justification": "The paper is well-written with clear problem statement, solution architecture, and quantitative results showing 100% resolvable DOIs compared to baseline systems."
+    },
+    "topical_fit": {
+      "score": 9,
+      "justification": "Directly relevant to LLM builders as it demonstrates grounding GPT-5.5 in their system and provides SDK/MCP access for AI agents working with scientific literature."
+    }
+  },
+  "composite": 7.45
+}
